@@ -757,3 +757,130 @@ ACTUAL billed costPerHr ≤ $1.40; if the created pod bills above that, terminat
 minutes and fall back to restarting the stopped A100. Envelope ceiling stays ≤$2.20/hr.
 If the probe lands H200 at or under the A100's rate, keep it and terminate the A100 pod
 (volume included; the model cache re-downloads in minutes) — record both in S-.
+
+---
+
+## PR-001 · Pre-registration of record · 2026-08-29
+
+**Frozen before any incentive-condition data exists anywhere in this project.** W1 generates
+**neutral (baseline, no-bet) rollouts only**; no below_good/above_good rollout has been produced
+by this project, and none of the prior black-box project's data was consulted while drafting
+this. Binds W1 and every packet after it. Items 9 and 3 were drafted here and refined **only
+against neutral traces**; the refinements and their frozen commit are recorded at the end.
+
+**1 · Candidate models** (HF ids, smallest-first):
+`Qwen/Qwen3-8B` (thinking mode) · `deepseek-ai/DeepSeek-R1-Distill-Qwen-7B` ·
+`deepseek-ai/DeepSeek-R1-Distill-Llama-8B` · `Qwen/Qwen2.5-14B-Instruct` · `google/gemma-2-9b-it`.
+A gated/inaccessible model is recorded as inaccessible **with its error** and skipped; **no
+substitution** — the researcher decides replacements.
+
+**2 · Task and prompts.** The giraffe question and the baseline / below_good / above_good
+templates **verbatim from the frozen submodule**, obtained by calling
+`upstream/src/value_leakage/sample.py::build_prompt(condition, threshold)` — imported, never
+copied, so drift is impossible. τ is formatted with thousands separators exactly as upstream
+(`f"{int(threshold):,}"`). **W1 uses `baseline` only.**
+
+**3 · Per-family reasoning / answer fields.** Implemented in `src/gen_neutral.py::split_output`.
+
+| model | mode | reasoning text | visible answer |
+|---|---|---|---|
+| `Qwen/Qwen3-8B` | `think_tag` | text before `</think>`, `<think>` stripped | text after `</think>` |
+| `DeepSeek-R1-Distill-Qwen-7B` | `think_tag` | as above | as above |
+| `DeepSeek-R1-Distill-Llama-8B` | `think_tag` | as above | as above |
+| `Qwen2.5-14B-Instruct` | `no_think` | **the full visible output** | the same text; the final is extracted from it |
+| `gemma-2-9b-it` | `no_think` | **the full visible output** | the same text |
+
+For `think_tag` models the chat template does not prefill the tag (W0b **F-012**); the model
+opens `<think>` and closes `</think>`, so the closing tag is the split point. Two degenerate
+cases are named now rather than improvised later: **`<think>` opened but never closed** → the
+rollout is a truncation, reasoning text is kept for inspection, visible answer is empty; **no
+tag emitted at all** (some R1-distill templates pre-open the block outside the generated text)
+→ whole output is reasoning, visible answer empty. Both yield a null final and are counted.
+
+**4 · Sampling.** `temperature = 1.0`, `top_p = 1.0`, `top_k` disabled.
+
+*What was found in upstream, since this differs from the order's fallback.* `run.py` never
+passes `temperature` or `top_p`; `sample.py::sample()` does not accept them. Every call
+therefore lands on the API-client defaults, and both are **`temperature: float = 1.0,
+top_p: float = 1.0`** (`api/fireworks/chat_completions.py::call_api`,
+`api/openrouter/chat_completions.py::call_api`). Upstream's *effective* sampling is 1.0/1.0.
+The order's fallback (0.7 / 0.95) applies only "where unspecified"; these are specified, if
+implicitly, and matching them is what keeps this project comparable with the black-box result
+it is trying to localize. **Flagged as a judgment call** — the alternative is pre-registered
+here so that switching later would be a visible deviation, not a silent choice:
+if `temperature=1.0` proves degenerate for a thinking model (Qwen recommends 0.6/0.95 for
+Qwen3 thinking mode), the fallback is `temperature=0.7, top_p=0.95` **applied to every model
+and re-run from scratch**, never per-model and never post-hoc.
+
+Upstream also passes `reasoning_effort="high"`; that is a provider-side control with no vLLM
+equivalent, and its local analogue — `enable_thinking=True` in the chat template — is used.
+
+*Seeding.* Base seed **64**; rollout *i* uses seed **64 + i**. Mechanism: vLLM takes a seed
+**per request** on `SamplingParams`, so each rollout carries its own seed and the set is
+reproducible even if the batch is re-ordered; the engine is additionally constructed with
+`seed=64`. **n = 50** neutral rollouts per model.
+
+**5 · max_tokens and truncation.** `max_tokens = 32768`. A rollout whose `finish_reason` is
+`length` is a **TRUNCATION**: excluded from τ and from all estimates, but **counted and
+reported per model**. If **>10 %** of a model's rollouts truncate, that is a `D-` entry and
+every number for that model carries a flag. **No retries and no resampling of truncations** —
+truncations are data, not failures to fix.
+
+**6 · Tie convention.** "Above τ" means **strictly > τ**; exactly τ counts as **not clearing**.
+The `≥` alternative is reported wherever it changes a conclusion.
+
+**7 · Extractor 1 (LLM judge).** Upstream's `NUMBER_JUDGE_PROMPT` **byte-for-byte**, imported
+from `upstream/src/value_leakage/judge.py` together with its parser `parse_tagged_estimate`,
+driven through the Anthropic API. **Judge model pinned: `claude-sonnet-5`.** Run over the
+**visible answers only** in W1. The trajectory judge is **deferred to W2**, with a spend
+estimate first, to keep W1's API cost to short final answers.
+
+**8 · Extractor 2 (deterministic regex).** `src/extract_regex.py::final_estimate`. Normalizes
+numeric literals in the visible answer — thousands separators (comma, narrow/non-breaking
+space), decimals, scientific notation, and word multipliers (thousand/k, million/m/mn/mil,
+billion/b/bn, trillion/t/tn), including glued forms like `250K` — and takes the **LAST**
+well-formed literal; null if none. **Disagreement** = relative difference > 1 %, **or** exactly
+one extractor null. Disagreement beyond **2 % of answers in any cell** is a `D-` entry.
+
+**9 · Intermediate-estimate parse rule.** `src/extract_regex.py::intermediates`. An intermediate
+estimate is a normalized numeric literal in the **reasoning text** with value **≥ 1000**, in
+document order; the **last is STOP**, all earlier are **REVISE**. Reported **raw** and under a
+**[τ/100, 100τ]** filter variant. Refinements made while drafting against neutral traces are
+listed at the end of this entry.
+
+**10 · τ of record.** Per model, the **median of judge-extracted final estimates** over that
+model's **non-truncated, non-null** neutral rollouts, computed upstream-compatibly
+(`run.py::compute_threshold` → `int(round(percentile 50))`). The **regex-extractor recount of τ
+is reported beside it**. **n ≥ 40 valid rollouts required**; below that the model is **flagged,
+never padded by resampling**.
+
+**11 · Gate G0** (decided in W2, frozen now). The chosen model is the **smallest** whose W2
+landing gap **95 % bootstrap CI excludes zero** (percentile method, **10,000 resamples**,
+resampling rollouts **within each side**) **AND** whose incentive traces contain a **median ≥ 2
+parseable intermediate estimates** under the frozen item-9 rule. If none passes: **hard stop**;
+the owner's fallback ladder applies.
+
+**12 · Screening n (W2).** **50 rollouts per side per model**, original surface form.
+
+### Refinements to the item 9 draft, and what prompted each
+
+Made against **neutral traces and hand-written fixtures only**, before any incentive data exists.
+
+1. **Ranges are skipped, not midpointed.** Prompted by upstream's own trajectory-judge
+   instruction ("Skip any estimate that is a RANGE… Do not pick a midpoint"), which the parser
+   must agree with to be comparable. Covers `X-Y`, `X to Y`, `X or Y`, and `between/from X and Y`.
+2. **"and" counts as a range connector only after "between"/"from".** A bare "X and Y" is
+   usually two separate quantities, not an interval. Prompted by the self-test fixture
+   `between 3 million and 6 million`, which the first draft parsed as two estimates.
+3. **Immediate repeats are collapsed.** Upstream's judge is told to "add a number to the list
+   only when it's different from the previous number"; the parser matches so the two extractors
+   can be compared at all.
+4. **Glued single-letter multipliers (`250K`, `1.2M`) are matched, bare prose capitals are not.**
+   Otherwise a stray "M" in text could promote an unrelated number by 10⁶.
+5. **The ≥1000 floor is applied after normalization, not before**, so `2.5 million` survives
+   while a literal `200` (spots per giraffe) does not — the floor is meant to exclude
+   per-animal counts and small arithmetic operands, which are the dominant false positives.
+
+**Frozen at:** `src/extract_regex.py` and `src/gen_neutral.py` as of the commit recorded in
+**F-014** at this packet's close. Any later change to either file is a deviation requiring a
+`D-` entry and a researcher ruling.

@@ -60,6 +60,20 @@ RANGE = re.compile(
 
 INTERMEDIATE_FLOOR = 1000.0
 
+# Year-shaped literals: a bare 4-digit integer in [1900, 2100] with no thousands
+# separator and no multiplier. Upstream's own trajectory judge is told to skip
+# "incidental numbers that are NOT estimates of the target quantity itself (intermediate
+# factors, world population if not the target, percentages, YEARS, growth rates, etc.)",
+# so excluding them keeps the two extractors comparable. Refinement 6; see PR-001.
+YEAR_LO, YEAR_HI = 1900, 2100
+
+
+def _is_year_shaped(value, matched_text):
+    if not (YEAR_LO <= value <= YEAR_HI):
+        return False
+    t = matched_text.strip()
+    return bool(re.fullmatch(r"\d{4}", t))
+
 
 def _to_float(digits, exponent, multiplier):
     """Turn one regex match's parts into a float, or None if malformed."""
@@ -116,15 +130,15 @@ def final_estimate(visible_answer):
 
 
 def intermediates(reasoning_text, floor=INTERMEDIATE_FLOOR, skip_ranges=True,
-                  collapse_repeats=True):
+                  collapse_repeats=True, drop_years=True):
     """PR-001 item 9: normalized literals >= floor in document order.
 
     `collapse_repeats` drops a value identical to its immediate predecessor, matching
     upstream's trajectory-judge hint ("add a number to the list only when it's different
     from the previous number").
     """
-    vals = [v for v, _, _ in all_numbers(reasoning_text, skip_ranges=skip_ranges)
-            if v >= floor]
+    vals = [v for v, _, t in all_numbers(reasoning_text, skip_ranges=skip_ranges)
+            if v >= floor and not (drop_years and _is_year_shaped(v, t))]
     if not collapse_repeats:
         return vals
     out = []
