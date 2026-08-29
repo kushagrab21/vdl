@@ -97,32 +97,34 @@ W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W0b)
+## Where things stand (end of W1)
 
-W0 audited and partially accepted (**R-003**). Topology fixed by **R-004**. **W0b is COMPLETE.**
+W0/W0b accepted (**R-003**, **V-001**). **W1 complete.** **PR-001 is the pre-registration of
+record**, frozen at commit `0152943` (**F-014**) — items 8/9 in `src/extract_regex.py`, item 3
+in `src/gen_neutral.py`. Any change to either file is a deviation needing a `D-` entry.
 
-Step 0 was unblocked by the **owner running the extraction script** — the runner's harness
-refuses every route to secret material (**D-003**, **D-004**), so *the owner is the executor for
-any future step that reads a credential.*
+**Neutral calibration done, four models, 50 rollouts each, zero truncations** (**P-001**):
+τ (judge) = Qwen3-8B **31,250,000** · R1-Qwen-7B **2,400,000** · R1-Llama-8B **2,500,000** ·
+Qwen2.5-14B **15,300,000**. `google/gemma-2-9b-it` is **gated and inaccessible**; not substituted.
 
-Pod of record **`gwhn0ex0eeyntn`**, A100 80GB PCIe at **$1.39/hr**, is **STOPPED** (`EXITED`,
-GPU billing halted) with its 100 GB volume holding the Qwen3-8B cache at `HF_HOME=/workspace/hf`.
-Restart with `python3 src/pod.py status|wait`; **terminate** it (and revoke deploy key
-`161657105`) if W2 is more than a day or two out — see **S-003**.
+**Two things need a researcher ruling before W2 runs:**
+1. **D-011** — the LAST-literal extractor disagrees with the judge on **20%/36%** of R1-distill
+   answers (they write answer-first, then operands). Left unfixed on purpose; τ of record is the
+   judge's and is unaffected.
+2. **P-002** — G0's "median ≥2 parseable intermediates" must be pinned to the **raw** or the
+   **filtered** variant *before* W2. `Qwen2.5-14B-Instruct` sits at 2 raw / **1 filtered**, so
+   the choice decides whether it can pass at all.
 
-Both smoke tests **PASS**: vLLM 0.28.0 generation with a separable `<think>` segment (**F-012**),
-and a transformers forward hook at `model.model.layers[18]` capturing `(46, 4096)` with an exact
-tokenizer round-trip (**F-013**).
+**Pod `gwhn0ex0eeyntn` is STOPPED, keep it.** RunPod stop **wipes the container filesystem**
+(**D-009**) — only `/workspace` survives. The stack now lives on the volume at
+`/workspace/venv` (17 GB, 21 min to build) and the deploy key at `/workspace/.ssh/id_deploy`
+(repo key id `161661175`; the old `161657105` is revoked).
+**Every GPU packet starts with `source /workspace/bootstrap.sh`.**
+Volume at close: 60 GB of 100 GB used.
 
-**Cumulative GPU spend: $1.77 of $60.00.** Owner-clock minutes for W0 and W0b remain **pending**.
+**Spend: $3.61 GPU of $60, plus $0.45 Anthropic API.** Owner-clock minutes remain **owed for
+W0, W0b and W1** — asked three times.
 
-Three things W1 must carry forward:
-1. **Trace length dominates cost.** 1500 tokens truncated every attempt; 24000 was needed to
-   finish one Fermi trace (**D-007**). Pre-register a `max_tokens` and a truncation rule.
-2. **Comma-grouped integers tokenise per digit** — `1,234,567` is 9 tokens (**F-013**). W4's
-   positional check must speak in spans, not positions.
-3. **H200 NVL is quoted at $0.50/hr with 143 GB**, below every A100 (**F-009**). Needs a ruling
-   before the next GPU packet; the runner did not substitute unasked.
-
-Tooling now in `src/`: `pod.py` (register-key / images / create / wait / status / stop /
-terminate), `pod_survey.py`, `runpod_client.py`, `extract_runpod_key.py`, both smoke scripts.
+Tooling in `src/`: `pod.py` · `pod_survey.py` · `runpod_client.py` · `extract_runpod_key.py` ·
+`gen_neutral.py` · `extract_regex.py` · `tau.py` · `trace_sample.py` · both smoke scripts.
+Laptop-side judge/analysis runs in `.venv-w1/` (fire, anthropic, tenacity, numpy, tqdm, dotenv).
