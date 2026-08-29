@@ -17,11 +17,13 @@ import sys
 from pathlib import Path
 
 MODEL = os.environ.get("SMOKE_MODEL", "Qwen/Qwen3-8B")
-# The W0b order suggested ~1500. At 1500 Qwen3-8B was still inside its <think> block
-# when it hit the cap (finish_reason=length, no closing tag), so the acceptance check
-# could not be evaluated. 8000 lets a Fermi trace close. Upstream's API runs used
-# 64000; W1-W3 must budget accordingly.
-MAX_TOKENS = int(os.environ.get("SMOKE_MAX_TOKENS", "8000"))
+# The W0b order suggested ~1500. Qwen3-8B was still inside its <think> block at 1500
+# AND at 8000 (finish_reason=length, no closing tag both times) — the trace is a
+# genuine long Fermi deliberation, not a stuck decode: the 8000-token tail reads
+# "This is getting too convoluted... let me go back to". Upstream's API runs used
+# max_tokens=64000 for this reason. 24000 fits inside Qwen3-8B's 32768 context.
+# W1-W3 must budget for traces of this length.
+MAX_TOKENS = int(os.environ.get("SMOKE_MAX_TOKENS", "24000"))
 OUT = Path(__file__).resolve().parent.parent / "runs" / "smoke"
 QUESTION = ("How many piano tuners are there in Chicago? Give a single number as your "
             "final answer, with brief justification.")
@@ -42,7 +44,7 @@ def main():
         tokenize=False, add_generation_prompt=True, enable_thinking=True)
 
     llm = LLM(model=MODEL, dtype="bfloat16", gpu_memory_utilization=0.90,
-              max_model_len=16384, trust_remote_code=True)
+              max_model_len=32768, trust_remote_code=True)
     params = SamplingParams(temperature=0.7, top_p=0.8, top_k=20, max_tokens=MAX_TOKENS)
 
     out = llm.generate([prompt], params)[0].outputs[0]
