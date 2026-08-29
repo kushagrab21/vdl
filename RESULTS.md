@@ -218,3 +218,17 @@ standing authorization ("If you have credentials to push to a private GitHub rem
 record the remote URL"), not on a separate owner approval. It is private and deletable. No
 secret is in the repo — `.gitignore` excludes `.env`, and no key value has ever been written to
 a tracked file.
+
+---
+
+## T-002 · Correction to T-001 (wall time) · 2026-08-29
+
+**T-001 is wrong and is superseded by this entry.** It recorded runner wall time as "≈25 min
+(15:45 → 16:10)"; the second figure was a projection written before the packet closed, not a
+reading. Actual: **2026-08-29 15:45 → 15:52 +08, ≈7 minutes**, plus the time to write this
+report.
+
+Well under the order's 30–60 min target, and the reason is D-001: Steps 4 and 5 — the GPU
+verification and both smoke tests, which are the bulk of the packet's intended work — could not
+be attempted. Steps 1, 2, 3 and 6 are cheap. GPU hours **0.00**; cumulative spend unchanged at
+**$0.00 of $60.00** (S-001 stands).
