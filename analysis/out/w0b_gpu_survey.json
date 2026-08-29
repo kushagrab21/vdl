@@ -1,0 +1,482 @@
+[
+  {
+    "id": "AMD Instinct MI300X OAM",
+    "name": "MI300X",
+    "vram_gb": 192,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": 0.5,
+    "spot_usd_hr": 0.5,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA A100 80GB PCIe",
+    "name": "A100 PCIe",
+    "vram_gb": 80,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 1.19,
+    "spot_usd_hr": 1.19,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA A100-SXM4-40GB",
+    "name": "A100 SXM 40GB",
+    "vram_gb": 40,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 1,
+    "spot_usd_hr": 1,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA A100-SXM4-80GB",
+    "name": "A100 SXM",
+    "vram_gb": 80,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 1.39,
+    "spot_usd_hr": 1.39,
+    "stock": "Medium"
+  },
+  {
+    "id": "NVIDIA A40",
+    "name": "A40",
+    "vram_gb": 48,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": 0.35,
+    "spot_usd_hr": 0.35,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA B200",
+    "name": "B200",
+    "vram_gb": 180,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 5.98,
+    "spot_usd_hr": 5.98,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA B300 SXM6 AC",
+    "name": "B300",
+    "vram_gb": 288,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 6.94,
+    "spot_usd_hr": 6.94,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA GeForce RTX 3070",
+    "name": "RTX 3070",
+    "vram_gb": 8,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 0.13,
+    "spot_usd_hr": 0.13,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA GeForce RTX 3080",
+    "name": "RTX 3080",
+    "vram_gb": 10,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 0.17,
+    "spot_usd_hr": 0.17,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA GeForce RTX 3080 Ti",
+    "name": "RTX 3080 Ti",
+    "vram_gb": 12,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 0.18,
+    "spot_usd_hr": 0.18,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA GeForce RTX 3090",
+    "name": "RTX 3090",
+    "vram_gb": 24,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 0.22,
+    "spot_usd_hr": 0.22,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA GeForce RTX 3090 Ti",
+    "name": "RTX 3090 Ti",
+    "vram_gb": 24,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "NVIDIA GeForce RTX 4070 Ti",
+    "name": "RTX 4070 Ti",
+    "vram_gb": 12,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 0.19,
+    "spot_usd_hr": 0.19,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA GeForce RTX 4080",
+    "name": "RTX 4080",
+    "vram_gb": 16,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "NVIDIA GeForce RTX 4080 SUPER",
+    "name": "RTX 4080 SUPER",
+    "vram_gb": 16,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 0.28,
+    "spot_usd_hr": 0.28,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA GeForce RTX 4090",
+    "name": "RTX 4090",
+    "vram_gb": 24,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 0.34,
+    "spot_usd_hr": 0.34,
+    "stock": "High"
+  },
+  {
+    "id": "NVIDIA GeForce RTX 5080",
+    "name": "RTX 5080",
+    "vram_gb": 16,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 0.39,
+    "spot_usd_hr": 0.39,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA GeForce RTX 5090",
+    "name": "RTX 5090",
+    "vram_gb": 32,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 0.69,
+    "spot_usd_hr": 0.69,
+    "stock": "Medium"
+  },
+  {
+    "id": "NVIDIA H100 80GB HBM3",
+    "name": "H100 SXM",
+    "vram_gb": 80,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 2.69,
+    "spot_usd_hr": 2.69,
+    "stock": "High"
+  },
+  {
+    "id": "NVIDIA H100 NVL",
+    "name": "H100 NVL",
+    "vram_gb": 94,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 2.59,
+    "spot_usd_hr": 2.59,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA H100 PCIe",
+    "name": "H100 PCIe",
+    "vram_gb": 80,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 1.99,
+    "spot_usd_hr": 1.99,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA H200",
+    "name": "H200 SXM",
+    "vram_gb": 141,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 3.59,
+    "spot_usd_hr": 3.59,
+    "stock": "High"
+  },
+  {
+    "id": "NVIDIA H200 NVL",
+    "name": "H200 NVL",
+    "vram_gb": 143,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": 0.5,
+    "spot_usd_hr": 0.5,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA L4",
+    "name": "L4",
+    "vram_gb": 24,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "NVIDIA L40",
+    "name": "L40",
+    "vram_gb": 48,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "NVIDIA L40S",
+    "name": "L40S",
+    "vram_gb": 48,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 0.79,
+    "spot_usd_hr": 0.79,
+    "stock": "Medium"
+  },
+  {
+    "id": "NVIDIA RTX 2000 Ada Generation",
+    "name": "RTX 2000 Ada",
+    "vram_gb": 16,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": 0.5,
+    "spot_usd_hr": 0.5,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX 4000 Ada Generation",
+    "name": "RTX 4000 Ada",
+    "vram_gb": 20,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 0.2,
+    "spot_usd_hr": 0.2,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX 4000 SFF Ada Generation",
+    "name": "RTX 4000 Ada SFF",
+    "vram_gb": 20,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "NVIDIA RTX 5000 Ada Generation",
+    "name": "RTX 5000 Ada",
+    "vram_gb": 32,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 0.49,
+    "spot_usd_hr": 0.49,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX 6000 Ada Generation",
+    "name": "RTX 6000 Ada",
+    "vram_gb": 48,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 0.74,
+    "spot_usd_hr": 0.74,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX A2000",
+    "name": "RTX A2000",
+    "vram_gb": 6,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 0.12,
+    "spot_usd_hr": 0.12,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX A4000",
+    "name": "RTX A4000",
+    "vram_gb": 16,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "NVIDIA RTX A4500",
+    "name": "RTX A4500",
+    "vram_gb": 20,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "NVIDIA RTX A5000",
+    "name": "RTX A5000",
+    "vram_gb": 24,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "NVIDIA RTX A6000",
+    "name": "RTX A6000",
+    "vram_gb": 48,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 0.33,
+    "spot_usd_hr": 0.33,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX PRO 4000 Blackwell",
+    "name": "RTX PRO 4000",
+    "vram_gb": 24,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": 0.5,
+    "spot_usd_hr": 0.5,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX PRO 4500 Blackwell",
+    "name": "RTX PRO 4500",
+    "vram_gb": 32,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": 0.34,
+    "spot_usd_hr": 0.34,
+    "stock": "High"
+  },
+  {
+    "id": "NVIDIA RTX PRO 4500 Blackwell Server Edition",
+    "name": "RTX PRO 4500 SE",
+    "vram_gb": 32,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": 0.5,
+    "spot_usd_hr": 0.5,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX PRO 5000 Blackwell",
+    "name": "RTX PRO 5000",
+    "vram_gb": 48,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 0.82,
+    "spot_usd_hr": 0.82,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "name": "RTX PRO 6000 MaxQ",
+    "vram_gb": 96,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": 1.64,
+    "spot_usd_hr": 1.64,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "name": "RTX PRO 6000",
+    "vram_gb": 96,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 1.69,
+    "spot_usd_hr": 1.69,
+    "stock": "Medium"
+  },
+  {
+    "id": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 1g.24gb",
+    "name": "PRO 6000 MIG 24GB",
+    "vram_gb": 24,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": 0.5,
+    "spot_usd_hr": 0.5,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb",
+    "name": "PRO 6000 MIG 48GB",
+    "vram_gb": 48,
+    "secure": true,
+    "community": false,
+    "on_demand_usd_hr": 1,
+    "spot_usd_hr": 1,
+    "stock": "Low"
+  },
+  {
+    "id": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "name": "RTX PRO 6000 WK",
+    "vram_gb": 96,
+    "secure": true,
+    "community": true,
+    "on_demand_usd_hr": 1.69,
+    "spot_usd_hr": 1.69,
+    "stock": "Low"
+  },
+  {
+    "id": "Tesla V100-PCIE-16GB",
+    "name": "Tesla V100",
+    "vram_gb": 16,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "Tesla V100-SXM2-16GB",
+    "name": "V100 SXM2",
+    "vram_gb": 16,
+    "secure": false,
+    "community": true,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  },
+  {
+    "id": "unknown",
+    "name": "unknown",
+    "vram_gb": 0,
+    "secure": false,
+    "community": false,
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
+  }
+]
