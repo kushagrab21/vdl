@@ -17,6 +17,11 @@ import sys
 from pathlib import Path
 
 MODEL = os.environ.get("SMOKE_MODEL", "Qwen/Qwen3-8B")
+# The W0b order suggested ~1500. At 1500 Qwen3-8B was still inside its <think> block
+# when it hit the cap (finish_reason=length, no closing tag), so the acceptance check
+# could not be evaluated. 8000 lets a Fermi trace close. Upstream's API runs used
+# 64000; W1-W3 must budget accordingly.
+MAX_TOKENS = int(os.environ.get("SMOKE_MAX_TOKENS", "8000"))
 OUT = Path(__file__).resolve().parent.parent / "runs" / "smoke"
 QUESTION = ("How many piano tuners are there in Chicago? Give a single number as your "
             "final answer, with brief justification.")
@@ -37,8 +42,8 @@ def main():
         tokenize=False, add_generation_prompt=True, enable_thinking=True)
 
     llm = LLM(model=MODEL, dtype="bfloat16", gpu_memory_utilization=0.90,
-              max_model_len=4096, trust_remote_code=True)
-    params = SamplingParams(temperature=0.7, top_p=0.8, top_k=20, max_tokens=1500)
+              max_model_len=16384, trust_remote_code=True)
+    params = SamplingParams(temperature=0.7, top_p=0.8, top_k=20, max_tokens=MAX_TOKENS)
 
     out = llm.generate([prompt], params)[0].outputs[0]
     text = out.text
@@ -59,7 +64,7 @@ def main():
         "question": QUESTION,
         "templated_prompt": prompt,
         "enable_thinking": True,
-        "sampling": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "max_tokens": 1500},
+        "sampling": {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "max_tokens": MAX_TOKENS},
         "raw_output": text,
         "thinking": thinking,
         "answer": answer.strip(),
