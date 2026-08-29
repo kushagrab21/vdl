@@ -201,3 +201,20 @@ A fresh clone reproduces the frozen tree with
 dirty submodule in the parent repo's `git status`** — the freeze is enforced by the repo itself,
 not only by the F-002 verification command. Freeze check re-run after the change:
 `git -C upstream status --porcelain` → empty.
+
+---
+
+## F-005 · Git remote · 2026-08-29
+
+Remote created and pushed: **`https://github.com/kushagrab21/vdl`** — **private**, owner
+`kushagrab21` (the `gh` CLI was already authenticated on this host). Branch `main` tracks
+`origin/main` at `faf7b73`.
+
+command (verify visibility): `gh repo view kushagrab21/vdl --json name,visibility,url,isPrivate`
+command (fresh clone with the freeze): `git clone --recurse-submodules https://github.com/kushagrab21/vdl.git`
+
+Judgment call, flagged: creating the remote is an outward-facing action taken on the order's
+standing authorization ("If you have credentials to push to a private GitHub remote, push and
+record the remote URL"), not on a separate owner approval. It is private and deletable. No
+secret is in the repo — `.gitignore` excludes `.env`, and no key value has ever been written to
+a tracked file.
