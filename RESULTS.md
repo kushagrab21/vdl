@@ -1068,3 +1068,83 @@ G0 uses before W2 runs** — deciding after seeing W2 numbers would be post-hoc.
 The raw counts for the thinking models are inflated by giraffe-population figures and
 per-species counts that a syntactic rule cannot distinguish from target-quantity estimates;
 the filtered variant is the more meaningful one, which is why both are reported.
+
+---
+
+## F-014 · PR-001 freeze: the extractor and parser commit · 2026-08-29
+
+PR-001 items 8 and 9 (and the item 3 field rules) are frozen at commit
+**`0152943782c74ca053e7d3aa6988e71da4469402`**, files:
+
+- `src/extract_regex.py` — `final_estimate` (item 8), `intermediates` (item 9), `filtered`
+  (the [τ/100, 100τ] variant), and the shared numeric normalizer.
+- `src/gen_neutral.py` — `split_output` (item 3 per-family reasoning/answer fields), the seed
+  rule, and the sampling constants.
+
+Verification that the frozen rule reproduces the ledger's numbers, runnable from the committed
+files with no GPU and no API:
+`python3 src/extract_regex.py --selftest` → 9/9 pass ·
+`python3 src/tau.py --no-judge` → regenerates every regex column of `analysis/out/w1_tau.csv`.
+
+**Any later change to either file is a deviation** requiring a `D-` entry and a researcher
+ruling. D-011 is the first live test of that: the LAST-literal weakness is documented and left
+unfixed rather than patched after the fact.
+
+Six refinements were made to the item 9 draft, all against neutral traces and hand-written
+fixtures only. Five are listed in PR-001. **The sixth was prompted by real neutral output and is
+recorded here**: bare four-digit year-shaped literals in [1900, 2100] are excluded, because the
+first parse of Qwen3-8B rollout 0 returned `[150000, 2020, 100000, 2016, …]` — citation years
+were entering the trajectory. Upstream's own trajectory judge is instructed to skip
+"incidental numbers that are NOT estimates of the target quantity itself (intermediate factors,
+world population if not the target, percentages, **years**, growth rates, etc.)", so excluding
+them makes the two extractors comparable rather than inventing a new rule. The exclusion is
+narrow by construction: it fires only on an unseparated, unsuffixed 4-digit integer, so
+`2,020` and `2020 million` are untouched.
+
+---
+
+## T-005 · Time, W1 · 2026-08-29
+
+Owner-clock minutes: **still pending courier — third ask, now for W0, W0b and W1.** No figure
+has been supplied for any packet. Recorded as an open debt rather than dropped.
+Runner wall time, W1: **≈2 h 05 m** (2026-08-29 17:40 → 19:45 +08).
+GPU wall time (pod running): **1 h 15 m** for the A100, plus **85 s** for the H200 probe.
+
+Where the GPU time went: volume venv build **≈21 min** (D-009, one-time, pays back on every
+future restart) · model downloads ≈9 min (three models, pipelined against generation) · a wasted
+engine init from the `ninja` PATH bug **≈8 min** (D-010) · four generation runs ≈18 min total ·
+the remainder is restart, bootstrap, SSH round-trips and rsync.
+
+---
+
+## S-004 · Spend, W1 · 2026-08-29
+
+Rates from each created pod record's `costPerHr`, per R-006(3) — never from the catalogue,
+which D-008 has now shown to be wrong by up to 658%.
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| `v4vxqyu9qa7r1b` | H200 NVL (probe) | **3.79** | 09:47:00 → 09:48:22 (terminated) | 0.023 | $0.09 |
+| `gwhn0ex0eeyntn` | A100 80GB PCIe | **1.39** | 09:48:30 → 11:03:53 (**stopped**) | 1.256 | $1.75 |
+
+**Pod hours this packet: 1.279. GPU spend this packet: $1.84.**
+**Cumulative GPU spend: $3.61 of $60.00.** ($45 threshold not approached.)
+
+**Non-GPU spend, reported separately as the order requires:** Anthropic judge (extractor 1),
+`claude-sonnet-5`, 199 answers across four models — **130,316 input tokens, 3,955 output
+tokens ≈ $0.45** at $3/$15 per MTok. Computed from the SDK's reported usage, summed in
+`src/tau.py`; it is an estimate from token counts, not an invoice.
+
+**Total project spend to date: $3.61 GPU + $0.45 API = $4.06.**
+
+**Pod STOPPED, not terminated** — `desiredStatus: EXITED`, verified, at 11:03:53 UTC.
+Following **R-006(4)**, and now with a much stronger reason than the model cache: the volume
+holds the **17 GB `/workspace/venv`** that took 21 minutes to build (D-009). Terminating would
+throw that away and cost ~21 minutes of billed time to rebuild, against ~$0.33/day to keep.
+**W2 is screening work and is imminent, so keep.** Revisit only at a >48 h GPU gap, and if it
+is ever terminated, also revoke deploy key `161661175`.
+
+**Volume headroom at close:** `/workspace/hf` 43 GB (Qwen3-8B + Qwen2.5-14B) + `/workspace/venv`
+17 GB = **60 GB of the 100 GB volume**. Evicted during the packet: both R1-distill caches
+(~17 GB), removed immediately after their rollouts were rsynced to the laptop and verified.
+gemma-2-9b-it never downloaded (gated).
