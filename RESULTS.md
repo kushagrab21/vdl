@@ -183,3 +183,21 @@ Hours this packet: **0.00**. Spend this packet: **$0.00**.
 **Cumulative GPU spend: $0.00 of $60.00.**
 
 Non-GPU spend this packet: $0.00 — no API call was made to any provider.
+
+---
+
+## F-004 · `upstream/` pinned as a git submodule · 2026-08-29
+
+Correcting the mechanism, not a number, in **F-002**: the initial W0 commit
+(`e130107`) recorded `upstream` as a bare gitlink with no `.gitmodules` entry — a dangling
+reference that a fresh clone could not resolve. Re-added properly:
+
+command: `git rm --cached upstream && git submodule add https://github.com/adsingh-64/value-leakage upstream`
+
+`.gitmodules` now pins `upstream` → `https://github.com/adsingh-64/value-leakage`, and the
+recorded submodule SHA is **`16d129859e1f0e281363fb4f5910bcaeea316b10`**, identical to F-002.
+A fresh clone reproduces the frozen tree with
+`git clone --recurse-submodules <remote>`, and **any drift in `upstream/` now shows up as a
+dirty submodule in the parent repo's `git status`** — the freeze is enforced by the repo itself,
+not only by the F-002 verification command. Freeze check re-run after the change:
+`git -C upstream status --porcelain` → empty.
