@@ -1657,3 +1657,33 @@ estimate from token counts, not an invoice.
   billing volume storage (~$0.33/day). **Not terminated** — irreversible, and the researcher
   should rule (D-012).
 
+
+---
+
+## V-004 · W2 regenerability check · 2026-08-29
+
+Standing constraint 2 requires every reported number to be regenerable by a named command over
+committed files. Verified at packet close, after the ledger was written:
+
+```
+python3 src/extract_regex.py --selftest                                  -> 9/9 pass
+python3 src/landing_gap.py --model Qwen/Qwen3-8B --tau 31250000          -> 0 new API calls
+```
+
+The second command re-derived G-001's Qwen3-8B row end-to-end from the committed rollout JSON
+with **zero new API spend** (every judge verdict served from `analysis/out/w2_extractions.json`)
+and reproduced `G0: FAIL`, `G0_a: false`, `G0_b: true`, `pooled_filtered_median: 54.0`.
+
+It also rewrote both CSVs. **Their content is byte-identical to the committed version under
+`sort`** — only row order changed, because `_merge_csv` writes the untouched model's rows first
+and then the re-analysed model's. Confirmed with:
+
+```
+diff <(git show HEAD:analysis/out/w2_gap.csv | sort) <(sort analysis/out/w2_gap.csv)
+diff <(git show HEAD:analysis/out/w2_intermediates.csv | sort) <(sort analysis/out/w2_intermediates.csv)
+```
+
+both empty. The reordered files are committed so the working tree matches what a re-run produces.
+**No number in P-003, G-001 or D-016 changed.** This is a regenerability check by the runner, not
+an audit — promotion of P-003 still requires a researcher recount.
+
