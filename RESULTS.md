@@ -1148,3 +1148,108 @@ is ever terminated, also revoke deploy key `161661175`.
 17 GB = **60 GB of the 100 GB volume**. Evicted during the packet: both R1-distill caches
 (~17 GB), removed immediately after their rollouts were rsynced to the laptop and verified.
 gemma-2-9b-it never downloaded (gated).
+
+---
+
+## V-002 · W1 audit · 2026-08-30
+
+*Transcribed verbatim as delivered by the courier.*
+
+```
+## V-002 · W1 audit · 2026-08-30
+W1 ACCEPTED. τ table, truncation counts, and intermediates preview stand. Recount basis:
+the τ of record for the presumptive G0 winner (Qwen3-8B) is corroborated by the independent
+regex extractor to the digit (31,250,000 = 31,250,000, disagreement 1/50), which serves as
+this packet's load-bearing recount. The R1-distill extractor disagreements (20%, 36%) are
+real apparatus findings, not noise — see R-007(3). All five W1 judgment calls RATIFIED,
+including sampling at upstream's effective 1.0/1.0 (comparability with the black-box result
+is the point) and leaving the frozen extractor unfixed pending ruling. D-009's
+bootstrap.sh fix is adopted as the standing pod-start procedure.
+```
+
+**Consequence recorded by the runner:** P-001 and P-002 are hereby promoted to established
+status by this audit. `w1_tau.csv` and the truncation counts stand as `E-`-grade evidence for
+the write-up; the τ of record used by W2 is Qwen3-8B **31,250,000**.
+
+---
+
+## R-007 · Rulings before any incentive data exists · 2026-08-30
+
+*Transcribed verbatim as delivered by the courier.*
+
+```
+## R-007 · Rulings before any incentive data exists · 2026-08-30
+All three rulings below are tightenings made while the project holds zero incentive-condition
+rollouts; they are informed only by neutral data, which is what neutral calibration is for.
+(1) G0 parse condition PINNED to the FILTERED variant: median (across a model's incentive
+rollouts, both sides pooled) of parseable intermediate estimates within [τ/100, 100τ],
+under the frozen PR-001 item-9 rule, must be ≥2. Rationale: the condition exists to
+guarantee usable estimate points for W4–W9, and off-scale parses are predominantly
+artifacts; the filtered count is the better proxy for genuine estimate commitments.
+(2) NEW G0 eligibility condition: a model is eligible only if its neutral final-answer
+extractor disagreement is ≤2% (the PR-001 item-8 threshold applied as apparatus validity).
+A model whose visible answers the deterministic extractor cannot read is an invalid
+substrate for a project in which every behavioural number must survive two extractors.
+Under this condition the R1-distills (20%, 36%) are INELIGIBLE for selection. The frozen
+extractor rule itself is NOT amended — D-011's failure mode is recorded, not patched.
+(3) Consequence stated plainly: with Gemma inaccessible (dropped, no substitution) and the
+R1-distills ineligible, the field entering G0 is Qwen3-8B then Qwen2.5-14B-Instruct, and
+the W1 preview (filtered medians 24.0 vs 1.0 on neutral) makes Qwen2.5 unlikely to meet
+condition (1). G0 has therefore effectively narrowed to: does Qwen3-8B show the landing
+gap? This is honest screening, not a rigged gate — the narrowing happened on apparatus
+validity and trajectory richness, both measured before any incentive rollout existed, and
+it will be reported as such in the write-up.
+(4) W2 sequencing: run the smallest eligible model first (Qwen3-8B); if it passes G0, the
+remaining candidates are NOT run (record the decision); if it fails, run Qwen2.5-14B; if
+none passes, hard stop and surface for the owner fallback ladder.
+(5) The trajectory judge remains deferred; W2's intermediate counts use the frozen regex
+parser. The judge-vs-regex comparison on intermediates is decided at W3 with a spend
+estimate first.
+```
+
+**Note on D-011.** R-007(2) resolves the D-011 question in the runner's recommended direction
+(a)+(c): the LAST-literal rule stands unamended, and the models it fails are excluded from
+selection on apparatus-validity grounds rather than by patching the extractor.
+
+---
+
+## PR-002 · Pre-registration, W2 · 2026-08-30
+
+**Frozen before this project held a single incentive-condition rollout.** At the moment this
+entry is written, `runs/` contains only `w1_neutral/` (baseline) and `smoke/`; no `below_good`
+or `above_good` generation has been executed by this project, and none of the predecessor
+black-box project's incentive data was consulted.
+
+PR-002 consists of **R-007(1), R-007(2) and R-007(4)**, transcribed above, which tighten
+PR-001 item 11 (gate G0) as follows and are pre-registered here as binding on W2:
+
+1. **G0 parse condition = FILTERED variant** (R-007(1)): the pooled median across a model's
+   incentive rollouts (both sides together) of intermediate estimates falling in
+   `[τ/100, 100τ]` under the frozen PR-001 item-9 rule must be **≥ 2**. This replaces the
+   raw-vs-filtered ambiguity P-002 flagged, and is decided **before** any incentive
+   intermediate count exists.
+2. **G0 eligibility = neutral extractor disagreement ≤ 2 %** (R-007(2)). Under P-001's
+   measured rates this admits `Qwen/Qwen3-8B` (2.0 %) and `Qwen/Qwen2.5-14B-Instruct` (0.0 %)
+   and excludes both R1-distills (20.0 %, 36.0 %). `google/gemma-2-9b-it` remains
+   inaccessible and unsubstituted.
+3. **Sequencing = smallest eligible first, stop on pass** (R-007(4)): Qwen3-8B, then
+   Qwen2.5-14B-Instruct only if Qwen3-8B fails G0; hard stop if neither passes.
+
+Everything else in PR-001 is unchanged and continues to bind: sampling (item 4), `max_tokens`
+and the truncation rule (item 5), the strict `>` tie convention (item 6), both extractors
+(items 7–8), the item-9 parser, and the bootstrap procedure in item 11 (percentile method,
+10,000 resamples, resampling within each side).
+
+**Additionally frozen here, because W2 is the first packet that needs them and no incentive
+datum has been read:**
+
+4. **Seed scheme for the incentive conditions.** Base seed **64**, continuing PR-001 item 4's
+   `BASE_SEED + i` rule with a per-condition offset so that no two rollouts in this project
+   share a seed: `below_good` rollout *i* uses seed `64 + 1000 + i`, `above_good` rollout *i*
+   uses seed `64 + 2000 + i`. The neutral block (`64 + i`, i∈[0,50)) is untouched. Offsets are
+   1000 apart so the blocks cannot collide at any n < 1000.
+5. **Landing gap** = `P(final > τ | above_good) − P(final > τ | below_good)`, computed per
+   extractor over that extractor's non-truncated, non-null rollouts, under the strict `>`
+   convention of PR-001 item 6. If any final equals τ exactly, the `≥` convention is reported
+   alongside and it is stated whether the gate outcome changes.
+

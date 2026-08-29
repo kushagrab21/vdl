@@ -7,6 +7,7 @@ standing obligation and every future GPU packet needs the same four verbs.
   python3 src/pod.py images                # which runpod/pytorch tags actually exist
   python3 src/pod.py create --gpu "NVIDIA A100 80GB PCIe" --max-price 2.20
   python3 src/pod.py status [POD_ID]
+  python3 src/pod.py start POD_ID          # resume a stopped pod (container FS is wiped, D-009)
   python3 src/pod.py stop POD_ID           # halts billing, keeps the volume
   python3 src/pod.py terminate POD_ID      # destroys the pod and its volume
 
@@ -231,6 +232,19 @@ def cmd_wait(args):
     return 1
 
 
+def cmd_start(args):
+    """Resume a stopped (EXITED) pod. Only /workspace survives a stop — D-009 — so the
+    caller must still `source /workspace/bootstrap.sh` once SSH is up."""
+    status, body = rp.rest("/pods/%s/start" % args.pod_id, method="POST")
+    print("start HTTP", status)
+    print(json.dumps(body, indent=2)[:2000] if body else "(no body)")
+    s2, b2 = rp.rest("/pods/" + args.pod_id)
+    b2 = b2 or {}
+    print("\npost-start desiredStatus:", b2.get("desiredStatus"),
+          "| costPerHr:", b2.get("costPerHr"), "| HTTP", s2)
+    return 0 if status in (200, 201) else 1
+
+
 def cmd_stop(args):
     status, body = rp.rest("/pods/%s/stop" % args.pod_id, method="POST")
     print("stop HTTP", status)
@@ -280,6 +294,10 @@ def main():
     w.add_argument("--every", type=int, default=15)
     w.add_argument("--tries", type=int, default=24)
     w.set_defaults(fn=cmd_wait)
+
+    st = sub.add_parser("start")
+    st.add_argument("pod_id")
+    st.set_defaults(fn=cmd_start)
 
     p = sub.add_parser("stop")
     p.add_argument("pod_id")
