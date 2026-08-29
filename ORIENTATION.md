@@ -99,17 +99,30 @@ Delivered by the W0b order; topology by ruling **R-004**.
 
 ## Where things stand (end of W0b)
 
-W0 is audited and partially accepted (**R-003**): Steps 1, 2, 3, 6 accepted; the GPU half was
-re-issued as W0b. Topology is fixed by **R-004** — laptop = root of record and runner seat,
-pod = ephemeral scratch over SSH, stopped at every packet close.
+W0 audited and partially accepted (**R-003**). Topology fixed by **R-004**. **W0b is COMPLETE.**
 
-**W0b is BLOCKED at Step 0.** The RunPod key could not be extracted: the permission classifier
-refused the script route as well as the ad-hoc route (see `D-003`), which is the stop condition
-the W0b order itself named. The owner pastes `RUNPOD_API_KEY=…` into the untracked `../.env` by
-hand, and W0b resumes at Step 2's key registration.
+Step 0 was unblocked by the **owner running the extraction script** — the runner's harness
+refuses every route to secret material (**D-003**, **D-004**), so *the owner is the executor for
+any future step that reads a credential.*
 
-Done anyway, off the critical path: R-001..R-004 transcribed, this packet map, the SSH keypair
-(**F-006**), and both smoke-test scripts written and syntax-checked locally (**F-007**) so they
-cost pod-billed seconds rather than pod-billed minutes.
+Pod of record **`gwhn0ex0eeyntn`**, A100 80GB PCIe at **$1.39/hr**, is **STOPPED** (`EXITED`,
+GPU billing halted) with its 100 GB volume holding the Qwen3-8B cache at `HF_HOME=/workspace/hf`.
+Restart with `python3 src/pod.py status|wait`; **terminate** it (and revoke deploy key
+`161657105`) if W2 is more than a day or two out — see **S-003**.
 
-**No pod has been provisioned. Cumulative GPU spend is $0.00 of $60.00.**
+Both smoke tests **PASS**: vLLM 0.28.0 generation with a separable `<think>` segment (**F-012**),
+and a transformers forward hook at `model.model.layers[18]` capturing `(46, 4096)` with an exact
+tokenizer round-trip (**F-013**).
+
+**Cumulative GPU spend: $1.77 of $60.00.** Owner-clock minutes for W0 and W0b remain **pending**.
+
+Three things W1 must carry forward:
+1. **Trace length dominates cost.** 1500 tokens truncated every attempt; 24000 was needed to
+   finish one Fermi trace (**D-007**). Pre-register a `max_tokens` and a truncation rule.
+2. **Comma-grouped integers tokenise per digit** — `1,234,567` is 9 tokens (**F-013**). W4's
+   positional check must speak in spans, not positions.
+3. **H200 NVL is quoted at $0.50/hr with 143 GB**, below every A100 (**F-009**). Needs a ruling
+   before the next GPU packet; the runner did not substitute unasked.
+
+Tooling now in `src/`: `pod.py` (register-key / images / create / wait / status / stop /
+terminate), `pod_survey.py`, `runpod_client.py`, `extract_runpod_key.py`, both smoke scripts.
