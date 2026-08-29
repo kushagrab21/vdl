@@ -733,3 +733,27 @@ than a day or two out, **terminate**: `python3 src/pod.py terminate gwhn0ex0eeyn
 revoke the deploy key with `gh repo deploy-key delete 161657105`.
 
 Non-GPU spend this packet: **$0.00** — no inference API was called.
+
+---
+
+## V-001 · W0b audit · 2026-08-29
+W0b ACCEPTED in full. No behavioural numbers were produced, so no recount was performed;
+the load-bearing evidence (smoke-B capture shape, d_model, dtype, exact tokenizer
+round-trip, per-character digit tokenization) is pasted verbatim in the report and ledger.
+F-006..F-013, D-004..D-007, S-, T- entries stand as recorded.
+
+## R-006 · W0b rulings · 2026-08-29
+(1) All six W0b judgment calls ratified, including the deploy-key pattern, the smoke-JSON
+commit exception, and not substituting H200 unasked — correct restraint. (2) The ~1500-token
+smoke budget was a researcher error; owned. Its lesson is pre-registered in PR-001 (max_tokens
+and truncation rule). (3) Billed-vs-quoted price: adopted as standing rule — every S- entry
+takes costPerHr from the created pod record, never from the catalogue. (4) Terminate decision:
+KEEP the stopped pod and its volume; W1 is GPU work and imminent; volume cost (~$0.33/day) is
+noise against re-setup friction. Revisit at any >48 h GPU gap. (5) H200 ruling: the $0.50/hr
+H200 NVL quote is worth one bounded probe, since the catalogue price is now known to be a
+fleet floor, not a quote. At W1 pod-up the runner may create the cheapest pod with ≥80 GB
+VRAM (community cloud acceptable; read-only deploy key is the only credential aboard) whose
+ACTUAL billed costPerHr ≤ $1.40; if the created pod bills above that, terminate it within
+minutes and fall back to restarting the stopped A100. Envelope ceiling stays ≤$2.20/hr.
+If the probe lands H200 at or under the A100's rate, keep it and terminate the A100 pod
+(volume included; the model cache re-downloads in minutes) — record both in S-.

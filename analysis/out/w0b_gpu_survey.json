@@ -5,9 +5,9 @@
     "vram_gb": 192,
     "secure": true,
     "community": false,
-    "on_demand_usd_hr": 0.5,
-    "spot_usd_hr": 0.5,
-    "stock": "Low"
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
   },
   {
     "id": "NVIDIA A100 80GB PCIe",
@@ -47,7 +47,7 @@
     "community": false,
     "on_demand_usd_hr": 0.35,
     "spot_usd_hr": 0.35,
-    "stock": "Low"
+    "stock": "Medium"
   },
   {
     "id": "NVIDIA B200",
@@ -115,9 +115,9 @@
     "vram_gb": 24,
     "secure": false,
     "community": true,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.27,
+    "spot_usd_hr": 0.27,
+    "stock": "Low"
   },
   {
     "id": "NVIDIA GeForce RTX 4070 Ti",
@@ -135,9 +135,9 @@
     "vram_gb": 16,
     "secure": false,
     "community": true,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.27,
+    "spot_usd_hr": 0.27,
+    "stock": "Low"
   },
   {
     "id": "NVIDIA GeForce RTX 4080 SUPER",
@@ -245,9 +245,9 @@
     "vram_gb": 48,
     "secure": true,
     "community": true,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.69,
+    "spot_usd_hr": 0.69,
+    "stock": "Low"
   },
   {
     "id": "NVIDIA L40S",
@@ -335,9 +335,9 @@
     "vram_gb": 20,
     "secure": true,
     "community": true,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.19,
+    "spot_usd_hr": 0.19,
+    "stock": "Low"
   },
   {
     "id": "NVIDIA RTX A5000",
@@ -345,9 +345,9 @@
     "vram_gb": 24,
     "secure": true,
     "community": true,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.16,
+    "spot_usd_hr": 0.16,
+    "stock": "Low"
   },
   {
     "id": "NVIDIA RTX A6000",
@@ -367,7 +367,7 @@
     "community": false,
     "on_demand_usd_hr": 0.5,
     "spot_usd_hr": 0.5,
-    "stock": "Low"
+    "stock": "Medium"
   },
   {
     "id": "NVIDIA RTX PRO 4500 Blackwell",
@@ -405,9 +405,9 @@
     "vram_gb": 96,
     "secure": false,
     "community": true,
-    "on_demand_usd_hr": 1.64,
-    "spot_usd_hr": 1.64,
-    "stock": "Low"
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
   },
   {
     "id": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
@@ -417,7 +417,7 @@
     "community": true,
     "on_demand_usd_hr": 1.69,
     "spot_usd_hr": 1.69,
-    "stock": "Medium"
+    "stock": "High"
   },
   {
     "id": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 1g.24gb",
@@ -427,7 +427,7 @@
     "community": false,
     "on_demand_usd_hr": 0.5,
     "spot_usd_hr": 0.5,
-    "stock": "Low"
+    "stock": "Medium"
   },
   {
     "id": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb",
@@ -455,9 +455,9 @@
     "vram_gb": 16,
     "secure": false,
     "community": true,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.19,
+    "spot_usd_hr": 0.19,
+    "stock": "Low"
   },
   {
     "id": "Tesla V100-SXM2-16GB",
@@ -465,9 +465,9 @@
     "vram_gb": 16,
     "secure": false,
     "community": true,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.23,
+    "spot_usd_hr": 0.23,
+    "stock": "Low"
   },
   {
     "id": "unknown",
