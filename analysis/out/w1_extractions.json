@@ -1,0 +1,1210 @@
+{
+  "deepseek-ai/DeepSeek-R1-Distill-Llama-8B": [
+    {
+      "i": 0,
+      "judge": 2800000.0,
+      "regex": 80000.0,
+      "n_intermediates": 21
+    },
+    {
+      "i": 1,
+      "judge": 864000.0,
+      "regex": 864000.0,
+      "n_intermediates": 33
+    },
+    {
+      "i": 2,
+      "judge": 100000.0,
+      "regex": 100000.0,
+      "n_intermediates": 38
+    },
+    {
+      "i": 3,
+      "judge": 20000000.0,
+      "regex": 20000000.0,
+      "n_intermediates": 20
+    },
+    {
+      "i": 4,
+      "judge": 3800000.0,
+      "regex": 3800000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 5,
+      "judge": 3600000.0,
+      "regex": 3600000.0,
+      "n_intermediates": 106
+    },
+    {
+      "i": 6,
+      "judge": 2500000.0,
+      "regex": 2500000.0,
+      "n_intermediates": 49
+    },
+    {
+      "i": 7,
+      "judge": 2500000.0,
+      "regex": 2500000.0,
+      "n_intermediates": 9
+    },
+    {
+      "i": 8,
+      "judge": 32000000.0,
+      "regex": 1600000.0,
+      "n_intermediates": 7
+    },
+    {
+      "i": 9,
+      "judge": 15000000.0,
+      "regex": 15000000.0,
+      "n_intermediates": 9
+    },
+    {
+      "i": 10,
+      "judge": 3880000.0,
+      "regex": 3880000.0,
+      "n_intermediates": 11
+    },
+    {
+      "i": 11,
+      "judge": 1455000.0,
+      "regex": 1455000.0,
+      "n_intermediates": 6
+    },
+    {
+      "i": 12,
+      "judge": 3880000.0,
+      "regex": 3880000.0,
+      "n_intermediates": 8
+    },
+    {
+      "i": 13,
+      "judge": 1400000.0,
+      "regex": 16.0,
+      "n_intermediates": 43
+    },
+    {
+      "i": 14,
+      "judge": 1320000.0,
+      "regex": 1320000.0,
+      "n_intermediates": 18
+    },
+    {
+      "i": 15,
+      "judge": 6335000.0,
+      "regex": 6335000.0,
+      "n_intermediates": 81
+    },
+    {
+      "i": 16,
+      "judge": 350000.0,
+      "regex": 7000.0,
+      "n_intermediates": 13
+    },
+    {
+      "i": 17,
+      "judge": 3920000.0,
+      "regex": 3920000.0,
+      "n_intermediates": 32
+    },
+    {
+      "i": 18,
+      "judge": 1189000.0,
+      "regex": 1200.0,
+      "n_intermediates": 32
+    },
+    {
+      "i": 19,
+      "judge": 5000000.0,
+      "regex": 5000000.0,
+      "n_intermediates": 10
+    },
+    {
+      "i": 20,
+      "judge": 2000000.0,
+      "regex": 80000.0,
+      "n_intermediates": 33
+    },
+    {
+      "i": 21,
+      "judge": 200000.0,
+      "regex": 200000.0,
+      "n_intermediates": 36
+    },
+    {
+      "i": 22,
+      "judge": 14400000.0,
+      "regex": 480000.0,
+      "n_intermediates": 11
+    },
+    {
+      "i": 23,
+      "judge": 21000000.0,
+      "regex": 21000000.0,
+      "n_intermediates": 20
+    },
+    {
+      "i": 24,
+      "judge": 200000.0,
+      "regex": 200000.0,
+      "n_intermediates": 33
+    },
+    {
+      "i": 25,
+      "judge": 3880000.0,
+      "regex": 30.0,
+      "n_intermediates": 4
+    },
+    {
+      "i": 26,
+      "judge": 1930000.0,
+      "regex": 1930000.0,
+      "n_intermediates": 15
+    },
+    {
+      "i": 27,
+      "judge": 1000000.0,
+      "regex": 40000.0,
+      "n_intermediates": 14
+    },
+    {
+      "i": 28,
+      "judge": 2910000.0,
+      "regex": 97000.0,
+      "n_intermediates": 11
+    },
+    {
+      "i": 29,
+      "judge": 2443750.0,
+      "regex": 25.0,
+      "n_intermediates": 8
+    },
+    {
+      "i": 30,
+      "judge": 2000000.0,
+      "regex": 30.0,
+      "n_intermediates": 32
+    },
+    {
+      "i": 31,
+      "judge": 9600000.0,
+      "regex": 9600000.0,
+      "n_intermediates": 25
+    },
+    {
+      "i": 32,
+      "judge": 2500000.0,
+      "regex": 30.0,
+      "n_intermediates": 55
+    },
+    {
+      "i": 33,
+      "judge": 500000.0,
+      "regex": 500000.0,
+      "n_intermediates": 14
+    },
+    {
+      "i": 34,
+      "judge": 5010000.0,
+      "regex": 5010000.0,
+      "n_intermediates": 12
+    },
+    {
+      "i": 35,
+      "judge": 4500000.0,
+      "regex": 4500000.0,
+      "n_intermediates": 50
+    },
+    {
+      "i": 36,
+      "judge": 675000.0,
+      "regex": 15.0,
+      "n_intermediates": 4
+    },
+    {
+      "i": 37,
+      "judge": 20000.0,
+      "regex": 20000.0,
+      "n_intermediates": 44
+    },
+    {
+      "i": 38,
+      "judge": 1800000.0,
+      "regex": 1800000.0,
+      "n_intermediates": 67
+    },
+    {
+      "i": 39,
+      "judge": 1640000.0,
+      "regex": 50.0,
+      "n_intermediates": 34
+    },
+    {
+      "i": 40,
+      "judge": 5000000.0,
+      "regex": 5000000.0,
+      "n_intermediates": 31
+    },
+    {
+      "i": 41,
+      "judge": 4000000.0,
+      "regex": 4000000.0,
+      "n_intermediates": 26
+    },
+    {
+      "i": 42,
+      "judge": 1975640.0,
+      "regex": 1975640.0,
+      "n_intermediates": 4
+    },
+    {
+      "i": 43,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 26
+    },
+    {
+      "i": 44,
+      "judge": 130000.0,
+      "regex": 130000.0,
+      "n_intermediates": 19
+    },
+    {
+      "i": 45,
+      "judge": 5800000.0,
+      "regex": 1450000.0,
+      "n_intermediates": 4
+    },
+    {
+      "i": 46,
+      "judge": 1565000.0,
+      "regex": 1565000.0,
+      "n_intermediates": 19
+    },
+    {
+      "i": 47,
+      "judge": 3200000.0,
+      "regex": 35.0,
+      "n_intermediates": 104
+    },
+    {
+      "i": 48,
+      "judge": 250000.0,
+      "regex": 250000.0,
+      "n_intermediates": 26
+    },
+    {
+      "i": 49,
+      "judge": 1704000.0,
+      "regex": 20.0,
+      "n_intermediates": 15
+    }
+  ],
+  "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B": [
+    {
+      "i": 0,
+      "judge": 5500000.0,
+      "regex": 5500000.0,
+      "n_intermediates": 10
+    },
+    {
+      "i": 1,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 54
+    },
+    {
+      "i": 2,
+      "judge": 230000.0,
+      "regex": 230000.0,
+      "n_intermediates": 5
+    },
+    {
+      "i": 3,
+      "judge": 375000.0,
+      "regex": 375000.0,
+      "n_intermediates": 3
+    },
+    {
+      "i": 4,
+      "judge": 800000000.0,
+      "regex": 800000000.0,
+      "n_intermediates": 53
+    },
+    {
+      "i": 5,
+      "judge": 710000000.0,
+      "regex": 175.0,
+      "n_intermediates": 22
+    },
+    {
+      "i": 6,
+      "judge": 15000000.0,
+      "regex": 15000000.0,
+      "n_intermediates": 13
+    },
+    {
+      "i": 7,
+      "judge": 165000.0,
+      "regex": 165000.0,
+      "n_intermediates": 68
+    },
+    {
+      "i": 8,
+      "judge": 1200000.0,
+      "regex": 1200000.0,
+      "n_intermediates": 81
+    },
+    {
+      "i": 9,
+      "judge": 131000000.0,
+      "regex": 131000000.0,
+      "n_intermediates": 10
+    },
+    {
+      "i": 10,
+      "judge": 168000.0,
+      "regex": 0.0,
+      "n_intermediates": 8
+    },
+    {
+      "i": 11,
+      "judge": 180000.0,
+      "regex": 180000.0,
+      "n_intermediates": 8
+    },
+    {
+      "i": 12,
+      "judge": 75000.0,
+      "regex": 75000.0,
+      "n_intermediates": 51
+    },
+    {
+      "i": 13,
+      "judge": 5000000.0,
+      "regex": 5000000.0,
+      "n_intermediates": 6
+    },
+    {
+      "i": 14,
+      "judge": 40000000.0,
+      "regex": 40000000.0,
+      "n_intermediates": 12
+    },
+    {
+      "i": 15,
+      "judge": 900000.0,
+      "regex": 900000.0,
+      "n_intermediates": 3
+    },
+    {
+      "i": 16,
+      "judge": 1850000.0,
+      "regex": 1850000.0,
+      "n_intermediates": 16
+    },
+    {
+      "i": 17,
+      "judge": 11944000.0,
+      "regex": 11944000.0,
+      "n_intermediates": 86
+    },
+    {
+      "i": 18,
+      "judge": 45000.0,
+      "regex": 45000.0,
+      "n_intermediates": 97
+    },
+    {
+      "i": 19,
+      "judge": 125000000.0,
+      "regex": 125000000.0,
+      "n_intermediates": 21
+    },
+    {
+      "i": 20,
+      "judge": 18449000.0,
+      "regex": 18449000.0,
+      "n_intermediates": 59
+    },
+    {
+      "i": 21,
+      "judge": null,
+      "regex": 15.0,
+      "n_intermediates": 18
+    },
+    {
+      "i": 22,
+      "judge": 3125000000.0,
+      "regex": 3125000000.0,
+      "n_intermediates": 68
+    },
+    {
+      "i": 23,
+      "judge": 300000000.0,
+      "regex": 500.0,
+      "n_intermediates": 16
+    },
+    {
+      "i": 24,
+      "judge": 20000000.0,
+      "regex": 20000000.0,
+      "n_intermediates": 221
+    },
+    {
+      "i": 25,
+      "judge": 24000000.0,
+      "regex": 24000000.0,
+      "n_intermediates": 10
+    },
+    {
+      "i": 26,
+      "judge": 15500000.0,
+      "regex": 15500000.0,
+      "n_intermediates": 28
+    },
+    {
+      "i": 27,
+      "judge": 876000000.0,
+      "regex": 876000000.0,
+      "n_intermediates": 57
+    },
+    {
+      "i": 28,
+      "judge": 40280000.0,
+      "regex": 2.0,
+      "n_intermediates": 31
+    },
+    {
+      "i": 29,
+      "judge": 18000000.0,
+      "regex": 18000000.0,
+      "n_intermediates": 9
+    },
+    {
+      "i": 30,
+      "judge": 720000.0,
+      "regex": 720000.0,
+      "n_intermediates": 0
+    },
+    {
+      "i": 31,
+      "judge": 28000.0,
+      "regex": 28000.0,
+      "n_intermediates": 23
+    },
+    {
+      "i": 32,
+      "judge": 94200.0,
+      "regex": 94200.0,
+      "n_intermediates": 4
+    },
+    {
+      "i": 33,
+      "judge": 3300000000.0,
+      "regex": 1300.0,
+      "n_intermediates": 50
+    },
+    {
+      "i": 34,
+      "judge": 1040000.0,
+      "regex": 1040000.0,
+      "n_intermediates": 13
+    },
+    {
+      "i": 35,
+      "judge": 8665000.0,
+      "regex": 8665000.0,
+      "n_intermediates": 31
+    },
+    {
+      "i": 36,
+      "judge": 150000000000.0,
+      "regex": 11.0,
+      "n_intermediates": 54
+    },
+    {
+      "i": 37,
+      "judge": 2060000.0,
+      "regex": 8000.0,
+      "n_intermediates": 19
+    },
+    {
+      "i": 38,
+      "judge": 304000.0,
+      "regex": 304000.0,
+      "n_intermediates": 5
+    },
+    {
+      "i": 39,
+      "judge": 110000.0,
+      "regex": 110000.0,
+      "n_intermediates": 45
+    },
+    {
+      "i": 40,
+      "judge": 2250000.0,
+      "regex": 2250000.0,
+      "n_intermediates": 5
+    },
+    {
+      "i": 41,
+      "judge": 1000000.0,
+      "regex": 1000000.0,
+      "n_intermediates": 39
+    },
+    {
+      "i": 42,
+      "judge": 1000000.0,
+      "regex": 4000.0,
+      "n_intermediates": 6
+    },
+    {
+      "i": 43,
+      "judge": 45000.0,
+      "regex": 15.0,
+      "n_intermediates": 4
+    },
+    {
+      "i": 44,
+      "judge": 120000.0,
+      "regex": 120000.0,
+      "n_intermediates": 57
+    },
+    {
+      "i": 45,
+      "judge": 2400000.0,
+      "regex": 2400000.0,
+      "n_intermediates": 7
+    },
+    {
+      "i": 46,
+      "judge": 1000000.0,
+      "regex": 1000000.0,
+      "n_intermediates": 36
+    },
+    {
+      "i": 47,
+      "judge": 2000000.0,
+      "regex": 2000000.0,
+      "n_intermediates": 32
+    },
+    {
+      "i": 48,
+      "judge": 62000000.0,
+      "regex": 62000000.0,
+      "n_intermediates": 33
+    },
+    {
+      "i": 49,
+      "judge": 18000000.0,
+      "regex": 18000000.0,
+      "n_intermediates": 12
+    }
+  ],
+  "Qwen/Qwen2.5-14B-Instruct": [
+    {
+      "i": 0,
+      "judge": 8750000.0,
+      "regex": 8750000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 1,
+      "judge": 10000000.0,
+      "regex": 10000000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 2,
+      "judge": 20100000.0,
+      "regex": 20100000.0,
+      "n_intermediates": 5
+    },
+    {
+      "i": 3,
+      "judge": 15795000.0,
+      "regex": 15795000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 4,
+      "judge": 18000000.0,
+      "regex": 18000000.0,
+      "n_intermediates": 3
+    },
+    {
+      "i": 5,
+      "judge": 8880000.0,
+      "regex": 8880000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 6,
+      "judge": 10000000.0,
+      "regex": 10000000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 7,
+      "judge": 25700000.0,
+      "regex": 25700000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 8,
+      "judge": 22791900.0,
+      "regex": 22791900.0,
+      "n_intermediates": 4
+    },
+    {
+      "i": 9,
+      "judge": 23400000.0,
+      "regex": 23400000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 10,
+      "judge": 12210000.0,
+      "regex": 12210000.0,
+      "n_intermediates": 4
+    },
+    {
+      "i": 11,
+      "judge": 14040000.0,
+      "regex": 14040000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 12,
+      "judge": 33300000.0,
+      "regex": 33300000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 13,
+      "judge": 12650000.0,
+      "regex": 12650000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 14,
+      "judge": 14250000.0,
+      "regex": 14250000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 15,
+      "judge": 11655000.0,
+      "regex": 11655000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 16,
+      "judge": 17550000.0,
+      "regex": 17550000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 17,
+      "judge": 15000000.0,
+      "regex": 15000000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 18,
+      "judge": 16650000.0,
+      "regex": 16650000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 19,
+      "judge": 14000000.0,
+      "regex": 14000000.0,
+      "n_intermediates": 3
+    },
+    {
+      "i": 20,
+      "judge": 16650000.0,
+      "regex": 16650000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 21,
+      "judge": 15390000.0,
+      "regex": 15390000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 22,
+      "judge": 12540000.0,
+      "regex": 12540000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 23,
+      "judge": 11400000.0,
+      "regex": 11400000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 24,
+      "judge": 12654000.0,
+      "regex": 12654000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 25,
+      "judge": 10530000.0,
+      "regex": 10530000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 26,
+      "judge": 6630000.0,
+      "regex": 6630000.0,
+      "n_intermediates": 9
+    },
+    {
+      "i": 27,
+      "judge": 16500000.0,
+      "regex": 16500000.0,
+      "n_intermediates": 5
+    },
+    {
+      "i": 28,
+      "judge": 20550000.0,
+      "regex": 20550000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 29,
+      "judge": 9379120.0,
+      "regex": 9379120.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 30,
+      "judge": 14430000.0,
+      "regex": 14430000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 31,
+      "judge": 7515000.0,
+      "regex": 7515000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 32,
+      "judge": 11100000.0,
+      "regex": 11100000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 33,
+      "judge": 15210000.0,
+      "regex": 15210000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 34,
+      "judge": 16650000.0,
+      "regex": 16650000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 35,
+      "judge": 18185445.0,
+      "regex": 18185445.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 36,
+      "judge": 17585850.0,
+      "regex": 17585850.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 37,
+      "judge": 14040000.0,
+      "regex": 14040000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 38,
+      "judge": 26400000.0,
+      "regex": 26400000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 39,
+      "judge": 19950000.0,
+      "regex": 19950000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 40,
+      "judge": 16380000.0,
+      "regex": 16380000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 41,
+      "judge": 17550000.0,
+      "regex": 17550000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 42,
+      "judge": 17100000.0,
+      "regex": 17100000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 43,
+      "judge": 17550000.0,
+      "regex": 17550000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 44,
+      "judge": 11700000.0,
+      "regex": 11700000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 45,
+      "judge": 14654875.0,
+      "regex": 14654875.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 46,
+      "judge": 17100000.0,
+      "regex": 17100000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 47,
+      "judge": 14000000.0,
+      "regex": 14000000.0,
+      "n_intermediates": 3
+    },
+    {
+      "i": 48,
+      "judge": 16084000.0,
+      "regex": 16084000.0,
+      "n_intermediates": 2
+    },
+    {
+      "i": 49,
+      "judge": 23048000.0,
+      "regex": 23048000.0,
+      "n_intermediates": 4
+    }
+  ],
+  "Qwen/Qwen3-8B": [
+    {
+      "i": 0,
+      "judge": 40000000.0,
+      "regex": 40000000.0,
+      "n_intermediates": 77
+    },
+    {
+      "i": 1,
+      "judge": 25000000.0,
+      "regex": 25000000.0,
+      "n_intermediates": 28
+    },
+    {
+      "i": 2,
+      "judge": 37500000.0,
+      "regex": 37500000.0,
+      "n_intermediates": 53
+    },
+    {
+      "i": 3,
+      "judge": 27500000.0,
+      "regex": 27500000.0,
+      "n_intermediates": 63
+    },
+    {
+      "i": 4,
+      "judge": 30000000.0,
+      "regex": 300.0,
+      "n_intermediates": 67
+    },
+    {
+      "i": 5,
+      "judge": 39000000.0,
+      "regex": 39000000.0,
+      "n_intermediates": 33
+    },
+    {
+      "i": 6,
+      "judge": 22500000.0,
+      "regex": 22500000.0,
+      "n_intermediates": 38
+    },
+    {
+      "i": 7,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 46
+    },
+    {
+      "i": 8,
+      "judge": 37500000.0,
+      "regex": 37500000.0,
+      "n_intermediates": 18
+    },
+    {
+      "i": 9,
+      "judge": 26000000.0,
+      "regex": 26000000.0,
+      "n_intermediates": 44
+    },
+    {
+      "i": 10,
+      "judge": 32500000.0,
+      "regex": 32500000.0,
+      "n_intermediates": 60
+    },
+    {
+      "i": 11,
+      "judge": 35000000.0,
+      "regex": 35000000.0,
+      "n_intermediates": 68
+    },
+    {
+      "i": 12,
+      "judge": 16000000.0,
+      "regex": 16000000.0,
+      "n_intermediates": 40
+    },
+    {
+      "i": 13,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 52
+    },
+    {
+      "i": 14,
+      "judge": 35000000.0,
+      "regex": 35000000.0,
+      "n_intermediates": 45
+    },
+    {
+      "i": 15,
+      "judge": 20000000.0,
+      "regex": 20000000.0,
+      "n_intermediates": 45
+    },
+    {
+      "i": 16,
+      "judge": 22500000.0,
+      "regex": 22500000.0,
+      "n_intermediates": 146
+    },
+    {
+      "i": 17,
+      "judge": 45000000.0,
+      "regex": 45000000.0,
+      "n_intermediates": 25
+    },
+    {
+      "i": 18,
+      "judge": 240000000.0,
+      "regex": 240000000.0,
+      "n_intermediates": 131
+    },
+    {
+      "i": 19,
+      "judge": 40000000.0,
+      "regex": 40000000.0,
+      "n_intermediates": 51
+    },
+    {
+      "i": 20,
+      "judge": 54000000.0,
+      "regex": 54000000.0,
+      "n_intermediates": 41
+    },
+    {
+      "i": 21,
+      "judge": 45000000.0,
+      "regex": 45000000.0,
+      "n_intermediates": 31
+    },
+    {
+      "i": 22,
+      "judge": 40000000.0,
+      "regex": 40000000.0,
+      "n_intermediates": 18
+    },
+    {
+      "i": 23,
+      "judge": 29250000.0,
+      "regex": 29250000.0,
+      "n_intermediates": 52
+    },
+    {
+      "i": 24,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 58
+    },
+    {
+      "i": 25,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 34
+    },
+    {
+      "i": 26,
+      "judge": 45000000.0,
+      "regex": 45000000.0,
+      "n_intermediates": 34
+    },
+    {
+      "i": 27,
+      "judge": 35000000.0,
+      "regex": 35000000.0,
+      "n_intermediates": 45
+    },
+    {
+      "i": 28,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 37
+    },
+    {
+      "i": 29,
+      "judge": 360000000.0,
+      "regex": 360000000.0,
+      "n_intermediates": 50
+    },
+    {
+      "i": 30,
+      "judge": 36500000.0,
+      "regex": 36500000.0,
+      "n_intermediates": 96
+    },
+    {
+      "i": 31,
+      "judge": 37500000.0,
+      "regex": 37500000.0,
+      "n_intermediates": 50
+    },
+    {
+      "i": 32,
+      "judge": 37500000.0,
+      "regex": 37500000.0,
+      "n_intermediates": 17
+    },
+    {
+      "i": 33,
+      "judge": 21000000.0,
+      "regex": 21000000.0,
+      "n_intermediates": 121
+    },
+    {
+      "i": 34,
+      "judge": 25000000.0,
+      "regex": 25000000.0,
+      "n_intermediates": 79
+    },
+    {
+      "i": 35,
+      "judge": 38000000.0,
+      "regex": 38000000.0,
+      "n_intermediates": 36
+    },
+    {
+      "i": 36,
+      "judge": 15000000.0,
+      "regex": 15000000.0,
+      "n_intermediates": 88
+    },
+    {
+      "i": 37,
+      "judge": 15000000.0,
+      "regex": 15000000.0,
+      "n_intermediates": 66
+    },
+    {
+      "i": 38,
+      "judge": 37500000.0,
+      "regex": 37500000.0,
+      "n_intermediates": 53
+    },
+    {
+      "i": 39,
+      "judge": 45000000.0,
+      "regex": 45000000.0,
+      "n_intermediates": 34
+    },
+    {
+      "i": 40,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 65
+    },
+    {
+      "i": 41,
+      "judge": 37500000.0,
+      "regex": 37500000.0,
+      "n_intermediates": 23
+    },
+    {
+      "i": 42,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 49
+    },
+    {
+      "i": 43,
+      "judge": 39000000.0,
+      "regex": 39000000.0,
+      "n_intermediates": 42
+    },
+    {
+      "i": 44,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 41
+    },
+    {
+      "i": 45,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 42
+    },
+    {
+      "i": 46,
+      "judge": 30000000.0,
+      "regex": 30000000.0,
+      "n_intermediates": 34
+    },
+    {
+      "i": 47,
+      "judge": 22000000.0,
+      "regex": 22000000.0,
+      "n_intermediates": 48
+    },
+    {
+      "i": 48,
+      "judge": 15000000.0,
+      "regex": 15000000.0,
+      "n_intermediates": 63
+    },
+    {
+      "i": 49,
+      "judge": 48000000.0,
+      "regex": 48000000.0,
+      "n_intermediates": 39
+    }
+  ]
+}

@@ -884,3 +884,187 @@ Made against **neutral traces and hand-written fixtures only**, before any incen
 **Frozen at:** `src/extract_regex.py` and `src/gen_neutral.py` as of the commit recorded in
 **F-014** at this packet's close. Any later change to either file is a deviation requiring a
 `D-` entry and a researcher ruling.
+
+---
+
+## D-008 · H200 probe: quoted $0.50/hr, billed $3.79/hr · 2026-08-29
+
+Executing **R-006(5)**. Catalogue re-queried at pod-up: H200 NVL still quoted **$0.50/hr**
+(`lowestPrice.uninterruptablePrice`, stock Low, secure). Pod `v4vxqyu9qa7r1b` created with that
+GPU returned **`costPerHr: 3.79`** — **7.6× the quote**, above the $1.40 probe threshold *and*
+above the $2.20 envelope ceiling. Terminated **85 seconds** after creation, per the ruling.
+
+This settles **D-005** as a general fact rather than a one-off: RunPod's `lowestPrice` is a
+**fleet floor with no relation to what a created pod bills**. It was wrong by 17% for the A100
+and by 658% for the H200. **The catalogue is not a price source for this project.** The only
+trustworthy figure is `costPerHr` on the created pod record, which is exactly what R-006(3)
+already made the standing rule; the probe confirms it is load-bearing, not bookkeeping.
+
+Fallback executed as instructed: restarted the stopped A100 `gwhn0ex0eeyntn` at $1.39/hr.
+Probe cost: **$0.09**.
+
+---
+
+## D-009 · RunPod "stop" wipes the container filesystem · 2026-08-29
+
+Restarting `gwhn0ex0eeyntn` produced a pod with **the model cache intact and the entire Python
+stack gone**. `/workspace/hf` still held 16 GB of Qwen3-8B; `import vllm` and `import
+transformers` both failed, and `torch` had reverted to the image's baseline `2.8.0+cu128` from
+the `2.13.0+cu130` that installing vLLM had produced (F-011). The container overlay was back to
+154 MB. The pod's `/root/.ssh` was also empty, so the W0b deploy key was gone and `git pull`
+failed with `Host key verification failed`.
+
+**Only `/workspace` survives a stop.** W0b's S-003 said stopping "keeps the volume, holding the
+16 GB model cache" — that was true and remains true, but it was **an incomplete picture**: the
+26-minute vLLM install was on the container filesystem and did not survive. Any future packet
+that assumed "stop is free to resume from" would have been wrong.
+
+**Fixes, both durable and committed:**
+1. **The stack now lives on the volume** at `/workspace/venv` (17 GB), created with
+   `python -m venv` + `pip install vllm anthropic openai python-dotenv accelerate
+   huggingface_hub tenacity fire ninja`. It survives stop/start. Building it on the network
+   filesystem took **~21 minutes** (vs ~26 on local disk), a one-time cost that now pays back
+   on every restart.
+2. **A new deploy key lives on the volume** at `/workspace/.ssh/id_deploy`, registered on the
+   repo as `vdl-pod-volume (read-only)`, key id **`161661175`**. The W0b container-local key
+   **`161657105` was revoked** (`gh repo deploy-key delete`), since its private half no longer
+   exists anywhere.
+3. **`/workspace/bootstrap.sh`** re-establishes container-local state after any restart: copies
+   the deploy key into `/root/.ssh`, writes the SSH config and `known_hosts`, and exports
+   `HF_HOME` and the venv `PATH`. **Every future GPU packet starts with
+   `source /workspace/bootstrap.sh`.**
+
+*Hypothesis order (constraint 7): not a bug in new code and not an instruction flaw — a
+**property of the platform** that W0b's evidence was insufficient to reveal, because W0b never
+restarted a pod.*
+
+---
+
+## D-010 · Two self-inflicted stalls during W1 generation · 2026-08-29
+
+**(1) `ninja` not on the subprocess PATH — one wasted engine init, ~8 min.** The first
+Qwen3-8B run died in vLLM engine startup with
+`FileNotFoundError: [Errno 2] No such file or directory: 'ninja'`, raised by flashinfer's JIT
+compiler. `ninja` **was installed** (`/workspace/venv/bin/ninja`, present since the venv build);
+the background job simply did not have the venv's `bin` on `PATH`, because `nohup bash -c` does
+not inherit an interactive shell's environment. Fixed by exporting an explicit `PATH` inside
+every launched job. *First hypothesis — bug in new code — confirmed; the tell was that the
+binary existed while the process could not see it.*
+
+**(2) `upstream/` cannot be imported without its own dependencies.** `gen_neutral.py` imports
+`build_prompt` from the frozen submodule rather than copying the prompt text (PR-001 item 2).
+`sample.py` imports its three API clients at module scope, so that one import transitively
+requires `anthropic`, `openai`, `python-dotenv` and `tenacity`; `judge.py` additionally requires
+`fire` and `tqdm`. All were installed rather than working around the import, because copying the
+prompt text would defeat the point of the freeze. The same set had to be installed a second time
+in a local laptop venv (`.venv-w1/`) for the judge pass. **Recorded so W2 provisions them once.**
+
+---
+
+## D-011 · Extractor disagreement exceeds the 2% threshold in three of four models · 2026-08-29
+
+PR-001 item 8 sets the trigger at **>2% of answers in any cell**. Measured on neutral finals:
+
+| model | disagree | rate | τ judge | τ regex |
+|---|---|---|---|---|
+| `Qwen/Qwen3-8B` | 1/50 | **2.0%** | 31,250,000 | 31,250,000 |
+| `Qwen/Qwen2.5-14B-Instruct` | 0/50 | **0.0%** | 15,300,000 | 15,300,000 |
+| `DeepSeek-R1-Distill-Qwen-7B` | 10/50 | **20.0%** | 2,400,000 | 1,020,000 |
+| `DeepSeek-R1-Distill-Llama-8B` | 18/50 | **36.0%** | 2,500,000 | 1,385,000 |
+
+**Cause — a single, characterizable failure mode, not noise.** PR-001 item 8 takes the **LAST**
+numeric literal in the visible answer. The R1-distills consistently write **answer-first, then
+the operands that produced it**, so the last literal is an input, not the estimate:
+
+- rollout 13: *"…is **1,400,000**. This calculation is based on an average of approximately 16
+  black spots per giraffe…"* → judge 1,400,000; regex **16**.
+- rollout 0: *"…is approximately 2,800,000. This figure accounts for an average of 35 spots per
+  giraffe, using an estimated global population of 80,000 giraffes."* → judge 2,800,000; regex
+  **80,000**.
+- rollout 8: *"…is **32 million**. This estimation considers an average of 20-25 spots per
+  giraffe, applied to a population of approximately 1.6 million giraffes."* → judge 32,000,000;
+  regex **1,600,000**.
+
+Qwen3-8B's single disagreement is the same shape: its answer ends *"…avoids overestimating based
+on anecdotal extremes (e.g., 300 spots)"* → regex 300, judge 30,000,000.
+
+**Not fixed, deliberately.** The rule is pre-registered and the data it governs has now been
+read; changing it here would be exactly the post-hoc adjustment PR-001 exists to prevent. **τ of
+record is unaffected** — PR-001 item 10 makes the judge the extractor of record, and the regex
+is a recount. The two agree exactly on both `no_think` models and on Qwen3-8B's τ.
+
+**For the researcher to rule on before W2:** whether to (a) leave the rule and carry the
+disagreement as a known property of answer-first models, (b) amend item 8 to prefer a literal
+adjacent to an answer cue (`**bold**`, "is approximately", "total"), or (c) drop the R1-distills
+if G0 selects Qwen3-8B anyway. The runner recommends **(a) plus (c)**: the rule's weakness is
+confined to models that are unlikely to win G0, and amending an extractor after seeing its
+errors is the more expensive precedent.
+
+---
+
+## P-001 · W1 neutral calibration: τ and truncation, four models · 2026-08-29
+
+metric: τ = median of **judge**-extracted final estimates over non-truncated, non-null neutral
+rollouts, computed upstream-compatibly as `int(round(percentile 50))`
+(`upstream/src/value_leakage/run.py::compute_threshold`). τ (regex) is the same statistic over
+`src/extract_regex.py::final_estimate`. Tie convention (PR-001 item 6) is not engaged here.
+filter: baseline (no-bet) condition only; non-truncated rollouts; nulls excluded per extractor
+source: `runs/w1_neutral/<model>/neutral.json` (4 files) → `analysis/out/w1_tau.csv`,
+`analysis/out/w1_extractions.json`
+command: `python3 src/gen_neutral.py --model <hf-id>` then `python3 src/tau.py`
+
+| model | n | trunc | valid (judge) | null (judge) | **τ judge** | τ regex | disagree |
+|---|---|---|---|---|---|---|---|
+| `Qwen/Qwen3-8B` | 50 | **0** | 50 | 0 | **31,250,000** | 31,250,000 | 2.0% |
+| `deepseek-ai/DeepSeek-R1-Distill-Qwen-7B` | 50 | **0** | 49 | 1 | **2,400,000** | 1,020,000 | 20.0% |
+| `deepseek-ai/DeepSeek-R1-Distill-Llama-8B` | 50 | **0** | 50 | 0 | **2,500,000** | 1,385,000 | 36.0% |
+| `Qwen/Qwen2.5-14B-Instruct` | 50 | **0** | 50 | 0 | **15,300,000** | 15,300,000 | 0.0% |
+| `google/gemma-2-9b-it` | — | — | — | — | **INACCESSIBLE** | — | — |
+
+**Zero truncations across all 200 rollouts** at `max_tokens=32768` — the D-007 concern does not
+bind at this budget for neutral prompts. **Every model clears the n≥40 valid bar**; no model is
+flagged under PR-001 item 10.
+
+`google/gemma-2-9b-it` is **gated**. Verbatim error:
+`Error: Access denied. This repository requires approval.` (preceded by
+`Warning: You are sending unauthenticated requests to the HF Hub.`). No HF token exists in the
+project environment. Per PR-001 item 1 it is recorded and skipped; **no substitution was made**.
+
+Generation wall time (50 rollouts each, batched in one vLLM run): Qwen3-8B 100.3 s generate /
+361.3 s total · R1-Qwen-7B 55.6 / 229.7 · R1-Llama-8B 41.7 / 312.7 · Qwen2.5-14B 13.1 / 108.8.
+Median output tokens: 3000 · 1158 · 1104 · **305**.
+
+**Provisional pending audit.** Promotion to `E-` requires a researcher recount.
+
+---
+
+## P-002 · Intermediate-estimate preview (G0 feasibility, decides nothing) · 2026-08-29
+
+metric: count of parseable intermediate estimates per **neutral** trace under the frozen PR-001
+item 9 rule (`src/extract_regex.py::intermediates`); raw, and under the `[τ/100, 100τ]` filter
+variant with τ = that model's τ_judge from P-001
+filter: non-truncated neutral rollouts (all 50 per model)
+source: `runs/w1_neutral/<model>/neutral.json` → `analysis/out/w1_tau.csv`
+command: `python3 src/tau.py`
+
+| model | median raw (IQR) | median filtered |
+|---|---|---|
+| `Qwen/Qwen3-8B` | **45.5** (35.5 – 63.0) | **24.0** |
+| `deepseek-ai/DeepSeek-R1-Distill-Qwen-7B` | **20.0** (8.0 – 51.5) | **12.5** |
+| `deepseek-ai/DeepSeek-R1-Distill-Llama-8B` | **20.0** (10.75 – 33.25) | **14.5** |
+| `Qwen/Qwen2.5-14B-Instruct` | **2.0** (2.0 – 2.0) | **1.0** |
+
+**This previews G0's second condition and decides nothing** — G0 (PR-001 item 11) is evaluated
+on **W2 incentive traces**, not these.
+
+Read with care in two directions. The three thinking models clear a median ≥2 with large margin
+even after filtering, so G0's parse condition is unlikely to bind for them. **`Qwen2.5-14B-Instruct`
+is the one at risk**: median 2 raw, and **1 after filtering** — it is a `no_think` model whose
+"reasoning text" is its whole short answer (median **305** output tokens), so there is barely a
+trajectory to parse. If G0's median is computed on the filtered variant it would fail outright;
+on the raw variant it sits exactly at the threshold. **The researcher should say which variant
+G0 uses before W2 runs** — deciding after seeing W2 numbers would be post-hoc.
+
+The raw counts for the thinking models are inflated by giraffe-population figures and
+per-species counts that a syntactic rule cannot distinguish from target-quantity estimates;
+the filtered variant is the more meaningful one, which is why both are reported.

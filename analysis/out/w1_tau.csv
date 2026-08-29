@@ -1,0 +1,5 @@
+model,n,n_truncated,pct_truncated,n_valid_judge,n_null_judge,n_valid_regex,n_null_regex,tau_judge,tau_regex,n_disagree,pct_disagree,median_intermediates,iqr_lo_intermediates,iqr_hi_intermediates,median_intermediates_filtered,flag_lt40_valid
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,50,0,0.0,50,0,50,0,2500000,1385000,18,36.0,20.0,10.75,33.25,14.5,False
+deepseek-ai/DeepSeek-R1-Distill-Qwen-7B,50,0,0.0,49,1,50,0,2400000,1020000,10,20.0,20.0,8.0,51.5,12.5,False
+Qwen/Qwen2.5-14B-Instruct,50,0,0.0,50,0,50,0,15300000,15300000,0,0.0,2.0,2.0,2.0,1.0,False
+Qwen/Qwen3-8B,50,0,0.0,50,0,50,0,31250000,31250000,1,2.0,45.5,35.5,63.0,24.0,False
