@@ -79,13 +79,37 @@ vdl/
 
 ## Packet map
 
-**W0** — ledger, freeze, environment. *(this packet; Steps 4–5 blocked, see D-001)*
-**W1–W10** — **packet map held by researcher.** Not invented here. The courier can supply it;
-when they do, transcribe it into this section and note the `R-` entry that delivered it.
+Packet map (details arrive one order at a time):
+```
+W0  ledger, upstream freeze, environment (done; GPU half re-issued as W0b)
+W0b pod provisioning, GPU verification, stack install, smoke tests (this packet)
+W1  pre-registration (screening rule, parse rule, tie convention, extractors, gate G0)
+    + neutral calibration: ~50 no-bet rollouts/model to set each model's τ
+W2  mirrored screening across small models; gate G0 selects the model or stops the project
+W3  behavioural baseline on the chosen model: the frozen dataset (~150/side × 2 surface forms)
+W4  activation replay of W3 traces with hooks; positional acceptance check is load-bearing
+W5  value direction v_p (per-layer difference-in-means) + probes + shuffled-label nulls
+W6  invariance tests: cross-surface and cross-mirror transfer; control probes must NOT transfer
+W7  intervention I: ablate/subtract v_p during generation; landing gap vs random-direction null
+W8  intervention II: inject ±α·v_p on neutral prompts; dose-response (priority rung if time binds)
+W9  intervention III: mirrored macrostate patch; single- vs all-points (H1/H2/H3 fork)
+W10 skepticism pass, build script, write-up assembly from E-/V- entries only
+```
+Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where W0 left things
+## Where things stand (end of W0b)
 
-Steps 1–3 and 6 are done: project root, git repo, frozen upstream, reusability skim, ledger.
-Steps 4–5 (GPU verification; vLLM and hooks smoke tests) are **blocked** — the runner's host is
-the owner's MacBook, not a RunPod pod, and there is no NVIDIA GPU. See `D-001` and `D-002`.
-No pod has been provisioned; **cumulative GPU spend is $0.00 of $60.00.**
+W0 is audited and partially accepted (**R-003**): Steps 1, 2, 3, 6 accepted; the GPU half was
+re-issued as W0b. Topology is fixed by **R-004** — laptop = root of record and runner seat,
+pod = ephemeral scratch over SSH, stopped at every packet close.
+
+**W0b is BLOCKED at Step 0.** The RunPod key could not be extracted: the permission classifier
+refused the script route as well as the ad-hoc route (see `D-003`), which is the stop condition
+the W0b order itself named. The owner pastes `RUNPOD_API_KEY=…` into the untracked `../.env` by
+hand, and W0b resumes at Step 2's key registration.
+
+Done anyway, off the critical path: R-001..R-004 transcribed, this packet map, the SSH keypair
+(**F-006**), and both smoke-test scripts written and syntax-checked locally (**F-007**) so they
+cost pod-billed seconds rather than pod-billed minutes.
+
+**No pod has been provisioned. Cumulative GPU spend is $0.00 of $60.00.**
