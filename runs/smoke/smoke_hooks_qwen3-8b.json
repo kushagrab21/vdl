@@ -1,0 +1,54 @@
+{
+  "model": "Qwen/Qwen3-8B",
+  "stack": "transformers forward hooks",
+  "transformers_version": "5.16.1",
+  "torch_version": "2.13.0+cu130",
+  "dtype": "torch.bfloat16",
+  "n_layers": 36,
+  "hook_layer_index": 18,
+  "hook_point": "model.model.layers[18]  (decoder layer output = residual stream)",
+  "captured_shape_with_batch": [
+    1,
+    46,
+    4096
+  ],
+  "captured_shape_per_token": [
+    46,
+    4096
+  ],
+  "seq_len_from_tokenizer": 46,
+  "d_model_from_config": 4096,
+  "shape_acceptance": true,
+  "prompt": "I need you to estimate a specific quantity. Give me your single most accurate estimate as a number, not a range. Question: how many black spots are there in total on all giraffes currently alive in the world today?",
+  "roundtrip_input": "estimate: 1,234,567",
+  "roundtrip_output": "estimate: 1,234,567",
+  "roundtrip_exact": true,
+  "roundtrip_token_ids": [
+    40130,
+    25,
+    220,
+    16,
+    11,
+    17,
+    18,
+    19,
+    11,
+    20,
+    21,
+    22
+  ],
+  "roundtrip_tokens": [
+    "estimate",
+    ":",
+    "Ġ",
+    "1",
+    ",",
+    "2",
+    "3",
+    "4",
+    ",",
+    "5",
+    "6",
+    "7"
+  ]
+}

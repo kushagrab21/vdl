@@ -391,3 +391,345 @@ the stop-vs-terminate decision with its ~24 h-gap reasoning.
 
 Non-GPU spend this packet: $0.00. No API call was made to any provider — the one call the
 packet would have made (a single pod-list request, to verify the credential) never ran.
+
+---
+
+## D-004 · Step 0 unblocked by the owner running the script · 2026-08-29
+
+Supersedes **D-003**'s disposition. The owner executed `src/extract_runpod_key.py` themselves
+in the runner's terminal. It worked on the first run, by the fallback path:
+
+```
+extraction method     : cmap/prefixed
+token length          : 50
+carries RunPod prefix : True
+env write             : appended
+env mode              : 0o600
+verification endpoint : GET https://rest.runpod.io/v1/pods
+HTTP status           : 200
+```
+
+The plain-text path found nothing and the **ToUnicode-CMap reconstruction recovered the key**,
+confirming the PDF is a Google-Docs export of the kind the reference module was written for.
+`HTTP 200` is the live proof of a working credential. The value never entered the runner's
+context, this report, or the ledger, and is not in any tracked file — only in `../.env` at 0600.
+
+**The standing fact from D-003 stands**: this runner cannot itself execute the extraction. The
+harness refused the ad-hoc route (twice), a `grep` over the reference module, and the purpose-
+built script. The owner is the executor for any future step that reads secret material.
+
+---
+
+## F-008 · SSH public key registered on the RunPod account · 2026-08-29
+
+command: `python3 src/pod.py register-key`
+
+Registered **account-level**, via GraphQL `updateUserSettings.pubKey`, so the key is injected
+into every pod as `$PUBLIC_KEY` rather than being passed per-pod at creation. Confirmed by
+reading the pod record afterwards: its `env.PUBLIC_KEY` holds both keys.
+
+**The tool appends rather than replaces.** RunPod stores every key in one newline-separated
+field; a naive write would have clobbered the owner's pre-existing key. `register-key` reads
+`myself.pubKey` first and merges. Keys on the account after registration: **2** (the owner's
+existing `runpod` key, and `vdl-runpod`).
+
+Fingerprint: `SHA256:Lncaol3YbxuyxgAg6xUvGv4W0bZMU9zBrtRtlCuhrzA vdl-runpod (ED25519)`
+
+---
+
+## F-009 · GPU catalogue survey (read-only, no spend) · 2026-08-29
+
+command: `python3 src/pod_survey.py` → `analysis/out/w0b_gpu_survey.json` (48 entries)
+
+Qualifying under the owner-approved envelope (A100 80GB, on-demand, ≤ $2.20/hr, in stock):
+
+| GPU | VRAM | quoted on-demand | stock | clouds |
+|---|---|---|---|---|
+| A100 PCIe | 80 GB | $1.19/hr | Low | secure+community |
+| A100 SXM | 80 GB | $1.39/hr | Medium | secure+community |
+
+Context, cheapest first: RTX A6000 48 GB $0.33 · **H200 NVL 143 GB $0.50** · L40S 48 GB $0.79 ·
+A100 SXM 40 GB $1.00 · A100 PCIe 80 GB $1.19 · A100 SXM 80 GB $1.39 · H100 PCIe 80 GB $1.99 ·
+H100 NVL 94 GB $2.59 · H100 SXM 80 GB $2.69 · H200 SXM 141 GB $3.59.
+
+**Flagged for the researcher, not acted on:** H200 NVL at **$0.50/hr with 143 GB** is quoted
+below every A100 while being strictly larger and faster. The envelope names A100 80GB and the
+order forbids substituting unasked, so an A100 was taken. If that quote is real rather than a
+catalogue artefact, it would cut the GPU cost of W2–W9 by roughly two thirds. Worth a ruling
+before the next GPU packet.
+
+---
+
+## F-010 · Pod provisioned, verified, stopped · 2026-08-29
+
+Pod of record: **`gwhn0ex0eeyntn`** (`vdl-w0b`), machine `g95ir7q7zt94`.
+
+| field | value |
+|---|---|
+| GPU | 1 × **NVIDIA A100 80GB PCIe** (81920 MiB) |
+| billed rate | **$1.39/hr** (see D-005 — the catalogue quoted $1.19) |
+| cloud | secure (`supportPublicIp: true`) |
+| image | `runpod/pytorch:1.2.0-rc.162-cu1281-torch280-ubuntu2204` |
+| container disk | 60 GB · **volume** 100 GB at `/workspace` (network FS, `mfs#us-mo-1.runpod.net`) |
+| vCPU / RAM | 12 / 125 GB |
+| created | 2026-08-29 08:34:57 UTC · **stopped** 09:37:33 UTC, `desiredStatus: EXITED` |
+| HF_HOME | **`/workspace/hf`** (on the volume, per R-004; also exported in `/root/.bashrc`) |
+
+`nvidia-smi` (complete):
+
+```
+Sat Aug 29 08:36:22 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100 80GB PCIe          On  |   00000000:1E:00.0 Off |                    0 |
+| N/A   29C    P0             45W /  300W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+| Processes:  No running processes found                                                  |
++-----------------------------------------------------------------------------------------+
+```
+
+`df -h`, real mounts only (the raw output is flooded by ~96 per-CPU `thermal_throttle` tmpfs
+lines; command: `df -h -x tmpfs -x devtmpfs | grep -Ev thermal_throttle`):
+
+```
+Filesystem                         Size  Used Avail Use% Mounted on
+overlay                             60G   97M   60G   1% /
+/dev/mapper/ubuntu--vg-ubuntu--lv  877G   30G  802G   4% /usr/bin/nvidia-smi
+mfs#us-mo-1.runpod.net:9421        448T  336T  112T  76% /workspace
+/dev/mapper/xfsdata-xfs_lv         3.5T  1.8T  1.8T  49% /etc/hosts
+```
+
+Headroom **satisfies the ≥150 GB requirement**: 60 GB container + 100 GB volume. Note
+`/workspace` is a **network filesystem**, not local NVMe — model loading reads over the network.
+Qwen3-8B loaded from it in ~8 s, so this is acceptable, but it is worth remembering before W4
+writes large activation tensors there.
+
+**Pod-to-remote authentication (method only):** a **read-only GitHub deploy key**, generated on
+the pod (`/root/.ssh/id_deploy`), its public half registered on `kushagrab21/vdl` via
+`gh repo deploy-key add` (key id `161657105`, title `vdl-pod-w0b (read-only)`). No token was
+placed on the pod and no credential appears in any reported command. The key is scoped to one
+repo, read-only, and revocable with `gh repo deploy-key delete 161657105` — which should be
+done when the pod is finally terminated.
+
+Freeze verified **on the pod** after `git clone --recurse-submodules`:
+`git -C /workspace/vdl/upstream rev-parse HEAD` → `16d129859e1f0e281363fb4f5910bcaeea316b10`;
+`git -C /workspace/vdl/upstream status --porcelain` → empty.
+
+---
+
+## F-011 · Stack installed on the pod · 2026-08-29
+
+command: `pip freeze | grep -Ei "vllm|transformers|torch|nnsight|tokenizers"`
+
+```
+tokenizers==0.23.1
+torch==2.13.0
+transformers==5.16.1
+vllm==0.28.0
+```
+plus `accelerate` (added later — see D-006). `python -c "import torch; torch.cuda.is_available()"`
+→ `True`, device `NVIDIA A100 80GB PCIe`, `torch 2.13.0+cu130`. Base image shipped
+`torch 2.8.0+cu128`; **installing vLLM upgraded torch to 2.13.0+cu130**, which is where the
+~12 GB and most of the install time went.
+
+**Hooks stack: HF transformers forward hooks, not nnsight** (choice stands from F-007). One less
+abstraction between the ledger and the tensor; `transformers` is already a vLLM dependency, so
+the generation and replay stacks cannot drift onto different model code; and W7–W9 need a hook
+that persists across decode steps, which is `register_forward_hook`'s native behaviour.
+
+---
+
+## F-012 · Smoke A — vLLM generation, PASS · 2026-08-29
+
+command: `HF_HOME=/workspace/hf python src/smoke_vllm.py` (on the pod)
+source: `runs/smoke/smoke_vllm_qwen3-8b.json` (committed)
+
+| field | value |
+|---|---|
+| model | `Qwen/Qwen3-8B`, bf16, `max_model_len=32768`, `gpu_memory_utilization=0.90` |
+| sampling | `temperature=0.7` (per order), `top_p=0.8`, `top_k=20`, `max_tokens=24000` |
+| thinking segment | **27,348 chars** |
+| visible answer | 1,652 chars |
+| split | `</think>` delimiter present in generated text |
+| finish_reason | **`stop`** (not truncated) |
+| **acceptance** | **PASS** — thinking non-empty and distinct from the answer |
+
+**How thinking mode is invoked (W1 depends on this):**
+`tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True,
+enable_thinking=True)`. The template ends the prompt at `<|im_start|>assistant\n` and does
+**not** prefill the tag; the model opens `<think>` itself and closes with `</think>`, after
+which the visible answer follows. Splitting on `</think>` is therefore the correct and only
+needed rule.
+
+First 10 lines of the thinking segment:
+
+```
+Okay, so I need to figure out how many piano tuners are in Chicago. Hmm, this sounds like one
+of those classic Fermi problems. I remember they require making some assumptions and estimating
+based on available data. Let me think step by step.
+
+First, I should probably start by estimating the population of Chicago. I think Chicago has a
+population around 2.7 million people. Wait, is that right? Maybe I should check. But since I
+can't look it up, I'll go with 2.7 million as a rough estimate. Let me note that down:
+Population ≈ 2.7 million.
+
+Next, I need to figure out how many pianos there are in Chicago. Not all people own a piano, so
+I need to estimate the number of households that have a piano.
+```
+
+---
+
+## F-013 · Smoke B — hooks stack, PASS · 2026-08-29
+
+command: `HF_HOME=/workspace/hf python src/smoke_hooks.py` (on the pod)
+source: `runs/smoke/smoke_hooks_qwen3-8b.json` (committed)
+
+| field | value |
+|---|---|
+| stack | HF transformers `register_forward_hook`, transformers 5.16.1, torch 2.13.0+cu130 |
+| hook point | **`model.model.layers[18]`** — decoder layer output = residual stream |
+| depth | layer 18 of **36** (mid-depth) |
+| captured shape | `(1, 46, 4096)` → per-token **`(46, 4096)`** |
+| seq_len | **46**, equal to the tokenizer's length for the prompt |
+| **d_model** | **4096**, equal to `config.hidden_size` |
+| dtype | **`torch.bfloat16`** (VRAM was not the constraint; chosen to match generation) |
+| **shape acceptance** | **PASS** |
+
+**Tokenizer round-trip, verbatim:**
+
+```
+input  : 'estimate: 1,234,567'
+output : 'estimate: 1,234,567'
+exact  : True
+tokens : ['estimate', ':', 'Ġ', '1', ',', '2', '3', '4', ',', '5', '6', '7']
+```
+
+**Exact.** Load-bearing detail for W4 beyond the equality: Qwen3 splits a comma-grouped integer
+into **one token per digit and one per comma** — `1,234,567` is 9 tokens, not 1. Position
+indexing into a trace at "the number" therefore means a span, never a single position, and the
+W4 positional acceptance check must be written in those terms.
+
+---
+
+## D-005 · Quoted price ≠ billed price · 2026-08-29
+
+`pod_survey.py` quoted **A100 PCIe at $1.19/hr** from GraphQL
+`gpuTypes.lowestPrice.uninterruptablePrice`, and `pod.py create` re-confirmed $1.19 immediately
+before spending. The pod RunPod actually returned bills at **$1.39/hr**, while still reporting
+`gpuDisplayName: "A100 PCIe"`.
+
+`lowestPrice` is the cheapest rate **anywhere in the fleet** for that GPU model, not the rate of
+the machine the scheduler assigns. The pre-spend price check in `pod.py` is therefore a
+**ceiling test, not a quote** — it can only refuse an obviously-out-of-envelope GPU. $1.39
+remains inside the $2.20 envelope, so nothing was exceeded, but every future S- entry must take
+`costPerHr` **from the created pod record**, never from the survey. Recorded so the discrepancy
+is not rediscovered as an accounting error later.
+
+---
+
+## D-006 · Three failures on the way to a working pod · 2026-08-29
+
+All three were runner-side and all are fixed in committed code. Recorded because two of them
+cost money and the third cost the most time.
+
+**(1) Container exited immediately — two pods lost, ≈15 min, ≈$0.32.** Pods `tk6hvyj9e4rf94`
+and `osw3fzdwcsn70p` reached `desiredStatus: RUNNING` and billed while their container was dead
+(`ssh` → "container is not running"). The `runpod/pytorch:1.2.x` images run no long-lived
+command of their own. The first pod passed no `dockerArgs` at all; the second passed a
+keep-alive chained with `&&` — the image had no `sshd` binary, `mkdir -p /run/sshd &&
+/usr/sbin/sshd && sleep infinity` broke at the missing binary, bash exited, and the container
+died again. **Fix** (`pod.py::KEEPALIVE_SSH`): every step separated by `;`, never `&&`, sshd
+backgrounded, and `sleep infinity` unconditional, so the container outlives any single failed
+step and can be inspected rather than silently billing. Third pod came up in 51 s.
+*Hypothesis order (constraint 7): bug in new code — confirmed, twice.*
+
+**(2) A false "still running" signal — ≈20 min of pod time, ≈$0.46, wasted.** The install poll
+was `pgrep -f 'pip install'` executed over SSH. The remote shell's own argv **contains the
+string `pip install`**, so `pgrep -f` matched itself and reported RUNNING forever; pip had in
+fact finished long before. Caught by noticing container-disk usage had stopped growing at 12 GB
+while the poll still said RUNNING. **Fix:** every later wait polls a **sentinel file**
+(`nohup bash -c 'cmd; echo $? > X.done'`), which reports the exit code as well as completion.
+*Hypothesis order: bug in new code — confirmed.*
+
+**(3) `accelerate` missing.** Smoke B's first run died in `from_pretrained(device_map="cuda")`:
+transformers 5.16 requires `accelerate` for any `device_map`, and the image ships without it.
+One `pip install accelerate` fixed it. Cheap, but it is why Smoke B needed two runs.
+
+---
+
+## D-007 · The order's ~1500-token smoke budget was far too small · 2026-08-29
+
+Smoke A failed twice on token budget before passing, and the reason matters for W1–W3.
+
+- **1500 tokens** (the order's figure): `finish_reason=length`, no `</think>`, thinking segment
+  unmeasurable. Acceptance could not be evaluated.
+- **8000 tokens**: same — `finish_reason=length`, still inside the think block after 25,272
+  characters.
+- **24000 tokens**: `finish_reason=stop`, thinking 27,348 chars, **PASS**.
+
+**Checked in the order constraint 7 requires.** First hypothesis, a bug in new code: rejected —
+the raw output begins `<think>\nOkay, so I need to figure out...`, the template is correct, and
+the model is plainly reasoning. Second, a flaw in the instruction: **confirmed** — the trace is
+a genuine long Fermi deliberation, whose 8000-token tail reads *"This is getting too convoluted.
+Maybe I should settle on an estimate... But I've seen similar problems where the answer is
+around 100. Maybe I'm underestimating..."*. It is the model circling, not a stuck decode.
+Upstream ran its API models at `max_tokens=64000` for exactly this reason.
+
+**Consequence for W1–W3, flagged now rather than discovered under budget:** a single Qwen3-8B
+rollout on a Fermi prompt can run to tens of thousands of thinking tokens. At the W3 target of
+~150/side × 2 sides × 2 surface forms = ~600 rollouts, generation length — not model size — is
+the dominant GPU cost. The W1 pre-registration should fix a `max_tokens` and state what happens
+to a rollout that still hits the cap, because at 1500 **every** rollout would have been
+truncated and the parse rule would have seen nothing but truncations.
+
+---
+
+## T-004 · Time, W0b (resumed) · 2026-08-29
+
+Owner-clock minutes, W0 and W0b: **both still pending courier** (see T-003; no figure has been
+supplied for either packet).
+Runner wall time, W0b total: **≈2 h 05 m** — the blocked first half 15:55–16:09 (T-003), then
+16:19–17:40 after the owner unblocked Step 0.
+GPU wall time (pod running, all three pods): **≈1 h 17 m**.
+
+Where the pod time went: dead containers ≈15 m (D-006/1) · vLLM install ≈26 m, of which ≈20 m
+was watched through a self-matching poll (D-006/2) · Qwen3-8B download ≈2 m · engine init and
+three smoke runs ≈12 m · the rest is SSH round-trips and waiting on `wait`.
+
+---
+
+## S-003 · Spend, W0b · 2026-08-29
+
+Rates are taken from each **created pod record's `costPerHr`**, not from the catalogue quote,
+per D-005. Durations are from the RunPod `createdAt` and the runner's stop/terminate timestamps.
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| `tk6hvyj9e4rf94` | A100 80GB PCIe | 1.19 | 08:19:32 → 08:26:50 (terminated) | 0.122 | $0.145 |
+| `osw3fzdwcsn70p` | A100 80GB PCIe | 1.39 | 08:27:10 → 08:34:42 (terminated) | 0.125 | $0.174 |
+| **`gwhn0ex0eeyntn`** | A100 80GB PCIe | 1.39 | 08:34:57 → 09:37:33 (**stopped**) | 1.043 | $1.450 |
+
+**Pod hours this packet: 1.290. Spend this packet: $1.77.**
+**Cumulative GPU spend: $1.77 of $60.00.** ($45 stop-and-surface threshold not approached.)
+
+The first two pods are the cost of D-006/1 (**$0.32 for dead containers**) and are reported as
+spend, not written off. These are **computed from timestamps and rates, not read from a RunPod
+invoice** — the API exposes no per-pod billing figure. The invoice is the authority if it differs.
+
+**Stop, not terminate — and a decision the courier must make.** `gwhn0ex0eeyntn` is
+`desiredStatus: EXITED`, so **GPU billing has halted**. The 100 GB volume survives, holding the
+16 GB Qwen3-8B cache under `HF_HOME=/workspace/hf`. R-004 says terminate if the gap to the next
+GPU packet exceeds ~24 h, and W1 is a non-GPU pre-registration packet, so the gap probably does
+exceed it — but termination destroys the volume irreversibly and the runner does not know the
+schedule, so it was not done unasked. **A stopped 100 GB volume bills roughly $0.10/GB/month,
+about $0.33/day**, against a re-download cost of ~2 minutes of A100 time (~$0.05). If W2 is more
+than a day or two out, **terminate**: `python3 src/pod.py terminate gwhn0ex0eeyntn --yes`, and
+revoke the deploy key with `gh repo deploy-key delete 161657105`.
+
+Non-GPU spend this packet: **$0.00** — no inference API was called.
