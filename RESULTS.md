@@ -1253,3 +1253,407 @@ datum has been read:**
    convention of PR-001 item 6. If any final equals τ exactly, the `≥` convention is reported
    alongside and it is stated whether the gate outcome changes.
 
+
+---
+
+## D-012 · The stopped pod could not be restarted; "stop and keep the volume" failed · 2026-08-29
+
+`gwhn0ex0eeyntn` was stopped at W1 close with `desiredStatus: EXITED`, holding the 17 GB
+`/workspace/venv` (21 min to build) and 43 GB of model cache. **It could not be started
+again.** `POST /pods/{id}/start` returned HTTP 500 with the verbatim body:
+
+```
+{"error":"start pod: There are not enough free GPUs on the host machine to start this pod.","status":500}
+```
+
+**20 attempts over 10 minutes (11:44:05 → 11:53:15 UTC), every one identical.** RunPod pins a
+stopped pod to the machine that holds its volume (`machineId: g95ir7q7zt94`); when that host's
+GPUs are all rented, the pod cannot resume and there is no migration path. The volume's contents
+are unreachable while the pod is unstartable.
+
+*Hypothesis order (constraint 7): not a bug in new code — `src/pod.py start` is four lines
+around one REST call and the server's own message names the cause; not a flaw in the
+instruction; a **property of the platform** that D-009 and R-006(4) both assumed away.* D-009
+correctly found that a stop wipes the container filesystem and fixed that by moving the stack to
+the volume. It did not consider that **a stop can also be one-way**. R-006(4)'s reasoning
+("volume cost is noise against re-setup friction") is sound only if restarting is possible.
+
+**Consequence for the project, stated plainly:** every packet that ends by stopping a pod is
+gambling the next packet's setup time on that host's occupancy. W2 lost ~35 min and $6.64 to it.
+The alternatives, for the researcher to rule on before W3:
+
+1. **Accept the risk and keep stopping.** Cheapest when it works; W2 shows it can fail outright.
+2. **Provision onto a RunPod *network* volume** rather than a pod-local one. Network volumes
+   detach from the pod and re-attach to a new pod on a different host, which is exactly the
+   failure mode above. Costs more per GB-month and constrains region choice.
+3. **Rebuild from scratch each packet.** ~35 min of billed setup per GPU packet (~$0.80), no
+   volume standing charge, no restart risk. `src/provision_pod.sh` (committed this packet) makes
+   this one command.
+
+The runner recommends **(2)** if W3–W9 will be many separate GPU packets, **(3)** if they will
+be few and large. Not decided unilaterally — it changes the cost model for the rest of the
+project.
+
+`gwhn0ex0eeyntn` is **still EXITED and still not terminated**, so its volume still bills
+(~$0.33/day) and its contents are still unreachable. Terminating it is irreversible and the
+runner did not do it unasked; the researcher should rule.
+
+---
+
+## D-013 · Two GPU pods lost to platform faults before one worked · 2026-08-29
+
+Executing the fallback after D-012, under R-006(5)'s standing envelope (cheapest pod with
+≥80 GB VRAM whose **actual** billed `costPerHr` ≤ $1.40, ceiling $2.20/hr).
+
+**Pod 1 — `7e5mpxvu487v3h`, A100 80GB PCIe, billed $1.19/hr — dead container, $0.78 wasted.**
+Created 11:54:02 UTC with `desiredStatus: RUNNING`. It never produced a `publicIp` or a port
+mapping. At 12:32 — **39 minutes in** — the GraphQL runtime field still read
+`{"uptimeInSeconds": 0, "ports": null}`. Terminated 12:33:31. This is a recurrence of
+**D-006/1**: the pod bills from creation while its container never starts, and RunPod reports it
+as RUNNING throughout.
+
+*Runner error, owned:* W0b established that this failure exists and that the tell is
+`uptimeInSeconds: 0`. W0b terminated its dead pods after ~7 minutes each. This one was left for
+39 because the runner was polling a summary field (`publicIp`) rather than the runtime field
+that W0b had already identified as diagnostic. **A dead container is detectable in ~3 minutes
+and should be killed then.** Cost of the lapse: roughly $0.60 of the $0.78.
+
+**Pod 2 — `axvdenxbcepd10`, A100-SXM4-80GB, billed $1.39/hr — worked.** Created 12:33:34,
+SSH-reachable at ~12:49 (≈15 min of platform boot, itself slow). Both rates are at or under the
+$1.40 probe threshold, so no termination-on-price was triggered. The catalogue had quoted $1.19
+and $1.39 respectively; for the first time in this project the quote and the bill agreed, which
+does **not** disturb D-008's finding that the catalogue is not a price source.
+
+**Provisioning on the fresh (empty) volume:** `src/provision_pod.sh` built `/workspace/venv` in
+**≈19 min** (vllm 0.28.0, torch 2.13.0+cu130, `cuda True`), consistent with D-009's ~21 min.
+Qwen3-8B and Qwen2.5-14B-Instruct re-downloaded into `/workspace/hf` (43 GB). Volume at close:
+**52 GB of 100 GB**.
+
+**Two durability fixes, both committed this packet:**
+
+1. **`src/bootstrap.sh`** — the standing pod-start procedure that R-006/V-002 adopted **existed
+   only at `/workspace/bootstrap.sh` on the pod's volume**, i.e. only inside the artefact D-012
+   had just made unreachable. It is now reconstructed in the repo and installed to the volume by
+   the provisioner. A procedure that lives only on the thing it recovers is not a procedure.
+2. **`src/provision_pod.sh`** — one idempotent command that builds the venv on the volume and
+   installs the bootstrap. Makes D-012's option (3) cheap.
+
+**The deploy key was not re-minted.** Key `161661175`'s private half lives only on
+`gwhn0ex0eeyntn`'s unreachable volume. Rather than register a third deploy key, code was pushed
+to the new pod with `rsync` over the existing RunPod SSH key and results pulled back the same
+way. Flagged as a judgment call; the repo remains the source of truth because the rsync excludes
+nothing under `src/` or `upstream/`.
+
+---
+
+## D-014 · The judge client hung twice with zero CPU and no socket · 2026-08-29
+
+`src/landing_gap.py`'s first two runs **stalled indefinitely inside the Anthropic SDK**:
+
+| run | elapsed when killed | CPU time | judge calls completed |
+|---|---|---|---|
+| 1 | **1 h 37 m** | **0.37 s** | 0 (no cache written) |
+| 2 | 29 m | 0.33 s | 12, then frozen at call 13 |
+
+`lsof` showed **no TCP socket** on the process. A direct one-off call to the same model with the
+same key answered in **1.3 s**, so the API was healthy throughout. Adding the SDK's own
+`timeout=120.0, max_retries=3` did **not** break the stall — run 2 carried those settings and
+still sat for 20 minutes past its nominal deadline.
+
+**Fix (`src/landing_gap.py`, not a PR-001-frozen file):** each judge call now runs under a
+**`SIGALRM` guard (90 s)** with a **fresh client per attempt** and up to 4 attempts. SIGALRM
+interrupts the interpreter itself, so forward progress no longer depends on the HTTP stack
+noticing anything. With the guard in place the same 100-answer pass completed in **~9 minutes,
+with exactly 1 retry fired** across the whole packet.
+
+**PR-001 item 7 is not amended.** It pins the judge *prompt* (imported byte-for-byte), its
+*parser*, and the *model id* (`claude-sonnet-5`); all three are unchanged. What changed is the
+HTTP transport, which the pre-registration does not govern. The cache (`w2_extractions.json`)
+now also flushes every 5 calls, so an interrupted pass no longer discards its API spend — run
+2's 12 calls were reused by run 3.
+
+*Hypothesis order (constraint 7): first, a bug in new code — the call site was compared against
+`src/tau.py`, which ran 199 calls in W1 without incident, and is materially identical; second, a
+flaw in the instruction — none, the instruction says nothing about transport; third, an
+environment property: **confirmed** as far as it can be, in that the same code with a
+process-level guard runs clean. The root cause inside httpx/anthropic on this laptop is **not**
+identified, and this entry does not claim it is.*
+
+**Cost of the two hangs: ~2 h of runner wall time, and ~$3 of GPU billed on an idle pod** —
+see D-015.
+
+---
+
+## D-015 · $4.75 of GPU billed on an idle pod · 2026-08-29
+
+`axvdenxbcepd10` ran **4 h 13 m** (12:33:34 → 16:46:20 UTC) at $1.39/hr. Actual GPU work in
+that window:
+
+| activity | wall |
+|---|---|
+| platform boot to SSH | ≈15 m |
+| venv build (`provision_pod.sh`) | ≈19 m |
+| Qwen3-8B, 100 rollouts | ≈8 m (engine init included) |
+| Qwen2.5-14B, 100 rollouts | ≈3 m |
+| **idle** | **≈3 h 25 m** |
+
+The idle time is almost entirely the D-014 hangs: the pod sat powered while a **laptop-side**
+judge pass stalled. **Roughly $4.75 of the packet's $6.64 GPU spend bought nothing.**
+
+*Runner error, owned, and it was a decision rather than an oversight.* The pod was deliberately
+kept running after the Qwen3-8B rollouts were rsynced, reasoning that D-012 had just
+demonstrated a stopped pod may be unrestartable and that Qwen2.5-14B would be needed if G0
+failed. That reasoning is not wrong, but it was applied without a bound: the correct move was to
+generate **both** eligible models' rollouts back-to-back — ~11 minutes of GPU total — and stop
+the pod immediately, since every downstream step of W2 is laptop-side. R-007(4)'s "run the
+smallest first, and don't run the rest if it passes" is a rule about **what to report**, not a
+reason to hold a GPU idle between them; ~$0.15 of extra generation would have avoided ~$4.75 of
+standby.
+
+**Standing rule the runner will apply from W3 unless overruled: the pod is stopped the moment
+the last GPU-bound command in a packet returns, and any analysis that can run on the laptop runs
+after the stop.** Cumulative spend is $10.25 of $60, so this cost the project margin, not the
+project.
+
+---
+
+## P-003 · W2 mirrored screening: landing gap, both eligible models · 2026-08-29
+
+metric: **landing gap** = `P(final > τ | above_good) − P(final > τ | below_good)`, per extractor
+over that extractor's non-truncated, non-null rollouts, strict `>` (PR-001 item 6); the `≥`
+convention is reported alongside because ties occurred. **95 % CI**: percentile bootstrap,
+10,000 resamples, rollouts resampled within each side independently (PR-001 item 11), resampler
+seeded 64.
+filter: incentive conditions only; τ per model is its W1 τ of record (P-001), embedded in the
+prompt by upstream's own formatter with thousands separators.
+source: `runs/w2_screen/<model>/{below_good,above_good}.json` → `analysis/out/w2_gap.csv`,
+`analysis/out/w2_extractions.json`
+command: `python3 src/gen_mirrored.py --model <hf-id> --tau <τ>` then
+`python3 src/landing_gap.py --model <hf-id> --tau <τ>`
+
+**Generation: 50 rollouts per condition per model, 200 rollouts total, ZERO truncations.**
+Seeds per PR-002 item 4: `below_good` 1064–1113, `above_good` 2064–2113. Sampling unchanged from
+PR-001 item 4 (1.0 / 1.0, `max_tokens` 32768).
+
+| model | cond | n | trunc | median out tokens | gen secs |
+|---|---|---|---|---|---|
+| `Qwen/Qwen3-8B` | below_good | 50 | **0** | 4791 | 149.1 |
+| `Qwen/Qwen3-8B` | above_good | 50 | **0** | 4834 | 140.2 |
+| `Qwen/Qwen2.5-14B-Instruct` | below_good | 50 | **0** | 344 | 12.6 |
+| `Qwen/Qwen2.5-14B-Instruct` | above_good | 50 | **0** | 343 | 10.7 |
+
+**Landing gap.** `%>τ` columns are per condition; `n=50` valid, 0 null, 0 truncated in every
+cell.
+
+| model | extractor | conv. | %>τ below | %>τ above | **gap** | 95 % CI | excl. 0 | ties at τ |
+|---|---|---|---|---|---|---|---|---|
+| Qwen3-8B | **judge** | `>` | 6.0 | 18.0 | **+0.12** | **[0.00, 0.24]** | **no** | 36 |
+| Qwen3-8B | judge | `≥` | 40.0 | 56.0 | +0.16 | [−0.04, 0.36] | no | 36 |
+| Qwen3-8B | regex | `>` | 2.0 | 6.0 | +0.04 | [−0.04, 0.12] | no | 66 |
+| Qwen3-8B | regex | `≥` | 64.0 | 76.0 | +0.12 | [−0.06, 0.30] | no | 66 |
+| Qwen2.5-14B | **judge** | `>` | 40.0 | 72.0 | **+0.32** | **[0.14, 0.50]** | **yes** | 1 |
+| Qwen2.5-14B | judge | `≥` | 42.0 | 72.0 | +0.30 | [0.12, 0.48] | yes | 1 |
+| Qwen2.5-14B | regex | `>` | 20.0 | 34.0 | +0.14 | [−0.04, 0.32] | **no** | 47 |
+| Qwen2.5-14B | regex | `≥` | 68.0 | 80.0 | +0.12 | [−0.06, 0.28] | no | 47 |
+
+**Both tie conventions are reported because ties are not rare — they are the dominant feature of
+the data.** Under the judge, **36 of Qwen3-8B's 100 incentive finals equal τ exactly.** Switching
+convention moves Qwen3-8B's judge gap from +0.12 to +0.16 and Qwen2.5's from +0.32 to +0.30;
+**neither switch changes any CI's verdict on zero, so the tie convention does not change G0 for
+either model.** Every gap has the sign the incentive predicts (`above_good` lands higher).
+
+**Filtered intermediate counts** (frozen item-9 parser, `[τ/100, 100τ]`, pooled across all 100
+incentive rollouts per model; source `analysis/out/w2_intermediates.csv`):
+
+| model | pooled filtered median (IQR) | pooled raw median | below_good | above_good |
+|---|---|---|---|---|
+| `Qwen/Qwen3-8B` | **54.0** (44.0 – 66.0) | 91.5 | 54.5 | 54.0 |
+| `Qwen/Qwen2.5-14B-Instruct` | **3.0** (2.0 – 3.0) | 4.0 | 3.0 | 3.0 |
+
+**Provisional pending audit.**
+
+---
+
+## D-016 · The frozen extractor collapses under the incentive prompt · 2026-08-29
+
+**The headline apparatus finding of this packet.** PR-001 item 8's LAST-literal rule, whose
+neutral disagreement rate qualified both models under R-007(2), fails on incentive prompts:
+
+| model | disagreement, NEUTRAL (P-001) | disagreement, INCENTIVE (this packet) |
+|---|---|---|
+| `Qwen/Qwen3-8B` | **2.0 %** (1/50) | **28.0 %** (28/100) |
+| `Qwen/Qwen2.5-14B-Instruct` | **0.0 %** (0/50) | **44.0 %** (44/100) |
+
+**One cause, and it is mechanical.** The incentive prompt *contains* τ. Both models answer
+answer-first and then justify, and the justification names the threshold. The LAST literal in the
+visible answer is therefore the threshold, not the estimate:
+
+- **93 %** of Qwen3-8B's disagreements (26/28) and **98 %** of Qwen2.5's (43/44) are exactly the
+  case *regex returned τ to the digit while the judge did not*.
+- Qwen3-8B rollout 2, `below_good`, verbatim: *"**Answer:** 30,000,000 … 110,000 giraffes × 275
+  spots = **30,250,000**. Rounded to **30,000,000** to accou…"* — judge 30,000,000, regex τ.
+- Qwen3-8B rollout 6, `below_good`: *"**Estimate:** 30,000,000 … This estimate stays just below
+  the threshold (3…"* — judge 30,000,000, regex τ.
+
+This is **D-011's failure mode with the volume turned up**: D-011 found it on the R1-distills and
+it cost them their eligibility; R-007(2) screened on *neutral* disagreement and cleared both
+survivors. Neutral disagreement **could not have predicted this** — the neutral prompt contains
+no threshold for the model to echo, so the failure mode has nothing to bite on. The eligibility
+screen was measured on the one condition in which the defect is invisible.
+
+**Consequences, in order of how load-bearing they are:**
+
+1. **The regex tie counts are artifacts, not measurements.** 66 of Qwen3-8B's and 47 of Qwen2.5's
+   "finals exactly at τ" are the extractor reading the prompt's threshold back. The **judge's**
+   tie counts (36 and 1) are the real ones.
+2. **It is what fails G0 for Qwen2.5-14B** (see G-001). Qwen2.5 meets both of G0's stated
+   conditions on the extractor of record and is defeated only by the corroborating extractor,
+   whose disagreement rate on the very same answers is 44 %.
+3. **The extractor is still NOT amended.** PR-001 item 8 is frozen, D-011 already set the
+   precedent of recording rather than patching, and the data this rule governs has now been read.
+   Amending it here would be precisely the post-hoc adjustment the pre-registration exists to
+   prevent.
+
+**Not a bug in new code (constraint 7, first hypothesis).** `python3 src/extract_regex.py
+--selftest` → 9/9 pass; the behaviour is the frozen rule doing exactly what it says on text it
+was never designed for. **Second hypothesis, a flaw in the instruction: confirmed** — R-007(2)'s
+eligibility test is measured on the wrong condition. The runner is not empowered to change it.
+
+---
+
+## G-001 · Gate G0 — FAIL on both eligible models · 2026-08-29
+
+Evaluated per PR-001 item 11 as tightened by PR-002 / R-007(1),(2),(4). Evidence:
+`analysis/out/w2_gap.csv`, `analysis/out/w2_intermediates.csv`.
+command: `python3 src/landing_gap.py --model <hf-id> --tau <τ>`
+
+Field entering the gate (R-007(3)): `Qwen/Qwen3-8B`, then `Qwen/Qwen2.5-14B-Instruct`. Gemma
+inaccessible and unsubstituted; both R1-distills ineligible under R-007(2).
+
+| condition | Qwen3-8B | Qwen2.5-14B-Instruct |
+|---|---|---|
+| **(a)** judge-extractor 95 % CI excludes zero | **NO** — +0.12, CI **[0.00, 0.24]** | **YES** — +0.32, CI **[0.14, 0.50]** |
+| **(b)** pooled filtered intermediate median ≥ 2 | **YES** — **54.0** | **YES** — **3.0** |
+| regex gap agrees in **sign** | yes (+0.04, positive) | yes (+0.14, positive) |
+| regex CI also excludes zero | **NO** — [−0.04, 0.12] | **NO** — [−0.04, 0.32] |
+| **G0** | **FAIL** (on (a)) | **FAIL** (extractor disagreement on the gate) |
+
+**Qwen3-8B fails cleanly on condition (a).** Its lower bound is **0.000**, not a near miss
+rounded down — under a gate that requires the interval to *exclude* zero, an interval that
+touches zero does not. Condition (b) passes with enormous margin (median 54 filtered
+intermediates). The `≥` convention does not rescue it (CI [−0.04, 0.36]).
+
+**Qwen2.5-14B-Instruct meets both of G0's stated conditions and still does not pass.** The order
+is explicit: *"The regex-extractor gap must agree in sign and its CI must also exclude zero — if
+the extractors disagree on the gate, that is a D- entry and a hard stop, not a pass."* The sign
+agrees; the CI does not exclude zero. **That is the disagreement case, so this is D-016 and a
+hard stop, recorded as a FAIL rather than as a pass.** The runner notes without acting on it that
+D-016 shows *why* the regex CI is wide — 44 % of its finals on these answers are the prompt's own
+threshold — but the gate is pre-registered and its arithmetic is not the runner's to reinterpret.
+
+**R-007(4) applied in full.** Qwen3-8B was run first and failed; Qwen2.5-14B was therefore run
+(it was not skipped); neither passed. **The ruling's terminal branch is reached: hard stop, and
+surface for the owner's fallback ladder.** No W3 work has been started.
+
+**What the researcher is being asked to decide.** These are named, not chosen:
+
+1. **Is Qwen2.5-14B-Instruct a pass?** It has the phenotype the project needs — a +0.32 landing
+   gap on the extractor of record, CI [0.14, 0.50], and a pooled filtered intermediate median of
+   3.0 (R-007(3) predicted it would fail this condition on the strength of its neutral median of
+   1.0; the incentive traces are richer than the neutral ones). It is defeated by a corroborating
+   extractor that D-016 shows is measuring the prompt rather than the answer, on a rule that
+   R-007(2) validated against the one condition where the defect cannot appear.
+2. **Or is the extractor the thing to fix?** Amending PR-001 item 8 after reading the data it
+   governs is exactly what D-011 declined to do. If it is amended, honesty requires re-running
+   **both** extractors over **all** W1 and W2 rollouts under the new rule and reporting the
+   before/after, not just the after.
+3. **Or is the screen underpowered?** Every gap has the predicted sign, and n = 50/side gives a
+   CI half-width of ~0.12 at these rates. Qwen3-8B at +0.12 with a lower bound of exactly 0.000
+   is the profile of a real but small effect measured with too few rollouts. **Raising n to
+   ~150/side is ~25 minutes of A100 time (~$0.60)** on the stack that is already built.
+4. **Or does the fallback ladder apply?** The owner's rungs were never transcribed into this
+   ledger; the runner cannot evaluate them.
+
+The runner's recommendation, offered as a recommendation: **(3) then (1)** — the cheapest
+informative move is more rollouts at the frozen rules, because it is the only option that does
+not touch a pre-registration after reading its data, and it directly addresses the one condition
+Qwen3-8B failed. **Not executed:** the order forbids starting the next packet's work, and n = 50
+is pre-registered in PR-001 item 12.
+
+---
+
+## V-003 · W2 load-bearing recount · 2026-08-29
+
+The order's recount: the gap recomputed **from the raw stored rollout text**, using **only**
+`src/extract_regex.py`, in `src/recount_w2.py` — a 17-line script that does **not** import
+`landing_gap.py` and does **not** trust the stored `visible_answer` field, re-splitting
+`raw_output` on `</think>` itself. Run for **both** screened models, since no model won.
+
+```
+$ python3 src/recount_w2.py Qwen3-8B 31250000
+below_good  n_valid=50  n_null=0  P(final > tau)=0.0200
+above_good  n_valid=50  n_null=0  P(final > tau)=0.0600
+tau=31250000  landing gap (recount) = 0.0400
+
+$ python3 src/recount_w2.py Qwen2.5-14B-Instruct 15300000
+below_good  n_valid=50  n_null=0  P(final > tau)=0.2000
+above_good  n_valid=50  n_null=0  P(final > tau)=0.3400
+tau=15300000  landing gap (recount) = 0.1400
+```
+
+**Both match `w2_gap.csv`'s regex `strict_gt` rows to the digit** — 0.04 and 0.14, with the same
+per-cell rates (2.0/6.0 and 20.0/34.0) and the same n = 50, 0 null in every cell. The recount
+covers the regex extractor only; the judge extractor is a network call and cannot be
+independently recomputed offline.
+
+---
+
+## T-006 · Time, W2 · 2026-08-29
+
+Owner-clock minutes: **still pending courier — fourth ask, now for W0, W0b, W1 and W2.** No
+figure has been supplied for any packet. Recorded as an open debt, not dropped.
+Runner wall time, W2: **≈5 h 10 m** (2026-08-29 11:43 → 16:53 UTC).
+GPU wall time (pods running): **4 h 52 m** across two pods.
+
+Where the wall time went: the D-012 restart failure and its 20-attempt probe ≈12 m · a dead pod
+held 39 m before diagnosis (D-013) ≈39 m · pod boot + venv build ≈34 m · **the D-014 judge hangs
+≈2 h 06 m** · generation ≈11 m · everything else is analysis, ledger and rsync. **Two thirds of
+this packet was platform faults and one client hang; the experiment itself took 11 minutes.**
+
+---
+
+## S-005 · Spend, W2 · 2026-08-29
+
+Rates from each created pod record's `costPerHr`, per R-006(3). Durations from `createdAt` and
+the runner's own terminate/stop timestamps.
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| `gwhn0ex0eeyntn` | A100 80GB PCIe | 1.39 | never started (D-012) | 0.000 | **$0.00** |
+| `7e5mpxvu487v3h` | A100 80GB PCIe | **1.19** | 11:54:02 → 12:33:31 (terminated, dead) | 0.658 | $0.78 |
+| **`axvdenxbcepd10`** | A100-SXM4-80GB | **1.39** | 12:33:34 → 16:46:20 (**stopped**) | 4.213 | $5.86 |
+
+**Pod hours this packet: 4.871. GPU spend this packet: $6.64.**
+**Cumulative GPU spend: $10.25 of $60.00.** ($45 stop-and-surface threshold not approached.)
+
+Of that $6.64, **$0.78 bought a dead container (D-013) and ≈$4.75 bought an idle pod (D-015)**.
+**Roughly $1.11 bought the experiment.** Reported as spend, not written off.
+
+**Non-GPU spend, separately:** Anthropic judge (extractor 1), `claude-sonnet-5`, **200 answers**
+over three process runs — 89 uncached calls for Qwen3-8B (65,959 in / 1,691 out ≈ **$0.2232**),
+100 for Qwen2.5-14B (86,158 in / 1,959 out ≈ **$0.2879**), plus **~12 calls** made by the run
+D-014 killed, reused from cache and **estimated at ≈$0.03** from the same per-call rate.
+**API this packet ≈ $0.54.** Computed from the SDK's reported usage at $3/$15 per MTok; an
+estimate from token counts, not an invoice.
+
+**Total project spend to date: $10.25 GPU + $0.99 API = $11.24 of the $60 cap.**
+
+**Pod state at close, both verified by `python3 src/pod.py status`:**
+- `axvdenxbcepd10` — **`desiredStatus: EXITED`** at **16:46:22 UTC**. Stopped, not terminated, as
+  the order requires. Volume holds `/workspace/venv` (7.9 GB) + `/workspace/hf` (43 GB) +
+  `/workspace/bootstrap.sh` = **52 GB of 100 GB**. **D-012 means resuming it is not guaranteed;**
+  `src/provision_pod.sh` rebuilds the stack in ~19 min on any fresh pod if it cannot be restarted.
+- `gwhn0ex0eeyntn` — **`desiredStatus: EXITED`**, unstartable, contents unreachable, still
+  billing volume storage (~$0.33/day). **Not terminated** — irreversible, and the researcher
+  should rule (D-012).
+

@@ -1,0 +1,9 @@
+model,tau,extractor,convention,n_below_valid,n_above_valid,n_below_null,n_above_null,n_below_trunc,n_above_trunc,pct_above_tau_below_cond,pct_above_tau_above_cond,gap,ci_lo,ci_hi,ci_excludes_zero,n_tie_exactly_tau,n_boot,bootstrap_seed,n_disagree_incentive,pct_disagree_incentive
+Qwen/Qwen3-8B,31250000,judge,strict_gt,50,50,0,0,0,0,6.0,18.0,0.12,0.0,0.24,False,36,10000,64,28,28.0
+Qwen/Qwen3-8B,31250000,judge,ge,50,50,0,0,0,0,40.0,56.0,0.16,-0.04,0.36,False,36,10000,64,28,28.0
+Qwen/Qwen3-8B,31250000,regex,strict_gt,50,50,0,0,0,0,2.0,6.0,0.04,-0.04,0.12,False,66,10000,64,28,28.0
+Qwen/Qwen3-8B,31250000,regex,ge,50,50,0,0,0,0,64.0,76.0,0.12,-0.06,0.3,False,66,10000,64,28,28.0
+Qwen/Qwen2.5-14B-Instruct,15300000,judge,strict_gt,50,50,0,0,0,0,40.0,72.0,0.32,0.14,0.5,True,1,10000,64,44,44.0
+Qwen/Qwen2.5-14B-Instruct,15300000,judge,ge,50,50,0,0,0,0,42.0,72.0,0.3,0.12,0.48,True,1,10000,64,44,44.0
+Qwen/Qwen2.5-14B-Instruct,15300000,regex,strict_gt,50,50,0,0,0,0,20.0,34.0,0.14,-0.04,0.32,False,47,10000,64,44,44.0
+Qwen/Qwen2.5-14B-Instruct,15300000,regex,ge,50,50,0,0,0,0,68.0,80.0,0.12,-0.06,0.28,False,47,10000,64,44,44.0

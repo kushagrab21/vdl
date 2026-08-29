@@ -24,6 +24,7 @@ import argparse
 import csv
 import json
 import os
+import signal
 import statistics
 import sys
 from pathlib import Path
@@ -58,12 +59,59 @@ def load_env_key(name):
     raise RuntimeError(name + " not found")
 
 
-def judge_batch(answers, cache, model=JUDGE_MODEL):
-    """Extractor 1, with an on-disk cache keyed by the exact answer text."""
+CALL_TIMEOUT_S = 90        # hard wall-clock guard, see D-013
+CALL_TRIES = 4
+
+
+class _Stalled(Exception):
+    pass
+
+
+def _alarm(_sig, _frm):
+    raise _Stalled()
+
+
+def _one_call(text, model, usage):
+    """One judge call under a SIGALRM guard, with a FRESH client each attempt.
+
+    D-013: on this laptop the shared anthropic/httpx client intermittently parks in a
+    non-CPU-consuming wait that neither the SDK `timeout` nor `max_retries` ever breaks.
+    SIGALRM interrupts the interpreter itself, so forward progress is guaranteed.
+    """
     import anthropic
-    client = None
+    last = None
+    for attempt in range(CALL_TRIES):
+        signal.signal(signal.SIGALRM, _alarm)
+        signal.alarm(CALL_TIMEOUT_S)
+        try:
+            client = anthropic.Anthropic(api_key=load_env_key("ANTHROPIC_API_KEY"),
+                                         timeout=60.0, max_retries=0)
+            msg = client.messages.create(
+                model=model, max_tokens=200,
+                messages=[{"role": "user",
+                           "content": NUMBER_JUDGE_PROMPT.format(llm_text=text)}])
+            raw = "".join(b.text for b in msg.content if b.type == "text")
+            usage["in"] += msg.usage.input_tokens
+            usage["out"] += msg.usage.output_tokens
+            usage["calls"] += 1
+            return parse_tagged_estimate(raw)
+        except Exception as exc:            # includes _Stalled
+            last = exc
+            print("    retry %d/%d after %s" % (attempt + 1, CALL_TRIES,
+                                                type(exc).__name__), flush=True)
+        finally:
+            signal.alarm(0)
+    raise RuntimeError("judge call failed %d times: %r" % (CALL_TRIES, last))
+
+
+def judge_batch(answers, cache, model=JUDGE_MODEL, label=""):
+    """Extractor 1, with an on-disk cache keyed by the exact answer text.
+
+    Progress is printed per call and the cache is flushed to disk as it fills, so a
+    long judge pass is observable and an interrupted one does not lose its API spend.
+    """
     out, usage = [], {"in": 0, "out": 0, "calls": 0}
-    for text in answers:
+    for n_seen, text in enumerate(answers):
         text = text or ""
         if not text.strip():
             out.append(None)
@@ -71,20 +119,21 @@ def judge_batch(answers, cache, model=JUDGE_MODEL):
         if text in cache:
             out.append(cache[text])
             continue
-        if client is None:
-            client = anthropic.Anthropic(api_key=load_env_key("ANTHROPIC_API_KEY"))
-        msg = client.messages.create(
-            model=model, max_tokens=200,
-            messages=[{"role": "user",
-                       "content": NUMBER_JUDGE_PROMPT.format(llm_text=text)}])
-        raw = "".join(b.text for b in msg.content if b.type == "text")
-        usage["in"] += msg.usage.input_tokens
-        usage["out"] += msg.usage.output_tokens
-        usage["calls"] += 1
-        val = parse_tagged_estimate(raw)
+        val = _one_call(text, model, usage)
         cache[text] = val
         out.append(val)
+        print("  judge %s %d/%d -> %s" % (label, n_seen + 1, len(answers), val), flush=True)
+        if usage["calls"] % 5 == 0:
+            _flush_cache()
     return out, usage
+
+
+_CACHE_OBJ = {}
+
+
+def _flush_cache():
+    CACHE.parent.mkdir(parents=True, exist_ok=True)
+    CACHE.write_text(json.dumps(_CACHE_OBJ, indent=2))
 
 
 def disagree(a, b):
@@ -122,6 +171,22 @@ def bootstrap_ci(below, above, tau, strict=True, n_boot=N_BOOT, seed=BOOTSTRAP_S
     return float(lo), float(hi)
 
 
+def _merge_csv(path, new_rows, model):
+    """Rewrite `path` keeping any rows for OTHER models, so one CSV holds every model
+    screened in this packet regardless of the order they were analysed in."""
+    kept = []
+    if path.exists():
+        with open(path, newline="") as fh:
+            kept = [r for r in csv.DictReader(fh) if r.get("model") != model]
+    fields = list(new_rows[0].keys())
+    with open(path, "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        for r in kept:
+            w.writerow({k: r.get(k, "") for k in fields})
+        w.writerows(new_rows)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
@@ -133,7 +198,9 @@ def main():
     d = SCREEN_ROOT / slug
     tau = args.tau
 
+    global _CACHE_OBJ
     cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
+    _CACHE_OBJ = cache
     model_cache = cache.setdefault(args.model, {})
 
     per_cond, usage_tot = {}, {"in": 0, "out": 0, "calls": 0}
@@ -146,7 +213,8 @@ def main():
             judge_finals = [None] * len(keep)
             u = {"in": 0, "out": 0, "calls": 0}
         else:
-            judge_finals, u = judge_batch([r["visible_answer"] for r in keep], model_cache)
+            judge_finals, u = judge_batch([r["visible_answer"] for r in keep],
+                                          model_cache, label=cond)
         for k in usage_tot:
             usage_tot[k] += u[k]
         inter = []
@@ -157,8 +225,7 @@ def main():
         per_cond[cond] = {"data": data, "keep": keep, "judge": judge_finals,
                           "regex": regex_finals, "inter": inter,
                           "n": len(recs), "n_trunc": sum(r["truncated"] for r in recs)}
-    CACHE.parent.mkdir(parents=True, exist_ok=True)
-    CACHE.write_text(json.dumps(cache, indent=2))
+    _flush_cache()
 
     # ---- gap table, one row per extractor ---------------------------------
     rows = []
@@ -197,10 +264,7 @@ def main():
         r["pct_disagree_incentive"] = round(100.0 * n_dis / n_pairs, 1) if n_pairs else 0
 
     OUT_GAP.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUT_GAP, "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
-        w.writeheader()
-        w.writerows(rows)
+    _merge_csv(OUT_GAP, rows, args.model)
 
     # ---- intermediates ----------------------------------------------------
     irows = []
@@ -209,10 +273,7 @@ def main():
             irows.append({"model": args.model, "tau": tau, "condition": cond,
                           "i": rec["i"], "n_raw": rec["n_raw"],
                           "n_filtered": rec["n_filtered"]})
-    with open(OUT_INTER, "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(irows[0].keys()))
-        w.writeheader()
-        w.writerows(irows)
+    _merge_csv(OUT_INTER, irows, args.model)
 
     def q(vals, p):
         return statistics.quantiles(vals, n=4)[p] if len(vals) > 3 else statistics.median(vals)

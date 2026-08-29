@@ -97,34 +97,48 @@ W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W1)
+## Where things stand (end of W2)
 
-W0/W0b accepted (**R-003**, **V-001**). **W1 complete.** **PR-001 is the pre-registration of
-record**, frozen at commit `0152943` (**F-014**) — items 8/9 in `src/extract_regex.py`, item 3
-in `src/gen_neutral.py`. Any change to either file is a deviation needing a `D-` entry.
+W0/W0b/W1 accepted (**R-003**, **V-001**, **V-002**). **PR-001 remains the pre-registration of
+record**, frozen at commit `0152943` (**F-014**); **PR-002** adds R-007(1),(2),(4) plus the
+incentive seed scheme and the landing-gap definition, all frozen before any incentive rollout
+existed.
 
-**Neutral calibration done, four models, 50 rollouts each, zero truncations** (**P-001**):
-τ (judge) = Qwen3-8B **31,250,000** · R1-Qwen-7B **2,400,000** · R1-Llama-8B **2,500,000** ·
-Qwen2.5-14B **15,300,000**. `google/gemma-2-9b-it` is **gated and inaccessible**; not substituted.
+**W2 complete. GATE G0 FAILED ON BOTH ELIGIBLE MODELS — the project is at a hard stop pending
+an owner/researcher ruling (G-001).** 200 incentive rollouts, zero truncations:
 
-**Two things need a researcher ruling before W2 runs:**
-1. **D-011** — the LAST-literal extractor disagrees with the judge on **20%/36%** of R1-distill
-   answers (they write answer-first, then operands). Left unfixed on purpose; τ of record is the
-   judge's and is unaffected.
-2. **P-002** — G0's "median ≥2 parseable intermediates" must be pinned to the **raw** or the
-   **filtered** variant *before* W2. `Qwen2.5-14B-Instruct` sits at 2 raw / **1 filtered**, so
-   the choice decides whether it can pass at all.
+| model | judge gap (strict `>`) | 95 % CI | filtered inter. median | G0 |
+|---|---|---|---|---|
+| `Qwen/Qwen3-8B` | +0.12 | **[0.00, 0.24]** | 54.0 | **FAIL** — CI touches zero |
+| `Qwen/Qwen2.5-14B-Instruct` | **+0.32** | **[0.14, 0.50]** | 3.0 | **FAIL** — extractor disagreement |
 
-**Pod `gwhn0ex0eeyntn` is STOPPED, keep it.** RunPod stop **wipes the container filesystem**
-(**D-009**) — only `/workspace` survives. The stack now lives on the volume at
-`/workspace/venv` (17 GB, 21 min to build) and the deploy key at `/workspace/.ssh/id_deploy`
-(repo key id `161661175`; the old `161657105` is revoked).
-**Every GPU packet starts with `source /workspace/bootstrap.sh`.**
-Volume at close: 60 GB of 100 GB used.
+Qwen2.5-14B meets **both** stated G0 conditions and is failed only by the corroborating regex
+extractor, whose CI is [−0.04, 0.32]. **D-016** is why: the incentive prompt contains τ, both
+models answer-first-then-justify, and PR-001 item 8's LAST-literal rule reads the echoed
+threshold instead of the answer — **28 %/44 % disagreement on incentive vs 2 %/0 % on neutral**.
+The extractor was **not** amended. The tie convention changes no verdict.
 
-**Spend: $3.61 GPU of $60, plus $0.45 Anthropic API.** Owner-clock minutes remain **owed for
-W0, W0b and W1** — asked three times.
+**Four options are on the researcher's desk (G-001): accept Qwen2.5; amend item 8 and re-run
+both extractors over all W1+W2 data; raise n to ~150/side (~$0.60, the runner's recommendation);
+or invoke the fallback ladder (never transcribed here).** The trace sample the order requires
+before W3 is `analysis/out/w2_trace_sample.md` — 10 traces per model at fixed indices
+0/10/20/30/40 per condition, no substitutions needed.
 
-Tooling in `src/`: `pod.py` · `pod_survey.py` · `runpod_client.py` · `extract_runpod_key.py` ·
-`gen_neutral.py` · `extract_regex.py` · `tau.py` · `trace_sample.py` · both smoke scripts.
-Laptop-side judge/analysis runs in `.venv-w1/` (fire, anthropic, tenacity, numpy, tqdm, dotenv).
+**Pods: BOTH STOPPED (`EXITED`).** `axvdenxbcepd10` (A100-SXM4-80GB, $1.39/hr) holds the current
+stack — `/workspace/venv` + 43 GB model cache, 52 GB of 100 GB. **`gwhn0ex0eeyntn` could not be
+restarted at all (D-012: "not enough free GPUs on the host machine", 20 attempts) — its 60 GB
+volume is unreachable and still billing ~$0.33/day; terminating it needs a ruling.** Because a
+stop can be one-way, `src/bootstrap.sh` and `src/provision_pod.sh` are now **committed**, and a
+fresh pod rebuilds the whole stack in ~19 min with one command.
+
+**Spend: $10.25 GPU of $60, plus $0.99 Anthropic API.** Of W2's $6.64, only ~$1.11 bought the
+experiment — $0.78 was a dead container (D-013) and ~$4.75 an idle pod (D-015). From W3 the pod
+is stopped the moment the last GPU command returns. Owner-clock minutes remain **owed for W0,
+W0b, W1 and W2** — asked four times.
+
+Tooling in `src/`: `pod.py` (now with `start`) · `pod_survey.py` · `runpod_client.py` ·
+`extract_runpod_key.py` · `bootstrap.sh` · `provision_pod.sh` · `gen_neutral.py` ·
+`gen_mirrored.py` · `extract_regex.py` · `tau.py` · `landing_gap.py` · `recount_w2.py` ·
+`trace_sample.py` · `trace_sample_w2.py` · both smoke scripts.
+Laptop-side judge/analysis runs in `.venv-w1/` (fire, anthropic, openai, tenacity, numpy, tqdm,
+dotenv).
