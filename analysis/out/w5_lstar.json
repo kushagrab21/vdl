@@ -1,0 +1,9 @@
+{
+ "layer_star": 22,
+ "rule": "argmax form-A p\u0302 probe balanced accuracy, ties->lowest",
+ "form_A_balacc": 0.5239583253860474,
+ "n_perm": 1000,
+ "n_repeat": 20,
+ "n_layers": 48,
+ "d_model": 5120
+}

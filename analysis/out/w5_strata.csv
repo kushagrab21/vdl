@@ -1,0 +1,9 @@
+form,contrast,dt_stratum,n_traces_pos,n_traces_neg
+A,vphat,+1,55,7
+A,vphat,-1,28,11
+A,vp,+1,77,80
+A,vp,-1,80,82
+B,vphat,+1,64,19
+B,vphat,-1,17,18
+B,vp,+1,101,91
+B,vp,-1,58,72

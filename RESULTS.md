@@ -2746,3 +2746,332 @@ marked `P-` entry.
 
 Regenerating command (pod-side, against pod-local tensors):
 `python src/direction_w5.py --procs 48`.
+
+---
+
+## D-022 · `bootstrap.sh` named the wrong interpreter, and would have again · 2026-08-30
+
+Ruled by **R-010(4)**; the old behaviour is recorded here as required.
+
+**Old behaviour (through W4).** `src/bootstrap.sh` printed
+`bootstrap: python=$(command -v python3 || echo none)` and then ran its verification heredoc
+under `python3`. In the pod image of record
+(`runpod/pytorch:1.2.0-rc.162-cu1281-torch280-ubuntu2204`), `python3` is `/usr/bin/python3`
+(3.10, **no torch**) while `python` is `/usr/local/bin/python` (3.12, torch 2.8, and where
+`pip` installs). The line therefore reported an interpreter that could not import torch, and
+W4's first prep pass followed it into `ModuleNotFoundError: torch` (D-021, closing paragraph).
+The heredoc additionally imported `vllm`, which W4 and W5 deliberately do not install, so its
+failure message (`vllm NOT importable — venv missing?`) was misleading from W4 onward.
+
+**New behaviour.** `pick_python()` walks `/usr/local/bin/python`, `python`, `python3` and
+selects the **first that can `import torch`**, exports it as `$VDL_PYTHON`, prints all three
+paths so the next runner can see the disagreement, and verifies torch (reporting vllm as
+optional). Verified by `bash -n` and by this packet's use of the pod.
+
+This packet also confirms the trap is not cosmetic: **the container filesystem was wiped by
+the stop/start cycle** (D-009) and `transformers`, `safetensors` and `sklearn` all had to be
+reinstalled under `/usr/local/bin/python`, while `/usr/bin/python3` remained bare.
+
+---
+
+## D-023 · A stopped pod restarted — the first in this project, and it made the recompute unnecessary · 2026-08-30
+
+**D-021 asserted, over four attempts on two days, that "no stopped pod in this project has
+ever restarted" and that stopping "preserves neither the stack nor the data with any
+probability this project has ever observed." The first half of that is now false.**
+
+`python3 src/pod.py start io6c1fhnarzoj9` at **04:51:53 UTC** returned `RUNNING` on the
+**first attempt**, ~15 minutes after the owner funded the account (balance `$24.879`). SSH was
+up within ~55 s — against the ~9 min of W4's fresh provision. The distinguishing fact is that
+D-020's failure was a **billing** refusal (`Your account balance is too low to rent a pod`),
+not D-012/D-019's **capacity** refusal (`not enough free GPUs on the host machine`). Those two
+failure modes were conflated in D-021's count of "four of four"; they should be counted
+separately, and this entry corrects that count: **capacity refusals 3 of 3; billing refusals
+1 of 1, and it resumed the moment the bill was paid.**
+
+**What survived, and what did not.** `/workspace` came back whole — all six W4 activation
+files at their full remote sizes, the 28 GB HF cache, `bootstrap.sh`. The container filesystem
+did not: every pip-installed package was gone (D-022). This is exactly D-009's rule, and it
+is the correct statement of what a stop preserves.
+
+**Consequence for this packet.** Step 3's recompute was **not needed and was not run**: the
+three arms that never reached the laptop were already complete on the volume and verified
+there (V-010). GPU cost avoided ≈ 5 minutes of A100 time; more importantly, no re-generated
+tensor had to be reconciled against the frozen indexes.
+
+---
+
+## D-024 · The pre-registered 10 % subsample is blind to the cell it was meant to audit · 2026-08-30
+
+PR-004 item 7 ships "every 10th point in the global index" and asks the researcher to rebuild
+v_p̂(ℓ\*) from it and check `cos(recount, shipped) > 0.9`. **Run as pre-registered, that check
+does not discriminate**, and the failure is arithmetic, not evidential.
+
+command: `python3 src/direction_w5.py --recount-subsample`
+
+| form | est points in the subsample | traces | strata usable | per-stratum (n_pos, n_neg) | cos(recount, shipped) |
+|---|---|---|---|---|---|
+| A | 17 | 17 | **1 of 2** | d_t=+1 (11, **0**); d_t=−1 (3, 3) | **0.2769** |
+| B | 17 | 17 | 2 of 2 | d_t=+1 (10, 5); d_t=−1 (1, 1) | **−0.1639** |
+
+The analysis cell is **366 labelled est points of 6,668 captured points (5.5 %)**, so a
+uniform every-10th rule lands ~17 of them per form and one d_t stratum loses a class entirely.
+A difference of two means over **3 versus 3** traces cannot be expected to align with one over
+**83 versus 18**. **This is a defect in the ship rule, not evidence against the shipped
+tensor** — and PR-004 anticipated the direction of the problem ("subsampling noise
+permitting") without anticipating its size.
+
+**Mitigation (JC-4), executed after the frozen analysis had completed and been written to
+disk, so it cannot have influenced any result:** the **analysis cell itself** was also shipped
+— every `est` point of both `above_good` arms, `[528, 48, 5120]` fp16, 259.5 MB, 7.9 % of the
+captured points, still far short of "the full tensors" that R-010(3) forbids. From it:
+
+command: `python3 src/w5_recount.py`
+```
+form A | l*=22 | cell est points 163 over 95 traces | strata {1: (55, 7), -1: (28, 11)} used 2 | cos(recount, shipped) = 1.000000
+form B | l*=22 | cell est points 203 over 109 traces | strata {1: (64, 19), -1: (17, 18)} used 2 | cos(recount, shipped) = 1.000000
+```
+
+Both recounts are reported. The pre-registered one **fails its threshold**; the cell recount
+**passes at 1.000000** and reproduces the point, trace and stratum counts exactly. The
+recommendation for future ship lists is to subsample **within the analysis cell**, not within
+the global index.
+
+---
+
+## V-010 · W5 apparatus checks: tensors tie to the index, and PR-004 preceded the analysis · 2026-08-30
+
+**(1) Commit order.** PR-004 and `src/direction_w5.py` are commit **`956052c`**, authored
+**2026-08-30 05:06:07 UTC**. The analysis process started **05:07:38 UTC** and finished
+05:21:10 UTC. `git log --oneline` shows `956052c` immediately after W4's `212fa09`, and no
+commit touches `src/direction_w5.py` after it. The pre-registration is therefore prior to the
+data it governs by 91 seconds of wall clock and by one commit in the graph.
+
+**(2) The tensors the analysis read are the tensors W4 wrote.** All six pod-side files were
+hashed before anything was computed from them. The three that MANIFEST carries hashes for
+match exactly — `A_above_good abcde06b…`, `A_neutral 14715479…`, `B_baseline f380fc05…` — and
+the three that never reached the laptop are recorded now: `A_below_good 1e191dcc…`,
+`B_above_good 60c05dca…`, `B_below_good a61514b2…`.
+
+**(3) Rows tie to the index, and the rows are real.** Step 3's acceptance check, generalised
+from a recompute check (nothing was recomputed, D-023) to a check on the tensors themselves.
+command: `python src/w5_integrity.py`
+
+| arm | acts rows | index `n_points` | C1 rows==index | C2 decode | C3 finite |
+|---|---|---|---|---|---|
+| A_below_good | 1192 | 1192 | PASS | 5/5 | PASS |
+| A_above_good | 1137 | 1137 | PASS | 5/5 | PASS |
+| A_neutral | 272 | 272 | PASS | 5/5 | PASS |
+| B_below_good | 1859 | 1859 | PASS | 5/5 | PASS |
+| B_above_good | 1793 | 1793 | PASS | 5/5 | PASS |
+| B_baseline | 415 | 415 | PASS | 5/5 | PASS |
+
+**30 / 30 sampled `est` points decode exactly**, commas included — e.g. row 1424 of
+`B_above_good`, `[19,11,20,15,15,11,15,15,15,11,15,15,16]` → `4,500,000,001` (a literal one
+unit above τ_B, which is the sharpest possible test of the τ-echo exclusion). Every sampled
+row is finite with per-layer L2 norms in the 17.6–19.0 / 86.7–105.8 / 730–1132 range at layers
+0 / 23 / 47 — real activations, not padding. The three arms audited here for the first time
+are precisely the three D-020 lost.
+
+**(4) Ship-list integrity.** All 12 shipped files hash identically pod-side and laptop-side
+(listed in S-008's neighbourhood; regenerable by `shasum -a 256` over the paths in
+`runs/MANIFEST.md` and `analysis/out/`). The 588 MB moved in **185 s across 4 parallel
+streams** (~3.5 MB/s), versus the 0.9 MB/s single stream that lost W4's transfer.
+
+**This entry verifies apparatus only. It does not promote P-007.**
+
+---
+
+## P-007 · W5: the believed direction v_p̂ — form B carries it, form A does not, and the frozen layer rule landed on the wrong end of the band · 2026-08-30
+
+filter: `kind == "est"` (τ-echo-excluded, in-window), arm `above_good` only, traces with a
+`correct`/`incorrect` W3 direction verdict (`unclear` excluded). **Form A: 163 points over 95
+traces (p̂=+1 81, p̂=−1 14). Form B: 203 points over 109 traces (p̂=+1 79, p̂=−1 30).**
+source: `runs/w4_acts/*.safetensors` (pod-local, now terminated; the analysis cell survives as
+`runs/w5_subsample/w5_cell.safetensors`) + `analysis/out/w3_direction_cache.json` →
+`analysis/out/w5_{layers,probes,invariance,strata,projections}.csv`,
+`analysis/out/w5_vectors/*.safetensors`, `analysis/out/w5_lstar.json`
+command: `python src/direction_w5.py --procs 48` (pod `io6c1fhnarzoj9`, 807 s)
+Everything below is **PR-004 as frozen**, ℓ\* = 22 throughout, unless a line says *post-hoc*.
+
+**Per-stratum trace counts entering v_p̂ (PR-004 item 2).** Both d_t strata are usable in both
+forms; **the thin cells are form A's d_t=+1 negatives (7 traces) and form B's d_t=−1
+negatives (18) / positives (17)**.
+
+| form | contrast | d_t stratum | n traces p̂=+1 | n traces p̂=−1 |
+|---|---|---|---|---|
+| A | v_p̂ | +1 (est above τ) | 55 | **7** |
+| A | v_p̂ | −1 (est below τ) | 28 | 11 |
+| B | v_p̂ | +1 | 64 | 19 |
+| B | v_p̂ | −1 | **17** | 18 |
+| A | v_p | +1 / −1 | 77 / 80 | 80 / 82 |
+| B | v_p | +1 / −1 | 101 / 58 | 91 / 72 |
+
+**The headline numbers, at the pre-registered ℓ\* = 22.**
+
+| quantity | form A | form B |
+|---|---|---|
+| p̂ probe balanced accuracy | **0.5240** | **0.7431** |
+| its 1000-draw null, 95th pct | 0.6114 | 0.5892 |
+| permutation p | 0.324 | **0.001** |
+| verdict against the frozen criterion | **FAILS** | **PASSES** |
+| d_t positive control | 0.9470 | 0.9916 |
+| belief-point polarity control | 1.0000 | 1.0000 |
+| cos(v_p, v_p̂) | 0.051 | 0.432 |
+| cos(v_p̂^A, v_p̂^B) | colspan → **0.2608**, null p95 **0.2443**, p = **0.045** → **PASSES**, barely | |
+| probe transfer A→B | colspan → **0.5310**, null p95 0.5310, p = 0.203 → **FAILS** | |
+
+**ℓ\* itself is the packet's biggest problem.** PR-004 item 3 fixes ℓ\* as the argmax of the
+form-A p̂ probe curve. **That curve never exceeds its own null at any of the 48 layers**
+(0 of 48; mean over layers 0.451, below chance), so its argmax is a draw from noise. Layer 22
+is where a noise curve happened to peak.
+
+**The form-A p̂ probe fails everywhere, and the apparatus is not the reason.** On the *same
+points*, through the *same* split/SVD/logistic pipeline, the d_t control reaches **0.9611**
+(layer 24, p = 0.001, significant at 43 of 48 layers) and the belief-polarity control **1.000**.
+The machinery decodes what is there to decode. What form A's `est` activations do not carry —
+at trace level, at n(p̂=−1) = 14 — is the believed side.
+
+**The form-B p̂ probe is strong and broad:** significant at **42 of 48 layers**, peaking at
+**0.7604 at layer 27**, chance-level only in layers 0–5. Form B is also the form whose
+behavioural leakage survived W3 (+0.120 vs form A's +0.017, G-002), so the interp result and
+the behavioural result agree about which surface form carries the effect.
+
+**The layer curves say the signal lives in layers ~24–36, not at 22** *(post-hoc reading of a
+pre-registered curve; no test is claimed)*:
+
+| layer | A p̂ | A null p95 | B p̂ | B null p95 | cos(v_p̂^A,v_p̂^B) | cos null p95 | transfer A→B | its null p95 | cos(v_p,v_p̂) A | B |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 0.499 | 0.607 | 0.514 | 0.588 | −0.044 | 0.200 | 0.538 | 0.584 | −0.598 | 0.863 |
+| 8 | 0.438 | 0.606 | 0.618 | 0.586 | 0.003 | 0.229 | 0.597 | 0.574 | 0.141 | 0.653 |
+| 16 | 0.438 | 0.606 | 0.703 | 0.590 | 0.023 | 0.186 | 0.510 | 0.533 | 0.129 | 0.309 |
+| 20 | 0.479 | 0.614 | 0.728 | 0.590 | 0.180 | 0.222 | 0.504 | 0.527 | 0.086 | 0.407 |
+| **22 (ℓ\*)** | **0.524** | 0.611 | **0.743** | 0.589 | **0.261** | 0.244 | **0.531** | 0.531 | **0.051** | **0.432** |
+| 24 | 0.508 | 0.609 | 0.753 | 0.586 | 0.318 | 0.250 | 0.658 | 0.566 | −0.028 | 0.419 |
+| 27 | 0.496 | 0.612 | **0.760** | 0.586 | 0.381 | 0.254 | 0.729 | 0.568 | 0.001 | 0.368 |
+| 28 | 0.506 | 0.610 | 0.750 | 0.586 | 0.417 | 0.265 | **0.760** | 0.576 | −0.090 | 0.371 |
+| 30 | 0.476 | 0.606 | 0.727 | 0.584 | **0.426** | 0.296 | 0.753 | 0.592 | −0.181 | 0.304 |
+| 36 | 0.425 | 0.609 | 0.655 | 0.585 | 0.359 | 0.354 | 0.648 | 0.556 | −0.333 | 0.111 |
+| 44 | 0.366 | 0.624 | 0.638 | 0.591 | 0.297 | 0.503 | 0.578 | 0.578 | −0.206 | −0.174 |
+
+Cross-form cosine beats its null in a **contiguous band, layers 21–36** (16 layers), peaking
+at **0.4264 at layer 30** (null p95 0.296, p = 0.007). Probe transfer A→B beats its null at
+**layers 24–41** (plus a lone layer 8), peaking at **0.7597 at layer 28** (p = 0.001). ℓ\* = 22
+is the **first layer of that band** — inside it for the cosine, one layer short of it for the
+transfer. Every pre-registered conclusion would have been stronger at 27–30, and the frozen
+rule is what put us at 22. **The researcher, not the runner, should decide what ℓ to intervene
+at; the honest summary is that PR-004's ℓ\* is defensible but suboptimal, and the band is the
+finding.**
+
+**The transfer result contradicts the form-A failure, informatively.** A probe trained on
+form-A `est` points predicts **form-B** traces at 0.76 (layer 28) while the same data cannot
+predict held-out **form-A** traces above chance. Both cannot be about signal alone; the
+difference is power. The transfer probe trains on all 95 A traces and is scored on 109 B
+traces with 30 minority members; the within-A estimate trains on ~66 and is scored on ~28
+traces of which **~4** are minority, which quantises balanced accuracy in ~0.12 steps and
+pushes the null's 95th percentile to 0.61. **Form A's activations do appear to carry p̂; form
+A's own cross-validation is too small to show it.** *(Post-hoc; stated as the leading
+explanation, not as a test.)*
+
+**Timing split: there is no "after".** 155 of 163 form-A est points and 196 of 203 form-B est
+points fall **before** the trace's first `good cause` / `bad cause` token. The "after" cell
+holds 8 and 7 points, ~2.0–2.3 held-out traces per split, and its balanced accuracy
+(0.727 / 0.708) rests on too few traces to be read. **The pre-registered before/after
+comparison is therefore not estimable in this dataset** — but its motivating claim is
+answered by the "before" column alone: form B's p̂ decodability of **0.7431 at ℓ\*** is
+**entirely pre-verbalization**. The believed side is linearly present in the residual stream
+while the model is still emitting estimates, ~96 % of the time before it says which cause the
+bet favours. That is the correlational preview of belief-upstream the order asked for, and it
+exists on form B only.
+
+**The bridge to the original plan, cos(v_p, v_p̂).** Form B: **0.432** at ℓ\*, rising to
+**0.863** at layer 0 and staying above 0.3 through layer 30. Form A: **0.051** at ℓ\*, mean
+−0.100 across layers. The prompt-side direction and the belief-side direction are *related but
+far from identical* where both exist — which is the empirical content of R-009's pivot: had
+they been collinear, the pivot would have been cosmetic.
+
+**Controls, stated as apparatus and not as findings.** The belief-polarity probe is **1.000 at
+every layer 0–47 in both forms** (minimum 0.927). That is expected and uninformative: the
+point is the last token of `good cause` / `bad cause`, whose immediately preceding token
+differs by class, so layer 0 already separates them. It confirms the probe plumbing and
+nothing else.
+
+**Provisional. The frozen criteria give: form-A p̂ probe FAIL, form-B p̂ probe PASS, invariance
+cosine PASS (p = 0.045, at a layer chosen by a noise argmax), transfer FAIL at ℓ\* and PASS
+across layers 24–41 post-hoc.**
+
+**Bug-first discipline (standing constraint 7).** The surprising result is form A's flat
+probe. (i) *Bug in new code:* checked — the d_t and belief controls run the identical code
+path on the identical points and reach 0.96 and 1.00, and the cell recount reproduces v_p̂ at
+cosine 1.000000; a broken pipeline could not do either. (ii) *Flaw in the instruction:*
+partly, and it is recorded — PR-004's ℓ\* rule reads an argmax off a curve it did not require
+to be significant first, and its 10 % subsample cannot audit the cell (D-024). (iii)
+*Discovery:* the residual claim — that form A's `est` points do not linearly carry p̂ at
+n(minority) = 14 — is not separable from a power failure, and this entry does not separate it.
+
+---
+
+## D-025 · The owner clock was never supplied · 2026-08-30
+
+R-010(5) makes this the final ask and specifies the consequence, which is now executed.
+**Owner-clock minutes for W0, W0b, W1, W2, W3, W4 and W5 have never been supplied**, across
+**seven** asks (T-002 through T-009). The 16 h owner budget in ORIENTATION.md is therefore
+**unauditable**, and all time accounting in this project rests on **runner wall time and
+billed GPU wall time alone**, both of which are recorded per packet in the `T-` entries and
+are independently checkable against RunPod's pod records. The write-up will state this
+plainly. **Per R-010(5), the asks stop here.**
+
+---
+
+## T-009 · Time, W5 · 2026-08-30
+
+Owner-clock minutes: **not supplied — see D-025. No further ask will be made.**
+Runner wall time, W5: **≈1 h 05 m** (2026-08-30 04:44 → 05:49 UTC).
+GPU wall time (pod running, billed): **36 m 27 s** (04:51:53 → 05:28:20 UTC).
+
+Where the GPU time went — and this packet inverts W4's lesson:
+
+| phase | wall | note |
+|---|---|---|
+| resume + SSH up | ~1 m | first successful resume in the project (D-023) |
+| dependency reinstall | ~2 m | container FS wiped; `/workspace` intact |
+| integrity + decode check | ~2 m | `w5_integrity.py`, 6 arms, 30 points |
+| **the frozen analysis** | **13 m 27 s** | `direction_w5.py`, 48 workers, ~4 M logistic fits |
+| ship 588 MB in 4 streams | ~3 m | 327.8 MB subsample + 259.5 MB cell |
+| idle while the runner wrote and debugged code | **~14 m** | the one avoidable block |
+
+**W4 was 1.6 % compute and ~45 % transfer; W5 is 37 % compute and 8 % transfer.** Moving the
+analysis to the pod and shipping 588 MB instead of 3.28 GB is what did it — R-010(3)'s policy,
+measured. The remaining waste is the ~14 min the pod idled while `direction_w5.py` was written
+and smoke-tested; a fresh runner should write and laptop-smoke the analysis **before** starting
+a pod. The laptop smoke test (`--smoke`, form A only) cost nothing and caught the plumbing.
+
+---
+
+## S-008 · Spend, W5 · 2026-08-30
+
+Rate from the pod record's `costPerHr`, per R-006(3).
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| `io6c1fhnarzoj9` | A100-SXM4-80GB | 1.39 | 04:51:53 → 05:28:20 (**terminated**) | 0.6075 | **$0.84** |
+
+**GPU spend this packet: $0.84.** Cross-check against the account: `clientBalance` was
+**$24.8791** at 04:51:52 and **$24.0452** at 05:28:22, a delta of **$0.834**, which includes
+the ~36 min of idle volume storage on the two pods terminated at 04:52. The two figures agree
+to a cent and a half.
+
+**Cumulative GPU: $12.18 of $60.00.** ($45 threshold not approached.)
+**API this packet: $0.00** — W5 makes no model API call; p̂ comes from the W3 judge cache
+frozen at W3 and read as-is per V-009. **Cumulative API: $6.35.**
+**Total project spend: $12.18 GPU + $6.35 API = $18.53 of the $60 cap.**
+
+**Account state at close, verified 05:28:22 UTC:** balance **$24.05**, `currentSpendPerHr`
+**$0.000**. This is the first packet in the project to close with **zero** ongoing spend:
+`axvdenxbcepd10` terminated 04:52:13, `bkl3m9ieis977o` terminated 04:52:14 (both R-010(1),
+owner-approved), `io6c1fhnarzoj9` terminated 05:28:18 (R-010(2)). **No pod and no volume
+exists in this account.** The ~$2.00/day idle-storage leak reported in S-007 is closed.
+
+**Nothing unique remains pod-side.** Everything the ledger cites is on the laptop and hashed
+(V-010(4)); the 3.28 GB of W4 activation tensors died with the volume and are regenerable in
+94.8 s of forward passes for ~$0.12 (`runs/MANIFEST.md`, W5 note).
