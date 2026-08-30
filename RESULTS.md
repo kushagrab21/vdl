@@ -6188,3 +6188,268 @@ new judging. (d) The flip rule's calibration is empirical on **this** capture (l
 rate 0.0000) and the parametric grid in PR-008 item 5 shows it is unusable at higher trajectory
 noise; a stronger probe would need it re-simulated.
 
+
+---
+
+## V-020 · W12 audit — transcribed verbatim from the courier · 2026-08-31
+
+> ## V- · W12 audit · 2026-08-30
+> W12 ACCEPTED in full. The three-family design (JC-3) — arm-centred primary, an ARM-predicting
+> control that must sit at chance, and the confound-free above_good cell — was pre-declared and
+> is a model apparatus decision; the control's 0.5000 in all 176 cells is definitive. JC-1's
+> ladder continuation, JC-2's primary/strict pairing, and JC-4's labeled fallback are all
+> RATIFIED. The onset null is accepted as reported both ways (the tightening did not cause it).
+> The zero-flip result is promoted: within a trace, the decoded belief, once settled, is never
+> reversed (0/238 under a rule with measured 0.000 false-flip rate on this capture) —
+> tiered [suggested], since the trajectories come from a weak probe. D-042 is the packet's
+> real finding and the reason W13 exists in its present form. D-044's checked-correspondence-
+> over-identical-stack tradeoff is accepted. R-014's double-entry GPU billing side benefit is
+> adopted as standard.
+
+**Runner note on numbering.** This audit promotes P-011 (W12) with the qualifications it names.
+The promoted entry is allocated **E-011** and is written by the researcher's own promotion
+convention (V-016 §2); this packet does not write it, because the audit text delivered here
+promotes a *sub-claim* (the zero-flip result) explicitly and leaves the onset null "accepted as
+reported", which is a wording the runner will not paraphrase into an `E-` entry unbidden. The
+runner records the allocation and flags it. **W13's outcome does not depend on it.**
+
+---
+
+## V-021 · W10 audit CLOSED — transcribed verbatim from the courier · 2026-08-31
+
+> ## V- · W10 audit CLOSED · 2026-08-30
+> The formal W10 report is received and accepted: E-001..E-009 promotions stand; D-034..D-037
+> are exactly the class of self-recomputation W10 exists for; the 468-placeholder manifest,
+> 0-untraceable-digits check, and verified rebuild meet the bar. The write-up ships ONLY after
+> this packet's outcome is integrated (revision notes 1–3 plus the D-042 resolution) and the
+> researcher reads the final build.
+
+---
+
+## R-015 · Rulings — transcribed verbatim from the courier · 2026-08-31
+
+> ## R-015 · Rulings · 2026-08-30
+> (1) R-013 is AMENDED per W12 surprise 2: every pre-freeze simulation must cover the null AND
+> a calibrated alternative, and state the minimum detectable effect. (2) From D-045: smoke and
+> test runs write only to smoke-prefixed paths, never to real output filenames — standing rule.
+> (3) The W13 belief transplant is CANCELLED AS INFEASIBLE: 6 disjoint valid pairs is not an
+> experiment. Recorded as a sizing outcome, not a failure; the transplant joins the deferred
+> programme. (4) This packet (the D-042 resolution) takes the W13 slot. Its outcome binds:
+> E-007 either survives a targeted attack and says so, or is corrected by a new entry and every
+> downstream claim re-tiered. Both outcomes are reportable at full volume.
+
+---
+
+## PR-009 · W13 pre-registration — the D-042 resolution: does E-007 survive a targeted length attack? · 2026-08-31
+
+**Frozen before any statistic in items 1–3 is computed on the real p̂ labels.** Binds W13
+(R-015(4)). Governs `src/w13_lengthcheck.py`, `src/w13_power.py`, `src/w13_recount.py`.
+The R-013-as-amended (R-015(1)) simulations in item 4 were run **before** this commit and are
+pasted here verbatim; they use the **real** activations with **synthetic** labels only (JC-1).
+
+### 0 · What is being attacked, and with what
+
+**E-007** (W5 / P-007, V-010) reports that the believed favoured side p̂ is linearly decodable
+from `est`-point residuals in the form-B `above_good` cell at **0.743** balanced accuracy at
+ℓ\* = 22 (0.760 at L27), against a 1000-draw trace-level label-permutation null whose 95th
+percentile is 0.589. **D-042** showed that in the same behavioural dataset a probe whose only
+feature is trace length scores **0.6421**, because incorrect-belief traces run **123 tokens
+longer**. E-007's probe never sees length as a feature — but the **number** and the **absolute
+positions** of a trace's `est` points are functions of its length, and residual streams encode
+absolute position strongly, so the same channel is available to it. D-042 explicitly declined
+to test this. **R-015(4) makes the test W13.**
+
+Everything runs on the laptop from committed/inventoried files:
+
+| input | what it gives |
+|---|---|
+| `runs/w5_subsample/w5_cell.safetensors` + `w5_cell_index.json` | the W5 **analysis cell**: 528 `est` points × 48 layers × 5120, with the frozen p̂ label per point |
+| `runs/w3_frozen/form_B/above_good.json` | `n_output_tokens` per trace — the length feature |
+| `analysis/out/w5_probes.csv` | E-007's published numbers, the reproduction target |
+| `analysis/out/w5_vectors/w5_vphat_B.safetensors` | v_p̂ — the direction the alternative-world sim plants along |
+
+The cell holds **203 labelled form-B `above_good` est points over 109 traces (79 p̂=+1 /
+30 p̂=−1)**. That is exactly the population E-007's form-B number is computed on.
+
+### 1 · The probe, frozen — PR-004's, unchanged
+
+Trace-level stratified 70/30 splits, **20 repeats**, seeds `SEED_SPLIT + r` for r = 0…19;
+training points mean-centred and scaled by their mean row norm; an SVD basis built from the
+**training rows only** (label-free, so identical for the observed fit and every permutation);
+L2 logistic (`C=1.0`, `max_iter=2000`, `class_weight="balanced"`); a held-out **trace** is
+scored by the mean predicted probability over its points, thresholded at 0.5; the metric is
+**balanced accuracy over held-out traces**, averaged over the 20 repeats. Nulls are **1000**
+trace-level label permutations with the splits held fixed. **No hyper-parameter is re-tuned.**
+
+### 2 · The three quantities (items 1–3 of the work order)
+
+1. **Length-only baseline.** Features **{`n_gen`, `n_est_points`, mean `est`-point token
+   position}** — three scalars, **no activations** — standardised on the training traces,
+   same folds, same 1000-permutation null. One row per trace.
+2. **Reproduction.** The W5 activation probe re-run on the analysis cell at every one of the
+   48 layers. **Expected ≈ 0.743 at L22 and ≈ 0.760 at L27.** A mismatch is a `D-` and
+   **stops the packet**.
+3. **The critical test — stratified incremental validity.** Traces are sorted by `n_gen` and
+   split into **3 rank-based near-equal terciles** (ties broken by trace index; frozen). The
+   activation probe is trained **and** evaluated **within** a tercile, with the same
+   trace-level stratified 70/30 × 20 folds, and the statistic is the **mean over terciles**.
+   **Fallback, frozen (JC-2):** a tercile holding fewer than **6** traces of either class is
+   **dropped** from the average — from the observed statistic, the null and the baseline
+   alike — and the drop is reported. If **no** tercile survives, the test is reported as
+   **NOT RUN** and the consequence table's PARTIAL row fires.
+
+### 3 · The decision rule, frozen
+
+Let `S` be the tercile-averaged activation accuracy, `q95` the 95th percentile of its
+**within-tercile** trace-level label-permutation null (1000 draws, labels permuted
+independently inside each kept tercile, folds fixed), and `B` the length-only probe's
+tercile-averaged accuracy **on the identical folds**.
+
+> **E-007 SURVIVES iff `S > q95` AND `S > B`.**
+
+**This is the rule the work order ordered. Item 4's pre-freeze simulations showed it
+false-fires 9.5 % of the time in a pure-length world — an error in E-007's favour — so
+item 4b REVISES it before the freeze, as R-015(1) requires. Item 4b is the rule of record;
+this paragraph states the ordered rule, which is reported alongside it.**
+
+Applied at the work order's **primary layer L27**, and **co-applied at L22** because L22 is
+ℓ\*, the layer E-007's headline 0.743 is reported at (**JC-3**: the order names L27 and the
+number 0.743, which belong to different layers; both are reported and both must agree).
+**Disagreement between L27 and L22 fires the PARTIAL row.** All 48 layers are emitted;
+only L27 and L22 are decisive.
+
+**Secondary, reported and NOT decisive:** residualization. On the training points only, every
+activation coordinate is regressed on `[1, n_gen, est-point token position]` by least squares;
+the fit is subtracted from the training **and** held-out points; the standard probe then runs
+on the residuals, with its own 1000-permutation null. Full cell, no stratification.
+
+### 4 · The R-013-as-amended (R-015(1)) pre-freeze simulations
+
+`src/w13_power.py`, four rounds, **all before this commit**. Every sim uses the **real**
+analysis-cell activations at L27 with **synthetic** labels; **no real p̂ label is read**
+(**JC-1** — an isotropic-Gaussian sim would understate the false-fire rate, because the risk
+comes precisely from the real residual stream's position/length structure). Labels are drawn
+`P(y=+1) = σ(a − b·z(n_gen))` with `a` fixed by the cell's observed class prior; the belief
+signal, where planted, lies along the **real v_p̂^B(L27)** direction.
+
+**Calibration (30 draws per grid point).**
+
+| b | length-only bacc | | s (× mean row norm) | full-cell bacc |
+|---|---|---|---|---|
+| 0.30 | 0.5361 | | 0.000 | 0.6013 |
+| 0.50 | 0.5723 | | 0.020 | 0.6693 |
+| 0.70 | 0.6272 | | **0.040** | **0.7520** |
+| **0.90** | **0.6521** | | 0.060 | 0.8503 |
+| 1.10 | 0.6826 | | 0.090 | 0.9352 |
+| 1.40 | 0.7151 | | 0.130 | 0.9754 |
+
+**b = 0.90** reproduces D-042's **0.642**; **s = 0.040** reproduces E-007's **0.743** with the
+length channel *also* present, which makes the planted belief component the **smallest** one
+consistent with E-007 and every power figure below a **lower bound**.
+
+**The ladder, 200 replicates per world per rung, 150-permutation per-replicate nulls.**
+Gate: false-fire ≤ 0.05 in the pure-length world **and** power ≥ 0.80 in the genuine-belief
+world.
+
+| rung | quantile | **false-fire** (pure length) | **power** (genuine belief) | gate |
+|---|---|---|---|---|
+| **`tercile`** — the criterion the work order ordered | q95 | **0.095** | **0.950** | **fails (false-fire)** |
+| `tercile` | q99 | 0.055 | 0.820 | fails (false-fire) |
+| **`tercile_resid`** — terciles **+** within-stratum residualization on (`n_gen`, est-point position) | **q95** | **0.030** | **0.710** | **fails (power)** |
+| `tercile_resid` | q99 | 0.005 | 0.540 | fails (power) |
+| `resid_full` — no stratification, residualization on the full cell | q95 | 0.020 | 0.700 | fails (power) |
+| `matched` — each p̂=−1 trace matched to its nearest-`n_gen` p̂=+1 trace, folds by pair, null flips labels within pair | q95 | 0.120 | 0.970 | fails (false-fire) |
+| `matched` | q99 | 0.060 | 0.860 | fails (false-fire) |
+
+**NO RUNG MEETS BOTH GATES.** That is the sim's finding and it is frozen here before any real
+number exists: **at n = 109 traces with 30 minority traces, this test cannot simultaneously
+hold its false-fire rate at 5 % and detect the observed effect at 80 %.** The frontier runs
+between `tercile_resid` (0.030 / 0.710) and `tercile` (0.095 / 0.950).
+
+**Why the ORDERED rung false-fires at 9.5 % and not 5 %.** Terciles are coarse: inside tercile 0
+`n_gen` still runs 281–369. The permutation null destroys the *within*-stratum length–label
+association that the pure-length world *retains*, so the null is not the right reference for the
+ordered rung. Residualizing on (`n_gen`, est-point position) inside the stratum removes it and
+brings the rate to 0.030 — at a cost of 0.24 in power. **This is D-043's lesson recurring in a
+new place: the ordered statistic was frozen at a threshold outside the range its design can
+resolve.**
+
+**The minimum detectable effect, for the frozen rung** (`tercile_resid` @ q95, 50 replicates
+per grid point, per-replicate nulls):
+
+| planted s | full-cell bacc it produces | stratified stat | fire rate |
+|---|---|---|---|
+| 0.000 | 0.5971 | 0.5076 | 0.067 |
+| 0.020 | 0.6697 | 0.5511 | 0.183 |
+| 0.030 | 0.7079 | 0.5942 | 0.417 |
+| **0.045** | **0.7739** | 0.6780 | **0.883** |
+| 0.060 | 0.8484 | 0.7599 | 1.000 |
+| 0.090 | 0.9397 | 0.8771 | 1.000 |
+
+> **MDE: the frozen rung reaches 80 % power against a belief signal worth a full-cell balanced
+> accuracy of ≈ 0.774. Against the observed 0.743 its power is 0.710.**
+
+command: `python3 src/w13_power.py --procs 9 --variants tercile` (round 1),
+`--variants tercile_resid,matched` (round 2), `--variants resid_full` (round 3),
+`--mde-only --force-rung tercile_resid,0.95` (round 4) → `analysis/out/w13_sims.csv`
+(column `round`).
+
+### 4b · The decision rule, revised by the sims and FROZEN here
+
+The gate cannot be met, so the rule is written from the **measured** operating characteristics
+rather than from a wish (**JC-4**):
+
+- **Frozen primary rung: `tercile_resid` @ q95** — false-fire **0.030**, power **0.710**.
+  Chosen because the packet's job is to *attack* E-007, and a rung that false-fires is an error
+  in E-007's *favour*.
+- **Ordered rung, reported as ordered: `tercile` @ q95** — false-fire **0.095**, power **0.950**.
+
+| row | condition | reading |
+|---|---|---|
+| **SURVIVES** | the **primary** rung fires at **both** L27 and L22 | a pure-length world produces this 3 % of the time |
+| **FAILS** | **neither** rung fires at **either** layer | the 0.950-power rung failing is what licenses a negative claim |
+| **PARTIAL** | anything else — in particular **the ordered rung fires and the primary does not**, which is the exact signature of a length confound | tier **[suggested]**, ambiguity stated |
+
+**A non-firing primary rung alone can never be read as "E-007 fails": its power is 0.710.**
+That sentence is frozen before the data.
+
+### 5 · The consequence table, frozen before the numbers exist
+
+| row | condition | what happens |
+|---|---|---|
+| **SURVIVES** | `S > q95` **and** `S > B`, at **both** L27 and L22 | E-007 **stands**. A new `E-` entry records that it survived a targeted length attack and states the stratified number, its null and its baseline. §5.3 gains **one sentence** saying so. Nothing else in the write-up changes. |
+| **FAILS** | the conjunction fails at **both** L27 and L22 | E-007 is **corrected by a new entry** — the length confound is not excluded and the claim is re-tiered. R-012's representational verdict is amended by an `R-` entry **the researcher supplies** (the runner writes the `D-`/`E-` correction and flags the `R-` as owed, it does not author it). §5.3 and the executive summary are rewritten to the corrected claim. The W5→W7 arc is reframed: a direction contaminated by length also reframes the W7 null. |
+| **PARTIAL** | anything else — beats the null but not the baseline, or the baseline but not the null, or L27 and L22 disagree, or no tercile survives item 2's fallback | Reported **exactly as found**, tier **[suggested]**, with the ambiguity stated in the entry and in §5.3. |
+
+The runner does **not** get to choose the row after seeing the numbers. The row is read off
+this table.
+
+### 6 · The load-bearing recount
+
+`src/w13_recount.py`, **fresh**: imports `json` / `sys` / `numpy` / `safetensors` and
+**nothing** from `w13_lengthcheck.py`, `w13_power.py` or `direction_w5.py`, and **no
+scikit-learn**. It re-implements from this entry's prose alone: the cell selection, the
+`n_gen` lookup, the rank-based terciles, the stratified splits, the train-only
+centre/scale/SVD projection, and the L2 logistic probe (**Newton–IRLS on the same convex
+objective, intercept unpenalised, balanced class weights**). It prints the **reproduction**
+number and the **stratified** number at L22 and L27.
+
+**Agreement required:** (a) the recount's reproduction number within **0.02** of the analysis
+path's — this is the calibration check that makes (b) readable; (b) the recount's stratified
+number within **0.05** of the analysis path's; and (c) the same sign of `S − B`. Any failure
+is a `D-` and the packet reports it rather than choosing a row.
+
+### 7 · Smoke, before any real-label statistic (standing rule, and R-015(2))
+
+`python3 src/w13_lengthcheck.py --smoke` runs the **entire** path twice on the **real**
+activation geometry with **synthetic** labels: world A's labels are a pure median split on
+`n_gen` (the stratified test **must refuse** them) and world B's carry a planted belief signal
+orthogonal to length (the test **must keep** them). **Per R-015(2) every smoke output is written
+to `analysis/out/smoke_w13_*.csv` and never to a shipped filename.**
+
+### 8 · What this packet does NOT do
+
+It does not re-judge a single trace (V-009's 20–30 % label-noise carve-out is inherited
+unchanged); it does not touch form A, `below_good`, or W5's cosine/transfer results; it does
+not re-open W7; and it does not decide E-007's fate on any layer other than L27 and L22.
+It buys **no GPU**. Expected spend **$0.00**.
