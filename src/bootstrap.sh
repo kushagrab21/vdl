@@ -30,10 +30,31 @@ else
        "push code to the pod with rsync instead"
 fi
 
+# R-010(4) / D-022: pick the interpreter that actually has torch, and say which one.
+# In runpod/pytorch:1.2.0-...-cu1281-torch280 `python3` is /usr/bin/python3 (3.10, NO
+# torch) while `python` is /usr/local/bin/python (3.12, torch 2.8, and where pip installs).
+# The old line printed `command -v python3` unconditionally and would have named the wrong
+# interpreter; W4's first prep pass ran under it and died on ModuleNotFoundError: torch.
+pick_python() {
+  for cand in /usr/local/bin/python python python3; do
+    c=$(command -v "$cand" 2>/dev/null) || continue
+    if "$c" -c 'import torch' >/dev/null 2>&1; then echo "$c"; return 0; fi
+  done
+  # nothing has torch: fall back to whatever python exists, and say so
+  command -v python || command -v python3 || echo none
+  return 1
+}
+VDL_PYTHON="$(pick_python)"
+export VDL_PYTHON
+
 echo "bootstrap: HF_HOME=$HF_HOME"
-echo "bootstrap: python=$(command -v python3 || echo none)"
-python3 - <<'EOF' 2>/dev/null || echo "bootstrap: vllm NOT importable — venv missing?"
-import vllm, torch
-print("bootstrap: vllm", vllm.__version__, "| torch", torch.__version__,
-      "| cuda", torch.cuda.is_available())
+echo "bootstrap: python=$VDL_PYTHON  (python=$(command -v python || echo none), python3=$(command -v python3 || echo none))"
+"$VDL_PYTHON" - <<'EOF' 2>/dev/null || echo "bootstrap: torch NOT importable under $VDL_PYTHON"
+import torch
+print("bootstrap: torch", torch.__version__, "| cuda", torch.cuda.is_available())
+try:
+    import vllm
+    print("bootstrap: vllm", vllm.__version__)
+except Exception:
+    print("bootstrap: vllm not installed (W4+ packets do not need it)")
 EOF

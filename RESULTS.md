@@ -2618,3 +2618,131 @@ precedent that it is the researcher's call.
 **Pod state at close, verified 04:39 UTC:** `io6c1fhnarzoj9` **`EXITED`**, stopped by RunPod
 04:37:00, unstartable (balance). `bkl3m9ieis977o` `EXITED`, unstartable (D-021).
 `axvdenxbcepd10` `EXITED`, unstartable (D-019). `gwhn0ex0eeyntn` terminated at W3 per V-003.
+
+---
+
+## V-009 · W4 audit · 2026-08-30
+
+*Transcribed verbatim from the courier's delivering message; the entry number is allocated
+by this packet (the researcher's text carried no number).*
+
+```
+W4 ACCEPTED. The 34/34 decode check is the packet's load-bearing evidence and passes; the
+est-count reproduction of P-004's trajectory counts (254/255/276/273) from an independently
+written parser is noted as a strong apparatus cross-check. All nine judgment calls RATIFIED —
+JC-4 (final_corrected capture) with emphasis: on form A the frozen item-8 final is a τ-echo in
+~57% of traces, and a final-only capture would have localized threshold-echoing; this goes in
+the what-would-have-fooled-us register. Researcher's judge validation verdict: PASSES WITH
+CHARACTERIZED NOISE. The incorrect class conflates three failure kinds — (i) wrong stated
+mapping (e.g. A/above rollout 19), (ii) mapping-silent wrong-side pursuit (rollout 11:
+"to fit within the threshold" while above is favoured), (iii) correct mapping with a wrong
+self-comparison (rollout 14: calls 18.75M "below" 15.3M — a judge mis-score on the mapping
+question but a genuine side-tracking failure). All three are failures to track the favoured
+side; the −0.68/−0.55 conditional gaps show the label carries signal; estimated 20–30% label
+noise ATTENUATES contrasts and is documented, not corrected. Labels are frozen as-is; no
+relabeling after activations are seen. The mapping-silent rate (53% of incorrect verdicts)
+is an upper bound on leniency, not an error count.
+```
+
+---
+
+## R-010 · Infrastructure rulings · 2026-08-30
+
+*Transcribed verbatim.*
+
+```
+(1) Terminate axvdenxbcepd10 and bkl3m9ieis977o (owner-approved; nothing needed aboard).
+(2) io6c1fhnarzoj9: attempt one start; if it starts, rsync the three complete arm files and
+verify sha256 against MANIFEST; either way TERMINATE it once this packet's recompute is
+verified — after that it holds nothing unique. (3) Transfer policy of record: activation
+analysis runs pod-side; the laptop receives all summary artifacts, per-point scalars, the
+frozen direction tensors, and a pre-registered 10% full-layer subsample — never the full
+tensors. (4) bootstrap.sh: fix the python3-vs-python interpreter trap (D- the old behavior).
+(5) Owner clock: FINAL ask. If minutes for W0–W5 are not supplied with this packet's report,
+the ledger records a D- stating the owner clock was not supplied and time accounting rests
+on runner wall time alone; the write-up will say so plainly and the asks stop.
+```
+
+The courier's delivering message additionally confirms that the RunPod account **is funded**
+and that terminating `axvdenxbcepd10` and `bkl3m9ieis977o` is **owner-approved**.
+
+---
+
+## PR-004 · Pre-registration, W5 — the believed direction v_p̂, probes, invariance · 2026-08-30
+
+**Frozen before any activation was read for analysis.** Implemented by
+`src/direction_w5.py`; this entry and that file are committed in the same commit, and that
+commit precedes every run of the analysis (`git log` order is the evidence — see V-010).
+The activation tensors this binds are the W4 tensors, frozen since 04:22 UTC and unchanged
+(sha256 in `runs/MANIFEST.md`).
+
+**1 · p̂ labels.** From the stored W3 direction verdicts
+(`analysis/out/w3_direction_cache.json`, frozen at W3, unchanged): in `above_good`,
+`correct` → p̂ = +1 and `incorrect` → p̂ = −1; in `below_good`, `correct` → p̂ = −1 and
+`incorrect` → p̂ = +1; `unclear` **excluded**. p̂ = +1 means *the trace believes ABOVE τ is
+the favoured side*. Frozen as-is: per V-009 no relabeling after activations are seen, and
+the estimated 20–30 % label noise attenuates every contrast below rather than being
+corrected.
+
+**2 · v_p̂ (per form, per layer).** Points: `kind == "est"` (the frozen τ-echo-excluded,
+in-window rule of PR-001/R-008(2)), **within the `above_good` arm only** — the one cell where
+both p̂ classes have n ≥ 14. Trace-weighted and d_t-stratified:
+d_t = +1 if the est literal exceeds τ, −1 otherwise; for each (trace, d_t) cell the trace's
+est-point activations are averaged first; within each d_t stratum the mean over p̂ = +1
+traces minus the mean over p̂ = −1 traces is taken; **v_p̂ is the unweighted average of the
+two stratum differences.** A trace whose literals straddle τ contributes to both strata.
+Per-stratum trace counts are reported (`w5_strata.csv`). Computed independently at each of
+the 48 layers, in fp32.
+
+**3 · Layer choice.** ℓ\* = argmax over the 48 layers of held-out probe balanced accuracy for
+p̂ **on form A**, ties broken to the lowest layer index. Chosen on A alone; every form-B
+quantity (transfer, cosine) is reported at that ℓ\* **and** as a full layer curve.
+
+**4 · Probes (per layer, per form).** L2 logistic regression on the same est points
+predicting p̂; `sklearn.linear_model.LogisticRegression(C=1.0, penalty="l2", solver="lbfgs",
+max_iter=2000, class_weight="balanced")`. Split **by trace**, 70/30, class-stratified, **no
+point-level leakage**. A held-out trace is scored by the **mean** of its points' predicted
+probabilities, thresholded at 0.5; the metric is **balanced accuracy over held-out traces**.
+Null: **1000 trace-level label permutations**; significance = observed > the null's 95th
+percentile; the reported p is (1 + #{null ≥ observed}) / 1001.
+Positive control: the identical probe for **d_t**, whose scoring unit is the **point** (d_t
+varies within a trace, so a trace has no single d_t), with a point-level permutation null.
+Timing split: the same held-out traces scored separately on their est points **before** and
+**after** the trace's belief point (first `good cause`/`bad cause` token); traces with no
+belief point count as "before".
+*Two specifics PR-004 fixes that the order left open, both flagged as judgment calls:*
+**(JC-2)** the single 70/30 split is run **20 times** with seeds 0–19 and the reported metric
+is the mean over repeats — with 14 minority traces one split quantises balanced accuracy in
+steps of ~0.07 and is unusably noisy; the null uses the identical 20-split structure, so it
+is calibrated to the same statistic. **(JC-3)** per layer, features are centred on the
+training fold's mean and divided by the training fold's mean L2 norm (one scalar), so the
+C = 1 penalty means the same thing at layer 0 and layer 47; no per-feature standardisation.
+
+**5 · Invariance.** cos(v_p̂^A, v_p̂^B) at every layer, against a null of **1000 draws** in
+which the p̂ labels are shuffled independently within each form and both vectors recomputed.
+**Frozen criterion: the direction is invariant iff the ℓ\* cosine exceeds that null's 95th
+percentile.** Probe transfer: train on **all** form-A est points, test on form-B traces,
+balanced accuracy against a null of 1000 shuffles of form-B's trace labels. Also computed:
+the prompt-side direction **v_p** (arm `above_good` minus arm `below_good`, every trace with
+est points regardless of verdict, same trace weighting and d_t stratification) and
+**cos(v_p, v_p̂)** at ℓ\* — the bridge back to the original plan.
+
+**6 · Belief-point positive control.** At `belief` points (both incentive arms of a form),
+probe the matched string's polarity (`good cause` = +1 vs `bad cause` = −1) with the same
+split/null machinery. Expected near ceiling; **reported as apparatus sanity, never as a
+finding.**
+
+**7 · Ship list — the only activation-derived data that leaves the pod.** Every CSV
+(`w5_layers.csv`, `w5_probes.csv`, `w5_invariance.csv`, `w5_strata.csv`,
+`w5_projections.csv`); the frozen direction tensors `w5_vphat_{A,B}.safetensors` and
+`w5_vp_{A,B}.safetensors` (48 × 5120 fp32, 983 KB each); per-point scalar projections onto
+v_p̂(ℓ\*); and a **10 % subsample by fixed rule — every 10th point of the global point index
+(arm order exactly `replay_w4.ARMS`), all 48 layers, fp16**. Researcher recount:
+v_p̂(ℓ\*) recomputed offline from the subsample alone must agree with the shipped tensor at
+**cosine > 0.9**, subsampling noise permitting; the value is reported either way.
+
+**8 · No other hypothesis test is run this packet.** Anything exploratory goes in a clearly
+marked `P-` entry.
+
+Regenerating command (pod-side, against pod-local tensors):
+`python src/direction_w5.py --procs 48`.
