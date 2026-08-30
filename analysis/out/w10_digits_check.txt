@@ -1,0 +1,42 @@
+no-hand-typed-digits check
+built by: python3 writeup/build.py
+
+placeholders in manifest           : 468
+tokens never used in any template  : 0
+
+--- writeup/final.md  (from final.md.tmpl)
+placeholder sites substituted      : 577
+tokens in template not in manifest : 0
+digit characters                   : 2117
+  traceable to a placeholder       : 1953
+  covered by a whitelist rule      : 164
+  UNTRACEABLE (violations)         : 0
+whitelist rules that fired:
+  gate_id                   7 matches carrying digits
+  hypothesis_id             3 matches carrying digits
+  section_ref               6 matches carrying digits
+  md_heading_number        30 matches carrying digits
+  model_name               13 matches carrying digits
+  dtype_or_norm             4 matches carrying digits
+  sub_or_superscript        3 matches carrying digits
+  dose_notation            28 matches carrying digits
+  phat_label                2 matches carrying digits
+  upstream_path             5 matches carrying digits
+  file_or_cmd               6 matches carrying digits
+
+--- writeup/compact.html  (from compact.html.tmpl)
+placeholder sites substituted      : 193
+tokens in template not in manifest : 0
+digit characters                   : 2007
+  traceable to a placeholder       : 635
+  covered by a whitelist rule      : 1372
+  UNTRACEABLE (violations)         : 0
+whitelist rules that fired:
+  model_name                2 matches carrying digits
+  dose_notation             6 matches carrying digits
+  code_element              1 matches carrying digits
+  control_label             4 matches carrying digits
+  svg_axis_tick             4 matches carrying digits
+  html_markup            (CSS rules and tag attributes excluded)
+
+RESULT: PASS - every digit in every built document is machine-substituted or structural

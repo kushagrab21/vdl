@@ -4434,3 +4434,531 @@ laptop in `runs/w7b_steer/` (3.2 MB, committed by exception, MANIFESTed) and
 `analysis/out/w7b_*`.
 
 **Experiments END here (R-011). W10 is next, regardless of outcome.**
+
+---
+
+## V-015 · W7b audit · 2026-08-30
+
+*Transcribed verbatim from the courier's delivering message (the W10 order, Step 1). The entry
+number is allocated by this packet; the researcher's text carried none. Numbering continues
+from V-014.*
+
+```
+## V- · W7b audit · 2026-08-30
+W7b ACCEPTED. The recount matches to the count and cross-reproduces W7's sham (34/50), tying
+the packets together. Row 3 fired as frozen and STANDS as the verdict of record; D-032 is
+attached to it wherever it is cited: the D̄ threshold sat below the statistic's own noise
+floor (P(fire | no effect) ≈ 0.66 by the runner's post-hoc simulation, correctly labeled
+post-hoc, changing no verdict). All six judgment calls RATIFIED — JC-6's post-hoc labeling
+discipline and the B6 smoke catch of a PR transcription error are exemplary process. The
+substantive homogeneity analysis (χ²=16.38 p=0.128; no dose gradient 0.470 vs 0.476) is
+accepted as the packet's descriptive summary. Researcher read the low-dose samples: healthy
+arithmetic, correct mappings, no distortion signature — the data is trustworthy; the design's
+resolving power is what fell short.
+```
+
+**Consequence recorded by the runner.** P-009 is promoted to established status by this
+acceptance (E-009 below). PR-006 item 5 row 3 remains the verdict of record and **D-032 travels
+with it at every citation**. The homogeneity analysis (P-009 §4(iii)) is accepted as
+**descriptive**, not as a hypothesis test, and is labelled so in the write-up.
+
+---
+
+## R-012 · FINAL VERDICTS (the write-up's spine; claim-tiered) · 2026-08-30
+
+*Transcribed verbatim from the courier. The order supplied the number `R-012`; R-011 was the
+last R- entry, so it is allocated unchanged.*
+
+```
+## R-012 · FINAL VERDICTS (the write-up's spine; claim-tiered) · 2026-08-30
+BEHAVIOURAL [measured]: (1) Small-model value leakage is OVERT: ~99% of incentive traces
+verbalize the bet, vs ~0.2% spontaneous disclosure in the 122B panel [cross-scale contrast
+tiered [suggested] — two model families, no sweep]. (2) Qwen3-8B τ-anchors: 36% of finals
+land exactly on τ; both conditions collapse toward τ from a ~50% neutral baseline.
+(3) Winner's curse: the W2 screening gap (+0.32, n=50) collapsed to +0.017 (n=150) under
+byte-identical apparatus. (4) The belief-conditional decomposition: direction-correct traces
+gap +0.28/+0.45 (forms A/B), direction-incorrect −0.68/−0.55; above_good mapping
+comprehension is ~54% vs ~80–86% for below_good; the aggregate gap is a comprehension-
+weighted mixture. Labels carry characterized noise (V-009 taxonomy).
+REPRESENTATIONAL [measured]: the believed-favoured-side p̂ is linearly decodable from the
+residual stream at estimate points BEFORE it is verbalized, on form B (balanced accuracy
+0.743 vs null p95 0.589, p=0.001, 42/48 layers). Form A is flat with a working d_t control
+(0.95) and 14 minority traces — power and absence not separable, neither claimed.
+Cross-form invariance: marginal at the frozen ℓ* (cos 0.261, p=0.045; transfer FAIL);
+the 24–36 band (transfer 0.760 p=0.001) is EXPLORATORY [suggested].
+CAUSAL [measured null]: injections of v_p̂ at α ∈ {0.25…4}·‖Δμ‖ produced no direction-
+specific landing effect distinguishable from random-direction controls at any dose. High
+doses (α≥2, ≥23% of residual norm) cause direction-INDEPENDENT suppression with fluent,
+coherent-looking low-ball reasoning (D-029); low doses are flat with no dose gradient.
+The project's central causal question — is the verbalized belief upstream of the estimate
+or an annotation? — is NOT RESOLVED [not tested at resolving power]; v_p̂ stands as
+correlational.
+HYPOTHESIS VERDICTS: H1' (belief shifts estimate computation): correlationally supported,
+causally unresolved. H2' (belief gates the policy/verbalization): untested — no
+intervention moved verbalization above nulls. H3' (recurrent accumulation): [not tested]
+(~3 estimate points/trace). Original H1/H2/H3 over prompt-p: superseded by the pivots,
+mapping documented. The prompt-p landing gap itself, in this model class, is [measured]
+fragile-to-absent.
+```
+
+**This entry is the write-up's spine.** Every section of `writeup/final.md` maps to a clause
+of it, and no claim enters the draft that R-012 does not tier.
+
+**Two number-allocation notes, flagged rather than made silently.** (1) R-012's
+"α ∈ {0.25…4}·‖Δμ‖" spans W7's grid {1, 2, 4} and W7b's {0.25, 0.5} — six magnitudes across
+two packets, one of which (W7b) is a stage-2 follow-up designed after W7's result; the draft
+says so at every citation. (2) R-012's "~99%" is P-005's 99.2 % (595/600) and its "36%" is
+P-003's Qwen3-8B judge tie count (36/100 incentive finals); both are cited to their source rows
+rather than to the ruling's rounding.
+
+---
+
+## E-001 · W1 neutral calibration, promoted · 2026-08-30
+
+**Promotes P-001.** Audited by **V-002** (W1 audit: "τ table, truncation counts, and
+intermediates preview stand"; load-bearing recount = the regex extractor corroborating
+Qwen3-8B's τ to the digit).
+metric: τ = median of judge-extracted final estimates over non-truncated, non-null neutral
+rollouts, `int(round(percentile 50))` (PR-001 item 10).
+filter: baseline (no-bet) condition only, 50 rollouts per model, 4 models.
+n: 200 rollouts, **0 truncations**.
+source: `analysis/out/w1_tau.csv`, `analysis/out/w1_extractions.json`.
+command: `python3 src/tau.py --no-judge` (regex columns, no API) ·
+`python3 src/extract_regex.py --selftest` → 9/9.
+**Carve-out:** `google/gemma-2-9b-it` is recorded INACCESSIBLE with its verbatim error and was
+never substituted; the write-up reports it as a screening outcome, not a missing cell.
+
+## E-002 · W1 intermediate-estimate preview, promoted · 2026-08-30
+
+**Promotes P-002.** Audited by **V-002**. metric: count of parseable intermediate estimates per
+neutral trace under the frozen PR-001 item-9 rule, raw and under the `[τ/100, 100τ]` filter.
+filter: non-truncated neutral rollouts, 50 per model. source: `analysis/out/w1_tau.csv`.
+command: `python3 src/tau.py --no-judge`.
+**Carve-out:** this entry decided nothing — G0's parse condition was evaluated on W2 incentive
+traces (R-007(1)), and the write-up reports the preview only as the evidence that pinned the
+filtered variant *before* any incentive datum existed.
+
+## E-003 · W2 mirrored screening and gate G0, promoted · 2026-08-30
+
+**Promotes P-003 and G-001.** Audited by **V-003 (audit)** — "the recount matches the regex
+strict rows to the digit"; the recount itself is **V-003R** (`src/recount_w2.py`), and
+**V-004** is the runner's regenerability re-run.
+metric: landing gap `P(final > τ | above_good) − P(final > τ | below_good)`, per extractor,
+both tie conventions, 95 % percentile bootstrap (10,000 resamples, within-side, seed 64).
+filter: incentive conditions, 50 rollouts per side per model, **0 truncations**.
+n: 200 rollouts across 2 models. source: `analysis/out/w2_gap.csv`,
+`analysis/out/w2_intermediates.csv`. command:
+`python3 src/landing_gap.py --model <hf-id> --tau <τ>` ·
+`python3 src/recount_w2.py Qwen3-8B 31250000`.
+**Carve-out, load-bearing:** the +0.32 Qwen2.5-14B screening gap **did not replicate**
+(D-018, E-004). It is reported as a screening artefact and a winner's-curse demonstration, and
+**never as an effect size**. G-001 stands as **FAIL on both models**.
+
+## E-004 · W3 frozen behavioural dataset, promoted · 2026-08-30
+
+**Promotes P-004 and G-002.** Audited by **V-006** ("the form-B recount … passes … D-018 is
+promoted to a headline behavioural finding"); load-bearing recount **V-005**
+(`src/recount_w3.py`, corrected-basis +0.1267 against the judge's +0.1200).
+metric: landing gap per form and extractor under both conventions; `P(final = τ)`; revision and
+stopping asymmetry (τ-echo-excluded and raw); trace-length ratio; extractor agreement raw and
+D-016-corrected.
+filter: PR-003 item 3's arms; non-truncated, non-null per extractor.
+n: **650 fresh rollouts + 50 reused neutral, 0 truncations in every arm**.
+source: `analysis/out/w3_behaviour.csv`, `analysis/out/w3_extractions.json`.
+command: `python3 src/behaviour_w3.py --tau-a 15300000 --tau-b 4500000000` ·
+`python3 src/recount_w3.py 4500000000`.
+**Carve-outs:** (a) form B's `≥`-convention CI is [0.000, 0.227] and touches zero, so its PASS
+is **convention-dependent** and is reported as such everywhere; (b) the revision statistic rests
+on **9–19 τ-crossings per arm** and supports no claim — the write-up reports it as
+uninformative, not as evidence of incentive-following; (c) G-002 stands as **FAIL**.
+
+## E-005 · The belief-conditional decomposition, promoted WITH characterized noise · 2026-08-30
+
+**Promotes P-005.** Audited by **V-006** (central W3 result, provisional pending judge
+validation), mechanically cross-checked by **V-007** (a deterministic `good cause`/`bad cause`
+string test over all 600 traces), and validated by **V-009**: *"PASSES WITH CHARACTERIZED
+NOISE … estimated 20–30 % label noise ATTENUATES contrasts and is documented, not corrected."*
+metric: PR-003 item 5's frozen direction judge (prompt sha256 in `w10_ledger_facts.json`);
+mention rate, direction-correct rate, and the landing gap conditioned on the verdict.
+filter: 600 incentive traces, **600 parsed, 0 unparsed** after the D-017 transport fix.
+source: `analysis/out/w3_direction.csv`, `analysis/out/w3_direction_cache.json`,
+`analysis/out/w4_judge_check.csv`.
+command: `python3 src/judge_check_w4.py` (offline, no API) ·
+`python3 src/behaviour_w3.py --tau-a 15300000 --tau-b 4500000000`.
+**Carve-out, the largest in this ledger:** the **causal reading is NOT promoted.** The judge
+reads the text the estimate came from, so a conditional gap is partly guaranteed by
+construction. What is promoted is (i) the **marginal comprehension rates**, which are measured
+from prompt-plus-text alone, and (ii) the conditional gaps **as a decomposition**, explicitly
+not as evidence that comprehension causes landing.
+
+## E-006 · W4 activation replay, promoted · 2026-08-30
+
+**Promotes P-006.** Audited by **V-009** ("the 34/34 decode check is the packet's load-bearing
+evidence and passes"); the check itself is **V-008**.
+metric: per-position residual-stream capture at decoder-layer outputs over the frozen dataset.
+filter: every non-truncated stored trace plus both neutral arms — **700 traces, 700 replayed,
+0 quarantined, 6,668 points**.
+source: `analysis/out/w4_positions/*.json`, `analysis/out/w4_replay_summary.csv`,
+`analysis/out/w4_decode_check.md`.
+command: `python3 src/replay_w4.py --dry-run` (reproduces every count in the entry on a laptop
+with no GPU) · `python3 src/replay_w4.py --decode-check`.
+**Carve-out:** the raw tensors are **gone** — they died with pod `io6c1fhnarzoj9` (S-008) and
+are regenerable in 94.8 s of forward passes. What survives and is audited is the position index
+(committed), the analysis cell (`runs/w5_subsample/w5_cell.safetensors`) and the shipped
+vectors.
+
+## E-007 · v_p̂, the layer profile, and pre-verbalization decodability, promoted · 2026-08-30
+
+**Promotes P-007.** Audited by **V-011** ("W5 ACCEPTED. The result of record is at the
+pre-registered ℓ\*=22 …"); apparatus checks **V-010** (commit order, tensor hashes, 30/30 decode,
+ship-list integrity); recount `src/w5_recount.py` at **cosine 1.000000**.
+metric: per-layer difference-in-means direction v_p̂ (PR-004 item 2), trace-level L2 logistic
+probes with 1,000-permutation trace-level nulls, cross-form cosine and A→B probe transfer.
+filter: `est` points (τ-echo-excluded, in-window), `above_good` arm, `unclear` verdicts
+excluded. n: **form A 163 points / 95 traces; form B 203 points / 109 traces**.
+source: `analysis/out/w5_{layers,probes,invariance,strata,projections}.csv`,
+`analysis/out/w5_lstar.json`, `analysis/out/w5_vectors/*.safetensors`.
+command: `python src/direction_w5.py --procs 48` (pod) · `python3 src/w5_recount.py` (laptop).
+**Carve-outs, three, all of which travel with the number:** (a) the **layers 24–36 band is
+EXPLORATORY [suggested]** and is labelled so at every citation — the result of record is at
+ℓ\*=22; (b) **form A's flat probe is not an absence claim** — power and absence are not
+separable at 14 minority traces and neither is claimed; (c) **PR-004's ℓ\* rule was a
+pre-registration flaw** (argmax of a curve never required to beat its null) and goes in the
+what-would-have-fooled-us register, per V-011.
+
+## E-008 · W7, the intervention: the causal null, promoted · 2026-08-30
+
+**Promotes P-008.** Audited by **V-013** ("W7 ACCEPTED. The recount matches to the count;
+PR-005's interpretation table was honoured and row 4 is the verdict of record"); apparatus
+checks **V-012** (PR-005's precedence from `git log`, the 20-line recount, the 23-arm structural
+check, the α=0 control).
+metric: `P(final > τ_B)` on the D-016-corrected regex basis (raw regex and judge beside it);
+the PR-005 item 5 statistics with 10,000-resample percentile bootstrap CIs, seed 64; the
+10-random-direction null; Spearman dose-response with a 10,000-shuffle permutation p.
+filter: all **1,150** generations, no exclusions. n: 50 per arm × 23 arms.
+source: `analysis/out/w7_arms.csv`, `analysis/out/w7_primary.csv`,
+`analysis/out/w7_samples/*.md`. command:
+`python3 src/analyze_w7.py --run …` · `python3 src/w7_recount.py`.
+**Carve-outs:** (a) the **post-hoc two-sided reading** (|Δ+| beating 10/10 nulls by 0.02) is
+recorded and **not claimed**; (b) the two screen-selected null arms judged under JC-6 are a
+**biased sample** of the ten and are reported as a caution, never as a test; (c) **coherence
+1.000 licenses "the text is well-formed" and nothing more** — D-029 is attached wherever the
+word appears; (d) **H3′ is [not tested]**.
+
+## E-009 · W7b, the low-dose bound, promoted · 2026-08-30
+
+**Promotes P-009.** Audited by **V-015** (this packet) — "W7b ACCEPTED. The recount matches to
+the count and cross-reproduces W7's sham (34/50)"; apparatus checks **V-014**.
+metric: `P(final > τ_B)` corrected-regex primary with the judge beside it; Δ±(v_p̂) with a
+10,000-resample bootstrap CI, seed 64; four random-direction Δ±; the frozen distortion statistic
+D̄. filter: all **600** generations, no exclusions. n: 50 per arm × 12 arms, plus W7's **reused**
+α=0 sham. source: `analysis/out/w7b_arms.csv`, `analysis/out/w7b_primary.csv`.
+command: `python3 src/analyze_w7b.py --run --procs 14` · `python3 src/w7b_recount.py` ·
+`python3 src/w7b_floor.py`.
+**Carve-outs, four:** (a) **STAGE-2, DESIGNED AFTER W7's RESULT** — the label travels with every
+W7b number and W7's verdict is not reopened; (b) **D-032 travels with the fired verdict row**:
+the D̄ line sat below the statistic's own noise floor, so rows 1 and 2 were jointly unreachable
+before a token existed; (c) the homogeneity analysis is **descriptive**, per V-015, not a
+hypothesis test; (d) **no fresh sham was generated** (V-014(6b)), so the packet cannot separate
+"a flat offset" from "the reused n=50 sham reading high" — a limitation PR-006 item 2 declared
+before the data.
+
+---
+
+## D-034 · P-009 §5's "1 of 600" fabrication figure carries no regenerating command · 2026-08-30
+
+**Caught by the W10 skepticism pass, and it is the pass's first real finding.** P-009 §5 states
+that "the D-029 fabrication signature appears in **1 of 600** generations". Standing constraint 2
+requires every reported number to be regenerable by a **named command over committed files**.
+No such command exists for that figure: it is not in `w7b_arms.csv`, not in `w7b_primary.csv`,
+and no script in `src/` computes it. It entered the ledger from a reading, not from a rule.
+
+**Disposition — a named screen, not a patched number.** `src/w10_skeptic.py` defines the
+**D-029 fabrication screen** explicitly, before running it, and reports what it gives:
+
+> A generation fires iff **(a)** some sentence dismissively compares the estimate to the
+> threshold — `far|much|vastly|orders of magnitude` + `smaller|less|lower|below|fewer`, or the
+> word `mere`, in the same sentence as `4.5 billion` / `4,500,000,000` / `threshold` — **and
+> (b)** its D-016-corrected final is below **τ_B/100**, i.e. fluent prose arguing its way to a
+> two-orders-of-magnitude low-ball.
+
+command: `python3 src/w10_skeptic.py` → `analysis/out/w10_skeptic.json`, key `text_screens`.
+
+| arm set | dose | fires | n |
+|---|---|---|---|
+| W7 `B_above_sham` | α = 0 | **0** | 50 |
+| W7 `B_above_L27_ap2` | α = +2 (22.8 % of ‖h‖) | **0** | 50 |
+| W7 `B_above_L27_ap4` | α = +4 (45.6 % of ‖h‖) | **9** | 50 |
+| **W7b, all twelve arms** | \|α\| ≤ 0.5 (≤ 5.7 % of ‖h‖) | **3** | 600 |
+
+**The screen is a different instrument from the one that produced "1 of 600", so this is a
+supersession, not a contradiction.** What the named screen shows is *stronger* than the figure
+it replaces and points the same way: the D-029 signature is a **high-dose** phenomenon —
+**18 % at α=+4, 0 % at the sham, 0.5 % at the doses W7b ran** — while coherence reads 1.000
+throughout. The write-up cites **this** table and this command; P-009 §5's figure is not cited.
+
+**Which of the three hypotheses (constraint 7):** not a bug — the screen is new code and its
+output is reproduced here. Not a flaw in an instruction — no order required the W7b figure to
+be regenerable-by-command *at the time*, though standing constraint 2 always did. It is a
+**process gap**: a number produced by reading rather than by a rule reached the ledger without
+anyone noticing that it could not be re-derived. **The general fix is cheap and is recommended:
+a packet's close should grep its own `P-` entry for numerals and require each to resolve to a
+committed file.**
+
+---
+
+## D-035 · A cited selftest does not run under the interpreter its citation names · 2026-08-30
+
+`PR-003` item 1 certifies the form-B reskin with **`python3 src/prompts_w3.py --selftest` →
+6/6 pass**. On the laptop of record today that command **fails**:
+
+```
+ModuleNotFoundError: No module named 'anthropic'
+```
+
+`prompts_w3.py` imports `value_leakage.sample`, whose module top imports
+`value_leakage.api.anthropic.messages`, which imports the `anthropic` SDK — a transitive
+dependency of the *frozen upstream tree*, not of the check. Under the project venv the same
+command passes:
+
+```
+$ .venv-w1/bin/python src/prompts_w3.py --selftest
+ok  baseline     exactly-one-line-differs=True
+ok  below_good   exactly-one-line-differs=True
+ok  above_good   exactly-one-line-differs=True
+ok  below_good   upstream bet paragraph present verbatim
+ok  above_good   upstream bet paragraph present verbatim
+ok  threshold renders with separators in both forms
+```
+
+**6/6, as PR-003 recorded.** The result is intact; **the command string in the ledger is
+under-specified**, and an auditor following it literally on a clean checkout would report a
+failure that is not there. This is the same class as **D-022** (`bootstrap.sh` naming the wrong
+interpreter) reappearing laptop-side.
+
+**Disposition.** Nothing is patched: `prompts_w3.py` is untouched and PR-003 is not edited
+(append-only). `src/w10_skeptic.py`'s SK-10 runs each cited command under `python3` **and**,
+on failure, under `.venv-w1/bin/python`, and **records which interpreter each one needed** —
+so the write-up's methods register names the interpreter, not just the script. Of the seven
+cited commands re-run in this packet, **six run under bare `python3` and one (this one) needs
+the venv**.
+
+---
+
+## D-036 · P-005's pooled mention rate is off by one against its own per-arm table · 2026-08-30
+
+**Second finding of the W10 skepticism pass.** P-005 states that the model "mentions the bet,
+the threshold or the cause in **99.2 % of 600 incentive traces (595/600)**". Recounting the
+**frozen** direction-judge cache — unchanged since W3, and the same file every downstream packet
+read — gives **596 of 600 = 99.3 %**:
+
+command: `python3 src/w10_derived.py` → `analysis/out/w10_derived.json`, key
+`w3.direction_judge`.
+
+| form | arm | mentions | n | rate |
+|---|---|---|---|---|
+| A | below_good | 150 | 150 | 100.0 % |
+| A | above_good | **148** | 150 | 98.7 % |
+| B | below_good | **149** | 150 | 99.3 % |
+| B | above_good | **149** | 150 | 99.3 % |
+| | **pooled** | **596** | **600** | **99.3 %** |
+
+**P-005's own per-arm table implies 596, not 595** — 100.0/98.7/99.3/99.3 at n=150 each are
+exactly 150/148/149/149. The per-arm rates in `analysis/out/w3_direction.csv` are correct and
+were never wrong; the pooled sentence beside them mis-summed by one trace.
+
+**Consequence: none, anywhere.** The claim is "near-total verbalization"; 99.2 % and 99.3 %
+support it identically, no gate or verdict used the pooled figure, and R-012 states it as
+"~99 %". It is recorded because the ledger is append-only and a wrong number is corrected by a
+later entry that names it, not by being quietly right in the write-up.
+
+**The write-up cites 596/600 = 99.3 %, from the command above**, and this entry is the pointer
+explaining why that differs from P-005's sentence.
+
+**Which hypothesis (constraint 7):** not a bug in new code — `w10_derived.py`'s count is
+verified against `w3_direction.csv`'s per-arm rates, which independently imply 596. Not a flaw
+in an instruction. It is **a hand-arithmetic slip in ledger prose**, of exactly the kind
+`writeup/build.py` exists to make impossible downstream: no number in `final.md` is typed.
+
+---
+
+## D-037 · Two smaller recount discrepancies, both recorded, neither consequential · 2026-08-30
+
+Found while building `analysis/out/w10_derived.json`, which recomputes from raw committed text
+every number the write-up cites that no CSV holds as a single cell.
+command: `python3 src/w10_derived.py`.
+
+**(1) "Judge-vs-corrected-regex disagreement" names two different statistics.**
+P-008 §8 reports **121 / 1,150 = 10.5 %** for W7; D-033 reports **22 / 600 = 3.7 %** for W7b
+and compares the two directly ("against W7's 10.5 %"). They are not the same measurement:
+
+| statistic | rule | W7 | W7b |
+|---|---|---|---|
+| **value** disagreement | PR-001 item 8: relative difference > 1 %, or exactly one extractor null | **121 / 1,150 = 10.5 %** | **41 / 600 = 6.8 %** |
+| **landing-verdict** disagreement | the two extractors disagree on `final > τ_B` | **60 / 1,148 = 5.2 %** | **22 / 600 = 3.7 %** |
+
+Both W7 numbers and both W7b numbers are reproduced by `w10_derived.py`, so neither entry is
+wrong — but D-033's sentence compares a landing-verdict rate against a value rate. On the
+like-for-like comparison the direction of D-033's claim survives: **extraction is cleaner at low
+dose on both definitions** (10.5 → 6.8 % and 5.2 → 3.7 %). The write-up reports both rules by
+name and makes only the like-for-like comparison.
+
+**(2) P-004's per-arm median output-token table does not reproduce exactly.** A plain median
+over `n_output_tokens` in the committed rollout files gives form A below/above **341.5 / 330.5**
+and form B below/above/baseline **404.5 / 394.0 / 353.0**, against P-004's **342 / 331** and
+**406 / 395 / 354**. The **pooled** figures in `analysis/out/w3_behaviour.csv` — the ones any
+statistic actually uses — reproduce **exactly** (form A ratio 1.1038 from 335.0 / 303.5; form B
+1.1346 from 400.5 / 353.0), and the baseline median 353.0 matches to the digit.
+
+The residual is a rounding or tie-handling convention inside P-004's descriptive table that the
+ledger does not state. **Nothing depends on it:** the trace-length ratio is the reported
+statistic, it is committed, and it reproduces. The write-up cites the CSV, not P-004's table,
+and uses **394** where the ledger's prose said "W3's unsteered 395".
+
+**Which hypothesis (constraint 7):** (1) is an under-specified name in ledger prose, not a bug —
+both statistics are correct under their own rules. (2) is an unstated convention. Neither is a
+new-code bug: `w10_derived.py` reproduces `w3_behaviour.csv`'s pooled figures, the landing gaps
+(+0.0166 form A, +0.1200 form B), D-018's z = 2.83, and W7's τ-echo profile
+(78/70/58 % at α=+1/+2/+4) exactly, which is what licenses trusting it on the cells that differ.
+
+---
+
+## S-011 · Spend, W10 · 2026-08-30
+
+**No pod was provisioned and no inference API was called.** W10 is assembly and skepticism work:
+every command in it reads committed files on the laptop.
+
+| pod | GPU | $/hr | window | hours | cost |
+|---|---|---|---|---|---|
+| none | — | n/a | — | 0.000 | **$0.00** |
+
+**GPU spend this packet: $0.00. API this packet: $0.00.**
+
+**Cumulative GPU: $13.42 of $60.00. Cumulative API: $16.06. Total project spend: $29.48 of the
+$60 cap; balance $30.52.** Unchanged from S-010, which is the point: the write-up costs nothing
+because every number it contains was already bought. The **$45** surfacing threshold was never
+approached in this project and is not approached now.
+
+**Account state:** unchanged since S-010's verification — `/pods` empty, `currentSpendPerHr`
+$0.000, no volume. Nothing was created, started or terminated in this packet.
+
+**What W10 did buy, in laptop time rather than dollars:** the ten-check skepticism pass
+(`src/w10_skeptic.py`, ~1.7 s), the derived-quantity recount (`src/w10_derived.py`), the
+ledger-fact extraction (`src/w10_ledger_facts.py`), and the document build
+(`python3 writeup/build.py`). All four are stdlib-only and run in seconds on the owner's machine.
+
+---
+
+## T-013 · Time, W10 · 2026-08-30
+
+Owner-clock minutes: **not asked for and not supplied — D-025 / D-026 / R-010(5).**
+Runner wall time, W10: **≈ 1 h 35 m** (2026-08-30 ≈07:58 → 09:33 UTC), measured to the commit
+that closes the packet; the delivery report to the courier follows it.
+GPU wall time: **0.00** — no pod was created (S-011).
+
+| phase | wall | note |
+|---|---|---|
+| re-orientation from `ORIENTATION.md` and the full ledger | ~20 m | the ledger is 4,400 lines; the whole of it was read, not the tail |
+| transcribe V-015 / R-012, write E-001…E-009 | ~15 m | |
+| the skepticism pass (`src/w10_skeptic.py`, ten checks) | ~20 m | including the exact D̄-floor dynamic program |
+| `w10_derived.py` and `w10_ledger_facts.py` | ~15 m | three ledger discrepancies surfaced here (D-034/D-036/D-037) |
+| build machinery: template, manifest, `build.py`, digits check | ~20 m | |
+| the compact visual document and its two data figures | ~15 m | |
+| ledger, commit | ~10 m | |
+
+**This is the first packet in the project whose entire cost is laptop time.** Every command in it
+reads committed files; nothing was generated, no pod existed, no API was called. The skepticism
+pass runs in **~1.7 s**, the derived recount in about the same, and the two documents build in
+under a second.
+
+**Where the time actually went, and it is worth recording:** roughly a third of it was reading —
+the ledger is the input to this packet in the way a dataset is the input to an experimental one,
+and three of the packet's findings (D-034, D-036, D-037) came out of recomputing numbers the
+ledger states rather than out of any new analysis. The build machinery, which sounds like the
+expensive part, was not: the manifest is mechanical once the sources exist.
+
+---
+
+## V-016 · W10 skepticism pass, E-promotion, and the build's own audit · 2026-08-30
+
+**This is a runner verification note, not a researcher audit.** The researcher's audit of W10 is
+the review of `writeup/final.md` against this ledger, which is the packet's own audit obligation
+and has not happened at the time this entry is written.
+
+### 1 · The ten checks
+
+command (all of them, one run, stdlib only): `python3 src/w10_skeptic.py --print`
+emits: `analysis/out/w10_skeptic.json`, `analysis/out/w10_checks.csv`
+
+| check | what it verifies | status | result |
+|---|---|---|---|
+| **SK-1** | extractor coverage: both extractors in every source CSV | PASS | no exception |
+| **SK-2** | dose-response monotonicity (W7 ladder) and dose flatness (W7b) | PASS | W7 monotone non-decreasing = False, inverted U on sham = True; W7b \|α\|=0.25 → 0.470 vs \|α\|=0.50 → 0.476, Fisher p = 1.000 |
+| **SK-3** | coherence per arm, as well-formedness ONLY (D-029 attached) | PASS | W7 22/23 arms at 1.000 (min 0.980); W7b 12/12 at 1.000; 0 degenerate in 1,750 generations; 0 arms below PR-005 item 4c's 80 % line |
+| **SK-4** | tie-convention sensitivity, incl. W2's 36-tie case | PASS | W2: **0** verdict flips — Qwen3-8B's judge gap moves +0.12 → +0.16 on 36 ties and the verdict is unchanged; W3: **1** flip (form B, judge, the `≥` convention) |
+| **SK-5** | D-016 corrected-vs-raw bases wherever a landing number is cited | PASS | W3 raw disagreement 52.3 % / 42.3 % against corrected 1.0 % / 0.7 %; W7 and W7b carry both bases on **every** arm |
+| **SK-6** | W7b arm homogeneity and the flat, direction-independent offset | PASS | χ² = 16.38, dof 11, p = 0.128; pooled 285/600 = 0.475; v_p̂ arms 0.440 vs random arms 0.492; pooled vs sham Fisher p = 0.0075 |
+| **SK-7** | D̄'s null floor — **exact** recount of D-032's simulation | PASS | E[D̄] = **0.0782**, P(D̄ > 0.06) = **0.648**, rising to **0.689** at-or-on the line |
+| **SK-8** | text-level screens: verbalized preference, D-029 fabrication | PASS | injected preference **0/600** (W7b) and **0/1,150** (W7); fabrication screen **3/600** low dose, **0/50** sham, **9/50** at α=+4 |
+| **SK-9** | seed-block disjointness and generation totals | PASS | W7 1,150 seeds 8064–9213, W7b 600 seeds 9214–9813, distinct and contiguous, **0** collisions |
+| **SK-10** | regenerability of every cited recount and selftest | PASS | **7/7** exit 0; **1** needs the project venv rather than bare `python3` (**D-035**) |
+
+**SK-7 refines D-032 rather than merely confirming it.** D-032 measured the floor by 200,000
+simulations and reported E[D̄] = 0.078 and P(fire) = 0.662. The exact dynamic program over the
+eight arms' summed absolute deviations gives **0.0782** and **0.648**. The difference is not
+Monte-Carlo error: **D̄ is lattice-valued at n = 50 and 0.06 is one of its atoms**, so mass sitting
+exactly on the line is included or excluded depending on floating-point comparison —
+P(D̄ ≥ 0.06) is **0.689**. The conclusion is unchanged and slightly strengthened: **a gate whose
+line is an atom of its own null distribution is worse than one merely set too low.**
+
+**Three findings came out of the pass and are filed as their own entries:** **D-034** (P-009 §5's
+"1 of 600" fabrication figure has no regenerating command; a named screen supersedes it),
+**D-036** (P-005's pooled mention rate is off by one against its own per-arm table),
+**D-037** (two differently-defined "extractor disagreement" statistics compared against each
+other; P-004's per-arm median-token table does not reproduce exactly).
+
+### 2 · The E-promotion table
+
+Every `P-` entry in this ledger, with the `V-` that audited it and what was **not** promoted.
+
+| provisional | promoted to | audited by | carve-outs — what is NOT promoted |
+|---|---|---|---|
+| **P-001** W1 τ and truncation | **E-001** | **V-002** | Gemma recorded inaccessible, never substituted |
+| **P-002** intermediates preview | **E-002** | **V-002** | decided nothing; G0's parse condition was evaluated on W2 traces |
+| **P-003** W2 screening gap · **G-001** | **E-003** | **V-003** (audit) + **V-003R** (recount) + V-004 | the +0.32 gap **did not replicate** (D-018) and is never used as an effect size; G0 stands FAIL |
+| **P-004** W3 frozen dataset · **G-002** | **E-004** | **V-006**, recount **V-005** | form B's pass is **convention-dependent**; revision asymmetry rests on 9–19 crossings and supports nothing; G1 stands FAIL |
+| **P-005** belief-conditional decomposition | **E-005** | **V-006** + **V-007** + **V-009** ("PASSES WITH CHARACTERIZED NOISE") | **the causal reading is not promoted** — the judge reads the text the estimate came from; only the marginal comprehension rates are circularity-free |
+| **P-006** W4 activation replay | **E-006** | **V-009**, check **V-008** (34/34 decode) | raw tensors are gone with the pod; the position index, analysis cell and vectors are what survive |
+| **P-007** v_p̂, layer profile, invariance | **E-007** | **V-011**, checks **V-010**, recount cos 1.000000 | layers 24–36 band stays **EXPLORATORY [suggested]**; form A's flat probe is **not** an absence claim; PR-004's ℓ\* rule is a pre-registration flaw |
+| **P-008** W7 intervention | **E-008** | **V-013**, checks **V-012** | the post-hoc two-sided reading is **not** claimed; the two screen-selected nulls are a **biased** sample; coherence 1.000 licenses well-formedness only (D-029); H3′ [not tested] |
+| **P-009** W7b low-dose follow-up | **E-009** | **V-015** (this packet), checks **V-014** | **STAGE-2, designed after W7's result**; **D-032 travels with the fired verdict row**; homogeneity is descriptive; no fresh sham, so the flat offset and a high-reading sham are not separated |
+
+**No `P-` entry is left provisional.** All nine are audited and promoted. What is *not* promoted
+is listed per row above and is carried into `writeup/final.md` as an explicit non-claim rather
+than dropped, and every promoted number in the write-up is substituted from the file named in its
+`E-` entry.
+
+### 3 · The build's own audit
+
+command: `python3 writeup/build.py` · check output: `analysis/out/w10_digits_check.txt`
+
+**468 placeholders**, one manifest line each (`writeup/manifest.csv`: token → source file →
+selector → format), resolving to **577 substitution sites** in `writeup/final.md` and **193** in
+`writeup/compact.html`. Of **2,117** digit characters in `final.md`, **1,953** are inside a span
+written by a placeholder and **164** are matched by a named structural whitelist rule (ledger
+entry ids, packet ids, dates, section and item references, model and hardware names, α-dose
+notation, sub/superscripts, backticked paths and commands). **Untraceable digits: 0.** The same
+check over `compact.html` excludes CSS rules and tag attributes as markup — geometry and colours
+are not claims — and leaves every text node, including SVG labels, inside the check: **0**
+untraceable digits there too.
+
+**Rebuild identity, verified twice:** `python3 writeup/build.py && python3 writeup/build.py
+--verify` → `final.md IDENTICAL (53,286 bytes)`, `compact.html IDENTICAL (41,818 bytes)`.
+sha256 `a459ea1f…` and `f9410efb…`.
+
+**The three generated sources the build reads**, each a named command over committed files:
+`python3 src/w10_skeptic.py` (the ten checks), `python3 src/w10_derived.py` (quantities no CSV
+holds as a cell — layer-band edges, pooled recounts, the D-018 z, figure geometry), and
+`python3 src/w10_ledger_facts.py` (**104** spend, time, commit-hash and stack facts **extracted by
+regex from RESULTS.md itself**, so the ledger is the machine source and a wording change breaks
+the build loudly rather than silently).

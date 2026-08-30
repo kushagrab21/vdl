@@ -1,0 +1,469 @@
+token,source,selector,format,note
+lf_submission_date,w10_ledger_facts.json,facts.submission_date.value,raw,ledger fact submission_date
+lf_model_id,w10_ledger_facts.json,facts.model_id.value,raw,ledger fact model_id
+lf_covert_pct,w10_ledger_facts.json,facts.covert_disclosure_pct_122b.value,raw,ledger fact covert_disclosure_pct_122b
+lf_ci_pct,w10_ledger_facts.json,facts.ci_level_pct.value,raw,ledger fact ci_level_pct
+lf_upstream_commit,w10_ledger_facts.json,facts.upstream_freeze_commit.value,raw,ledger fact upstream_freeze_commit
+lf_judge_model,w10_ledger_facts.json,facts.judge_model.value,raw,ledger fact judge_model
+lf_disagree_threshold,w10_ledger_facts.json,facts.extractor_disagreement_threshold_pct.value,raw,ledger fact extractor_disagreement_threshold_pct
+lf_g0_min,w10_ledger_facts.json,facts.g0_intermediate_min.value,raw,ledger fact g0_intermediate_min
+lf_w2_mentions,w10_ledger_facts.json,facts.w2_sample_bet_mentions.value,raw,ledger fact w2_sample_bet_mentions
+lf_w2_sample_traces,w10_ledger_facts.json,facts.w2_sample_traces.value,raw,ledger fact w2_sample_traces
+lf_n_layers,w10_ledger_facts.json,facts.n_layers.value,raw,ledger fact n_layers
+lf_d_model,w10_ledger_facts.json,facts.d_model.value,raw,ledger fact d_model
+lf_probe_split,w10_ledger_facts.json,facts.probe_split.value,raw,ledger fact probe_split
+intermediate_floor,w10_ledger_facts.json,facts.intermediate_floor.value,raw,ledger fact intermediate_floor
+lf_w5_before_A,w10_ledger_facts.json,facts.w5_before_points_A.value,raw,ledger fact w5_before_points_A
+lf_w5_total_A,w10_ledger_facts.json,facts.w5_total_points_A.value,raw,ledger fact w5_total_points_A
+lf_w5_before_B,w10_ledger_facts.json,facts.w5_before_points_B.value,raw,ledger fact w5_before_points_B
+lf_w5_total_B,w10_ledger_facts.json,facts.w5_total_points_B.value,raw,ledger fact w5_total_points_B
+w5_pre_verbal_pct,w10_ledger_facts.json,facts.w5_pre_verbalization_pct.value,raw,ledger fact w5_pre_verbalization_pct
+w5_A_points,w10_ledger_facts.json,facts.w5_points_A.value,raw,ledger fact w5_points_A
+w5_A_traces,w10_ledger_facts.json,facts.w5_traces_A.value,raw,ledger fact w5_traces_A
+w5_A_pos,w10_ledger_facts.json,facts.w5_pos_A.value,raw,ledger fact w5_pos_A
+w5_A_minority,w10_ledger_facts.json,facts.w5_neg_A.value,raw,ledger fact w5_neg_A
+w5_B_points,w10_ledger_facts.json,facts.w5_points_B.value,raw,ledger fact w5_points_B
+w5_B_traces,w10_ledger_facts.json,facts.w5_traces_B.value,raw,ledger fact w5_traces_B
+w5_B_pos,w10_ledger_facts.json,facts.w5_pos_B.value,raw,ledger fact w5_pos_B
+w5_B_neg,w10_ledger_facts.json,facts.w5_neg_B.value,raw,ledger fact w5_neg_B
+lf_dmu,w10_ledger_facts.json,facts.dmu_norm_L27.value,raw,ledger fact dmu_norm_L27
+lf_dbar_line,w10_ledger_facts.json,facts.dbar_line.value,raw,ledger fact dbar_line
+smoke_s4_tol,w10_ledger_facts.json,facts.smoke_s4_tolerance.value,raw,ledger fact smoke_s4_tolerance
+lf_decode_k,w10_ledger_facts.json,facts.decode_check_k.value,raw,ledger fact decode_check_k
+lf_decode_n,w10_ledger_facts.json,facts.decode_check_n.value,raw,ledger fact decode_check_n
+lf_integrity_decode,w10_ledger_facts.json,facts.integrity_decode.value,raw,ledger fact integrity_decode
+d_api_miss_w7,w10_ledger_facts.json,facts.api_projection_miss_w7_pct.value,raw,ledger fact api_projection_miss_w7_pct
+d_api_miss_w7b,w10_ledger_facts.json,facts.api_projection_miss_w7b_pct.value,raw,ledger fact api_projection_miss_w7b_pct
+lf_snapshot,w10_ledger_facts.json,facts.model_snapshot.value,raw,ledger fact model_snapshot
+lf_gpu_type,w10_ledger_facts.json,facts.gpu_type.value,raw,ledger fact gpu_type
+lf_transformers,w10_ledger_facts.json,facts.transformers_version.value,raw,ledger fact transformers_version
+lf_torch,w10_ledger_facts.json,facts.torch_version.value,raw,ledger fact torch_version
+conv_vllm,w10_ledger_facts.json,facts.vllm_version.value,raw,ledger fact vllm_version
+lf_judge_prompt_sha,w10_ledger_facts.json,facts.direction_judge_prompt_sha256.value,raw,ledger fact direction_judge_prompt_sha256
+lf_vphat_sha,w10_ledger_facts.json,facts.vphat_B_sha256.value,raw,ledger fact vphat_B_sha256
+lf_spend_gpu_cum,w10_ledger_facts.json,facts.spend_gpu_cumulative.value,raw,ledger fact spend_gpu_cumulative
+lf_spend_api_cum,w10_ledger_facts.json,facts.spend_api_cumulative.value,raw,ledger fact spend_api_cumulative
+lf_spend_total,w10_ledger_facts.json,facts.spend_total.value,raw,ledger fact spend_total
+lf_spend_cap,w10_ledger_facts.json,facts.spend_cap.value,raw,ledger fact spend_cap
+lf_spend_balance,w10_ledger_facts.json,facts.spend_balance.value,raw,ledger fact spend_balance
+lf_spend_threshold,w10_ledger_facts.json,facts.spend_surfacing_threshold.value,raw,ledger fact spend_surfacing_threshold
+lf_gpu_w0,w10_ledger_facts.json,facts.spend_gpu_w0.value,raw,ledger fact spend_gpu_w0
+lf_gpu_w0b,w10_ledger_facts.json,facts.spend_gpu_w0b.value,raw,ledger fact spend_gpu_w0b
+lf_gpu_w1,w10_ledger_facts.json,facts.spend_gpu_w1.value,raw,ledger fact spend_gpu_w1
+lf_gpu_w2,w10_ledger_facts.json,facts.spend_gpu_w2.value,raw,ledger fact spend_gpu_w2
+lf_gpu_w3,w10_ledger_facts.json,facts.spend_gpu_w3.value,raw,ledger fact spend_gpu_w3
+lf_gpu_w4,w10_ledger_facts.json,facts.spend_gpu_w4.value,raw,ledger fact spend_gpu_w4
+lf_gpu_w5,w10_ledger_facts.json,facts.spend_gpu_w5.value,raw,ledger fact spend_gpu_w5
+lf_gpu_w7,w10_ledger_facts.json,facts.spend_gpu_w7.value,raw,ledger fact spend_gpu_w7
+lf_gpu_w7b,w10_ledger_facts.json,facts.spend_gpu_w7b.value,raw,ledger fact spend_gpu_w7b
+lf_api_w0b,w10_ledger_facts.json,facts.spend_api_w0b.value,raw,ledger fact spend_api_w0b
+lf_api_w1,w10_ledger_facts.json,facts.spend_api_w1.value,raw,ledger fact spend_api_w1
+lf_api_w2,w10_ledger_facts.json,facts.spend_api_w2.value,raw,ledger fact spend_api_w2
+lf_api_w3,w10_ledger_facts.json,facts.spend_api_w3.value,raw,ledger fact spend_api_w3
+lf_api_w4,w10_ledger_facts.json,facts.spend_api_w4.value,raw,ledger fact spend_api_w4
+lf_api_w5,w10_ledger_facts.json,facts.spend_api_w5.value,raw,ledger fact spend_api_w5
+lf_api_w7,w10_ledger_facts.json,facts.spend_api_w7.value,raw,ledger fact spend_api_w7
+lf_api_w7b,w10_ledger_facts.json,facts.spend_api_w7b.value,raw,ledger fact spend_api_w7b
+lf_t_w0,w10_ledger_facts.json,facts.time_runner_w0.value,raw,ledger fact time_runner_w0
+lf_t_w0b,w10_ledger_facts.json,facts.time_runner_w0b.value,raw,ledger fact time_runner_w0b
+lf_t_w1,w10_ledger_facts.json,facts.time_runner_w1.value,raw,ledger fact time_runner_w1
+lf_t_w2,w10_ledger_facts.json,facts.time_runner_w2.value,raw,ledger fact time_runner_w2
+lf_t_w3,w10_ledger_facts.json,facts.time_runner_w3.value,raw,ledger fact time_runner_w3
+lf_t_w4,w10_ledger_facts.json,facts.time_runner_w4.value,raw,ledger fact time_runner_w4
+lf_t_w5,w10_ledger_facts.json,facts.time_runner_w5.value,raw,ledger fact time_runner_w5
+lf_t_w7,w10_ledger_facts.json,facts.time_runner_w7.value,raw,ledger fact time_runner_w7
+lf_t_w7b,w10_ledger_facts.json,facts.time_runner_w7b.value,raw,ledger fact time_runner_w7b
+lf_gpuw_w0b,w10_ledger_facts.json,facts.gpu_wall_w0b.value,raw,ledger fact gpu_wall_w0b
+lf_gpuw_w1,w10_ledger_facts.json,facts.gpu_wall_w1.value,raw,ledger fact gpu_wall_w1
+lf_gpuw_w2,w10_ledger_facts.json,facts.gpu_wall_w2.value,raw,ledger fact gpu_wall_w2
+lf_gpuw_w3,w10_ledger_facts.json,facts.gpu_wall_w3.value,raw,ledger fact gpu_wall_w3
+lf_gpuw_w4,w10_ledger_facts.json,facts.gpu_wall_w4.value,raw,ledger fact gpu_wall_w4
+lf_gpuw_w5,w10_ledger_facts.json,facts.gpu_wall_w5.value,raw,ledger fact gpu_wall_w5
+lf_gpuw_w7,w10_ledger_facts.json,facts.gpu_wall_w7.value,raw,ledger fact gpu_wall_w7
+lf_gpuw_w7b,w10_ledger_facts.json,facts.gpu_wall_w7b.value,raw,ledger fact gpu_wall_w7b
+lf_cf_w7,w10_ledger_facts.json,facts.compute_fraction_w7.value,raw,ledger fact compute_fraction_w7
+lf_cf_w7b,w10_ledger_facts.json,facts.compute_fraction_w7b.value,raw,ledger fact compute_fraction_w7b
+lf_w7_gen,w10_ledger_facts.json,facts.w7_generation_secs.value,raw,ledger fact w7_generation_secs
+lf_w7b_gen,w10_ledger_facts.json,facts.w7b_generation_secs.value,raw,ledger fact w7b_generation_secs
+lf_w4_fwd,w10_ledger_facts.json,facts.w4_forward_pass_secs.value,raw,ledger fact w4_forward_pass_secs
+lf_owner_clock,w10_ledger_facts.json,facts.owner_clock_hours.value,raw,ledger fact owner_clock_hours
+lf_pr005_commit,w10_ledger_facts.json,facts.pr005_commit.value,raw,ledger fact pr005_commit
+lf_pr005_time,w10_ledger_facts.json,facts.pr005_commit_time.value,raw,ledger fact pr005_commit_time
+lf_pr005_lead,w10_ledger_facts.json,facts.pr005_lead_to_first_token.value,raw,ledger fact pr005_lead_to_first_token
+lf_pr006_commit,w10_ledger_facts.json,facts.pr006_commit.value,raw,ledger fact pr006_commit
+lf_pr006_time,w10_ledger_facts.json,facts.pr006_commit_time.value,raw,ledger fact pr006_commit_time
+lf_pr006_lead,w10_ledger_facts.json,facts.pr006_lead_to_first_token.value,raw,ledger fact pr006_lead_to_first_token
+w10_gpu,w10_ledger_facts.json,facts.spend_gpu_w10.value,raw,ledger fact spend_gpu_w10
+w10_api,w10_ledger_facts.json,facts.spend_api_w10.value,raw,ledger fact spend_api_w10
+w10_runner_time,w10_ledger_facts.json,facts.time_runner_w10.value,raw,ledger fact time_runner_w10
+lf_panel_size,w10_ledger_facts.json,facts.panel_size_b.value,raw,ledger fact panel_size_b
+alpha_grid_w7,w10_derived.json,alpha_grids.w7,raw,"pre-registered dose grid, units of ||dmu||"
+alpha_grid_w7b,w10_derived.json,alpha_grids.w7b,raw,stage-2 low-dose grid
+conv_n_boot,w10_derived.json,conventions.n_boot,comma,bootstrap resamples
+conv_boot_seed,w10_derived.json,conventions.bootstrap_seed,int,
+conv_temperature,w10_derived.json,conventions.temperature,f1,
+conv_top_p,w10_derived.json,conventions.top_p,f1,
+conv_base_seed,w10_derived.json,conventions.base_seed,int,
+conv_n_per_arm,w10_derived.json,conventions.n_per_arm,int,generations per steered arm
+w1_q3_n,w1_tau.csv,model=Qwen/Qwen3-8B::n,int,
+w1_q3_trunc,w1_tau.csv,model=Qwen/Qwen3-8B::n_truncated,int,
+w1_q3_tau_j,w1_tau.csv,model=Qwen/Qwen3-8B::tau_judge,comma,
+w1_q3_tau_r,w1_tau.csv,model=Qwen/Qwen3-8B::tau_regex,comma,
+w1_q3_dis,w1_tau.csv,model=Qwen/Qwen3-8B::pct_disagree,pct1,
+w1_q3_medf,w1_tau.csv,model=Qwen/Qwen3-8B::median_intermediates_filtered,f1,
+w1_q25_n,w1_tau.csv,model=Qwen/Qwen2.5-14B-Instruct::n,int,
+w1_q25_trunc,w1_tau.csv,model=Qwen/Qwen2.5-14B-Instruct::n_truncated,int,
+w1_q25_tau_j,w1_tau.csv,model=Qwen/Qwen2.5-14B-Instruct::tau_judge,comma,
+w1_q25_tau_r,w1_tau.csv,model=Qwen/Qwen2.5-14B-Instruct::tau_regex,comma,
+w1_q25_dis,w1_tau.csv,model=Qwen/Qwen2.5-14B-Instruct::pct_disagree,pct1,
+w1_q25_medf,w1_tau.csv,model=Qwen/Qwen2.5-14B-Instruct::median_intermediates_filtered,f1,
+w1_rq_n,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B::n,int,
+w1_rq_trunc,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B::n_truncated,int,
+w1_rq_tau_j,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B::tau_judge,comma,
+w1_rq_tau_r,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B::tau_regex,comma,
+w1_rq_dis,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B::pct_disagree,pct1,
+w1_rq_medf,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B::median_intermediates_filtered,f1,
+w1_rl_n,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Llama-8B::n,int,
+w1_rl_trunc,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Llama-8B::n_truncated,int,
+w1_rl_tau_j,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Llama-8B::tau_judge,comma,
+w1_rl_tau_r,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Llama-8B::tau_regex,comma,
+w1_rl_dis,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Llama-8B::pct_disagree,pct1,
+w1_rl_medf,w1_tau.csv,model=deepseek-ai/DeepSeek-R1-Distill-Llama-8B::median_intermediates_filtered,f1,
+w2_gap_q3_judge_gt,w2_gap.csv,model=Qwen/Qwen3-8B;extractor=judge;convention=strict_gt::gap,s2,
+w2_ci_lo_q3,w2_gap.csv,model=Qwen/Qwen3-8B;extractor=judge;convention=strict_gt::ci_lo,s2,
+w2_ci_hi_q3,w2_gap.csv,model=Qwen/Qwen3-8B;extractor=judge;convention=strict_gt::ci_hi,s2,
+w2_gap_q3_regex_gt,w2_gap.csv,model=Qwen/Qwen3-8B;extractor=regex;convention=strict_gt::gap,s2,
+w2_rci_lo_q3,w2_gap.csv,model=Qwen/Qwen3-8B;extractor=regex;convention=strict_gt::ci_lo,s2,
+w2_rci_hi_q3,w2_gap.csv,model=Qwen/Qwen3-8B;extractor=regex;convention=strict_gt::ci_hi,s2,
+w2_dis_q3,w2_gap.csv,model=Qwen/Qwen3-8B;extractor=judge;convention=strict_gt::pct_disagree_incentive,pct1,
+w2_gap_q25_judge_gt,w2_gap.csv,model=Qwen/Qwen2.5-14B-Instruct;extractor=judge;convention=strict_gt::gap,s2,
+w2_ci_lo_q25,w2_gap.csv,model=Qwen/Qwen2.5-14B-Instruct;extractor=judge;convention=strict_gt::ci_lo,s2,
+w2_ci_hi_q25,w2_gap.csv,model=Qwen/Qwen2.5-14B-Instruct;extractor=judge;convention=strict_gt::ci_hi,s2,
+w2_gap_q25_regex_gt,w2_gap.csv,model=Qwen/Qwen2.5-14B-Instruct;extractor=regex;convention=strict_gt::gap,s2,
+w2_rci_lo_q25,w2_gap.csv,model=Qwen/Qwen2.5-14B-Instruct;extractor=regex;convention=strict_gt::ci_lo,s2,
+w2_rci_hi_q25,w2_gap.csv,model=Qwen/Qwen2.5-14B-Instruct;extractor=regex;convention=strict_gt::ci_hi,s2,
+w2_dis_q25,w2_gap.csv,model=Qwen/Qwen2.5-14B-Instruct;extractor=judge;convention=strict_gt::pct_disagree_incentive,pct1,
+w2_n_side,w2_gap.csv,model=Qwen/Qwen3-8B;extractor=judge;convention=strict_gt::n_below_valid,int,rollouts per side at screening
+w2_n_incentive,w10_derived.json,w2_leaf.qwen3_8b.n_rollouts,int,"pooled incentive rollouts, per model"
+w2_med_q3,w10_derived.json,w2_leaf.qwen3_8b.pooled_filtered_median,f1,
+w2_med_q25,w10_derived.json,w2_leaf.qwen25_14b_instruct.pooled_filtered_median,f1,
+w3_gap_A_judge_gt,w3_behaviour.csv,metric=landing_gap;form=A;extractor=judge;convention=strict_gt;arm=both::value,s3,
+w3_ci_lo_A,w3_behaviour.csv,metric=landing_gap;form=A;extractor=judge;convention=strict_gt;arm=both::ci_lo,s3,
+w3_ci_hi_A,w3_behaviour.csv,metric=landing_gap;form=A;extractor=judge;convention=strict_gt;arm=both::ci_hi,s3,
+w3_gap_A_regex_gt,w3_behaviour.csv,metric=landing_gap;form=A;extractor=regex;convention=strict_gt;arm=both::value,s3,
+w3_dis_raw_A,w3_behaviour.csv,metric=extractor_disagreement_raw;form=A::value,pct1,
+w3_dis_corr_A,w3_behaviour.csv,metric=extractor_disagreement_corrected;form=A::value,pct1,
+w3_dis_raw_k_A,w3_behaviour.csv,metric=extractor_disagreement_raw;form=A::n_points,int,
+w3_stop_diff_A,w3_behaviour.csv,metric=stopping_asymmetry_diff_tau_echo_excluded;form=A::value,s3,
+w3_stop_diff_A_raw,w3_behaviour.csv,metric=stopping_asymmetry_diff_raw;form=A::value,s3,
+w3_gap_B_judge_gt,w3_behaviour.csv,metric=landing_gap;form=B;extractor=judge;convention=strict_gt;arm=both::value,s3,
+w3_ci_lo_B,w3_behaviour.csv,metric=landing_gap;form=B;extractor=judge;convention=strict_gt;arm=both::ci_lo,s3,
+w3_ci_hi_B,w3_behaviour.csv,metric=landing_gap;form=B;extractor=judge;convention=strict_gt;arm=both::ci_hi,s3,
+w3_gap_B_regex_gt,w3_behaviour.csv,metric=landing_gap;form=B;extractor=regex;convention=strict_gt;arm=both::value,s3,
+w3_dis_raw_B,w3_behaviour.csv,metric=extractor_disagreement_raw;form=B::value,pct1,
+w3_dis_corr_B,w3_behaviour.csv,metric=extractor_disagreement_corrected;form=B::value,pct1,
+w3_dis_raw_k_B,w3_behaviour.csv,metric=extractor_disagreement_raw;form=B::n_points,int,
+w3_stop_diff_B,w3_behaviour.csv,metric=stopping_asymmetry_diff_tau_echo_excluded;form=B::value,s3,
+w3_stop_diff_B_raw,w3_behaviour.csv,metric=stopping_asymmetry_diff_raw;form=B::value,s3,
+w3_ci_lo_B_ge,w3_behaviour.csv,metric=landing_gap;form=B;extractor=judge;convention=ge;arm=both::ci_lo,f3,
+w3_ci_hi_B_ge,w3_behaviour.csv,metric=landing_gap;form=B;extractor=judge;convention=ge;arm=both::ci_hi,f3,
+tau_A,w3_behaviour.csv,metric=landing_gap;form=A;extractor=judge;convention=strict_gt::tau,comma,
+tau_B,w3_behaviour.csv,metric=landing_gap;form=B;extractor=judge;convention=strict_gt::tau,comma,
+w3_eqtau_A_below,w3_behaviour.csv,metric=pct_final_eq_tau;form=A;extractor=judge;arm=below_good::value,pct1,
+w3_eqtau_B_below,w3_behaviour.csv,metric=pct_final_eq_tau;form=B;extractor=judge;arm=below_good::value,pct1,
+w3_eqtau_A_below_regex,w3_behaviour.csv,metric=pct_final_eq_tau;form=A;extractor=regex;arm=below_good::value,pct1,
+w3_cross_A_below,w3_behaviour.csv,metric=revision_asymmetry_tau_echo_excluded;form=A;arm=below_good::n_points,int,
+w3_cross_B_below,w3_behaviour.csv,metric=revision_asymmetry_tau_echo_excluded;form=B;arm=below_good::n_points,int,
+w3_mech_A,w10_derived.json,w3.mech_A,int,
+w3_mech_B,w10_derived.json,w3.mech_B,int,
+w3_agree_pct,w10_derived.json,w3.agreement_corrected_pct,f1,
+w3_n_side,w10_derived.json,w3.form_A_below.n,int,rollouts per side in the frozen dataset
+n_w3_fresh,w10_derived.json,totals.w3_fresh,comma,
+n_w3_trunc,w10_derived.json,w3.corrected.n_truncated_all_arms,int,
+w3_mention_k,w10_derived.json,w3.direction_judge.n_mention,int,
+w3_mention_n,w10_derived.json,w3.direction_judge.n_traces,int,
+w3_mention_pct,w10_derived.json,w3.direction_judge.mention_rate_pct,f1,
+w3_unparsed,w10_derived.json,w3.direction_judge.n_unparsed,int,
+w3_B_above_rate,w10_derived.json,w3.corrected.above_good.P_gt_tau,f4,"unsteered form-B above arm, corrected-regex basis"
+w3_unsteered_medlog,w10_derived.json,w3.corrected.baseline.median_log10,f3,
+w3_B_above_tokens,w10_derived.json,w3.median_tokens.form_B_above_good,int,
+w3_ment_A_below,w3_direction.csv,form=A;arm=below_good;metric=per_arm::mention_rate,pct1,
+w3_correct_A_below,w3_direction.csv,form=A;arm=below_good;metric=per_arm::direction_correct_rate,pct1,
+w3_inc_A_below,w3_direction.csv,form=A;arm=below_good;metric=per_arm::n_incorrect,int,
+w3_unc_A_below,w3_direction.csv,form=A;arm=below_good;metric=per_arm::n_unclear,int,
+w3_ment_A_above,w3_direction.csv,form=A;arm=above_good;metric=per_arm::mention_rate,pct1,
+w3_correct_A_above,w3_direction.csv,form=A;arm=above_good;metric=per_arm::direction_correct_rate,pct1,
+w3_inc_A_above,w3_direction.csv,form=A;arm=above_good;metric=per_arm::n_incorrect,int,
+w3_unc_A_above,w3_direction.csv,form=A;arm=above_good;metric=per_arm::n_unclear,int,
+w3_cond_gap_A,w3_direction.csv,form=A;metric=direction_correct::value,s2,
+w3_cond_lo_A,w3_direction.csv,form=A;metric=direction_correct::ci_lo,s3,
+w3_cond_hi_A,w3_direction.csv,form=A;metric=direction_correct::ci_hi,s3,
+w3_n_corr_A,w3_direction.csv,form=A;metric=direction_correct::n_judged,int,
+w3_condnot_gap_A,w3_direction.csv,form=A;metric=direction_not_correct::value,s2,
+w3_condnot_lo_A,w3_direction.csv,form=A;metric=direction_not_correct::ci_lo,s3,
+w3_condnot_hi_A,w3_direction.csv,form=A;metric=direction_not_correct::ci_hi,s3,
+w3_n_ncorr_A,w3_direction.csv,form=A;metric=direction_not_correct::n_judged,int,
+w3_ment_B_below,w3_direction.csv,form=B;arm=below_good;metric=per_arm::mention_rate,pct1,
+w3_correct_B_below,w3_direction.csv,form=B;arm=below_good;metric=per_arm::direction_correct_rate,pct1,
+w3_inc_B_below,w3_direction.csv,form=B;arm=below_good;metric=per_arm::n_incorrect,int,
+w3_unc_B_below,w3_direction.csv,form=B;arm=below_good;metric=per_arm::n_unclear,int,
+w3_ment_B_above,w3_direction.csv,form=B;arm=above_good;metric=per_arm::mention_rate,pct1,
+w3_correct_B_above,w3_direction.csv,form=B;arm=above_good;metric=per_arm::direction_correct_rate,pct1,
+w3_inc_B_above,w3_direction.csv,form=B;arm=above_good;metric=per_arm::n_incorrect,int,
+w3_unc_B_above,w3_direction.csv,form=B;arm=above_good;metric=per_arm::n_unclear,int,
+w3_cond_gap_B,w3_direction.csv,form=B;metric=direction_correct::value,s2,
+w3_cond_lo_B,w3_direction.csv,form=B;metric=direction_correct::ci_lo,s3,
+w3_cond_hi_B,w3_direction.csv,form=B;metric=direction_correct::ci_hi,s3,
+w3_n_corr_B,w3_direction.csv,form=B;metric=direction_correct::n_judged,int,
+w3_condnot_gap_B,w3_direction.csv,form=B;metric=direction_not_correct::value,s2,
+w3_condnot_lo_B,w3_direction.csv,form=B;metric=direction_not_correct::ci_lo,s3,
+w3_condnot_hi_B,w3_direction.csv,form=B;metric=direction_not_correct::ci_hi,s3,
+w3_n_ncorr_B,w3_direction.csv,form=B;metric=direction_not_correct::n_judged,int,
+v7_correct_rate,w10_derived.json,judge_mapping.correct.mapping_silent_pct,f1,
+v7_incorrect_rate,w10_derived.json,judge_mapping.incorrect.mapping_silent_pct,f1,
+v7_unclear_rate,w10_derived.json,judge_mapping.unclear.mapping_silent_pct,f1,
+wc_z,w10_derived.json,winners_curse.z,f2,
+wc_p,w10_derived.json,winners_curse.p_two_sided,f4,
+wc_w2_above_k,w10_derived.json,winners_curse.w2_above_k,int,
+wc_w2_above_n,w10_derived.json,winners_curse.w2_above_n,int,
+wc_w2_above_rate,w10_derived.json,winners_curse.w2_above_rate,f3,
+wc_w3_above_k,w10_derived.json,winners_curse.w3_above_k,int,
+wc_w3_above_n,w10_derived.json,winners_curse.w3_above_n,int,
+wc_w3_above_rate,w10_derived.json,winners_curse.w3_above_rate,f3,
+wc_b0_k,w10_derived.json,winners_curse.w3_blocks_above[0].k,int,
+wc_b0_n,w10_derived.json,winners_curse.w3_blocks_above[0].n,int,
+wc_b1_k,w10_derived.json,winners_curse.w3_blocks_above[1].k,int,
+wc_b1_n,w10_derived.json,winners_curse.w3_blocks_above[1].n,int,
+wc_b2_k,w10_derived.json,winners_curse.w3_blocks_above[2].k,int,
+wc_b2_n,w10_derived.json,winners_curse.w3_blocks_above[2].n,int,
+n_w4_traces,w10_derived.json,totals.w4_traces_replayed,int,
+n_w4_points,w10_derived.json,totals.w4_points,comma,
+n_w4_quarantined,w10_derived.json,totals.w4_quarantined,int,
+n_all_generations,w10_derived.json,totals.all_generations,comma,
+n_all_steered,w10_derived.json,totals.all_steered,comma,
+w5_lstar,w10_derived.json,w5.lstar,int,
+w5_n_layers,w10_derived.json,w5.n_layers,int,
+w5_A_balacc_lstar,w10_derived.json,w5.phat_A.balacc_at_lstar,f4,
+w5_A_null_lstar,w10_derived.json,w5.phat_A.null_p95_at_lstar,f4,
+w5_A_p_lstar,w10_derived.json,w5.phat_A.p_at_lstar,f3,
+w5_A_nsig,w10_derived.json,w5.phat_A.n_layers_beating_null,int,
+w5_A_dt_lstar,w10_derived.json,w5.phat_A.dt_control_at_lstar,f4,
+w5_A_bp_lstar,w10_derived.json,w5.phat_A.belief_polarity_at_lstar,f4,
+w5_B_balacc_lstar,w10_derived.json,w5.phat_B.balacc_at_lstar,f4,
+w5_B_null_lstar,w10_derived.json,w5.phat_B.null_p95_at_lstar,f4,
+w5_B_p_lstar,w10_derived.json,w5.phat_B.p_at_lstar,f3,
+w5_B_nsig,w10_derived.json,w5.phat_B.n_layers_beating_null,int,
+w5_B_dt_lstar,w10_derived.json,w5.phat_B.dt_control_at_lstar,f4,
+w5_B_bp_lstar,w10_derived.json,w5.phat_B.belief_polarity_at_lstar,f4,
+w5_B_peak,w10_derived.json,w5.phat_B.peak_balacc,f4,
+w5_B_peak_layer,w10_derived.json,w5.phat_B.peak_layer,int,
+w5_A_dt_peak,w10_derived.json,w5.phat_A.dt_control_peak,f4,
+w5_A_dt_nsig,w10_derived.json,w5.phat_A.dt_control_n_layers_beating_null,int,
+w5_cos_lstar,w10_derived.json,w5.invariance.cos_at_lstar,f4,
+w5_cos_null_lstar,w10_derived.json,w5.invariance.cos_null_p95_at_lstar,f4,
+w5_cos_p_lstar,w10_derived.json,w5.invariance.cos_p_at_lstar,f3,
+w5_transfer_lstar,w10_derived.json,w5.invariance.transfer_at_lstar,f4,
+w5_transfer_null_lstar,w10_derived.json,w5.invariance.transfer_null_p95_at_lstar,f4,
+w5_transfer_p_lstar,w10_derived.json,w5.invariance.transfer_p_at_lstar,f3,
+w5_cos_band_lo,w10_derived.json,w5.invariance.cos_band_lo,int,
+w5_cos_band_hi,w10_derived.json,w5.invariance.cos_band_hi,int,
+w5_cos_peak,w10_derived.json,w5.invariance.cos_peak,f4,
+w5_cos_peak_layer,w10_derived.json,w5.invariance.cos_peak_layer,int,
+w5_cos_peak_p,w10_derived.json,w5.invariance.cos_peak_p,f3,
+w5_transfer_band_lo,w10_derived.json,w5.invariance.transfer_band_lo,int,
+w5_transfer_band_hi,w10_derived.json,w5.invariance.transfer_band_hi,int,
+w5_transfer_peak,w10_derived.json,w5.invariance.transfer_peak,f4,
+w5_transfer_peak_layer,w10_derived.json,w5.invariance.transfer_peak_layer,int,
+w5_transfer_peak_p,w10_derived.json,w5.invariance.transfer_peak_p,f3,
+w5_cosvp_A,w10_derived.json,w5.invariance.cos_vp_vphat_A_at_lstar,f3,
+w5_cosvp_B,w10_derived.json,w5.invariance.cos_vp_vphat_B_at_lstar,f3,
+w5_cosvp_B_l0,w10_derived.json,w5.invariance.cos_vp_vphat_B_layer0,f3,
+w5_n_perm,w5_probes.csv,form=B;target=phat;layer=27::n_perm,comma,
+w5_n_repeat,w5_probes.csv,form=B;target=phat;layer=27::n_repeat,int,
+w5_proj_pos,w10_derived.json,w5.projection.mean_pos,f3,
+w5_proj_neg,w10_derived.json,w5.projection.mean_neg,f3,
+w5_proj_gap,w10_derived.json,w5.projection.gap,s2,
+d_resid_norm,w10_derived.json,doses.resid_norm_L27,f2,
+d_a025_pct,w10_derived.json,doses.a0p25_pct_of_h,f1,
+d_a05_pct,w10_derived.json,doses.a0p5_pct_of_h,f1,
+d_a1_pct,w10_derived.json,doses.a1_pct_of_h,f1,
+d_a2_pct,w10_derived.json,doses.a2_pct_of_h,f1,
+d_a4_pct,w10_derived.json,doses.a4_pct_of_h,f1,
+w7_P_ap4,w7_arms.csv,arm=B_above_L27_ap4::P_gt_tau_regex_corr,f2,
+w7_Praw_ap4,w7_arms.csv,arm=B_above_L27_ap4::P_gt_tau_regex_raw,f2,
+w7_Pj_ap4,w7_arms.csv,arm=B_above_L27_ap4::P_gt_tau_judge,f2,
+w7_medlog_ap4,w7_arms.csv,arm=B_above_L27_ap4::median_log10_regex_corr,f3,
+w7_P_ap2,w7_arms.csv,arm=B_above_L27_ap2::P_gt_tau_regex_corr,f2,
+w7_Praw_ap2,w7_arms.csv,arm=B_above_L27_ap2::P_gt_tau_regex_raw,f2,
+w7_Pj_ap2,w7_arms.csv,arm=B_above_L27_ap2::P_gt_tau_judge,f2,
+w7_medlog_ap2,w7_arms.csv,arm=B_above_L27_ap2::median_log10_regex_corr,f3,
+w7_P_ap1,w7_arms.csv,arm=B_above_L27_ap1::P_gt_tau_regex_corr,f2,
+w7_Praw_ap1,w7_arms.csv,arm=B_above_L27_ap1::P_gt_tau_regex_raw,f2,
+w7_Pj_ap1,w7_arms.csv,arm=B_above_L27_ap1::P_gt_tau_judge,f2,
+w7_medlog_ap1,w7_arms.csv,arm=B_above_L27_ap1::median_log10_regex_corr,f3,
+w7_P_sham,w7_arms.csv,arm=B_above_sham::P_gt_tau_regex_corr,f2,
+w7_Praw_sham,w7_arms.csv,arm=B_above_sham::P_gt_tau_regex_raw,f2,
+w7_Pj_sham,w7_arms.csv,arm=B_above_sham::P_gt_tau_judge,f2,
+w7_medlog_sham,w7_arms.csv,arm=B_above_sham::median_log10_regex_corr,f3,
+w7_P_am1,w7_arms.csv,arm=B_above_L27_am1::P_gt_tau_regex_corr,f2,
+w7_Praw_am1,w7_arms.csv,arm=B_above_L27_am1::P_gt_tau_regex_raw,f2,
+w7_Pj_am1,w7_arms.csv,arm=B_above_L27_am1::P_gt_tau_judge,f2,
+w7_medlog_am1,w7_arms.csv,arm=B_above_L27_am1::median_log10_regex_corr,f3,
+w7_P_am2,w7_arms.csv,arm=B_above_L27_am2::P_gt_tau_regex_corr,f2,
+w7_Praw_am2,w7_arms.csv,arm=B_above_L27_am2::P_gt_tau_regex_raw,f2,
+w7_Pj_am2,w7_arms.csv,arm=B_above_L27_am2::P_gt_tau_judge,f2,
+w7_medlog_am2,w7_arms.csv,arm=B_above_L27_am2::median_log10_regex_corr,f3,
+w7_P_am4,w7_arms.csv,arm=B_above_L27_am4::P_gt_tau_regex_corr,f2,
+w7_Praw_am4,w7_arms.csv,arm=B_above_L27_am4::P_gt_tau_regex_raw,f2,
+w7_Pj_am4,w7_arms.csv,arm=B_above_L27_am4::P_gt_tau_judge,f2,
+w7_medlog_am4,w7_arms.csv,arm=B_above_L27_am4::median_log10_regex_corr,f3,
+w7_nlab_ap2,w10_derived.json,w7_leaf.n_labelled_ap2,int,traces carrying a p-hat label
+w7_nlab_sham,w10_derived.json,w7_leaf.n_labelled_sham,int,traces carrying a p-hat label
+w7_nlab_am2,w10_derived.json,w7_leaf.n_labelled_am2,int,traces carrying a p-hat label
+w7_neutral_mention,w7_arms.csv,arm=B_neutral_L27_ap2::mention_rate,f2,
+sk_w7_sham_mention,w7_arms.csv,arm=B_above_sham::screen_mention_rate,f2,
+w7_v_ap2,w10_derived.json,w7_leaf.verdicts_ap2,raw,correct/incorrect/unclear
+w7_v_sham,w10_derived.json,w7_leaf.verdicts_sham,raw,correct/incorrect/unclear
+w7_v_am2,w10_derived.json,w7_leaf.verdicts_am2,raw,correct/incorrect/unclear
+layer_primary,w10_derived.json,w7_leaf.layer_primary,int,
+layer_secondary,w10_derived.json,w7_leaf.layer_secondary,int,
+n_w7_arms,w10_derived.json,w7_leaf.n_arms,int,
+n_null_directions,w10_derived.json,w7_leaf.n_null_arms,int,
+n_w7_nulls,w10_derived.json,w7_leaf.n_null_arms,int,
+alpha_max,w10_derived.json,w7_leaf.alpha_max,raw,
+alpha_min,w10_derived.json,w7_leaf.alpha_min,raw,
+n_w7_dose_gens,w10_derived.json,w7_leaf.n_dose_generations,int,
+w7_dplus_a1,w10_derived.json,w7_leaf.dplus_a1,s2,
+w7_dminus_a1,w10_derived.json,w7_leaf.dminus_a1,s2,
+w7_null_mean,w10_derived.json,w7_leaf.null_delta_mean,s3,
+w7_null_min,w10_derived.json,w7_leaf.null_delta_min,s2,
+w7_null_max,w10_derived.json,w7_leaf.null_delta_max,s2,
+w7_phat_ap2,w10_derived.json,w7_leaf.phat_ap2,f3,
+w7_phat_sham,w10_derived.json,w7_leaf.phat_sham,f3,
+w7_phat_am2,w10_derived.json,w7_leaf.phat_am2,f3,
+w7_below_phat_ap2,w10_derived.json,w7_leaf.phat_below_ap2,f3,
+w7_below_phat_am2,w10_derived.json,w7_leaf.phat_below_am2,f3,
+w7_null04_phat,w10_derived.json,w7_leaf.phat_null04,f3,
+w7_flip_plus_vs_sham,w10_derived.json,w7_leaf.flip_plus_vs_sham,s3,
+w7_flip_minus_vs_sham,w10_derived.json,w7_leaf.flip_minus_vs_sham,s3,
+w7_coh_at_one,w10_derived.json,w7_leaf.coherence_arms_at_one,int,
+w7_dplus_beats,w10_derived.json,w7_leaf.dplus_null.beats,int,
+w7_dplus_p,w10_derived.json,w7_leaf.dplus_null.p_one_sided,f3,
+w7_dpm_beats,w10_derived.json,w7_leaf.dpm_null.beats,int,
+w7_dpm_p,w10_derived.json,w7_leaf.dpm_null.p_one_sided,f3,
+w7_dminus_beats,w10_derived.json,w7_leaf.dminus_null.beats,int,
+w7_dminus_p,w10_derived.json,w7_leaf.dminus_null.p_one_sided,f3,
+w7_neutral_med_ref,w10_derived.json,w7_leaf.neutral_ref_medlog,f3,
+w7_neutral_med_ap2,w10_derived.json,w7_leaf.neutral_ap2_medlog,f3,
+w7_neutral_med_am2,w10_derived.json,w7_leaf.neutral_am2_medlog,f3,
+w7_neutral_logdelta,w10_derived.json,w7_leaf.neutral_logdelta,f3,
+d_w7_echo_k,w10_derived.json,w7.tau_echo_raw_k,comma,
+d_echo_ap1,w10_derived.json,w7.tau_echo_by_alpha.+1,x100_0,
+d_echo_am1,w10_derived.json,w7.tau_echo_by_alpha.-1,x100_0,
+n_w7_gens,w10_derived.json,totals.w7_steered,comma,
+n_w7b_gens,w10_derived.json,totals.w7b_steered,int,
+n_w7b_arms,w10_derived.json,w7b_leaf.n_arms,int,
+w7b_tok_min,w10_derived.json,w7b_leaf.median_tokens_min,int,
+w7b_tok_max,w10_derived.json,w7b_leaf.median_tokens_max,int,
+w7b_medlog_min,w10_derived.json,w7b_leaf.median_log10_min,f2,
+w7b_medlog_max,w10_derived.json,w7b_leaf.median_log10_max,f2,
+w7_dpm,w7_primary.csv,statistic=primary_delta_pm  P(+2)-P(-2);basis=regex_corr::value,s2,
+w7_dpm_lo,w7_primary.csv,statistic=primary_delta_pm  P(+2)-P(-2);basis=regex_corr::ci_lo,s2,
+w7_dpm_hi,w7_primary.csv,statistic=primary_delta_pm  P(+2)-P(-2);basis=regex_corr::ci_hi,s2,
+w7_dpm_j,w7_primary.csv,statistic=primary_delta_pm  P(+2)-P(-2);basis=judge::value,s2,
+w7_dplus,w7_primary.csv,statistic=delta_plus  P(+2)-P(sham);basis=regex_corr::value,s2,
+w7_dplus_lo,w7_primary.csv,statistic=delta_plus  P(+2)-P(sham);basis=regex_corr::ci_lo,s2,
+w7_dplus_hi,w7_primary.csv,statistic=delta_plus  P(+2)-P(sham);basis=regex_corr::ci_hi,s2,
+w7_dplus_j,w7_primary.csv,statistic=delta_plus  P(+2)-P(sham);basis=judge::value,s2,
+w7_dminus,w7_primary.csv,statistic=delta_minus P(-2)-P(sham);basis=regex_corr::value,s2,
+w7_dminus_lo,w7_primary.csv,statistic=delta_minus P(-2)-P(sham);basis=regex_corr::ci_lo,s2,
+w7_dminus_hi,w7_primary.csv,statistic=delta_minus P(-2)-P(sham);basis=regex_corr::ci_hi,s2,
+w7_dminus_j,w7_primary.csv,statistic=delta_minus P(-2)-P(sham);basis=judge::value,s2,
+w7_rho,w7_primary.csv,statistic=dose_response_spearman_rho;basis=regex_corr::value,f4,
+w7_L30_dpm,w7_primary.csv,statistic=L30_secondary_EXPLORATORY  P(+2)-P(-2);basis=regex_corr::value,s2,
+w7_L30_lo,w7_primary.csv,statistic=L30_secondary_EXPLORATORY  P(+2)-P(-2);basis=regex_corr::ci_lo,s2,
+w7_L30_hi,w7_primary.csv,statistic=L30_secondary_EXPLORATORY  P(+2)-P(-2);basis=regex_corr::ci_hi,s2,
+w7_below_dpm,w7_primary.csv,statistic=below_good_L27  P(+2)-P(-2);basis=regex_corr::value,s2,
+w7_below_lo,w7_primary.csv,statistic=below_good_L27  P(+2)-P(-2);basis=regex_corr::ci_lo,s2,
+w7_below_hi,w7_primary.csv,statistic=below_good_L27  P(+2)-P(-2);basis=regex_corr::ci_hi,s2,
+w7_neutral_dpm,w7_primary.csv,statistic=neutral P(>tau|+2) - P(>tau|-2);basis=regex_corr::value,s2,
+w7_neutral_lo,w7_primary.csv,statistic=neutral P(>tau|+2) - P(>tau|-2);basis=regex_corr::ci_lo,s2,
+w7_neutral_hi,w7_primary.csv,statistic=neutral P(>tau|+2) - P(>tau|-2);basis=regex_corr::ci_hi,s2,
+w7_flip,w7_primary.csv,statistic=belief_flip  P(phat=+1 | a=+2) - P(. | a=-2);basis=direction_judge::value,s3,
+w7_flip_lo,w7_primary.csv,statistic=belief_flip  P(phat=+1 | a=+2) - P(. | a=-2);basis=direction_judge::ci_lo,s3,
+w7_flip_hi,w7_primary.csv,statistic=belief_flip  P(phat=+1 | a=+2) - P(. | a=-2);basis=direction_judge::ci_hi,s3,
+w7_neutral_dpm_abs,w10_derived.json,w7_leaf.neutral_dpm_abs,f2,
+w7_rho_p,w10_derived.json,w7_leaf.rho_perm_p,f4,
+w7b_dpm,w7b_primary.csv,statistic=primary delta_pm  P(+0.5)-P(-0.5);basis=regex_corr::value,s2,
+w7b_dpm_lo,w7b_primary.csv,statistic=primary delta_pm  P(+0.5)-P(-0.5);basis=regex_corr::ci_lo,s2,
+w7b_dpm_hi,w7b_primary.csv,statistic=primary delta_pm  P(+0.5)-P(-0.5);basis=regex_corr::ci_hi,s2,
+w7b_dpm_j,w7b_primary.csv,statistic=primary delta_pm  P(+0.5)-P(-0.5);basis=judge::value,s2,
+w7b_dpm_j_lo,w7b_primary.csv,statistic=primary delta_pm  P(+0.5)-P(-0.5);basis=judge::ci_lo,s2,
+w7b_dpm_j_hi,w7b_primary.csv,statistic=primary delta_pm  P(+0.5)-P(-0.5);basis=judge::ci_hi,s2,
+w7b_dpm_quarter,w7b_primary.csv,statistic=descriptive delta_pm  P(+0.25)-P(-0.25);basis=regex_corr::value,s2,
+w7b_null_mean,w7b_primary.csv,statistic=null delta_pm spread;basis=regex_corr::value,s3,
+w7b_null_max,w7b_primary.csv,statistic=null delta_pm spread;basis=regex_corr::ci_hi,s2,
+w7b_dbar,w7b_primary.csv,statistic=D_bar  mean |P_arm - P_sham| over the 8 null arms;basis=regex_corr::value,f4,
+w7b_dbar_j,w7b_primary.csv,statistic=D_bar  mean |P_arm - P_sham| over the 8 null arms;basis=judge::value,f4,
+sk_total_steered,w10_skeptic.json,seeds.total_steered_generations,comma,
+sk_collisions,w10_skeptic.json,seeds.w7_vs_w7b_collisions,int,
+sk_seed_lo,w10_skeptic.json,seeds.blocks.W7.lo,comma,
+sk_seed_hi,w10_skeptic.json,seeds.blocks.W7b.hi,comma,
+sk_q3_ties,w10_skeptic.json,ties.qwen3_judge_ties,int,
+sk_q3_strict,w10_skeptic.json,ties.qwen3_judge_strict_gap,s2,
+sk_q3_ge,w10_skeptic.json,ties.qwen3_judge_ge_gap,s2,
+sk_w2_flips,w10_skeptic.json,ties.w2_n_verdict_flips,int,
+sk_monotone,w10_skeptic.json,dose.w7_monotone_word,raw,
+w7_drop_plus4,w10_skeptic.json,dose.w7_drop_plus4,s2,
+w7_drop_minus4,w10_skeptic.json,dose.w7_drop_minus4,s2,
+sk_quarter_rate,w10_skeptic.json,dose.w7b_quarter_rate,f3,
+sk_half_rate,w10_skeptic.json,dose.w7b_half_rate,f3,
+sk_dose_p,w10_skeptic.json,dose.w7b_dose_fisher_p,f3,
+sk_dose_delta,w10_skeptic.json,dose.w7b_dose_rate_difference,f3,
+w7b_coh,w10_skeptic.json,coherence.w7b.min_coherence,f3,
+w7b_trunc,w10_skeptic.json,coherence.w7b.n_truncated_total,int,
+w7b_degen,w10_skeptic.json,coherence.w7b.n_degenerate_total,int,
+sk_chi2,w10_skeptic.json,w7b_homogeneity.chi2,f2,
+sk_dof,w10_skeptic.json,w7b_homogeneity.dof,int,
+sk_chi2_p,w10_skeptic.json,w7b_homogeneity.p,f3,
+sk_pooled_k,w10_skeptic.json,w7b_homogeneity.pooled_k,int,
+sk_pooled_n,w10_skeptic.json,w7b_homogeneity.pooled_n,int,
+sk_pooled_rate,w10_skeptic.json,w7b_homogeneity.pooled_rate,f3,
+sk_fisher_sham,w10_skeptic.json,w7b_homogeneity.fisher_vs_sham_p,f4,
+sk_dbar_E,w10_skeptic.json,dbar_floor.E_Dbar_primary,f4,
+sk_dbar_P,w10_skeptic.json,dbar_floor.P_over_line_primary,f3,
+sk_pref_w7,w10_skeptic.json,text_screens.w7.verbalized_preference,int,
+sk_pref_w7b,w10_skeptic.json,text_screens.w7b.verbalized_preference,int,
+sk_fab_w7b,w10_skeptic.json,text_screens.w7b.d029_fabrication,int,
+sk_fab_sham,w10_skeptic.json,text_screens.w7_fabrication_sham,int,
+sk_fab_ap4,w10_skeptic.json,text_screens.w7_fabrication_ap4,int,
+sk_w7b_mention_mean,w10_skeptic.json,text_screens.w7b.mention_rate_mean,f2,
+plot_axis_x0,w10_derived.json,plot.axis_x0,int,"compact-page figure geometry, computed from the same CSV as the prose"
+plot_null_hi_y,w10_derived.json,plot.null_band_hi_y,f1,"compact-page figure geometry, computed from the same CSV as the prose"
+plot_null_band_h,w10_derived.json,plot.null_band_h,f1,"compact-page figure geometry, computed from the same CSV as the prose"
+plot_ladder_path,w10_derived.json,plot.ladder_path,raw,"compact-page figure geometry, computed from the same CSV as the prose"
+plot_dbar_x0,w10_derived.json,plot.dbar_x0,int,"compact-page figure geometry, computed from the same CSV as the prose"
+plot_dbar_x_line,w10_derived.json,plot.dbar_x_line,f1,"compact-page figure geometry, computed from the same CSV as the prose"
+plot_dbar_x_floor,w10_derived.json,plot.dbar_x_floor,f1,"compact-page figure geometry, computed from the same CSV as the prose"
+plot_dbar_x_observed,w10_derived.json,plot.dbar_x_observed,f1,"compact-page figure geometry, computed from the same CSV as the prose"
+plot_dbar_p_over_w,w10_derived.json,plot.dbar_p_over_w,f1,"compact-page figure geometry, computed from the same CSV as the prose"
+plot_x0,w10_derived.json,plot.ladder[0].x,int,figure geometry
+plot_y0,w10_derived.json,plot.ladder[0].y,f1,figure geometry
+plot_a0,w10_derived.json,plot.ladder[0].alpha,raw,dose label
+plot_x1,w10_derived.json,plot.ladder[1].x,int,figure geometry
+plot_y1,w10_derived.json,plot.ladder[1].y,f1,figure geometry
+plot_a1,w10_derived.json,plot.ladder[1].alpha,raw,dose label
+plot_x2,w10_derived.json,plot.ladder[2].x,int,figure geometry
+plot_y2,w10_derived.json,plot.ladder[2].y,f1,figure geometry
+plot_a2,w10_derived.json,plot.ladder[2].alpha,raw,dose label
+plot_x3,w10_derived.json,plot.ladder[3].x,int,figure geometry
+plot_y3,w10_derived.json,plot.ladder[3].y,f1,figure geometry
+plot_x4,w10_derived.json,plot.ladder[4].x,int,figure geometry
+plot_y4,w10_derived.json,plot.ladder[4].y,f1,figure geometry
+plot_a4,w10_derived.json,plot.ladder[4].alpha,raw,dose label
+plot_x5,w10_derived.json,plot.ladder[5].x,int,figure geometry
+plot_y5,w10_derived.json,plot.ladder[5].y,f1,figure geometry
+plot_a5,w10_derived.json,plot.ladder[5].alpha,raw,dose label
+plot_x6,w10_derived.json,plot.ladder[6].x,int,figure geometry
+plot_y6,w10_derived.json,plot.ladder[6].y,f1,figure geometry
+plot_a6,w10_derived.json,plot.ladder[6].alpha,raw,dose label

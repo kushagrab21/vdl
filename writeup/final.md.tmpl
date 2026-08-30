@@ -1,0 +1,853 @@
+# Where is the favoured side represented?
+
+**Value-direction localization in a mid-size open-weights model**
+Kushagra Bhatnagar · Model Forensics take-home, successor to the black-box Setting C study
+Draft of {{lf_submission_date}} · built from the ledger by `python3 writeup/build.py`
+
+> **How to read this.** Every claim carries a tier. **[measured]** is a number produced by a rule
+> frozen before the data it governs. **[suggested]** means the evidence leans that way and the
+> design cannot close it. **[not tested]** means no experiment here addressed it. No number below
+> is typed: each is substituted at build time from a generated file, and the build refuses to ship
+> a digit it cannot trace to one.
+
+---
+
+## 1. Executive summary
+
+This project asked where a mid-size language model represents *which side of a threshold a bet has
+made favourable*, and whether editing that representation changes what it estimates. It found the
+representation, failed to make it causal, and the failure is the result.
+
+**The behaviour is overt, not covert [measured].** In `{{lf_model_id}}`, {{w3_mention_k}} of
+{{w3_mention_n}} incentive traces ({{w3_mention_pct}} %) name the bet, the threshold or the cause
+in the visible text, against about {{lf_covert_pct}} % spontaneous disclosure in the predecessor
+study's {{lf_panel_size}}B panel. This model does not leak a preference; it announces one. *The
+cross-scale reading is* **[suggested]** *— two model families, no sweep.*
+
+**The behaviour is also fragile [measured].** The landing gap that selected this model at
+screening — {{w2_gap_q25_judge_gt}}, {{lf_ci_pct}} % interval
+[{{w2_ci_lo_q25}}, {{w2_ci_hi_q25}}], at n = {{w2_n_side}} per side — collapsed to
+{{w3_gap_A_judge_gt}}, interval [{{w3_ci_lo_A}}, {{w3_ci_hi_A}}], at n = {{w3_n_side}} per side
+under byte-identical apparatus (z = {{wc_z}}, two-sided p = {{wc_p}}). A gate that promotes the
+largest of several noisy estimates promotes the one luck inflated most, and this is that effect
+measured end to end.
+
+**The aggregate gap hides a decomposition [measured].** Traces whose text gets the mapping right
+show gaps of {{w3_cond_gap_A}} and {{w3_cond_gap_B}} on the two surface forms; traces that get it
+wrong show {{w3_condnot_gap_A}} and {{w3_condnot_gap_B}}. Comprehension is itself asymmetric — the
+arm where *exceeding* the threshold is favoured is understood {{w3_correct_A_above}} % of the time
+against {{w3_correct_B_below}}–{{w3_correct_A_below}} % for its mirror — so the aggregate is a
+comprehension-weighted mixture of two large opposite effects, not a small effect.
+
+**The believed side is linearly decodable before it is spoken [measured].** A probe on the
+residual stream at the model's own intermediate-estimate positions recovers the believed favoured
+side at balanced accuracy {{w5_B_balacc_lstar}} against a null {{lf_ci_pct}}th percentile of
+{{w5_B_null_lstar}} (p = {{w5_B_p_lstar}}), significant at {{w5_B_nsig}} of {{w5_n_layers}} layers
+on the reskin. {{lf_w5_before_B}} of {{lf_w5_total_B}} of the carrying points fall **before** the
+trace first names a cause. The mirrored form is flat at every layer with working positive
+controls; at {{w5_A_minority}} minority-class traces that is a power limit, not an absence, and
+neither is claimed.
+
+**Writing the direction back in does not steer the belief [measured null].** Injecting
+±α·‖Δμ‖·û at every generated position, at six doses from {{d_a025_pct}} % to {{d_a4_pct}} % of the
+residual-stream norm and against {{n_null_directions}} matched random directions, produced **no
+direction-specific landing effect at any dose**: the pre-registered primary contrast moved the
+wrong way and beat {{w7_dplus_beats}} of {{n_w7_nulls}} random directions (p = {{w7_dplus_p}}).
+Large doses do move behaviour hard — at α = {{alpha_max}} the median estimate falls from
+{{w7_medlog_sham}} to {{w7_medlog_ap4}} on a log scale and landing from {{w7_P_sham}} to
+{{w7_P_ap4}} — but that effect survives deleting the bet, does not mirror, and is matched by
+random directions of equal norm.
+
+**The central causal question is unresolved [not tested at resolving power].** The direction
+stands as correlational. Two of the three pre-registrations that fixed a knob — a layer, a dose, a
+threshold — fixed it outside the range their own design could resolve, and the third fixed a layer
+at the edge of the informative band. No pre-registration in this project simulated its frozen
+statistic under its own null before setting the line. That is the methodological finding, and it
+is reported at the volume the empirical ones get.
+
+**Scale.** {{n_all_generations}} generations, {{n_w4_points}} captured residual-stream positions
+over {{n_w4_traces}} replayed traces, {{n_all_steered}} of them steered.
+${{lf_spend_gpu_cum}} GPU + ${{lf_spend_api_cum}} API against a ${{lf_spend_cap}} cap.
+
+---
+
+## 2. Background, and the open leaf this attacks
+
+A model is asked to estimate a quantity nobody knows exactly — how many black spots there are on
+all living giraffes — and is told a donation bet rides on whether its answer clears a threshold τ.
+The same question is asked again with the bet mirrored, so an answer *below* τ is now the one that
+sends money to the good cause. The question, the evidence available for answering it, and τ are
+identical across the two versions; τ was fixed in advance as the median of that model's own
+answers with no bet mentioned. The only thing that differs is which side of τ the model would
+prefer to land on, and the **landing gap** — `P(final > τ | above favoured) − P(final > τ | below
+favoured)` — measures the consequence. A model ignoring the bet produces the same share twice.
+
+The predecessor study established that answers move toward the preferred side, treated the model
+as a black box, intervened only on text, and closed with an explicit open leaf: *whether there is
+an identifiable internal representation of which side is favoured, and whether editing it changes
+the behaviour, is a question its methods cannot reach at all.*
+
+**This project is that leaf**, and it asks two separable questions: is the favoured side
+represented in the residual stream in a form a linear probe can read, and is that representation
+causal? The second is what matters for faithfulness. A belief that is *decodable* before the model
+says it might be driving the estimate, or it might be an annotation written alongside an estimate
+produced some other way. Reading the trace cannot separate those, because the sentence that
+reports a belief and the sentence that produces one look identical on the page. Only an
+intervention can.
+
+**Two owner-approved scope changes happened mid-project.** The first moved the model to
+`{{lf_model_id}}` after the screening gate failed on every candidate. The second moved the interp
+target from the *prompt-stated* favoured side to the *trace-level believed* side — written p̂
+throughout — because aggregate behaviour on one surface form is near zero while belief-conditional
+behaviour is large and opposite in the two belief groups. Computing the direction *within* one
+prompt condition also removes the confound that the prompt states the answer, which is a stronger
+control than the mirrored design gives. The original hypotheses are mapped onto their replacements
+in §7 rather than dropped.
+
+---
+
+## 3. Setup
+
+### 3.1 Task, prompts and definitions of record
+
+Prompts are imported, never copied, from a frozen clone of the upstream repository at commit
+`{{lf_upstream_commit}}`; the freeze is enforced by the parent repository, which shows any drift
+as a dirty submodule. **Form A** is upstream's giraffe task verbatim. **Form B** is a reskin
+replacing exactly one substring — the question sentence and its parenthetical, giraffe spots
+becoming crocodile scales — with both bet paragraphs surviving byte-for-byte, asserted at import
+and verified by a selftest.
+
+| definition of record | rule |
+|---|---|
+| **τ** | median of judge-extracted finals over non-truncated, non-null no-bet rollouts |
+| **landing gap** | `P(final > τ \| above favoured) − P(final > τ \| below favoured)` |
+| **tie convention** | strictly `>`; exactly τ does **not** clear. The `≥` alternative is reported wherever it changes a conclusion |
+| **extractor of record** | upstream's number-judge prompt byte-for-byte, model pinned to `{{lf_judge_model}}` |
+| **second extractor** | a deterministic regex taking the **last** well-formed numeric literal in the visible answer |
+| **disagreement** | relative difference > {{lf_disagree_threshold}} %, or exactly one extractor null |
+| **intermediate estimate** | any normalized literal ≥ {{intermediate_floor}} in the reasoning text, in document order |
+| **interval** | {{lf_ci_pct}} % percentile bootstrap, {{conv_n_boot}} resamples, resampled within side, seed {{conv_boot_seed}} |
+
+Sampling matches upstream's *effective* settings rather than a convention — temperature
+{{conv_temperature}}, top-p {{conv_top_p}}, because upstream never passes either and both API
+clients default there — so the comparison with the black-box result stays meaningful. Rollout *i*
+uses seed {{conv_base_seed}} + *i* with a per-block offset, so no two rollouts share a seed; the
+blocks are verified disjoint at build time ({{sk_total_steered}} steered seeds,
+{{sk_collisions}} collisions).
+
+### 3.2 The screening table, and what it selected
+
+Five candidates were pre-registered smallest-first. Every number below is from no-bet rollouts,
+measured before any incentive rollout existed anywhere in the project.
+
+| model | n | truncated | τ (judge) | τ (regex) | extractor disagreement | filtered intermediates, median |
+|---|---|---|---|---|---|---|
+| `Qwen/Qwen3-8B` | {{w1_q3_n}} | {{w1_q3_trunc}} | {{w1_q3_tau_j}} | {{w1_q3_tau_r}} | {{w1_q3_dis}} % | {{w1_q3_medf}} |
+| `deepseek-ai/DeepSeek-R1-Distill-Qwen-7B` | {{w1_rq_n}} | {{w1_rq_trunc}} | {{w1_rq_tau_j}} | {{w1_rq_tau_r}} | {{w1_rq_dis}} % | {{w1_rq_medf}} |
+| `deepseek-ai/DeepSeek-R1-Distill-Llama-8B` | {{w1_rl_n}} | {{w1_rl_trunc}} | {{w1_rl_tau_j}} | {{w1_rl_tau_r}} | {{w1_rl_dis}} % | {{w1_rl_medf}} |
+| `Qwen/Qwen2.5-14B-Instruct` | {{w1_q25_n}} | {{w1_q25_trunc}} | {{w1_q25_tau_j}} | {{w1_q25_tau_r}} | {{w1_q25_dis}} % | {{w1_q25_medf}} |
+| `google/gemma-2-9b-it` | — | — | **inaccessible** | — | — | — |
+
+Three facts in that table did work. **Gemma is gated**: the verbatim error is recorded and the
+model skipped, with no substitution, because substituting changes what the screen screened. **The
+two R1-distills are ineligible on apparatus validity, not on effect size**: both write answer-first
+and then name the operands, so the frozen last-literal rule returns an input rather than the
+estimate. A model whose visible answers a deterministic extractor cannot read is an invalid
+substrate for a project in which every behavioural number must survive two extractors. **The rule
+was not amended** — it was frozen before its data, its failure mode is characterized, and patching
+it after reading its errors is exactly the post-hoc adjustment pre-registration exists to prevent.
+**And the eligibility screen was measured on the one condition where its own defect cannot
+appear**: no-bet prompts contain no threshold for a threshold-echoing rule to bite on. Under the
+incentive prompt the same rule's disagreement rises to {{w2_dis_q3}} % and {{w2_dis_q25}} %. §8
+treats this at length.
+
+### 3.3 Gate G0, and why the project continued past a failed gate
+
+G0 required, of the smallest eligible model, that the landing-gap interval on the extractor of
+record exclude zero, that the median count of in-window intermediate estimates be at least
+{{lf_g0_min}}, and that the second extractor agree in sign with its own interval also excluding
+zero.
+
+| | `Qwen/Qwen3-8B` | `Qwen/Qwen2.5-14B-Instruct` |
+|---|---|---|
+| gap on the extractor of record, strict `>` | **{{w2_gap_q3_judge_gt}}** [{{w2_ci_lo_q3}}, {{w2_ci_hi_q3}}] | **{{w2_gap_q25_judge_gt}}** [{{w2_ci_lo_q25}}, {{w2_ci_hi_q25}}] |
+| interval excludes zero | **no** | yes |
+| in-window intermediates, median | {{w2_med_q3}} | {{w2_med_q25}} |
+| second extractor, strict `>` | {{w2_gap_q3_regex_gt}} [{{w2_rci_lo_q3}}, {{w2_rci_hi_q3}}] | {{w2_gap_q25_regex_gt}} [{{w2_rci_lo_q25}}, {{w2_rci_hi_q25}}] |
+| its interval excludes zero | **no** | **no** |
+| **G0** | **FAIL** | **FAIL** |
+
+`Qwen3-8B` fails cleanly: its lower bound is exactly {{w2_ci_lo_q3}}, and under a gate requiring
+the interval to *exclude* zero, an interval that touches zero does not.
+`Qwen2.5-14B-Instruct` meets both stated conditions on the extractor of record and is defeated by
+the corroborating extractor, whose disagreement on those very answers is {{w2_dis_q25}} %, almost
+all of it the mechanical threshold-echo above.
+
+**G0 stands as a FAIL and is reported as one.** The project continued by an owner-approved scope
+change, not by re-scoring the gate: the researcher read the sampled traces, found the phenotype
+was overt threshold-gaming rather than the covert leakage of the {{lf_panel_size}}B panel
+({{lf_w2_mentions}} bet or threshold mentions across {{lf_w2_sample_traces}} sampled traces), and
+re-aimed the project at localizing the value direction behind overt gaming. Two standing reporting
+rules came with that decision and bind everything downstream: intermediate-estimate positions
+exclude any literal exactly equal to the rendered τ, and extractor agreement is always reported on
+a corrected basis **with the raw number printed beside it**.
+
+---
+
+## 4. The behavioural phenotype
+
+The frozen dataset is {{w3_n_side}} rollouts per side per surface form plus no-bet arms:
+{{n_w3_fresh}} fresh rollouts, **{{n_w3_trunc}} truncations in every arm**, generated once and
+never resampled. τ_A = {{tau_A}}; τ_B = {{tau_B}}, each that form's own no-bet median, so a null
+effect sits near half in every arm by construction.
+
+### 4.1 Leakage here is overt, and near-total [measured]
+
+The direction judge — condition-agnostic, so it must work out the favoured side itself — finds the
+bet, threshold or cause mentioned in {{w3_mention_k}} of {{w3_mention_n}} incentive traces,
+**{{w3_mention_pct}} %**, across two surface forms and both mirror directions;
+{{w3_unparsed}} verdicts were unparseable after the transport fix of §8. The predecessor panel's
+headline was that models move estimates *without saying so*, at around {{lf_covert_pct}} %
+spontaneous disclosure. At this scale the same manipulation produces the opposite surface
+behaviour: the model states the threshold, states which side it wants, and often shows the
+arithmetic that lands it there. Any account of unfaithful chain-of-thought that generalises across
+scale has to accommodate both. **The mention rate is [measured]; that covertness emerges with
+scale is [suggested] and no stronger** — two model families, no sweep, and the studies differ in
+more than parameter count.
+
+### 4.2 Threshold anchoring is a property of one model, not of small models [measured]
+
+`Qwen3-8B` places **{{sk_q3_ties}} of {{w2_n_incentive}}** incentive finals *exactly on* τ, so its
+gap depends on how ties are counted: {{sk_q3_strict}} strict against {{sk_q3_ge}} inclusive. **The
+verdict does not depend on it** — both intervals include zero, and the tie-convention check finds
+{{sk_w2_flips}} verdict changes anywhere in the screening table. `Qwen2.5-14B-Instruct` does not
+anchor: {{w3_eqtau_A_below}} % and {{w3_eqtau_B_below}} % of its form A and form B finals sit
+exactly on τ. **Anchoring is a `Qwen3` property, not a small-model one**, and the earlier finding
+does not transfer.
+
+### 4.3 The winner's curse, measured end to end [measured]
+
+The screening estimate that justified choosing this model was {{w2_gap_q25_judge_gt}} at
+n = {{w2_n_side}} per side, and whether luck had inflated it was not knowable from the screen.
+**Everything was held fixed** for the re-measurement: prompt text, templated prompt, model,
+threshold and its rendering, inference-engine version {{conv_vllm}}, prompt token count and
+sampler are byte-identical. **The seed block is the only difference.**
+
+At n = {{w3_n_side}} per side the same measurement is {{w3_gap_A_judge_gt}}, interval
+[{{w3_ci_lo_A}}, {{w3_ci_hi_A}}]. On the `above` arm, screening read
+{{wc_w2_above_k}}/{{wc_w2_above_n}} = {{wc_w2_above_rate}} against the frozen dataset's
+{{wc_w3_above_k}}/{{wc_w3_above_n}} = {{wc_w3_above_rate}} — z = {{wc_z}}, two-sided
+p = {{wc_p}}. The three independent blocks of {{w2_n_side}} agree with each other
+({{wc_b0_k}}/{{wc_b0_n}}, {{wc_b1_k}}/{{wc_b1_n}}, {{wc_b2_k}}/{{wc_b2_n}}) and disagree with the
+screen; screening's two arms were extreme in opposite directions and the gap is their difference,
+so both deviations added. **The screening number is a screening artifact and is never used as an
+effect size in this document.**
+
+### 4.4 The belief-conditional decomposition [measured], and what it does not license
+
+Traces are labelled by whether their visible text correctly identifies which side of τ the bet
+favours. Comprehension is strongly asymmetric between the mirrored arms.
+
+| form | arm | mention rate | direction correct | incorrect | unclear |
+|---|---|---|---|---|---|
+| A | below favoured | {{w3_ment_A_below}} % | **{{w3_correct_A_below}} %** | {{w3_inc_A_below}} | {{w3_unc_A_below}} |
+| A | above favoured | {{w3_ment_A_above}} % | **{{w3_correct_A_above}} %** | {{w3_inc_A_above}} | {{w3_unc_A_above}} |
+| B | below favoured | {{w3_ment_B_below}} % | **{{w3_correct_B_below}} %** | {{w3_inc_B_below}} | {{w3_unc_B_below}} |
+| B | above favoured | {{w3_ment_B_above}} % | **{{w3_correct_B_above}} %** | {{w3_inc_B_above}} | {{w3_unc_B_above}} |
+
+"Do not exceed the threshold and a good cause benefits" is understood most of the time; "exceed
+the threshold and a good cause benefits" barely better than chance, and the failures are mostly
+*unclear* rather than *incorrect* — the model raises the bet and never commits to a side.
+Conditioning the landing gap on that label splits the aggregate into two large opposite effects.
+
+| form | group | n | landing gap | {{lf_ci_pct}} % interval |
+|---|---|---|---|---|
+| A | direction **correct** | {{w3_n_corr_A}} | **{{w3_cond_gap_A}}** | [{{w3_cond_lo_A}}, {{w3_cond_hi_A}}] |
+| A | direction **not** correct | {{w3_n_ncorr_A}} | **{{w3_condnot_gap_A}}** | [{{w3_condnot_lo_A}}, {{w3_condnot_hi_A}}] |
+| B | direction **correct** | {{w3_n_corr_B}} | **{{w3_cond_gap_B}}** | [{{w3_cond_lo_B}}, {{w3_cond_hi_B}}] |
+| B | direction **not** correct | {{w3_n_ncorr_B}} | **{{w3_condnot_gap_B}}** | [{{w3_condnot_lo_B}}, {{w3_condnot_hi_B}}] |
+
+**What this licenses, and what it does not.** Form A's null aggregate ({{w3_gap_A_judge_gt}}) is
+consistent with *cancellation* rather than indifference. But the judge reads the text the estimate
+came from: a trace writing "I will go above τ so the good cause benefits" is scored *correct*
+**and** lands above, so verdict and outcome are two readings of one sentence. **A large
+conditional gap is partly guaranteed by construction, and nothing here establishes that
+comprehension causes the landing.** What survives that objection is the marginal comprehension
+rate, read from prompt-plus-text alone.
+
+**Label noise is characterized, not corrected.** A deterministic string test over all
+{{w3_mention_n}} traces — does the text contain the prompt's own cause vocabulary — separates
+*unclear* from *correct* by a wide margin ({{v7_unclear_rate}} % of *unclear* verdicts are
+mapping-silent against {{v7_correct_rate}} % of *correct* ones), which licenses reading the other
+rows. {{v7_incorrect_rate}} % of *incorrect* verdicts are mapping-silent; reading those traces
+shows the model reasoning about the bet in its own vocabulary and committing to the wrong side, so
+the string test is an **upper bound on how often the judge could have credited a mapping the text
+does not carry, not a count of judge errors**. The researcher's validation put residual noise at
+roughly a fifth to a third of labels and ruled it **attenuating** — it shrinks the contrasts above
+rather than manufacturing them. Labels were frozen before any activation was read.
+
+### 4.5 Gate G1 failed, and the failure is a result
+
+| criterion | form A | form B |
+|---|---|---|
+| landing gap, extractor of record | {{w3_gap_A_judge_gt}} [{{w3_ci_lo_A}}, {{w3_ci_hi_A}}] | {{w3_gap_B_judge_gt}} [{{w3_ci_lo_B}}, {{w3_ci_hi_B}}] |
+| interval excludes zero | **no** | yes |
+| second extractor agrees in sign | yes ({{w3_gap_A_regex_gt}}) | yes ({{w3_gap_B_regex_gt}}) |
+| **verdict** | **FAIL** | pass |
+
+G1 required both forms. **G1 = FAIL**, and the specific pre-registered branch fired: form A passed
+at screening and failed at the frozen n. Form B's pass must not be read as rescuing it, for two
+reasons stated at the time rather than discovered later — its inclusive-convention interval is
+[{{w3_ci_lo_B_ge}}, {{w3_ci_hi_B_ge}}] and touches zero, so **the pass is convention-dependent**,
+the only place in the project where the tie convention changes a verdict; and its strict lower
+bound, {{w3_ci_lo_B}}, is about one rollout's margin.
+
+**Two trajectory statistics are reported and support nothing.** Revision asymmetry — of the
+consecutive intermediate pairs that cross τ, what fraction move toward the arm's favoured side —
+rests on {{w3_cross_A_below}} to {{w3_cross_B_below}} crossings per arm, and form B's apparent
+asymmetry is not incentive-following because **both** arms revise predominantly downward. Stopping
+asymmetry is {{w3_stop_diff_A}} on form A and {{w3_stop_diff_B}} on form B, the one place the
+trajectory and final-answer statistics agree. Their raw, τ-echo-included variants are
+**artifacts**: with echoes included a literal equal to τ counts as "below", so both arms show a
+spurious preference ({{w3_stop_diff_A_raw}} and {{w3_stop_diff_B_raw}}).
+
+### 4.6 The extractor finding, load-bearing for everything after
+
+Raw disagreement between the two extractors on incentive finals is {{w3_dis_raw_A}} % (form A) and
+{{w3_dis_raw_B}} % (form B). Setting aside disagreements in which the regex returned the
+prompt-rendered τ exactly while the judge did not, it falls to **{{w3_dis_corr_A}} %** and
+**{{w3_dis_corr_B}} %** — {{w3_mech_A}} of {{w3_dis_raw_k_A}} and {{w3_mech_B}} of
+{{w3_dis_raw_k_B}} disagreements are mechanically explained. **Once the threshold-echo is removed
+the extractors agree on {{w3_agree_pct}} % of {{w3_mention_n}} incentive finals.** The frozen rule
+remains unpatched; the correction is a *reporting basis* used for recount and for the intervention
+packets, never an amendment, and the raw number is printed beside the corrected one everywhere it
+appears — including in every table above.
+
+---
+
+## 5. The value direction
+
+### 5.1 Construction
+
+Activations were captured by replaying every stored trace with forward hooks on each decoder
+layer's output — the post-block residual stream, the same stream the smoke test hooked and the
+same stream the intervention writes to. **{{n_w4_traces}} traces replayed,
+{{n_w4_quarantined}} quarantined, {{n_w4_points}} positions captured** across
+{{lf_n_layers}} layers of width {{lf_d_model}}.
+
+Positions are typed; the load-bearing kind is `est`, a parsed intermediate estimate inside the
+frozen window with any literal exactly equal to τ excluded. Two kinds were added beyond the
+order's list as flagged judgment calls, and one matters a great deal: on form A the frozen
+last-literal *final* is a τ-echo in {{w3_eqtau_A_below_regex}} % of traces, so **a capture of the
+final position alone would have localized the model echoing the prompt's threshold rather than
+stating its estimate.**
+
+**The direction.** Within the single `above`-favoured arm — the one cell where both belief classes
+have usable counts — traces are labelled p̂ = +1 if the text believes *above* τ is favoured and
+p̂ = −1 if *below*; *unclear* is excluded. Estimate-point activations are averaged within a trace
+first, then within each stratum of "is this literal above or below τ", and **v_p̂ is the unweighted
+mean of the two stratum differences**. Trace weighting stops a verbose trace dominating; the
+stratum split stops the direction being a proxy for "this number is large". The analysis cell is
+{{w5_A_points}} points over {{w5_A_traces}} traces on form A ({{w5_A_pos}} positive,
+{{w5_A_minority}} negative) and {{w5_B_points}} over {{w5_B_traces}} on form B ({{w5_B_pos}} /
+{{w5_B_neg}}).
+
+**Probes.** L2 logistic regression at each layer, split **by trace** at {{lf_probe_split}} and
+class-stratified so no point leaks across the split; a held-out trace is scored by the mean of its
+points' probabilities, and the metric is balanced accuracy over held-out traces. The null is
+{{w5_n_perm}} trace-level label permutations. The split is repeated {{w5_n_repeat}} times and
+averaged, because with {{w5_A_minority}} minority traces one split quantises balanced accuracy in
+steps too coarse to read; the null uses the identical repeat structure.
+
+### 5.2 What the probes found
+
+| quantity, at the pre-registered layer ℓ\* = {{w5_lstar}} | form A | form B |
+|---|---|---|
+| p̂ probe, balanced accuracy | {{w5_A_balacc_lstar}} | **{{w5_B_balacc_lstar}}** |
+| its {{w5_n_perm}}-draw null, {{lf_ci_pct}}th percentile | {{w5_A_null_lstar}} | {{w5_B_null_lstar}} |
+| permutation p | {{w5_A_p_lstar}} | **{{w5_B_p_lstar}}** |
+| verdict against the frozen criterion | **fails** | **passes** |
+| layers beating their own null, of {{w5_n_layers}} | **{{w5_A_nsig}}** | **{{w5_B_nsig}}** |
+| positive control: is this literal above τ | {{w5_A_dt_lstar}} | {{w5_B_dt_lstar}} |
+| positive control: cause-word polarity | {{w5_A_bp_lstar}} | {{w5_B_bp_lstar}} |
+
+**Form B carries the believed side and the effect is broad**, peaking at {{w5_B_peak}} at layer
+{{w5_B_peak_layer}} and at chance only in the first few layers. Form B is also the form whose
+behavioural leakage survived the frozen dataset, so the representational and behavioural results
+agree about which surface form carries the effect.
+
+**Form A is flat everywhere, and the apparatus is not the reason.** On the *same points*, through
+the *same* split and fit, the "is this literal above τ" control reaches {{w5_A_dt_peak}} and is
+significant at {{w5_A_dt_nsig}} of {{w5_n_layers}} layers. The machinery decodes what is there to
+decode; what cannot be separated is absence from power, because form A's within-form
+cross-validation scores about four minority traces per split. Neither absence nor presence is
+claimed. The one informative asymmetry is that a probe trained on *all* form A points predicts
+*form B* traces at {{w5_transfer_peak}} — so form A's activations do appear to carry the signal
+while form A's own cross-validation is too small to show it. *Post-hoc; stated as the leading
+explanation, not as a test.* The cause-polarity control is at ceiling at every layer in both forms
+because the token before the scored position differs by class; it confirms the plumbing and
+nothing else.
+
+### 5.3 The signal is pre-verbalization [measured]
+
+**{{lf_w5_before_B}} of {{lf_w5_total_B}}** of the form B estimate points carrying the signal fall
+*before* the trace first names a cause; on form A, {{lf_w5_before_A}} of {{lf_w5_total_A}}. The
+pre-registered before/after comparison is **not estimable** — the "after" cell holds a handful of
+points and about two held-out traces per split — and is reported as not estimable rather than as a
+number. But its motivating claim is answered by the "before" column alone: **the believed favoured
+side is linearly present in the residual stream while the model is still emitting intermediate
+estimates, {{w5_pre_verbal_pct}} % of the time before it says which cause the bet favours.** That
+is the correlational preview of belief-upstream the intervention was built to test, and it exists
+on form B only.
+
+### 5.4 Invariance: marginal at the frozen layer, and the band is exploratory
+
+| cross-form quantity | at ℓ\* = {{w5_lstar}} | verdict |
+|---|---|---|
+| cos(v_p̂ form A, v_p̂ form B) | {{w5_cos_lstar}} against null {{lf_ci_pct}}th pct {{w5_cos_null_lstar}}, p = {{w5_cos_p_lstar}} | **passes, barely** |
+| probe transfer A → B | {{w5_transfer_lstar}} against null {{lf_ci_pct}}th pct {{w5_transfer_null_lstar}}, p = {{w5_transfer_p_lstar}} | **fails** |
+
+**The frozen layer rule is this packet's own biggest problem, and was recorded as such before the
+audit.** ℓ\* was fixed as the argmax of form A's p̂ probe curve — and that curve never beats its
+own null at any of the {{w5_n_layers}} layers, so its argmax is a draw from noise. Layer
+{{w5_lstar}} is where a noise curve happened to peak.
+
+The layer curves put the signal higher up. Cross-form cosine beats its null in a contiguous band,
+layers **{{w5_cos_band_lo}}–{{w5_cos_band_hi}}**, peaking at {{w5_cos_peak}} at layer
+{{w5_cos_peak_layer}} (p = {{w5_cos_peak_p}}); probe transfer beats its null across layers
+**{{w5_transfer_band_lo}}–{{w5_transfer_band_hi}}**, peaking at {{w5_transfer_peak}} at layer
+{{w5_transfer_peak_layer}} (p = {{w5_transfer_peak_p}}). ℓ\* is the first layer of the cosine band
+and one short of the transfer band. **The result of record stays at ℓ\* = {{w5_lstar}}**: a
+marginal cosine pass and a transfer failure. The layers
+{{w5_cos_band_lo}}–{{w5_cos_band_hi}} band is **[suggested]** and carries that label at every
+citation here, including where the intervention chose its layer.
+
+**The bridge to the original plan.** The prompt-side and belief-side directions are related but
+far from identical where both exist: cos(v_p, v_p̂) is {{w5_cosvp_B}} on form B at ℓ\*, rising to
+{{w5_cosvp_B_l0}} at layer zero, and {{w5_cosvp_A}} on form A. Had they been collinear the pivot
+would have been cosmetic.
+
+---
+
+## 6. Causal results
+
+### 6.1 The design, and what each outcome would have meant
+
+A forward hook adds **α · ‖Δμ‖ · û** to layer ℓ's output at *every generated token position from
+the first generated token onward*, where û is the unit-normalized direction and ‖Δμ‖ the raw
+class-mean difference's norm, so α is in units of the direction's own scale. The prefill pass is
+not modified. The primary layer L{{layer_primary}} comes from form B's **own within-form** probe
+peak, which is observational and involves no cross-form claim; the secondary layer
+L{{layer_secondary}} is the peak of the **[suggested]** cross-form band and carries that label.
+ℓ\* = {{w5_lstar}} was deliberately not used: it is the result of record *and* was chosen by a
+flawed rule, so intervening there would inherit the flaw for no gain.
+
+**The sign was frozen before any steered token existed.** v_p̂ = mean(believes-above) −
+mean(believes-below), so **+α was predicted to raise** `P(final > τ_B)`. No result below is
+reported with that sign flipped.
+
+**Arms.** {{n_w7_arms}} arms × {{conv_n_per_arm}} generations = {{n_w7_gens}} steered generations
+at doses α ∈ {{alpha_grid_w7}}, plus a sham arm with the hook installed adding zero, mirrored and
+no-bet arms, and **{{n_null_directions}} random equal-norm directions** from a seed list frozen in
+advance. A follow-up packet added {{n_w7b_arms}} arms × {{conv_n_per_arm}} = {{n_w7b_gens}}
+generations at α ∈ {{alpha_grid_w7b}} against four further random directions. ‖Δμ‖ at
+L{{layer_primary}} is {{lf_dmu}} against a mean residual-stream norm of {{d_resid_norm}}, so the
+pre-registered grid is **{{d_a1_pct}} %, {{d_a2_pct}} % and {{d_a4_pct}} %** of the residual norm
+and the follow-up's is **{{d_a025_pct}} %** and **{{d_a05_pct}} %**.
+
+| landing moves with α, beating the random directions | verbalized belief moves with α | reading |
+|---|---|---|
+| yes | yes | the believed side is causally upstream and the verbalization tracks it — faithful |
+| yes | no | the direction acts on the estimate policy, not on the talk |
+| no | yes | annotation channel only: the direction writes the commentary, not the number |
+| **no** | **no** | **v_p̂ is correlational; report at full volume as the null result** |
+
+### 6.2 The apparatus is sound, and this is checkable
+
+Three checks are load-bearing and all three ran on a laptop before any GPU existed. **The
+injection arithmetic:** a smoke clause captures the layer's output before and after the hook on
+every forward pass inside a real generation call, and confirms the prefill pass changes by
+**exactly zero** and every decode pass by **exactly α·‖Δμ‖·û** to {{smoke_s4_tol}} in single
+precision. **The sham is a real α = 0 control, twice over:** the hook at zero produces **bitwise
+identical** token ids to running with no hook, and the sham lands at {{w7_P_sham}} against the
+unsteered frozen dataset's {{w3_B_above_rate}} on the same extractor. **The direction's sign is
+right:** form B estimate points project onto v_p̂ at mean {{w5_proj_pos}} for believes-above traces
+against {{w5_proj_neg}} for believes-below, a gap of {{w5_proj_gap}} in the direction the
+pre-registration froze. **+α does push the residual stream toward the believed-above pole.** The
+behaviour still goes the other way.
+
+### 6.3 The primary contrast fails its null test, in the informative direction [measured null]
+
+Primary basis is the corrected regex, with the raw regex and the extractor of record beside it.
+
+| arm, L{{layer_primary}}, above-favoured | P(final > τ_B), corrected | raw regex | judge | median log₁₀ final |
+|---|---|---|---|---|
+| α = {{alpha_max}} | **{{w7_P_ap4}}** | {{w7_Praw_ap4}} | {{w7_Pj_ap4}} | **{{w7_medlog_ap4}}** |
+| α = +2 | **{{w7_P_ap2}}** | {{w7_Praw_ap2}} | {{w7_Pj_ap2}} | {{w7_medlog_ap2}} |
+| α = +1 | {{w7_P_ap1}} | {{w7_Praw_ap1}} | {{w7_Pj_ap1}} | {{w7_medlog_ap1}} |
+| **α = 0 (sham)** | **{{w7_P_sham}}** | {{w7_Praw_sham}} | {{w7_Pj_sham}} | **{{w7_medlog_sham}}** |
+| α = −1 | {{w7_P_am1}} | {{w7_Praw_am1}} | {{w7_Pj_am1}} | {{w7_medlog_am1}} |
+| α = −2 | **{{w7_P_am2}}** | {{w7_Praw_am2}} | {{w7_Pj_am2}} | {{w7_medlog_am2}} |
+| α = {{alpha_min}} | {{w7_P_am4}} | {{w7_Praw_am4}} | {{w7_Pj_am4}} | {{w7_medlog_am4}} |
+
+| pre-registered statistic | value | {{lf_ci_pct}} % interval | judge |
+|---|---|---|---|
+| Δ± = P(α=+2) − P(α=−2) | {{w7_dpm}} | [{{w7_dpm_lo}}, {{w7_dpm_hi}}] | {{w7_dpm_j}} |
+| Δ+ = P(α=+2) − P(sham), scale-matched to the nulls | **{{w7_dplus}}** | [{{w7_dplus_lo}}, {{w7_dplus_hi}}] | {{w7_dplus_j}} |
+| Δ− = P(α=−2) − P(sham), scale-matched | {{w7_dminus}} | [{{w7_dminus_lo}}, {{w7_dminus_hi}}] | {{w7_dminus_j}} |
+
+The {{n_null_directions}} random equal-norm directions give Δ_j = P(null_j) − P(sham) with mean
+{{w7_null_mean}}, minimum {{w7_null_min}} and maximum {{w7_null_max}}.
+
+**Verdict against the frozen criterion — a statistic passes only if it exceeds every random
+direction.** Δ+ = {{w7_dplus}} beats **{{w7_dplus_beats}} of {{n_w7_nulls}}**, one-sided
+p = {{w7_dplus_p}}. Δ± beats {{w7_dpm_beats}} of {{n_w7_nulls}}, p = {{w7_dpm_p}}. Δ− beats
+{{w7_dminus_beats}} of {{n_w7_nulls}}, p = {{w7_dminus_p}}. **All three fail**, and the sign was
+frozen before the first token, so the reversal cannot be re-read as success. *A two-sided reading
+is available — the magnitude of Δ+ exceeds every random direction's magnitude by about one seed's
+worth — and is recorded as post-hoc and not claimed, because no two-sided test was
+pre-registered.*
+
+### 6.4 The dose anatomy says magnitude, not side
+
+**The profile is an inverted U centred exactly on the sham arm.** Landing falls on both sides of
+zero dose and falls faster on the positive side ({{w7_drop_plus4}} at α = +4 against
+{{w7_drop_minus4}} at α = −4). Monotone non-decreasing in α: **{{sk_monotone}}**. The rank
+correlation between α and the per-generation landing indicator is {{w7_rho}} with permutation
+p = {{w7_rho_p}} over {{n_w7_dose_gens}} generations — significant and **negative**, the reverse of
+the prediction, and an artifact of the curve's asymmetry rather than of any monotone trend.
+
+Three arms decide the interpretation, and each was pre-registered for exactly this purpose.
+
+| contrast | Δ± = P(+2) − P(−2) | {{lf_ci_pct}} % interval | what it shows |
+|---|---|---|---|
+| secondary layer L{{layer_secondary}} **[suggested band]** | {{w7_L30_dpm}} | [{{w7_L30_lo}}, {{w7_L30_hi}}] | the exploratory band does not rescue the prediction |
+| **mirrored** arm, below-favoured | {{w7_below_dpm}} | [{{w7_below_lo}}, {{w7_below_hi}}] | no α-sign effect at all where the favoured side is reversed |
+| **no-bet** arm | {{w7_neutral_dpm}} | [{{w7_neutral_lo}}, {{w7_neutral_hi}}] | the ±α effect is as large with the bet deleted as with it present |
+
+**The no-bet arm is the sharpest single result in the project.** Its prompt contains no bet, no
+threshold and no favoured side, so a direction acting on *the believed favoured side* has nothing
+to act on. Injecting ±2·‖Δμ‖·û still moves the median estimate by {{w7_neutral_logdelta}} log
+units — {{w7_neutral_med_ref}} unsteered against {{w7_neutral_med_ap2}} at α = +2 and
+{{w7_neutral_med_am2}} at α = −2 — and the above-τ rate by {{w7_neutral_dpm_abs}}. **A direction
+that acts on estimated magnitude behaves exactly as observed.**
+
+### 6.5 The verbalized belief does not move either
+
+| arm, L{{layer_primary}}, above-favoured | correct / incorrect / unclear | labelled n | P(believes above) |
+|---|---|---|---|
+| α = +2 | {{w7_v_ap2}} | {{w7_nlab_ap2}} | {{w7_phat_ap2}} |
+| **sham** | {{w7_v_sham}} | {{w7_nlab_sham}} | **{{w7_phat_sham}}** |
+| α = −2 | {{w7_v_am2}} | {{w7_nlab_am2}} | {{w7_phat_am2}} |
+
+The pre-registered flip is {{w7_flip}}, interval [{{w7_flip_lo}}, {{w7_flip_hi}}]. **The sign is
+the predicted one — the only pre-registered statistic in the project that gets its predicted sign
+— and the interval includes zero, so the flip is not established.** Three things cut against it
+even at face value. It is **one-sided against the sham**: the +2 arm moves
+{{w7_flip_plus_vs_sham}} and the −2 arm {{w7_flip_minus_vs_sham}}, so the entire contrast is the
+negative arm suppressing belief-in-above. **A random direction moved it more**: a screen frozen in
+the pre-registration forced two of the {{n_null_directions}} random arms to be judged, and one
+reaches P(believes above) = {{w7_null04_phat}} against v_p̂'s {{w7_phat_ap2}} and the sham's
+{{w7_phat_sham}} — *a screen-selected and therefore biased pair, so a caution rather than a test*.
+And **the mirrored arm kills it**: on the below-favoured condition the same ±2 injection gives
+{{w7_below_phat_ap2}} and {{w7_below_phat_am2}}, no movement at all, where a direction that
+causally sets the believed side should move both arms. The no-bet arms are a clean judge control —
+mention rate {{w7_neutral_mention}} and every verdict *unclear*.
+
+### 6.6 The low-dose follow-up, and a gate that fired on its own noise
+
+**Status label, carried by every number in this subsection.** The follow-up was **designed after
+the main result was known** — the doses were chosen *because* the pre-registered doses failed. Its
+rules were frozen before its data, which is what that buys and nothing more, and **it does not
+reopen the main verdict.**
+
+**Coherence and content markers agree that these doses do not distort.** Coherence is
+{{w7b_coh}} in all {{n_w7b_arms}} arms; {{w7b_trunc}} truncated and {{w7b_degen}} degenerate in
+{{n_w7b_gens}}; output lengths {{w7b_tok_min}}–{{w7b_tok_max}} against the unsteered
+{{w3_B_above_tokens}}; median log₁₀ estimates {{w7b_medlog_min}}–{{w7b_medlog_max}} against the
+unsteered {{w3_unsteered_medlog}}. Engagement with the bet is *higher* than at the main packet's
+doses, {{sk_w7b_mention_mean}} against the sham's {{sk_w7_sham_mention}}.
+
+**Result.** Δ±(v_p̂) at ±0.5 is **{{w7b_dpm}}**, interval [{{w7b_dpm_lo}}, {{w7b_dpm_hi}}] (judge
+{{w7b_dpm_j}}, [{{w7b_dpm_j_lo}}, {{w7b_dpm_j_hi}}]). The sign is, for the first time, the
+pre-registered one. It is not distinguishable from zero, it **reverses** at half that dose
+({{w7b_dpm_quarter}}), and the four random directions do the same contrast at mean
+{{w7b_null_mean}} — one reaching {{w7b_null_max}} on an interval that excludes zero where v_p̂'s
+does not.
+
+**The frozen distortion gate fired, and it should not be trusted.** The gate averages, over the
+eight random arms, the absolute difference between each arm's landing rate and the sham's, and
+declares distortion above {{lf_dbar_line}}. Observed: {{w7b_dbar}} on the corrected basis and
+{{w7b_dbar_j}} on the judge basis, so the "even this dose distorts" row fired and **stands as the
+verdict of record**. But that statistic is a mean of absolute differences between binomial
+proportions at n = {{conv_n_per_arm}} and has a non-zero floor. Computed exactly under the null
+the gate exists to detect — every arm the same coin, the injection doing nothing —
+**E[D̄] = {{sk_dbar_E}} and P(D̄ > {{lf_dbar_line}}) = {{sk_dbar_P}}**. **A design that does nothing
+whatsoever trips this gate about two thirds of the time**, so the two rows that would have
+licensed a statement *about the direction* were jointly unreachable before a single token was
+generated. The verdict row is reported, and reported as weakly informative by construction.
+
+**What the arms actually look like: one common rate.** The {{n_w7b_arms}} arms are mutually
+homogeneous — χ² = {{sk_chi2}} on {{sk_dof}} degrees of freedom, p = {{sk_chi2_p}} — consistent
+with a single landing rate across the value direction *and* random directions, both signs and both
+dose sizes. Pooled: {{sk_pooled_k}}/{{sk_pooled_n}} = {{sk_pooled_rate}}. That rate sits below the
+α = 0 references (Fisher p = {{sk_fisher_sham}} against the sham) **but does not scale with
+dose**: {{sk_quarter_rate}} at the smaller dose against {{sk_half_rate}} at twice the dose, Fisher
+p = {{sk_dose_p}}, a difference of {{sk_dose_delta}}. **A distortion flat in dose is not a
+distortion story.** The most economical reading at |α| ≤ 1 is one common rate near half with
+sampling scatter, and an α = 0 reference at n = {{conv_n_per_arm}} reading high — and **the packet
+cannot separate those, because it reused the earlier sham rather than generating a fresh one**, a
+limitation declared before the data. *The homogeneity analysis is descriptive; no verdict rests on
+it.*
+
+### 6.7 What the causal work does establish
+
+**Injecting along v_p̂ is powerfully causal on the estimate and is not believed-side-specific
+[measured].** The most economical description of v_p̂ is a direction with a large component along
+**estimated numeric magnitude**, whose believed-side content — real enough to decode at
+{{w5_B_balacc_lstar}} — is not what dominates when it is written back in. The evidence is §6.4's
+three control arms together: the effect survives deleting the bet, does not mirror, and is matched
+in size by random directions (mean Δ_j = {{w7_null_mean}}).
+
+**A bound [measured].** Whatever v_p̂-specific landing effect exists at
+{{d_a025_pct}}–{{d_a05_pct}} % of the residual norm is smaller than four random directions'
+typical excursion at the same norm, at {{conv_n_per_arm}} generations per arm.
+
+**And the design's own limit.** The pre-registered grid may sit entirely in a regime where generic
+distortion dominates. Its smallest dose, {{d_a1_pct}} % of the residual norm, is already
+**symmetric** in α (Δ+ = {{w7_dplus_a1}}, Δ− = {{w7_dminus_a1}}) — what a pure magnitude effect
+looks like, not what a believed-side effect looks like — and the follow-up went lower and found a
+flat offset rather than a gradient. **No direction-specific effect, and a direction-specific
+effect below this design's resolving power, are not separated by anything in this project.**
+
+---
+
+## 7. Verdicts on the hypotheses
+
+The hypotheses were restated when the interp target moved from the prompt-stated favoured side to
+the trace-level believed side. The originals are mapped, not dropped.
+
+**H1′ — the believed favoured side shifts the estimate computation. Correlationally supported,
+causally unresolved.** The support is representational and real (§5.2–5.3): the believed side is
+linearly decodable at estimate positions on form B, at {{w5_B_nsig}} of {{w5_n_layers}} layers,
+and {{w5_pre_verbal_pct}} % of the carrying points precede the first mention of a cause. The
+causal test then failed to distinguish the value direction from random directions of equal norm at
+any of six doses. **A representation that is decodable and an intervention that is null are both
+facts, and this project cannot say whether the null is the world or the instrument.**
+
+**H2′ — the believed side gates the verbalization rather than the estimate. Untested.** The
+design's route was the belief-flip statistic, and it did not clear its nulls: the interval
+includes zero, the entire contrast is one arm moving, the mirrored condition shows nothing, and a
+screen-selected random direction moved the statistic further than the value direction did. **No
+intervention here moved verbalization above its nulls, so the hypothesis was never put to a test
+that could have failed informatively.** Recorded as untested rather than rejected, because
+rejection would claim power the design did not have.
+
+**H3′ — the belief accumulates across the trace. [not tested].** The frozen dataset carries about
+three in-window estimate points per trace, which cannot support an accumulation test, and the
+intervention adds no per-point resolution. Declared before the intervention ran, not after it
+disappointed.
+
+**The original hypotheses, over the prompt-stated favoured side.** Superseded by the two pivots,
+with the mapping documented in the ledger. Their shared premise — that this model class shows a
+prompt-stated landing gap large enough to localize — is itself now **[measured]** and the
+measurement is unfavourable: {{w3_gap_A_judge_gt}} on the original surface form at
+n = {{w3_n_side}} per side and {{w3_gap_B_judge_gt}} on the reskin, with the reskin's pass
+convention-dependent. **In this model class, at this n, the prompt-stated landing gap is fragile
+to absent.** That is a finding about the phenomenon, not the apparatus, and it is why the
+belief-conditional target was the right move even though it did not resolve the causal question.
+
+---
+
+## 8. What would have fooled us
+
+Each of these was, at some point, the natural thing to write. Each was killed by a control that
+existed before the result did — or, in the last three cases, by a check that should have existed
+and did not.
+
+**Hook misalignment.** The interp programme rests on the captured positions being the positions
+the parser named, and nothing downstream would reveal a one-token offset: a probe on misaligned
+activations still returns a number with a null to beat. The control is a decode check — decode
+each sampled span's stored token ids and compare to the literal as it appears in the trace.
+**{{lf_decode_k}} of {{lf_decode_n}} exact**, commas included, with a second check at the analysis
+stage reproducing {{lf_integrity_decode}} of its own sample including a literal one unit above τ.
+Position indexes were built twice on different machines and agree on every one of
+{{n_w4_points}} positions.
+
+**The threshold-digit confound, and the near-miss inside it.** The prompt contains τ, and both
+models answer then justify, so the frozen last-literal rule returns τ itself in a large share of
+answers — {{w3_eqtau_A_below_regex}} % of form A traces and {{d_w7_echo_k}} of {{n_w7_gens}}
+steered generations, where the rate **varies systematically with the injected dose**
+({{d_echo_ap1}} at α = +1 against {{d_echo_am1}} at α = −1). Raw landing rates under that rule are
+uninterpretable and never used for a verdict. **The near-miss:** the activation capture was
+specified with a "final answer" position kind, and on form A that position is a threshold echo in
+most traces — a final-only capture would have localized *the model echoing the prompt's threshold*,
+produced a clean-looking direction, and meant nothing. The corrected-final position was added as a
+flagged judgment call and is what saved it.
+
+**Prompt-stated-p triviality.** Computed *between* the mirrored conditions, a probe could succeed
+by reading the prompt rather than the model's belief, because the prompt states which side is
+favoured and that text is in the context window. The design computes the direction **within a
+single condition**, contrasting traces that believe different things while reading identical text.
+This is not a control that was run and passed; it is a confound removed by construction, and it is
+the strongest methodological consequence of the pivot to the believed side.
+
+**Text-level steering.** An intervention that made the model *say* it wanted a higher number would
+change landing for an uninteresting reason. A deterministic screen over every steered generation
+finds **{{sk_pref_w7}} of {{n_w7_gens}}** and **{{sk_pref_w7b}} of {{n_w7b_gens}}** generations
+verbalizing an injected preference. The failure mode did not occur at any dose.
+
+**Position and verbosity confounds.** A verbose trace contributes more estimate points than a
+terse one, so activations are averaged within a trace before the classes are compared; and a
+direction could be a proxy for "this literal is large", so the construction stratifies on whether
+the literal exceeds τ and averages the strata equally. The positive control confirms the
+stratifying variable is itself strongly decodable ({{w5_B_dt_lstar}}), which is why it had to be
+stratified out.
+
+**The winner's curse.** Covered in §4.3, and in this register because the natural sentence to write
+after screening was "this model shows a {{w2_gap_q25_judge_gt}} landing gap" — and that sentence
+was false. What killed it was a frozen dataset at three times the n with the seed block as the
+only difference.
+
+**Coherence metrics that cannot see epistemic distortion.** The coherence rule has four clauses:
+finished on a stop token, non-empty answer, parseable final estimate, not n-gram-degenerate. It
+reads {{w7_coh_at_one}} of {{n_w7_arms}} arms at {{w7b_coh}} and was reported as "the intervention
+did no damage". Reading the highest-dose samples shows what that number cannot see: the model
+**fabricates coherent low-ball reasoning**, arguing in fluent, arithmetic-showing prose toward an
+estimate far below the threshold, and passes all four clauses. A named screen for that signature —
+a sentence dismissively comparing the estimate to the threshold, *and* a final estimate two orders
+of magnitude below it — fires on **{{sk_fab_ap4}} of {{conv_n_per_arm}}** generations at
+α = {{alpha_max}}, **{{sk_fab_sham}} of {{conv_n_per_arm}}** at the sham, and
+**{{sk_fab_w7b}} of {{n_w7b_gens}}** at the low doses. **"Coherence {{w7b_coh}}" licenses "the
+text is well-formed" and nothing more**, and that correction is attached to the word wherever it
+appears here.
+
+**Pre-registered knobs frozen without a noise-floor check — three times.** This is the
+methodological finding of the project, and it recurs in a different currency each time.
+
+| what was frozen | the knob | how it failed |
+|---|---|---|
+| the probe layer | ℓ\* = argmax of a curve never required to beat its own null | the argmax of a noise curve; the informative band is layers {{w5_cos_band_lo}}–{{w5_cos_band_hi}} |
+| the injection dose | α in units of ‖Δμ‖, without asking what fraction of the residual stream that is | the whole grid may sit where generic distortion dominates: {{d_a2_pct}} % and {{d_a4_pct}} % of the residual norm |
+| the distortion threshold | D̄ > {{lf_dbar_line}} | below the statistic's own floor: E[D̄] = {{sk_dbar_E}} under a design doing nothing |
+
+**The fix is cheap and is named**: simulate the pre-registered statistic under its own null
+*before* freezing the threshold, and set the line above the resulting floor. For the distortion
+gate that is a few minutes of laptop arithmetic on a closed-form binomial convolution. **No
+pre-registration in this project ever did this.** Freezing a rule before the data is necessary and
+is not sufficient: a pre-registration must also freeze evidence that the chosen setting and
+threshold lie inside the range the design can resolve.
+
+**Estimator discipline: never patch an instrument after seeing its errors mid-flight.** Four
+occasions invited it and none took it. The last-literal extractor failed on answer-first models and
+was left unpatched — the models it failed were excluded on apparatus grounds instead. It failed
+again on incentive prompts and was left unpatched — a corrected *reporting basis* was defined
+instead, with the raw number always printed beside it. The API cost estimator under-shot by
+{{d_api_miss_w7}} % and was left unpatched — the corrected constants were written into the ledger
+for the next packet to use explicitly, which cut that packet's projection error to
+{{d_api_miss_w7b}} %. **In every case the correction is a new, separately-cited artifact and the
+original instrument still produces the number it always produced**, which is what makes the
+before/after comparison possible at all.
+
+---
+
+## 9. Open questions, and the deferred programme
+
+The causal question is open and the shape of the experiment that would close it is now clear,
+which is the most useful thing a null result produces. **A properly powered low-dose ladder** is
+the first move: the doses that matter are below the ones run here, the statistic that would read
+them is a landing rate at n far above {{conv_n_per_arm}} per arm, and every frozen gate's
+threshold must be simulated under its own null before it is frozen — the failure that cost this
+project its two cleanest verdict rows. **Activation patching at belief points** is the second and
+the better instrument for this question: patching one trace's residual stream into another at the
+positions where the belief is decodable tests whether *that* state carries the estimate, without
+adding a norm-scale perturbation whose direction-independent effects swamped everything here.
+**Small-model belief-tracking deserves study in its own right**, because the comprehension
+asymmetry found here — one mirror of the same bet understood most of the time, the other barely
+better than chance — is large, cheap to measure, and is what makes the aggregate landing gap in
+this model class a mixture rather than an effect. **And the covert–overt scale question is the one
+this project can only gesture at**: a model of this size announces the bet in nearly every trace
+while the larger panel almost never does, and nothing here can say whether that is scale, family,
+tuning, or prompt surface, because the comparison spans two studies with two model families and no
+sweep.
+
+---
+
+## 10. Methods register
+
+**Models and stack.** `{{lf_model_id}}` at snapshot `{{lf_snapshot}}`, bf16, on one
+{{lf_gpu_type}}. The frozen dataset was generated with vLLM {{conv_vllm}}; activation replay and
+every steered run used `transformers` {{lf_transformers}} on torch {{lf_torch}}, because the
+intervention needs a hook that persists across decode steps and vLLM cannot carry one. The
+extractor of record is `{{lf_judge_model}}`, pinned; the direction judge's prompt is frozen at
+sha256 `{{lf_judge_prompt_sha}}` and was verified unchanged after a transport-level fix. The
+injected direction is `analysis/out/w5_vectors/w5_vphat_B.safetensors`, sha256
+`{{lf_vphat_sha}}`, verified at load time on every arm and recorded in every output file.
+
+**Prompts.** Not reproduced here: they are obtained by calling upstream's own
+`build_prompt(condition, threshold)` at frozen commit `{{lf_upstream_commit}}`, and the form B
+reskin is `src/prompts_w3.py`, whose selftest asserts that exactly one substring differs and that
+both bet paragraphs survive byte-for-byte. **Interpreter note:** that selftest reaches through the
+frozen upstream tree and needs the project virtual environment, not the bare system interpreter —
+of the seven cited verification commands re-run for this document, six run under `python3` and
+that one does not.
+
+**Seeds.** Base seed {{conv_base_seed}}, rollout *i* at base + offset + *i*, blocks a thousand
+apart. Verified at build time: {{sk_total_steered}} steered generations across
+{{sk_seed_lo}}–{{sk_seed_hi}}, all distinct and contiguous, {{sk_collisions}} collisions with each
+other or with any earlier block.
+
+**Spend, final: ${{lf_spend_gpu_cum}} GPU + ${{lf_spend_api_cum}} API = ${{lf_spend_total}}** of a
+${{lf_spend_cap}} cap; balance ${{lf_spend_balance}}. The ${{lf_spend_threshold}} surfacing
+threshold was never approached. The API line overtook the GPU line at the intervention packet and
+stayed there.
+
+| packet | GPU | API |
+|---|---|---|
+| setup and provisioning | ${{lf_gpu_w0}} + ${{lf_gpu_w0b}} | ${{lf_api_w0b}} |
+| neutral calibration | ${{lf_gpu_w1}} | ${{lf_api_w1}} |
+| mirrored screening | ${{lf_gpu_w2}} | ${{lf_api_w2}} |
+| frozen dataset | ${{lf_gpu_w3}} | ${{lf_api_w3}} |
+| activation replay | ${{lf_gpu_w4}} | ${{lf_api_w4}} |
+| the value direction | ${{lf_gpu_w5}} | ${{lf_api_w5}} |
+| the intervention | ${{lf_gpu_w7}} | ${{lf_api_w7}} |
+| the low-dose follow-up | ${{lf_gpu_w7b}} | ${{lf_api_w7b}} |
+| this document | ${{w10_gpu}} | ${{w10_api}} |
+
+**Time.** Runner wall time per packet: {{lf_t_w0}} min, {{lf_t_w0b}}, {{lf_t_w1}}, {{lf_t_w2}},
+{{lf_t_w3}}, {{lf_t_w4}}, {{lf_t_w5}}, {{lf_t_w7}}, {{lf_t_w7b}}, and {{w10_runner_time}} for this
+one. Billed GPU wall time: {{lf_gpuw_w0b}}, {{lf_gpuw_w1}}, {{lf_gpuw_w2}}, {{lf_gpuw_w3}},
+{{lf_gpuw_w4}}, {{lf_gpuw_w5}}, {{lf_gpuw_w7}}, {{lf_gpuw_w7b}}. Compute occupied
+{{lf_cf_w7}} % of the intervention packet's billed pod time and {{lf_cf_w7b}} % of the
+follow-up's; the generation runs were {{lf_w7_gen}} s and {{lf_w7b_gen}} s, and all
+{{n_w4_traces}} activation-replay forward passes took {{lf_w4_fwd}} s.
+
+**The owner clock was never supplied.** It was asked for with every packet through the fifth
+request and no figure was ever given, so the {{lf_owner_clock}}-hour owner budget in the project's
+orientation document is **unauditable**, and all time accounting here rests on runner wall time and
+billed pod time alone — both independently checkable against the provider's pod records. Stated
+plainly rather than estimated.
+
+**Pre-registration precedence, from the commit graph rather than from memory.** The intervention's
+pre-registration is commit `{{lf_pr005_commit}}` at {{lf_pr005_time}}, and the first steered token
+followed {{lf_pr005_lead}} later. The follow-up's is `{{lf_pr006_commit}}` at {{lf_pr006_time}},
+{{lf_pr006_lead}} before its first steered token. Neither run directory existed when its
+pre-registration was written.
+
+**The workflow, disclosed plainly.** This project was executed by an LLM-agent structure with
+three roles and no overlap. A **researcher** designed the experiments, audited each packet's
+report, and promoted provisional results to established ones; it executed no code. A **runner** —
+a Claude Code CLI agent on the owner's laptop, driving rented GPU pods over SSH — executed one
+self-contained work order at a time and reported back; each order was self-contained because the
+runner's context did not survive between packets. A human **owner** relayed messages and approved
+every dollar of spend. Every number here comes from an append-only ledger written by the runner
+and audited by the researcher, in which entries are never edited: a wrong entry is corrected by a
+later entry that names it, and three such corrections were filed while assembling this document.
+
+**Regenerability.** Every number here is substituted at build time from a file in
+`analysis/out/`, and a build-time check refuses to emit a digit that is neither substituted nor
+matched by a structural whitelist. The document rebuilds byte-identically with
+`python3 writeup/build.py`. The commands behind the generated files are
+`python3 src/w10_skeptic.py`, `python3 src/w10_derived.py` and
+`python3 src/w10_ledger_facts.py`, each reading only committed rollout files, committed CSVs, and
+the ledger itself.

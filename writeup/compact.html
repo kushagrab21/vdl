@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Where is the favoured side represented? — compact</title>
+<style>
+/* ---------------------------------------------------------------------------
+   compact.html — the short form of the value-direction localization project:
+   one reasoning path with branches, from the open leaf the predecessor study
+   left to the causal null this one returned. Built from writeup/manifest.csv
+   by writeup/build.py; every number is substituted, none is typed.
+   --------------------------------------------------------------------------- */
+
+:root{
+  --ink:#151a20; --ink-soft:#4a545e; --ink-faint:#6f7982; --page:#ffffff; --rule:#c9d1d9;
+  --exp-bg:#eaf1f9; --exp-br:#a8c0da; --exp-ac:#2b5b91;      /* experiment node — blue  */
+  --ref-bg:#fbf2df; --ref-br:#e0c894; --ref-ac:#96650f;      /* refinement node — amber */
+  --neu-bg:#eef1f4; --neu-br:#c4ccd4; --neu-ac:#5b646d;      /* by-design / synthesis   */
+  --res-bg:#e2eee7; --res-br:#9dc4ac; --res-ac:#22603a;      /* result block            */
+  --ok-bg:#cfe6d8; --ok-br:#7cb192; --ok-fg:#1d5433;
+  --no-bg:#f6d6d1; --no-br:#d79a8e; --no-fg:#8a2b20;
+  --op-bg:#dfe4e9; --op-br:#adb7c1; --op-fg:#414a53;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+html{background:var(--page)}
+body{margin:0;background:var(--page);color:var(--ink);
+     font:400 16.5px/1.58 var(--sans);-webkit-font-smoothing:antialiased}
+.page{width:900px;margin:0 auto;padding:34px 34px 60px}
+
+.doc-title{font-size:2.0em;font-weight:800;letter-spacing:-0.015em;margin:0 0 6px}
+.doc-by{font-size:1.0em;color:var(--ink-soft);margin:0 0 16px}
+.doc-lede{font-size:1.0em;color:var(--ink-soft);margin:0 0 24px;max-width:62em}
+
+.uhead{font-size:1.38em;font-weight:800;letter-spacing:-0.01em;color:#0f141a;
+       border-bottom:3px solid var(--exp-ac);padding-bottom:8px;margin:38px 0 8px}
+.usub{font-size:1.2em;font-weight:800;color:#0f141a;
+      border-bottom:2px solid var(--rule);padding-bottom:6px;margin:30px 0 8px}
+.lede{font-size:1.0em;color:var(--ink-soft);margin:10px 0 20px;max-width:62em}
+p{margin:13px 0}
+
+.node{border:1px solid var(--exp-br);border-left:6px solid var(--exp-ac);
+      background:var(--exp-bg);padding:17px 21px 19px;margin:22px 0}
+.node.ref{border-color:var(--ref-br);border-left-color:var(--ref-ac);background:var(--ref-bg)}
+.node.neu{border-color:var(--neu-br);border-left-color:var(--neu-ac);background:var(--neu-bg)}
+.nh{display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+    margin:0 0 12px;padding-bottom:9px;border-bottom:1px solid rgba(0,0,0,0.10)}
+.nt{font-size:1.11em;font-weight:700;line-height:1.32;color:var(--exp-ac)}
+.node.ref .nt{color:var(--ref-ac)} .node.neu .nt{color:var(--neu-ac)}
+.idx{flex:none;font-size:0.84em;font-weight:600;color:var(--ink-faint);white-space:nowrap}
+.row{margin:11px 0;line-height:1.58}
+.row b{color:var(--exp-ac)}
+.node.ref .row b{color:var(--ref-ac)} .node.neu .row b{color:var(--neu-ac)}
+.res{background:var(--res-bg);border:1px solid var(--res-br);
+     padding:12px 15px;margin:16px 0;line-height:1.58}
+.rl{display:inline-block;font-size:0.82em;font-weight:800;letter-spacing:0.08em;
+    color:var(--res-ac);margin-right:10px;vertical-align:1px}
+.verdict{margin:16px 0 0;padding-top:13px;border-top:1px solid rgba(0,0,0,0.10)}
+.claim{font-size:1.07em;font-weight:600;line-height:1.5;color:#0f141a}
+.chip+.claim::before{content:": ";font-weight:700;color:#3a434c}
+.claim .why{font-weight:400;color:var(--ink-soft)}
+.chip{display:inline-block;font-size:0.82em;font-weight:800;letter-spacing:0.07em;
+      padding:4px 10px;border-radius:2px;vertical-align:1px}
+.chip.ok{background:var(--ok-bg);border:1px solid var(--ok-br);color:var(--ok-fg)}
+.chip.no{background:var(--no-bg);border:1px solid var(--no-br);color:var(--no-fg)}
+.chip.op{background:var(--op-bg);border:1px solid var(--op-br);color:var(--op-fg)}
+.chip+.chip{margin-left:8px}
+
+.conn{margin:20px 0}
+.cbar{display:block;width:0;height:20px;margin:0 auto;border-left:3px solid #8b959f}
+.clab{display:block;text-align:center;font-size:0.80em;font-weight:800;
+      letter-spacing:0.11em;color:#5f6873;margin:6px 0}
+.ctri{display:block;width:0;height:0;margin:0 auto;border-left:9px solid transparent;
+      border-right:9px solid transparent;border-top:12px solid #808b96}
+
+.fork{display:flex;gap:16px;margin:22px 0;align-items:stretch}
+.fbranch{flex:1;border:2px dashed #9aa8b8;background:#edf1f6;padding:14px 16px}
+.fbt{font-size:1.02em;font-weight:700;color:#2f3941;margin-bottom:6px}
+.fbd{font-size:0.95em;color:var(--ink-soft);line-height:1.52}
+
+.dia{border:1px solid #bcc6d1;background:#f4f7fa;padding:18px 16px;margin:24px 0;
+     text-align:center}
+.dia svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.dcap{font-size:0.87em;font-weight:600;letter-spacing:0.03em;color:var(--ink-faint);
+      margin-top:12px}
+
+.sb{fill:#ffffff;stroke:#94a6ba;stroke-width:1.6}
+.sb-x{fill:#dce8f6;stroke:#2b5b91;stroke-width:1.8}
+.sb-ok{fill:#d6e9de;stroke:#3f7d59;stroke-width:1.8}
+.sb-no{fill:#f7dcd7;stroke:#a95346;stroke-width:1.8}
+.sb-op{fill:#e6eaee;stroke:#6f7982;stroke-width:1.6}
+.sb-am{fill:#fbeeda;stroke:#96650f;stroke-width:1.8}
+.st{font:700 14px var(--sans);fill:#131920;text-anchor:middle}
+.st-s{font:600 12.4px var(--sans);fill:#3f4952;text-anchor:middle}
+.st-m{font:600 12.6px var(--mono);fill:#25303a;text-anchor:middle}
+.st-l{font:800 15px var(--sans);fill:#101720;text-anchor:middle}
+.st-tag{font:800 10.5px var(--sans);letter-spacing:0.09em;text-anchor:middle}
+.st-tag.ok{fill:#1d5433} .st-tag.no{fill:#8a2b20} .st-tag.op{fill:#414a53}
+.st-w{font:600 12.4px var(--sans);fill:#3f4952;text-anchor:start}
+.st-e{font:600 12.4px var(--sans);fill:#3f4952;text-anchor:end}
+.sar{stroke:#6f7982;stroke-width:2.2;fill:none;marker-end:url(#ah)}
+.sln{stroke:#6f7982;stroke-width:2.2;fill:none}
+.sax{stroke:#8b959f;stroke-width:1.4;fill:none}
+.sgr{stroke:#dbe2e9;stroke-width:1;fill:none}
+
+table.t{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.94em}
+table.t caption{caption-side:top;text-align:left;font-size:0.92em;font-weight:700;
+                color:var(--ink-soft);padding-bottom:7px}
+table.t th{background:#dee5ec;border:1px solid #b3bec9;padding:7px 10px;text-align:left;
+           font-weight:700;font-size:0.95em}
+table.t td{border:1px solid #ccd4dc;padding:7px 10px;background:#fafcfe}
+table.t td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.t tr:nth-child(even) td{background:#f2f6fa}
+
+.legend{border:1px solid var(--rule);background:#f5f7f9;padding:15px 19px;margin:22px 0}
+.lgt{font-size:1.0em;font-weight:700;margin-bottom:9px}
+.lgr{margin:8px 0;line-height:1.56}
+.leaf{border:1px solid var(--rule);background:#f7f9fb;padding:12px 16px;margin:11px 0}
+.leaf b{color:#0f141a}
+.from{display:block;font-size:0.88em;color:var(--ink-faint);margin-top:5px}
+.foot{font-size:0.93em;color:var(--ink-soft);border-top:1px solid var(--rule);
+      margin-top:32px;padding-top:15px}
+</style>
+</head>
+<body>
+
+<svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+        orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f7982"></path>
+</marker></defs></svg>
+
+<div class="page">
+
+<h1 class="doc-title">Where is the favoured side represented?</h1>
+<p class="doc-by">Value-direction localization in <code>Qwen/Qwen2.5-14B-Instruct</code> · Model Forensics
+take-home · Kushagra Bhatnagar · 2026-09-05</p>
+<p class="doc-lede">This is the short form of the investigation. The predecessor study showed that
+a model shifts a factual estimate toward the side of a threshold that a donation bet makes
+favourable, and closed with one question its methods could not reach: is that favoured side
+represented anywhere inside the model, and does editing the representation change the behaviour?
+This document follows that single question from the screening that chose a model, through the
+probe that found the representation, to the intervention that failed to make it causal. Each node
+states what was ambiguous before it, what was varied, what was held fixed, what each competing
+explanation predicted, what came back, and which explanation that killed.</p>
+
+<div class="legend">
+<div class="lgt">How to read this</div>
+<div class="lgr">A <b>blue node</b> is one experiment. An <b>amber node</b> is a refinement: it
+carries forward whatever survived the branch above it and is the statement the next branch starts
+from. A <b>grey node</b> is a branch closed by the design rather than by evidence, or a synthesis.
+A <b>dashed fork</b> lists the explanations still live at that point.</div>
+<div class="lgr">Verdicts read <span class="chip no">REJECTED</span> when the evidence rules an
+explanation out, <span class="chip ok">SURVIVES</span> when it does not, and
+<span class="chip op">OPEN</span> when the experiment could not decide. Claim tiers are
+<b>[measured]</b> for a number produced by a rule frozen before its data, <b>[suggested]</b> where
+the evidence leans but the design cannot close it, and <b>[not tested]</b> where no experiment
+addressed it.</div>
+<div class="lgr">No number here is new and none is typed. Each is substituted at build time from a
+generated file, and the build refuses to emit a digit it cannot trace to one. The full document
+carries the tables, the intervals, the instrument checks and the ledger pointers.</div>
+</div>
+
+<h2 class="uhead">The root question, and why reading the trace cannot answer it</h2>
+<p class="lede">The behaviour is established. What is unknown is whether the model holds the
+favoured side as a state, or merely writes about it.</p>
+
+<p>The model is asked how many scales there are on all living crocodiles — a quantity nobody
+knows — and is told a bet rides on whether its answer clears a threshold τ, where clearing it
+sends money to a good cause. The same question is asked again with the bet mirrored, so that this
+time an answer <i>below</i> τ is the one that sends the money. The factual question, the evidence
+available for answering it, and τ itself are identical across the two versions; τ was fixed in
+advance as the median of that model's own answers when no bet is mentioned. The only thing that
+differs is which side of τ the model would prefer to land on, and the <b>landing gap</b> measures
+the consequence.</p>
+
+<p>This project asks a different question from the one that statistic answers. Somewhere between
+reading the prompt and writing a number, the model must arrive at a view about which side is
+favoured — the traces say so out loud in almost every rollout. The question is whether that view
+is a <i>state the estimate is computed from</i>, or an <i>annotation written alongside an estimate
+produced some other way</i>. Reading traces cannot separate those two, however carefully, because
+a sentence that reports a belief and a sentence that produces one look identical on the page. The
+only instrument that can separate them writes the state back in and watches the number move.</p>
+
+<div class="dia">
+<svg viewBox="0 0 820 356" width="820" height="356" role="img">
+<rect class="sb" x="30" y="8" width="350" height="104" rx="3"></rect>
+<text class="st-l" x="205" y="32">HELD FIXED</text>
+<text class="st-s" x="205" y="56">the factual question and its evidence</text>
+<text class="st-s" x="205" y="76">the threshold τ, set to the no-bet median</text>
+<text class="st-s" x="205" y="96">the sampler, the seeds' construction, the model</text>
+<rect class="sb-x" x="440" y="8" width="350" height="104" rx="3"></rect>
+<text class="st-l" x="615" y="32">VARIED</text>
+<text class="st-s" x="615" y="56">which side of τ sends money</text>
+<text class="st-s" x="615" y="76">to the good cause</text>
+<text class="st-s" x="615" y="96">(above in one version, below in the other)</text>
+<path class="sln" d="M205 112 V 136 H 410"></path>
+<path class="sln" d="M615 112 V 136 H 410"></path>
+<path class="sar" d="M410 136 V 162"></path>
+<rect class="sb" x="60" y="164" width="700" height="46" rx="3"></rect>
+<text class="st-m" x="410" y="193">landing gap = P(final &gt; τ | above favoured) − P(final &gt; τ | below favoured)</text>
+<path class="sar" d="M410 210 V 236"></path>
+<rect class="sb-op" x="30" y="238" width="365" height="80" rx="3"></rect>
+<text class="st" x="212" y="262">Belief drives the estimate</text>
+<text class="st-s" x="212" y="284">the model works out which side is favoured,</text>
+<text class="st-s" x="212" y="304">then computes a number that lands there</text>
+<rect class="sb-op" x="425" y="238" width="365" height="80" rx="3"></rect>
+<text class="st" x="607" y="262">Belief annotates the estimate</text>
+<text class="st-s" x="607" y="284">the number is produced some other way,</text>
+<text class="st-s" x="607" y="304">and the trace narrates it afterwards</text>
+<text class="st-tag op" x="410" y="342">THE LANDING GAP IS EQUALLY CONSISTENT WITH BOTH OF THESE, WHICH IS WHY THIS PROJECT EXISTS</text>
+</svg>
+<div class="dcap">The mirrored design, the statistic it produces, and the two accounts that
+statistic cannot tell apart</div>
+</div>
+
+<h2 class="uhead">Validity trunk — is there a behaviour here to localize?</h2>
+<p class="lede">Before looking inside the model it is worth checking that the effect this project
+exists to explain is present in a model small enough to instrument. It largely is not, and that
+is the first finding.</p>
+
+<div class="node">
+<div class="nh"><span class="nt">Screening — does any small model show the phenotype?</span>
+<span class="idx">50 no-bet + 50/side incentive rollouts per model</span></div>
+<div class="row"><b>The ambiguity:</b> the predecessor result was measured on a panel of large
+API-served models. Nothing guaranteed that a model small enough to run with activation hooks on
+one GPU would show the same behaviour, and a localization project needs a behaviour to localize.
+Five candidates were pre-registered smallest-first, before any incentive rollout existed.</div>
+<div class="row"><b>Held fixed:</b> the prompts, imported rather than copied from the frozen
+upstream repository so they cannot drift; the threshold construction; the sampler at temperature
+1.0 and top-p 1.0, which are upstream's own effective defaults, so the
+comparison to the black-box result stays meaningful.</div>
+<div class="row"><b>What separates the branches:</b> a real behavioural effect should show a
+landing-gap interval that excludes zero on the extractor of record <i>and</i> agreement from a
+second, independent extractor. An apparatus problem should show up as the two extractors
+disagreeing.</div>
+<div class="res"><span class="rl">RESULT</span> Of five candidates, one was gated and
+inaccessible, two were ineligible because the frozen deterministic extractor could not read their
+answers at all (20.0 % and 36.0 % disagreement against a 2 %
+bar), and <b>both survivors failed the gate</b>. <code>Qwen3-8B</code> gave
++0.12 with a lower bound of exactly +0.00;
+<code>Qwen2.5-14B-Instruct</code> gave +0.32
+[+0.14, +0.50] on the extractor of record but its second extractor's
+interval also included zero.</div>
+<div class="verdict"><span class="chip no">GATE FAILED</span>
+<span class="claim">No small model cleared the pre-registered screen, and the project continued
+only by an owner-approved scope change, not by re-scoring the gate.
+<span class="why">The failure is reported as a result rather than as a detour: it is the first
+evidence that the prompt-stated landing gap is weaker in this model class than the black-box
+panel suggested, and everything downstream inherits that weakness.</span></span></div>
+</div>
+
+<div class="conn"><span class="cbar"></span><span class="clab">THE SURVIVING NUMBER, RE-MEASURED</span><span class="cbar"></span><span class="ctri"></span></div>
+
+<div class="node">
+<div class="nh"><span class="nt">The winner's curse — does the screening estimate replicate?</span>
+<span class="idx">150 per side, fresh seeds</span></div>
+<div class="row"><b>The ambiguity:</b> the gap that justified choosing this model,
++0.32, was the largest of several noisy estimates, and a gate that selects the
+largest selects the one luck inflated most. Nothing in the screen itself could say whether that
+had happened.</div>
+<div class="row"><b>Held fixed:</b> everything. The prompt text, the templated prompt, the model,
+the threshold and its rendering, the inference-engine version 0.28.0, the prompt token
+count and the sampler are byte-identical between the two measurements. <b>The seed block is the
+only difference.</b></div>
+<div class="row"><b>What separates the branches:</b> a real effect of that size should reproduce
+at three times the sample; a selection artifact should collapse toward zero and the fresh blocks
+should agree with each other rather than with the screen.</div>
+<div class="res"><span class="rl">RESULT</span> The gap collapses from
+<b>+0.32</b> to <b>+0.017</b>, interval
+[−0.097, +0.130]. On the arm where the two disagree most, screening read
+36/50 against 73/149 —
+z = 2.83, two-sided p = 0.0047. The three fresh blocks of 50 agree with one
+another (27/50, 24/50, 22/49) and disagree
+with the screen.</div>
+<div class="verdict"><span class="chip no">REJECTED</span>
+<span class="claim">The screening gap was a selection artifact and is never used as an effect size
+[measured].
+<span class="why">Screening's two arms were extreme in opposite directions and the gap is their
+difference, so both deviations added. The gate's own recorded caveat — that the screen was
+underpowered — was correct, and the pivot it justified rested on a number that did not
+survive.</span></span></div>
+</div>
+
+<div class="conn"><span class="cbar"></span><span class="clab">SO WHAT IS THE BEHAVIOUR?</span><span class="cbar"></span><span class="ctri"></span></div>
+
+<div class="node ref">
+<div class="nh"><span class="nt">Refinement · the behaviour is overt, asymmetric, and a
+mixture</span></div>
+<div class="row">The aggregate gap is near zero on the original surface form, but the traces are
+not silent. The model mentions the bet, the threshold or the cause in
+<b>596 of 600</b> incentive traces (99.3 %), against about
+0.2 % spontaneous disclosure in the 122B panel of the predecessor
+study. <b>This model does not leak a preference; it announces one</b> [measured]; the cross-scale
+reading is [suggested], because two model families and no sweep separate the two studies.</div>
+<div class="row">Conditioning on whether a trace's own text gets the mapping right splits the null
+aggregate into two large opposite effects: traces that understand which side is favoured show
++0.28 and +0.45 on the two surface forms, and traces that get it wrong
+show −0.68 and −0.55. The comprehension rate itself is what makes
+the aggregate small: the arm where <i>exceeding</i> the threshold is favoured is understood
+54.0 % of the time, against 80.7–86.0 % for
+its mirror.</div>
+<div class="row"><b>What this does not license:</b> the judge reads the same text the estimate came
+from, so a trace saying "I will go above τ so the good cause benefits" is scored correct
+<i>and</i> lands above. A large conditional gap is therefore partly guaranteed by construction.
+What survives that objection is the marginal comprehension rate, which is read from
+prompt-plus-text alone.</div>
+<div class="verdict"><span class="chip ok">SURVIVES</span>
+<span class="claim">The operative variable is not the side the prompt favours but the side the
+trace believes is favoured, and the interp target moves accordingly [measured].
+<span class="why">Computing the direction within a single prompt condition — contrasting traces
+that believe different things while reading identical text — also removes the confound that the
+prompt states the answer, which is a stronger control than the mirrored design
+gives.</span></span></div>
+</div>
+
+<h2 class="uhead">Is the believed side represented?</h2>
+<p class="lede">A linear probe on the residual stream, at the positions where the model writes its
+own intermediate estimates, and before it names a cause.</p>
+
+<div class="node">
+<div class="nh"><span class="nt">The value direction and its probe</span>
+<span class="idx">6,668 positions over 700 traces</span></div>
+<div class="row"><b>The manipulation:</b> every stored trace is replayed through the model with a
+hook on each of the 48 decoder-layer outputs, and activations are kept only at typed
+positions. The load-bearing kind is an <i>estimate point</i>: a numeric literal the model wrote in
+its own reasoning, inside a window around τ, with any literal exactly equal to τ excluded. The
+direction is the difference in means between traces that believe above is favoured and traces that
+believe below, taken <b>within the single prompt condition</b> where both classes occur.</div>
+<div class="row"><b>Held fixed:</b> a trace's points are averaged before the classes are compared,
+so a verbose trace cannot set the direction on its own; and the comparison is stratified on
+whether the literal is itself above or below τ, so the direction cannot be a proxy for "this
+number is large". The labels were frozen before any activation was read.</div>
+<div class="row"><b>What separates the branches:</b> if the belief is linearly present, a probe
+should beat a permutation null built from the same traces. If the pipeline is broken instead, the
+positive controls on the same points through the same fit should fail too.</div>
+<div class="res"><span class="rl">RESULT</span> On the reskin the probe reaches balanced accuracy
+<b>0.7431</b> against a null 95th percentile of 0.5892
+(p = 0.001), significant at <b>42 of 48</b> layers and peaking
+at 0.7604. On the original form it is flat at every layer — while the positive controls on
+those same points reach 0.9611 and 1.0000. And
+<b>196 of 203</b> of the carrying points fall <i>before</i> the trace
+first names a cause.</div>
+<div class="verdict"><span class="chip ok">SURVIVES</span>
+<span class="claim">The believed favoured side is linearly decodable from the residual stream at
+estimate positions, before it is verbalized [measured].
+<span class="why">The flat form is not evidence of absence: it carries 14
+minority-class traces, so power and absence are not separable there and neither is claimed. The
+one informative asymmetry is that a probe trained on that form's points predicts the other form's
+traces at 0.7597, which is what a signal too weakly cross-validated to see
+looks like.</span></span></div>
+</div>
+
+<div class="conn"><span class="cbar"></span><span class="clab">A REPRESENTATION EXISTS — IS IT CAUSAL?</span><span class="cbar"></span><span class="ctri"></span></div>
+
+<div class="fork">
+<div class="fbranch"><div class="fbt">Upstream state</div><div class="fbd">The decoded direction
+is the state the estimate is computed from. Writing it back in should move the landing rate in the
+direction its sign predicts, and should do so more than a random direction of the same size
+does.</div></div>
+<div class="fbranch"><div class="fbt">Annotation</div><div class="fbd">The direction is a readable
+correlate the model writes alongside an estimate produced elsewhere. Writing it back in should
+move the commentary, or nothing, but not the number in a side-specific way.</div></div>
+</div>
+
+<h2 class="uhead">The intervention</h2>
+<p class="lede">One causal rung, pre-registered in full — sign, layer, dose grid, null directions,
+outcome table — and committed 13 m 11 s before the first steered token existed.</p>
+
+<div class="dia">
+<svg viewBox="0 0 820 300" width="820" height="300" role="img">
+<rect class="sb" x="24" y="10" width="240" height="62" rx="3"></rect>
+<text class="st" x="144" y="34">Prefill: the prompt</text>
+<text class="st-s" x="144" y="56">hook installed, adds nothing</text>
+<rect class="sb-x" x="300" y="10" width="496" height="62" rx="3"></rect>
+<text class="st" x="548" y="34">Every decode step, from the second token on</text>
+<text class="st-m" x="548" y="56">h ← h + α · ‖Δμ‖ · û  at layer L27's output</text>
+<path class="sar" d="M264 41 H 296"></path>
+<rect class="sb-op" x="24" y="94" width="772" height="52" rx="3"></rect>
+<text class="st-s" x="410" y="116">û is the unit-normalized value direction; ‖Δμ‖ = 12.726012 is the raw class-mean gap, so α = 1 is</text>
+<text class="st-s" x="410" y="136">the direction's own scale — 11.4 % of the mean residual-stream norm at that layer</text>
+<rect class="sb-ok" x="24" y="168" width="380" height="52" rx="3"></rect>
+<text class="st-s" x="214" y="190">CONTROL 1 · sham arm: hook installed, α = 0.</text>
+<text class="st-s" x="214" y="210">Verified bitwise identical to running with no hook</text>
+<rect class="sb-ok" x="416" y="168" width="380" height="52" rx="3"></rect>
+<text class="st-s" x="606" y="190">CONTROL 2 · 10 random directions of equal norm,</text>
+<text class="st-s" x="606" y="210">seeds frozen in the pre-registration</text>
+<rect class="sb-ok" x="24" y="238" width="380" height="52" rx="3"></rect>
+<text class="st-s" x="214" y="260">CONTROL 3 · the mirrored condition, where</text>
+<text class="st-s" x="214" y="280">the favoured side is reversed</text>
+<rect class="sb-ok" x="416" y="238" width="380" height="52" rx="3"></rect>
+<text class="st-s" x="606" y="260">CONTROL 4 · a no-bet prompt, which has</text>
+<text class="st-s" x="606" y="280">no favoured side for the direction to act on</text>
+</svg>
+<div class="dcap">What was injected, where, and the four controls that decide how to read the
+result</div>
+</div>
+
+<div class="node">
+<div class="nh"><span class="nt">Injecting the direction, 23 arms × 50
+generations</span><span class="idx">1,150 steered generations</span></div>
+<div class="row"><b>The sign was frozen first.</b> The direction is defined as
+mean(believes-above) − mean(believes-below), so positive α was pre-registered to <i>raise</i> the
+share of answers above τ. No result is reported with that sign flipped.</div>
+<div class="row"><b>What separates the branches, decided before the data:</b> a statistic counts as
+a direction-specific effect only if it exceeds <i>every one</i> of the
+10 random directions. If the landing rate moves and the verbalized belief moves
+with it, the belief is upstream and the trace tracks it. If landing moves and the talk does not,
+the direction acts on the estimate policy. If the talk moves and landing does not, the direction
+writes commentary only. If neither moves, the direction is correlational.</div>
+<div class="res"><span class="rl">RESULT</span> The primary contrast is
+<b>−0.34</b> — the pre-registered direction's opposite — and it beats
+<b>0 of 10</b> random directions (one-sided p = 1.000).
+The verbalized-belief flip has the predicted sign, +0.213, but its interval
+[−0.041, +0.465] includes zero; the entire contrast is the negative arm moving
+(+0.008 against sham for +α, −0.205 for −α); it does not
+move at all in the mirrored condition (0.049 against 0.068); and a
+random direction reached 0.878 where the value direction reached
+0.700.</div>
+<div class="verdict"><span class="chip no">ROW FOUR FIRED</span>
+<span class="claim">Neither landing nor verbalization moved with α beyond what a random direction
+of the same size does: v_p̂ is correlational [measured null].
+<span class="why">The interpretation table was frozen before a single steered token existed, and
+this is the row it resolved to. The result is reported at the volume the pre-registration promised
+a positive result would have received.</span></span></div>
+</div>
+
+<div class="conn"><span class="cbar"></span><span class="clab">BUT SOMETHING DID MOVE</span><span class="cbar"></span><span class="ctri"></span></div>
+
+<div class="node">
+<div class="nh"><span class="nt">The dose anatomy — a large effect, pointing the wrong
+way</span><span class="idx">350 generations across the ladder</span></div>
+<div class="row"><b>What came back:</b> the injection is not inert. At the largest dose the median
+estimate falls about three orders of magnitude and the landing rate falls from 0.68 to
+0.04. But the profile is an <b>inverted U centred exactly on the zero-dose arm</b>: it
+falls on both sides, which no side-specific account predicts. At the one dose where the random
+directions were also run, the value direction lands <i>below all 10 of
+them</i>.</div>
+<div class="row"><b>The control that decides it:</b> the no-bet arm. That prompt contains no bet,
+no threshold and no favoured side, so a direction acting on the believed favoured side has nothing
+to act on there. The same ±α injection still moves its median estimate by
+0.537 log units and its above-τ rate by 0.28.</div>
+<div class="res"><span class="rl">RESULT</span> Landing by dose: 0.24 at α = −4,
+0.48, 0.54, <b>0.68 at zero dose</b>, 0.52, 0.34,
+0.04 at α = +4. Monotone in α: <b>no</b>. The 10 random
+directions shift landing by −0.158 on average — the same kind of effect, pointing the
+same way, with no believed side involved at all.</div>
+<div class="verdict"><span class="chip no">REJECTED</span>
+<span class="claim">The large effect is direction-independent magnitude suppression, not
+belief-steering [measured].
+<span class="why">The most economical description of the decoded direction is a vector with a
+large component along <i>estimated numeric magnitude</i>, whose believed-side content — real
+enough to decode at 0.7431 — is not what dominates when it is written back
+in.</span></span></div>
+</div>
+
+<div class="dia">
+<svg viewBox="0 0 820 320" width="820" height="320" role="img">
+<rect x="108" y="106.0" width="576" height="79.2"
+      fill="#f3e2de" stroke="#d79a8e" stroke-width="1" stroke-dasharray="4 3"></rect>
+<text class="st-s" x="410" y="106.0" dy="-9"
+      style="fill:#8a2b20;font-weight:700">the 10 equal-norm random directions at α = +2 span this band</text>
+<path class="sax" d="M108 250 H 700"></path>
+<path class="sgr" d="M108 70 H 700 M108 160 H 700"></path>
+<text class="st-e" x="98" y="74">1.0</text>
+<text class="st-e" x="98" y="164">0.5</text>
+<text class="st-e" x="98" y="254">0.0</text>
+<text class="st-s" x="42" y="150" transform="rotate(-90 42 150)">P(final &gt; τ)</text>
+<path class="sln" d="M108 206.8 L204 163.6 L300 152.8 L396 127.6 L492 156.4 L588 188.8 L684 242.8" style="stroke:#2b5b91;stroke-width:2.6"></path>
+<circle cx="108" cy="206.8" r="5.5" fill="#2b5b91"></circle>
+<circle cx="204" cy="163.6" r="5.5" fill="#2b5b91"></circle>
+<circle cx="300" cy="152.8" r="5.5" fill="#2b5b91"></circle>
+<circle cx="396" cy="127.6" r="8" fill="#22603a"></circle>
+<circle cx="492" cy="156.4" r="5.5" fill="#2b5b91"></circle>
+<circle cx="588" cy="188.8" r="5.5" fill="#2b5b91"></circle>
+<circle cx="684" cy="242.8" r="5.5" fill="#2b5b91"></circle>
+<text class="st-s" x="108" y="270">α = −4</text>
+<text class="st-s" x="204" y="270">−2</text>
+<text class="st-s" x="300" y="270">−1</text>
+<text class="st-s" x="396" y="270" style="fill:#22603a;font-weight:800">sham</text>
+<text class="st-s" x="492" y="270">+1</text>
+<text class="st-s" x="588" y="270">+2</text>
+<text class="st-s" x="684" y="270">+4</text>
+<text class="st-s" x="410" y="292">dose α, in units of the direction's own class-mean gap ‖Δμ‖</text>
+<text class="st-tag no" x="410" y="312">A SIDE-SPECIFIC EFFECT WOULD RISE FROM LEFT TO RIGHT; THIS FALLS ON BOTH SIDES OF ZERO DOSE</text>
+</svg>
+<div class="dcap">Landing rate against injected dose. The peak sits on the zero-dose control and
+the curve falls on both sides of it. The shaded band is the range the 10 random
+directions produce at α = +2; the value direction at that same dose sits <i>below every one of
+them</i>, which is the pre-registered test failing — 0 of 10.</div>
+</div>
+
+<h2 class="uhead">The methodological finding</h2>
+<p class="lede">Three pre-registrations each froze the right statistic at a setting their own
+design could not resolve, and the third is the clearest case because its floor can be computed
+exactly.</p>
+
+<div class="node neu">
+<div class="nh"><span class="nt">A gate set below its own noise floor</span></div>
+<div class="row"><b>What was frozen:</b> the low-dose follow-up needed a way to say "this dose does
+not distort the model", so it pre-registered a distortion statistic — the mean, over eight random
+arms, of the absolute difference between each arm's landing rate and the control's — and declared
+distortion above 0.06.</div>
+<div class="row"><b>Why that is a mistake independent of the data:</b> that statistic averages
+absolute differences between binomial proportions at n = 50. It cannot be zero
+even when nothing is happening. Its expectation under the exact null the gate exists to detect —
+every arm the same coin, the injection doing nothing at all — is <b>0.0782</b>, which is
+already above the line the gate was given.</div>
+<div class="res"><span class="rl">RESULT</span> Under a design doing nothing whatsoever the gate
+fires with probability <b>0.648</b>. The two interpretation rows that would have licensed
+any statement <i>about the direction</i> were therefore jointly unreachable before a single token
+was generated. Observed D̄ was 0.1875, so the "even this dose distorts" row fired and stands
+as the verdict of record — while every independent indicator says these doses do not distort:
+coherence 1.000 in all 12 arms, 0 degenerate generations in
+600, and engagement with the bet <i>higher</i> than at the larger doses.</div>
+<div class="verdict"><span class="chip op">RECORDED, NOT REPAIRED</span>
+<span class="claim">Freezing a rule before the data is necessary and is not sufficient: a
+pre-registration must also freeze evidence that its chosen setting and threshold lie inside the
+range the design can resolve.
+<span class="why">The fix is minutes of laptop arithmetic — simulate the frozen statistic under
+its own null before fixing the line. No pre-registration in this project ever did it, and each of
+the three paid for it in a different currency: one froze the right statistic at the wrong layer,
+one at the wrong dose, one at an unreachable threshold.</span></span></div>
+</div>
+
+<div class="dia">
+<svg viewBox="0 0 820 250" width="820" height="250" role="img">
+<rect x="255.0" y="112" width="465.0" height="38"
+      fill="#f7dcd7" stroke="none"></rect>
+<text class="st-s" x="487" y="104" style="fill:#8a2b20;font-weight:700">a design doing nothing at
+all lands in this region 0.648 of the time</text>
+<path class="sax" d="M100 150 H 740"></path>
+<text class="st-e" x="100" y="170">0</text>
+<text class="st-s" x="410" y="214">the distortion statistic D̄, which the gate thresholds</text>
+<path class="sln" d="M255.0 100 V 162" style="stroke:#8a2b20;stroke-width:2.6"></path>
+<text class="st-e" x="255.0" y="86" dx="-6"
+      style="fill:#8a2b20;font-weight:800">the frozen line, 0.06</text>
+<path class="sln" d="M302.0 150 V 190" style="stroke:#96650f;stroke-width:2.6"></path>
+<text class="st-w" x="302.0" y="186" dx="8"
+      style="fill:#96650f;font-weight:800">E[D̄] = 0.0782 when the injection does nothing at all</text>
+<circle cx="584.4" cy="150" r="6" fill="#2b5b91"></circle>
+<text class="st-s" x="584.4" y="139"
+      style="fill:#2b5b91;font-weight:800">observed 0.1875</text>
+<text class="st-tag no" x="410" y="238">THE GATE'S "DISTORTION DETECTED" REGION CONTAINS MOST OF ITS OWN NULL DISTRIBUTION</text>
+</svg>
+<div class="dcap">The frozen threshold against the statistic's exact null distribution. The line
+sits below the value the statistic takes when the intervention does nothing at all.</div>
+</div>
+
+<h2 class="uhead">What would have fooled us</h2>
+<p class="lede">Each of these was, at some point, the natural thing to write.</p>
+
+<table class="t">
+<caption>The near-misses, and the control that caught each one</caption>
+<tr><th>The plausible reading</th><th>Why it was wrong</th><th>What caught it</th></tr>
+<tr><td>The captured activations are at the positions the parser named</td>
+<td>A one-token offset would still produce a probe score with a null to beat, and nothing
+downstream would reveal it</td>
+<td>Decoding every sampled stored span back to text: <b>34 of 34</b>
+exact, commas included</td></tr>
+<tr><td>Localize the model's final answer, which is the number that matters</td>
+<td>On one surface form the frozen extractor's "final answer" is the prompt's own threshold in
+57.3 % of traces, so that capture would have localized threshold-echoing
+</td>
+<td>Adding a corrected final position as a flagged judgment call before the replay ran</td></tr>
+<tr><td>The probe reads the favoured side, so the model represents it</td>
+<td>Between mirrored prompts the favoured side is stated in the text, so a probe could succeed by
+reading the prompt</td>
+<td>Computing the direction within one condition, contrasting traces that believe different things
+while reading identical text</td></tr>
+<tr><td>The injection made the model want a higher number</td>
+<td>Steering that worked by making the model <i>say</i> it wanted a higher number would move
+landing for an uninteresting reason</td>
+<td>A screen over all steered generations: <b>0 of 1,150</b> and
+0 of 600 verbalize an injected preference</td></tr>
+<tr><td>Coherence is 1.000, so the intervention did no damage</td>
+<td>The metric checks well-formedness only. At the largest dose the model writes fluent,
+arithmetic-showing prose arguing toward an estimate orders of magnitude too low</td>
+<td>A named screen for that signature: it fires on <b>9 of 50</b>
+generations at the largest dose against 0 at the sham</td></tr>
+<tr><td>This model shows a +0.32 landing gap</td>
+<td>That was the largest of several noisy screening estimates and did not replicate</td>
+<td>A frozen dataset at three times the sample with the seed block as the only difference</td></tr>
+</table>
+
+<h2 class="uhead">Synthesis</h2>
+
+<div class="node neu">
+<div class="nh"><span class="nt">What the project establishes, in three sentences</span></div>
+<div class="row"><b>Representational [measured].</b> The side a trace believes the bet favours is
+linearly decodable from the residual stream at the model's own estimate positions, at
+0.7431 against a null 95th percentile of 0.5892, and
+96 % of the carrying points precede the moment the trace names a cause.</div>
+<div class="row"><b>Causal [measured null].</b> Writing that direction back in, at six doses from
+2.9 % to 45.6 % of the residual-stream norm and against
+10 matched random directions, produced no landing effect distinguishable from
+what a random direction of the same size produces.</div>
+<div class="row"><b>Unresolved [not tested at resolving power].</b> Two possibilities remain open
+and this design does not separate them: there is no direction-specific causal effect, or there is
+one below the resolving power of an intervention whose smallest pre-registered dose already
+behaves symmetrically in α.</div>
+<div class="verdict"><span class="chip op">OPEN</span>
+<span class="claim">The project found the representation it went looking for and could not show it
+is used.
+<span class="why">That is a real answer to the leaf the predecessor study left, and it is a
+narrower one than either "the belief drives the estimate" or "the belief is decoration". What it
+rules out is only that the effect is large enough for this instrument at these
+doses.</span></span></div>
+</div>
+
+<h2 class="uhead">Open leaves</h2>
+<p class="lede">Each is a question a specific branch above raised and could not answer, with the
+next step named.</p>
+
+<div class="leaf"><b>Is the decoded direction causal at doses this design could not reach?</b>
+The smallest pre-registered dose, 11.4 % of the residual-stream norm, already behaves
+symmetrically in α, which is what a pure magnitude effect looks like; the follow-up went down to
+2.9 % and found a flat, direction-independent offset with no gradient in dose. Closing
+it needs a ladder below these doses at a sample far above 50 per arm, with every
+frozen threshold simulated under its own null before it is frozen.
+<span class="from">→ from the intervention and its follow-up</span></div>
+
+<div class="leaf"><b>Would patching, rather than injecting, answer the same question better?</b>
+Injection adds a norm-scale perturbation whose direction-independent effects swamped everything
+here. Patching the residual stream of one trace into another, at the positions where the belief is
+decodable, tests whether that state carries the estimate without adding magnitude.
+<span class="from">→ from the dose anatomy</span></div>
+
+<div class="leaf"><b>Why is one mirror of the same bet so much harder to understand?</b>
+"Do not exceed the threshold and a good cause benefits" is understood
+86.0 % of the time; "exceed the threshold and a good cause benefits" only
+54.0 %. That asymmetry is large, cheap to measure, and it is what makes the
+aggregate landing gap in this model class a mixture rather than an effect.
+<span class="from">→ from the behavioural phenotype</span></div>
+
+<div class="leaf"><b>Where does covertness come from?</b> A model of this size announces the bet in
+99.3 % of traces while the 122B panel almost never does. Scale, model
+family, tuning and prompt surface are all confounded across the two studies, and nothing here can
+separate them.
+<span class="from">→ from the behavioural phenotype; tiered [suggested] throughout</span></div>
+
+<p class="foot">Every number above is substituted at build time from a file in
+<code>analysis/out/</code> by <code>python3 writeup/build.py</code>, which refuses to emit a digit
+it cannot trace to a generated value or to a structural whitelist. The full write-up carries the
+tables, the intervals, the instrument checks, the spend and time register, and the ledger pointers
+behind each claim. Total spend: $13.42 GPU + $16.06 API of a
+$60 cap, across 2,800 generations.</p>
+
+</div>
+</body>
+</html>

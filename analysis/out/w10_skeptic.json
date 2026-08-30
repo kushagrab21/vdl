@@ -1,0 +1,755 @@
+{
+ "bases": {
+  "w3_form_A": {
+   "corrected_n": 3,
+   "corrected_pct": 1.0,
+   "mechanically_explained": 154,
+   "n": 300,
+   "raw_n": 157,
+   "raw_pct": 52.3
+  },
+  "w3_form_B": {
+   "corrected_n": 2,
+   "corrected_pct": 0.7,
+   "mechanically_explained": 125,
+   "n": 300,
+   "raw_n": 127,
+   "raw_pct": 42.3
+  },
+  "w7_both_bases_on_every_arm": true,
+  "w7_mean_corrected_minus_raw": 0.2365,
+  "w7b_both_bases_on_every_arm": true,
+  "w7b_mean_corrected_minus_raw": 0.2483
+ },
+ "checks": [
+  {
+   "command": "python3 src/w10_skeptic.py   [section extractor_coverage]",
+   "detail": "no exception",
+   "id": "SK-1",
+   "name": "extractor coverage: both extractors in every source CSV",
+   "status": "PASS"
+  },
+  {
+   "command": "python3 src/w10_skeptic.py   [section dose]",
+   "detail": "W7 monotone_non_decreasing=False, inverted_U_on_sham=True; W7b |alpha|=0.25 0.470 vs |alpha|=0.50 0.476, Fisher p=1.000",
+   "id": "SK-2",
+   "name": "dose-response monotonicity (W7 ladder) and dose flatness (W7b)",
+   "status": "PASS"
+  },
+  {
+   "command": "python3 src/w10_skeptic.py   [section coherence]",
+   "detail": "W7 22/23 arms at 1.000 (min 0.980); W7b 12/12 at 1.000; 0 degenerate in 1750 generations; 0 arms below PR-005 item 4c's 80% line",
+   "id": "SK-3",
+   "name": "coherence per arm (well-formedness ONLY, D-029 attached)",
+   "status": "PASS"
+  },
+  {
+   "command": "python3 src/w10_skeptic.py   [section ties]",
+   "detail": "W2: 0 verdict flip(s) -- Qwen3-8B judge has 36 ties at tau and the gap moves +0.12 -> +0.16 with the verdict unchanged; W3: 1 verdict flip(s) (form B, judge)",
+   "id": "SK-4",
+   "name": "tie-convention sensitivity (W2's 36-tie case; W3 both forms)",
+   "status": "PASS"
+  },
+  {
+   "command": "python3 src/w10_skeptic.py   [section bases]",
+   "detail": "W3 raw disagreement A 52.3% / B 42.3% against corrected 1.0% / 0.7%; W7 and W7b carry both bases on every arm: True",
+   "id": "SK-5",
+   "name": "D-016 corrected-vs-raw bases reported wherever a landing number is cited",
+   "status": "PASS"
+  },
+  {
+   "command": "python3 src/w10_skeptic.py   [section w7b_homogeneity]",
+   "detail": "chi2=16.38 dof=11 p=0.128 over 12 arms; pooled 285/600=0.475; v_phat arms 0.440 vs random arms 0.492; pooled vs sham Fisher p=0.0075",
+   "id": "SK-6",
+   "name": "W7b arm homogeneity and the flat direction-independent offset",
+   "status": "PASS"
+  },
+  {
+   "command": "python3 src/w10_skeptic.py   [section dbar_floor]",
+   "detail": "under a design doing nothing at all: E[D_bar]=0.0782 and P(D_bar>0.06)=0.648, rising to 0.689 at-or-on the line (D-032's simulation reported 0.078 and 0.662; D_bar is lattice-valued and 0.06 is one of its atoms)",
+   "id": "SK-7",
+   "name": "D_bar's null floor -- exact recount of D-032's 200,000-draw simulation",
+   "status": "PASS"
+  },
+  {
+   "command": "python3 src/w10_skeptic.py   [section text_screens]",
+   "detail": "verbalized injected preference 0/600 (W7b) and 0/1150 (W7); the D-029 fabrication screen fires 3/600 at low dose, 0/50 at the sham, 9/50 at alpha=+4",
+   "id": "SK-8",
+   "name": "text-level screens: verbalized injected preference, D-029 fabrication",
+   "status": "PASS"
+  },
+  {
+   "command": "python3 src/w10_skeptic.py   [section seeds]",
+   "detail": "W7 1150 seeds 8064-9213, W7b 600 seeds 9214-9813, all distinct and contiguous, 0 collisions with each other or with W1/W2/W3",
+   "id": "SK-9",
+   "name": "seed-block disjointness and generation totals",
+   "status": "PASS"
+  },
+  {
+   "command": "python3 src/w10_skeptic.py   [section regenerability]",
+   "detail": "7/7 commands exit 0; 1 need the project venv rather than bare python3 (form-B prompt selftest)",
+   "id": "SK-10",
+   "name": "regenerability: every committed recount/selftest still runs and matches",
+   "status": "PASS"
+  }
+ ],
+ "coherence": {
+  "n_degenerate_total": 0,
+  "n_generations_total": 1750,
+  "w7": {
+   "arms_below_80pct_line": [],
+   "max_coherence": 1.0,
+   "min_coherence": 0.98,
+   "n_arms": 23,
+   "n_arms_at_one": 22,
+   "n_degenerate_total": 0,
+   "n_generations": 1150,
+   "n_truncated_total": 1
+  },
+  "w7b": {
+   "arms_below_80pct_line": [],
+   "max_coherence": 1.0,
+   "min_coherence": 1.0,
+   "n_arms": 12,
+   "n_arms_at_one": 12,
+   "n_degenerate_total": 0,
+   "n_generations": 600,
+   "n_truncated_total": 0
+  }
+ },
+ "dbar_floor": {
+  "E_Dbar_primary": 0.0782,
+  "E_Dbar_sham_fixed": 0.0523,
+  "P_at_or_over_line_primary": 0.6888,
+  "P_over_line_primary": 0.6476,
+  "P_over_line_sham_fixed": 0.2549,
+  "line": 0.06,
+  "method": "exact DP, no simulation",
+  "n_arm": 50,
+  "n_nulls": 8,
+  "observed_Dbar_judge": 0.1425,
+  "observed_Dbar_regex_corr": 0.1875,
+  "scenarios": [
+   {
+    "E_Dbar": 0.0782,
+    "P_at_or_over_line": 0.6888,
+    "P_exactly_on_line": 0.0412,
+    "P_over_line": 0.6476,
+    "scenario": "sham also n=50, true rate 0.5933 (W3 unsteered)"
+   },
+   {
+    "E_Dbar": 0.0796,
+    "P_at_or_over_line": 0.706,
+    "P_exactly_on_line": 0.0404,
+    "P_over_line": 0.6656,
+    "scenario": "sham also n=50, true rate 0.50"
+   },
+   {
+    "E_Dbar": 0.0523,
+    "P_at_or_over_line": 0.3108,
+    "P_exactly_on_line": 0.0559,
+    "P_over_line": 0.2549,
+    "scenario": "sham FIXED at its observed 0.68, true rate 0.68"
+   }
+  ]
+ },
+ "dose": {
+  "w7_drop_minus4": -0.44,
+  "w7_drop_plus4": -0.64,
+  "w7_inverted_u_centred_on_sham": true,
+  "w7_ladder": [
+   {
+    "P": 0.24,
+    "alpha": -4.0,
+    "median_log10": 9.6021,
+    "n": 50
+   },
+   {
+    "P": 0.48,
+    "alpha": -2.0,
+    "median_log10": 9.6435,
+    "n": 50
+   },
+   {
+    "P": 0.54,
+    "alpha": -1.0,
+    "median_log10": 9.6846,
+    "n": 50
+   },
+   {
+    "P": 0.68,
+    "alpha": 0.0,
+    "median_log10": 9.9771,
+    "n": 50
+   },
+   {
+    "P": 0.52,
+    "alpha": 1.0,
+    "median_log10": 9.6946,
+    "n": 50
+   },
+   {
+    "P": 0.34,
+    "alpha": 2.0,
+    "median_log10": 9.3276,
+    "n": 50
+   },
+   {
+    "P": 0.04,
+    "alpha": 4.0,
+    "median_log10": 6.8283,
+    "n": 50
+   }
+  ],
+  "w7_monotone_non_decreasing": false,
+  "w7_monotone_word": "no",
+  "w7_peak_P": 0.68,
+  "w7_peak_alpha": 0.0,
+  "w7b_dose_fisher_p": 1.0,
+  "w7b_dose_rate_difference": 0.006,
+  "w7b_half_k": 238,
+  "w7b_half_n": 500,
+  "w7b_half_rate": 0.476,
+  "w7b_quarter_k": 47,
+  "w7b_quarter_n": 100,
+  "w7b_quarter_rate": 0.47
+ },
+ "extractor_coverage": {
+  "coverage": {
+   "w1_tau.csv": {
+    "both_extractors": true,
+    "rows": 4
+   },
+   "w2_gap.csv": {
+    "cells": 8,
+    "missing": [],
+    "rows": 8
+   },
+   "w3_behaviour.csv": {
+    "landing_gap_rows": 8,
+    "missing": []
+   },
+   "w3_direction.csv": {
+    "n_unparsed_total": 0,
+    "rows": 8
+   },
+   "w7_arms.csv": {
+    "arms": 23,
+    "arms_missing_a_basis": [],
+    "expected": 23,
+    "three_bases_everywhere": true
+   },
+   "w7b_arms.csv": {
+    "arms": 12,
+    "arms_missing_a_basis": [],
+    "expected": 12,
+    "three_bases_everywhere": true
+   }
+  },
+  "gaps": []
+ },
+ "n_checks": 10,
+ "n_pass": 10,
+ "regenerability": [
+  {
+   "command": "python3 src/extract_regex.py --selftest",
+   "interpreter": "python3",
+   "name": "extractor selftest",
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "ok  'The answer is 1,234,567.'                    -> 1234567.0 (want 1234567.0)\nok  'roughly 2.5 million'                         -> 2500000.0 (want 2500000.0)\nok  'about 250K spots'                            -> 250000.0 (want 250000.0)\nok  \"I'd say 3.5e7\"                               -> 35000000.0 (want 35000000.0)\nok  'first 40000, then 60000'                     -> 60000.0 (want 60000.0)\nok  '1.2 billion'                                 -> 1200000000.0 (want 1200000000.0)\nok  'no number here'                              -> None (want None)\nok  'So my estimate is 40 million spots in total.' -> 40000000.0 (want 40000000.0)\nok  intermediates -> [20000.0, 4000000.0, 5500000.0] (want [20000.0, 4000000.0, 5500000.0])\n  (200 is below the 1000 floor; '3 million and 6 million' is a range, skipped; the repeated 4 million is collapsed)"
+  },
+  {
+   "command": ".venv-w1/bin/python src/prompts_w3.py --selftest",
+   "interpreter": ".venv-w1/bin/python",
+   "name": "form-B prompt selftest",
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "ok  baseline     exactly-one-line-differs=True\nok  below_good   exactly-one-line-differs=True\nok  above_good   exactly-one-line-differs=True\nok  below_good   upstream bet paragraph present verbatim\nok  above_good   upstream bet paragraph present verbatim\nok  threshold renders with separators in both forms"
+  },
+  {
+   "command": "python3 src/recount_w2.py Qwen3-8B 31250000",
+   "interpreter": "python3",
+   "name": "W2 recount (Qwen3-8B)",
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "below_good  n_valid=50  n_null=0  P(final > tau)=0.0200\nabove_good  n_valid=50  n_null=0  P(final > tau)=0.0600\ntau=31250000  landing gap (recount) = 0.0400"
+  },
+  {
+   "command": "python3 src/recount_w2.py Qwen2.5-14B-Instruct 15300000",
+   "interpreter": "python3",
+   "name": "W2 recount (Qwen2.5-14B)",
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "below_good  n_valid=50  n_null=0  P(final > tau)=0.2000\nabove_good  n_valid=50  n_null=0  P(final > tau)=0.3400\ntau=15300000  landing gap (recount) = 0.1400"
+  },
+  {
+   "command": "python3 src/recount_w3.py 4500000000",
+   "interpreter": "python3",
+   "name": "W3 form-B recount",
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "below_good  n_valid=150  n_null=0  P(final > tau)=0.4667\nabove_good  n_valid=150  n_null=0  P(final > tau)=0.5933\ntau=4500000000  form-B landing gap (corrected-basis recount) = 0.1267"
+  },
+  {
+   "command": "python3 src/w7_recount.py",
+   "interpreter": "python3",
+   "name": "W7 primary recount",
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "alpha=+2 P(final>tau_B) = 17/50 = 0.3400\nalpha=-2 P(final>tau_B) = 24/50 = 0.4800\nsham     P(final>tau_B) = 34/50 = 0.6800\nprimary contrast delta_pm = -0.1400 ; delta_plus = -0.3400 ; delta_minus = -0.2000"
+  },
+  {
+   "command": "python3 src/w7b_recount.py",
+   "interpreter": "python3",
+   "name": "W7b primary recount",
+   "rc": 0,
+   "stderr_tail": "",
+   "stdout": "ap05                     P(final>tau_B) = 23/50 = 0.4600\nap025                    P(final>tau_B) = 23/50 = 0.4600\nam025                    P(final>tau_B) = 24/50 = 0.4800\nam05                     P(final>tau_B) = 18/50 = 0.3600\nsham(REUSED W7 alpha=0)  P(final>tau_B) = 34/50 = 0.6800\nPRIMARY  delta_pm(v_phat) = P(+0.50) - P(-0.50) = +0.1000\ndescrip. delta_pm(v_phat) = P(+0.25) - P(-0.25) = -0.0200"
+  }
+ ],
+ "seeds": {
+  "blocks": {
+   "W7": {
+    "contiguous": true,
+    "distinct": 1150,
+    "hi": 9213,
+    "lo": 8064,
+    "n": 1150
+   },
+   "W7b": {
+    "contiguous": true,
+    "distinct": 600,
+    "hi": 9813,
+    "lo": 9214,
+    "n": 600
+   }
+  },
+  "total_steered_generations": 1750,
+  "w7_vs_earlier_collisions": 0,
+  "w7_vs_w7b_collisions": 0,
+  "w7b_vs_earlier_collisions": 0
+ },
+ "text_screens": {
+  "w7": {
+   "d029_fabrication": 12,
+   "d029_fabrication_rate": 0.0104,
+   "d029_sentence_signature": 60,
+   "mention_rate_max": 0.72,
+   "mention_rate_mean": 0.3487,
+   "mention_rate_min": 0.0,
+   "n": 1150,
+   "per_arm": {
+    "B_above_L27_am1": {
+     "d029_fabrication": 1,
+     "mention_rate": 0.28,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_L27_am2": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.3,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_L27_am4": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.1,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_L27_ap1": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.5,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_L27_ap2": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.28,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_L27_ap4": {
+     "d029_fabrication": 9,
+     "mention_rate": 0.08,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_L30_am2": {
+     "d029_fabrication": 1,
+     "mention_rate": 0.14,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_L30_ap2": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.5,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null00": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.24,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null01": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.5,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null02": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.48,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null03": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.22,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null04": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.56,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null05": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.48,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null06": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.38,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null07": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.66,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null08": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.38,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_null09": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.4,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_above_sham": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.38,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_below_L27_am2": {
+     "d029_fabrication": 1,
+     "mention_rate": 0.44,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_below_L27_ap2": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.72,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_neutral_L27_am2": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.0,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B_neutral_L27_ap2": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.0,
+     "n": 50,
+     "verbalized_preference": 0
+    }
+   },
+   "verbalized_preference": 0
+  },
+  "w7_fabrication_ap2": 0,
+  "w7_fabrication_ap4": 9,
+  "w7_fabrication_sham": 0,
+  "w7b": {
+   "d029_fabrication": 3,
+   "d029_fabrication_rate": 0.005,
+   "d029_sentence_signature": 14,
+   "mention_rate_max": 0.58,
+   "mention_rate_mean": 0.4383,
+   "mention_rate_min": 0.32,
+   "n": 600,
+   "per_arm": {
+    "B7b_above_L27_am025": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.32,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_L27_am05": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.42,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_L27_ap025": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.46,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_L27_ap05": {
+     "d029_fabrication": 1,
+     "mention_rate": 0.58,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_null10_am05": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.38,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_null10_ap05": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.44,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_null11_am05": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.46,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_null11_ap05": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.34,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_null12_am05": {
+     "d029_fabrication": 1,
+     "mention_rate": 0.38,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_null12_ap05": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.5,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_null13_am05": {
+     "d029_fabrication": 0,
+     "mention_rate": 0.46,
+     "n": 50,
+     "verbalized_preference": 0
+    },
+    "B7b_above_null13_ap05": {
+     "d029_fabrication": 1,
+     "mention_rate": 0.52,
+     "n": 50,
+     "verbalized_preference": 0
+    }
+   },
+   "verbalized_preference": 0
+  }
+ },
+ "ties": {
+  "qwen3_judge_ge_gap": 0.16,
+  "qwen3_judge_strict_gap": 0.12,
+  "qwen3_judge_ties": 36,
+  "qwen3_regex_ties": 66,
+  "w2": [
+   {
+    "ci_excludes_zero": true,
+    "convention": "strict_gt",
+    "extractor": "judge",
+    "gap": 0.32,
+    "model": "Qwen/Qwen2.5-14B-Instruct",
+    "n_tie_exactly_tau": 1
+   },
+   {
+    "ci_excludes_zero": true,
+    "convention": "ge",
+    "extractor": "judge",
+    "gap": 0.3,
+    "model": "Qwen/Qwen2.5-14B-Instruct",
+    "n_tie_exactly_tau": 1
+   },
+   {
+    "ci_excludes_zero": false,
+    "convention": "strict_gt",
+    "extractor": "regex",
+    "gap": 0.14,
+    "model": "Qwen/Qwen2.5-14B-Instruct",
+    "n_tie_exactly_tau": 47
+   },
+   {
+    "ci_excludes_zero": false,
+    "convention": "ge",
+    "extractor": "regex",
+    "gap": 0.12,
+    "model": "Qwen/Qwen2.5-14B-Instruct",
+    "n_tie_exactly_tau": 47
+   },
+   {
+    "ci_excludes_zero": false,
+    "convention": "strict_gt",
+    "extractor": "judge",
+    "gap": 0.12,
+    "model": "Qwen/Qwen3-8B",
+    "n_tie_exactly_tau": 36
+   },
+   {
+    "ci_excludes_zero": false,
+    "convention": "ge",
+    "extractor": "judge",
+    "gap": 0.16,
+    "model": "Qwen/Qwen3-8B",
+    "n_tie_exactly_tau": 36
+   },
+   {
+    "ci_excludes_zero": false,
+    "convention": "strict_gt",
+    "extractor": "regex",
+    "gap": 0.04,
+    "model": "Qwen/Qwen3-8B",
+    "n_tie_exactly_tau": 66
+   },
+   {
+    "ci_excludes_zero": false,
+    "convention": "ge",
+    "extractor": "regex",
+    "gap": 0.12,
+    "model": "Qwen/Qwen3-8B",
+    "n_tie_exactly_tau": 66
+   }
+  ],
+  "w2_n_verdict_flips": 0,
+  "w2_verdict_flips": [],
+  "w3": [
+   {
+    "ci_excludes_zero": false,
+    "ci_hi": 0.130336,
+    "ci_lo": -0.097181,
+    "convention": "strict_gt",
+    "extractor": "judge",
+    "form": "A",
+    "gap": 0.0166
+   },
+   {
+    "ci_excludes_zero": false,
+    "ci_hi": 0.110292,
+    "ci_lo": -0.117138,
+    "convention": "ge",
+    "extractor": "judge",
+    "form": "A",
+    "gap": -0.0034
+   },
+   {
+    "ci_excludes_zero": false,
+    "ci_hi": 0.113333,
+    "ci_lo": -0.086667,
+    "convention": "strict_gt",
+    "extractor": "regex",
+    "form": "A",
+    "gap": 0.013333
+   },
+   {
+    "ci_excludes_zero": false,
+    "ci_hi": 0.033333,
+    "ci_lo": -0.146667,
+    "convention": "ge",
+    "extractor": "regex",
+    "form": "A",
+    "gap": -0.053333
+   },
+   {
+    "ci_excludes_zero": true,
+    "ci_hi": 0.233333,
+    "ci_lo": 0.006667,
+    "convention": "strict_gt",
+    "extractor": "judge",
+    "form": "B",
+    "gap": 0.12
+   },
+   {
+    "ci_excludes_zero": false,
+    "ci_hi": 0.226667,
+    "ci_lo": 0.0,
+    "convention": "ge",
+    "extractor": "judge",
+    "form": "B",
+    "gap": 0.113333
+   },
+   {
+    "ci_excludes_zero": false,
+    "ci_hi": 0.166667,
+    "ci_lo": -0.033333,
+    "convention": "strict_gt",
+    "extractor": "regex",
+    "form": "B",
+    "gap": 0.066667
+   },
+   {
+    "ci_excludes_zero": false,
+    "ci_hi": 0.133333,
+    "ci_lo": -0.06,
+    "convention": "ge",
+    "extractor": "regex",
+    "form": "B",
+    "gap": 0.04
+   }
+  ],
+  "w3_n_verdict_flips": 1,
+  "w3_verdict_flips": [
+   {
+    "extractor": "judge",
+    "form": "B",
+    "ge": 0.113333,
+    "ge_excludes_zero": false,
+    "strict_excludes_zero": true,
+    "strict_gt": 0.12
+   }
+  ]
+ },
+ "w7b_homogeneity": {
+  "both_refs_rate": 0.615,
+  "chi2": 16.381,
+  "dof": 11,
+  "fisher_vs_both_refs_p": 0.0006,
+  "fisher_vs_sham_p": 0.0075,
+  "fisher_vs_w3_unsteered_p": 0.0105,
+  "null_k": 197,
+  "null_n": 400,
+  "null_rate": 0.4925,
+  "p": 0.1276,
+  "pooled_k": 285,
+  "pooled_n": 600,
+  "pooled_rate": 0.475,
+  "sham_k": 34,
+  "sham_n": 50,
+  "sham_rate": 0.68,
+  "vphat_k": 88,
+  "vphat_n": 200,
+  "vphat_rate": 0.44,
+  "w3_unsteered_k": 89,
+  "w3_unsteered_n": 150,
+  "w3_unsteered_rate": 0.5933
+ }
+}

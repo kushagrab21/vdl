@@ -97,7 +97,72 @@ W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W7b — experiments are OVER)
+## Where things stand (end of W10 — the project is assembled)
+
+**Experiments ended at W7b (R-011). W10 is the final packet and it is complete**: the skepticism
+pass, the build machinery, and the draft write-up. Nothing remains but the researcher's review of
+`writeup/final.md` against this ledger, which is W10's own audit obligation.
+
+**Every `P-` entry is now promoted.** P-001…P-009 → **E-001…E-009**, each citing the `V-` that
+audited it and listing what is explicitly **not** promoted (V-016 §2). The write-up is built only
+from `E-` and `V-` entries.
+
+**The final verdicts are R-012**, transcribed verbatim, and they are the write-up's spine:
+behavioural leakage here is **overt** (596/600 traces name the bet, vs ~0.2 % spontaneous
+disclosure in the 122B panel — cross-scale tiered **[suggested]**); the screening gap **did not
+replicate** (+0.32 → +0.017, z = 2.83); the aggregate gap is a **comprehension-weighted mixture**
+(+0.28/+0.45 against −0.68/−0.55); the believed side is **linearly decodable pre-verbalization**
+on form B (0.743 vs null p95 0.589, p = 0.001, 42/48 layers, 196/203 points before the first cause
+token); and the causal rung is a **measured null** — no direction-specific landing effect at any
+of six doses from 2.9 % to 45.6 % of the residual norm, against 10 + 4 random directions. **v_p̂
+stands as correlational; the central causal question is NOT RESOLVED at resolving power.**
+
+**W10's own findings, all three from recomputing numbers the ledger states:**
+- **D-034** — P-009 §5's "1 of 600" fabrication figure carries **no regenerating command**. A
+  named screen (`src/w10_skeptic.py`) supersedes it and is stronger: the D-029 signature fires
+  **9/50 at α=+4, 0/50 at the sham, 3/600 at the low doses**.
+- **D-036** — P-005's pooled mention rate is **off by one** against its own per-arm table:
+  **596/600 = 99.3 %**, not 595/600. No verdict used it.
+- **D-037** — "judge-vs-corrected disagreement" names **two different statistics** in P-008 §8
+  (value, 121/1,150) and D-033 (landing-verdict, 22/600), which were compared to each other; both
+  are reproduced and the write-up makes only the like-for-like comparison. P-004's per-arm
+  median-token table does not reproduce exactly; the pooled figures the statistics use do.
+- **D-035** — a cited selftest (`prompts_w3.py --selftest`) does not run under bare `python3`; it
+  needs `.venv-w1`. 6 of 7 cited commands run under `python3`; that one does not.
+
+**SK-7 refines D-032**: the exact null floor of the W7b distortion gate is **E[D̄] = 0.0782** with
+**P(D̄ > 0.06) = 0.648** (0.689 at-or-on the line), against D-032's simulated 0.078 / 0.662 —
+**D̄ is lattice-valued and 0.06 is one of its atoms.**
+
+**Deliverables, all committed:**
+```
+writeup/final.md.tmpl     the draft, prose + {{token}} placeholders only
+writeup/manifest.csv      468 lines, one per placeholder: token -> file -> selector -> format
+writeup/build.py          substitutes, writes both documents, runs the digits check
+writeup/final.md          the 10-section draft (~7,700 prose words, 102 table rows)
+writeup/compact.html.tmpl the compact visual form, same manifest
+writeup/compact.html      nodes, verdict chips, four self-explanatory figures
+analysis/out/w10_digits_check.txt   0 untraceable digits in either document
+```
+Rebuild: `python3 writeup/build.py` → `--verify` reports **IDENTICAL** for both.
+
+**Spend, final: $13.42 GPU + $16.06 API = $29.48 of $60; balance $30.52.** W10 cost **$0.00** —
+no pod, no API call, laptop only (S-011). Runner wall time W10 **≈1 h 35 m** (T-013). The **$45**
+threshold was never approached. The owner clock was never supplied (D-025/D-026) and the write-up
+says so plainly.
+
+**Next: the researcher reviews `writeup/final.md` against this ledger and may order revisions.**
+That review is W10's audit. Nothing goes to the owner before it.
+
+Tooling added by W10, all stdlib-only and laptop-reproducible: **`w10_skeptic.py`** (ten checks,
+~1.7 s) · **`w10_derived.py`** (quantities no CSV holds as a cell; independently recounts P-004's
+landing gaps, D-018's z, and W7's τ-echo profile) · **`w10_ledger_facts.py`** (104 facts extracted
+by regex **from RESULTS.md itself**) · **`writeup/build.py`**.
+
+---
+
+## Archived status (end of W7b)
+
 
 W0–W5 accepted (**R-003**, **V-001**, **V-002**, **V-003**, **V-006**, **V-009**, **V-011**).
 **W7 accepted (V-013).** **PR-001** remains the pre-registration of record; **PR-002**–**PR-006**
