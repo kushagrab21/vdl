@@ -28,7 +28,20 @@ def main():
     flips = rows(OUT / "w12_flips.csv")
     traj = rows(OUT / "w12_trajectories.csv")
     hl = json.loads((OUT / "w12_headline.json").read_text())
-    picked = [f for f in flips if f["flip_pos"] != ""][:N_SAMPLE]
+    flipped = [f for f in flips if f["flip_pos"] != ""]
+    picked, fallback = flipped[:N_SAMPLE], False
+    if not picked:
+        # PR-008 item 7 says "5 flip traces, or all, if fewer".  There are ZERO, and an
+        # empty file is useless to the researcher, so the fixed fallback rule is: the 5
+        # traces with the LARGEST peak-to-peak excursion of the smoothed trajectory,
+        # descending.  Labelled as a fallback everywhere it appears.  JC-4.
+        fallback = True
+        rng = {}
+        for t in traj:
+            rng.setdefault((t["arm"], t["trace_i"]), []).append(float(t["score_smoothed"]))
+        order = sorted(rng, key=lambda k: -(max(rng[k]) - min(rng[k])))[:N_SAMPLE]
+        byk = {(f["arm"], f["trace_i"]): f for f in flips}
+        picked = [byk[k] for k in order]
     texts = {a: {r["i"]: r for r in json.loads((ROOT / p).read_text())["rows"]}
              for a, p in SRC.items()}
     by = {}
@@ -38,8 +51,13 @@ def main():
     L = ["# W12 flip sample — belief-probe trajectories beside their traces", "",
          "Fixed rule (PR-008 item 7): the first %d flipped traces in `w12_flips.csv` "
          "order (arm order `above_good, below_good`, then trace index). "
-         "**%d flipped traces exist; %d shown.**" % (
-             N_SAMPLE, sum(1 for f in flips if f["flip_pos"] != ""), len(picked)), "",
+         "%d flipped traces exist. %s" % (
+             N_SAMPLE, len(flipped),
+             "%d shown." % len(picked) if not fallback else
+             "**FALLBACK RULE (PR-008 item 7 / JC-4): the %d traces with the "
+             "largest peak-to-peak excursion of the smoothed trajectory are shown "
+             "instead, so that the researcher has something to read.  **None of these "
+             "is a flip.**" % len(picked)), "",
          "The trajectory is the held-out probe's P(p̂ = +1) at the best layer "
          "(**L%s**), smoothed with the frozen 25-token moving average and downsampled "
          "x5.  `|` is 0.5.  `C` marks the first cause token, `F` the flip." % hl["best_layer"],
@@ -56,12 +74,13 @@ def main():
               % (arm, ti, f["seed"], f["phat"], f["n_gen"]), "",
               "first cause token at gen_pos **%s** · flip at **%s** (to p̂ = %s) · "
               "settle %s · cut point %s · post-flip estimates: **%s** (%s est points)"
-              % (f["belief_gen_pos"] or "none", f["flip_pos"], f["flip_to"],
+              % (f["belief_gen_pos"] or "none", f["flip_pos"] or "none",
+                 f["flip_to"] or "n/a",
                  f["settle_pos"], f["cut_point"] or "none",
-                 f["post_flip_estimates"], f["n_est_post_flip"]), "",
+                 f["post_flip_estimates"] or "n/a — no flip", f["n_est_post_flip"]), "",
               "```", "gen_pos  0.0%s1.0   P(p̂=+1), smoothed" % (" " * (PLOT_W - 7))]
         bel = int(f["belief_gen_pos"]) if f["belief_gen_pos"] else None
-        fl = int(f["flip_pos"])
+        fl = int(f["flip_pos"]) if f["flip_pos"] != "" else -10**9
         for r in pts:
             g, v = int(r["gen_pos"]), float(r["score_smoothed"])
             col = max(0, min(PLOT_W - 1, int(round(v * (PLOT_W - 1)))))

@@ -1,19 +1,19 @@
 {
- "best_layer": 21,
+ "best_layer": 29,
  "layer_means_alignment_a": {
-  "21": 0.63331,
-  "23": 0.63331,
-  "25": 0.63331,
-  "27": 0.63331,
-  "29": 0.63331,
-  "31": 0.63331,
-  "33": 0.63331,
-  "35": 0.63331
+  "21": 0.5534399999999999,
+  "23": 0.5549900000000001,
+  "25": 0.55579,
+  "27": 0.55564,
+  "29": 0.55701,
+  "31": 0.55585,
+  "33": 0.55427,
+  "35": 0.55373
  },
  "onset": {
   "primary": {
-   "bin": 6,
-   "bin_label": "[-100,-75)",
+   "bin": null,
+   "bin_label": "",
    "sig": [
     false,
     false,
@@ -21,17 +21,17 @@
     false,
     false,
     false,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
    ]
   },
   "above_good": {
-   "bin": 6,
-   "bin_label": "[-100,-75)",
+   "bin": null,
+   "bin_label": "",
    "sig": [
     false,
     false,
@@ -39,11 +39,11 @@
     false,
     false,
     false,
-    true,
-    true,
-    true,
-    true,
-    true,
+    false,
+    false,
+    false,
+    false,
+    false,
     false
    ]
   },
@@ -76,9 +76,9 @@
  "n_flips_strict_rule": 0,
  "false_flip_empirical_ordered": 0.0,
  "false_flip_empirical_strict": 0.0,
- "n_valid_cutpoints": 146,
- "n_w13_pairs_possible": 768,
- "n_w13_pairs_disjoint": 12,
+ "n_valid_cutpoints": 98,
+ "n_w13_pairs_possible": 270,
+ "n_w13_pairs_disjoint": 6,
  "post_flip": {
   "toward": 0,
   "away": 0,

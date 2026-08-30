@@ -107,6 +107,11 @@ def reduce_shards(idx, traces, cells, best_layer_idx=None, only_P=False):
     from safetensors.numpy import load_file
     keys = sorted(cells)
     kpos = {k: i for i, k in enumerate(keys)}
+    # per-trace list of (row of M, generated positions) — derived from `cells` itself, so
+    # any alignment present in `cells` is reduced, not just the two PR-008 freezes.
+    tcells = {}
+    for k, g in cells.items():
+        tcells.setdefault(k[0], []).append((kpos[k], np.array(g)))
     d = 5120
     M = None
     P = {}
@@ -128,11 +133,9 @@ def reduce_shards(idx, traces, cells, best_layer_idx=None, only_P=False):
                     continue
                 assert t["row_last"] < hi, "trace %s straddles shards" % t["trace_i"]
                 sl = A[r0 - off:t["row_last"] - off + 1].astype(np.float32)
-                for al in (() if only_P else ("a", "b")):
-                    for b in range(N_DECILE if al == "a" else N_OFFBIN):
-                        g = cells.get((t["u"], al, b))
-                        if g:
-                            M[kpos[(t["u"], al, b)]] = sl[np.array(g)].mean(axis=0)
+                if not only_P:
+                    for ki, g in tcells.get(t["u"], []):
+                        M[ki] = sl[g].mean(axis=0)
                 if best_layer_idx is not None:
                     P[t["u"]] = sl[:, best_layer_idx, :].astype(np.float16)
             off = hi

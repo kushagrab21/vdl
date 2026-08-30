@@ -5806,3 +5806,385 @@ cut-point path on synthetic activations carrying a **planted** belief signal tha
 **100 tokens before the cause token**, plus a **planted arm signal 2.5× larger**. Both must
 pass before provisioning; their output is pasted in the report.
 
+
+---
+
+## F-018 · W12 infrastructure and capture freeze · 2026-08-30
+
+| item | value |
+|---|---|
+| pod | **`avyrlo9271lq1v`** ("vdl-w12"), machine `iklhq2d1mg0g`, created **11:10:35 UTC**, terminated **12:07:35 UTC** |
+| GPU | **NVIDIA A100-SXM4-80GB**, driver **595.71.05**, 81,920 MiB; `costPerHr` **$1.39** — rate card **$1.39**, **no D-031 mismatch** |
+| host | 256 vCPU, 1,007 GB RAM, 100 GB volume at `/workspace` |
+| image | `runpod/pytorch:1.2.0-rc.162-cu1281-torch280-ubuntu2204` |
+| stack | **torch 2.8.0+cu128**, **transformers 5.16.1**, **scikit-learn 1.9.0**, **numpy 2.5.2**; no vLLM (W12 generates nothing) |
+| model | `Qwen/Qwen2.5-14B-Instruct`, bf16, 48 decoder layers, d_model 5120 |
+| capture | **129,515 rows** = every generated token of **300** form-B incentive traces; layers **{21,23,25,27,29,31,33,35}**; fp16; **10.61 GB** in 6 shards; **0 quarantined**, **0 V1–V4 failures** |
+| audit subsample | every 20th row: **6,477 rows**, 0.53 GB, rsync'd to the laptop before termination |
+
+**The stack is NOT byte-identical to W4's** (that packet's transformers version differs), and
+W12 compares against W4's stored positions. **That is exactly what PR-008's position-alignment
+check exists to catch, and it passes 10/10** (`analysis/out/w12_align_check.md`): every sampled
+W4 `est` point maps to the same absolute token index, the same `gen_pos`, the same row, and its
+span decodes to the same literal under this capture's own tokenizer. See **D-044**.
+
+---
+
+## P-011 · W12: belief-formation timing — a measured null at the frozen criterion, and a length confound in the ordered alignment · 2026-08-30
+
+Provisional. Governed by **PR-008**, frozen (commit `d5c9eb0`, **11:10:14 UTC**) **21 seconds
+before the pod was created** and 8 minutes before the first captured activation.
+
+### 1 · Headline
+
+| quantity | value |
+|---|---|
+| **best layer** (frozen rule: argmax mean alignment-(a) balanced accuracy, `primary`) | **L29** (0.5570; the eight layers span **0.5537–0.5570**, a range of 0.0033) |
+| **onset bin, alignment (b), frozen criterion** (4 consecutive bins > null p99.5) | **NONE — the criterion does not fire, at any layer, in any family** |
+| onset under the **ordered, untightened** criterion (2 consecutive > null p95) | **`primary`: NONE at every layer.** `above_good`: fires at bin 8 = **[−50,−25)** at L21/23/25/27, **not** at the frozen best layer L29 |
+| **`control_arm`** (must be at chance) | **0.5000 at all 176 cells** — the arm confound is completely removed |
+| flips (ordered rule) | **0 of 238**; strict rule **0 of 238** |
+| empirical label-shuffled false-flip rate on this capture | **0.0000** (ordered) / **0.0000** (strict) |
+| valid cut points | **98** of 167 cause-token traces |
+| **W13 opposite-belief same-condition pairs** | **270 possible**, **6 disjoint** (4 `above_good`, 2 `below_good`) |
+
+command: `python src/capture_w12.py` then `python src/analyze_w12.py --procs 32`, pod-side;
+→ `analysis/out/w12_curves.csv`, `w12_trajectories.csv`, `w12_flips.csv`, `w12_cutpoints.csv`,
+`w12_headline.json`. n and filters are PR-008 item 1's table: **238** labelled traces
+(`above_good` 113 = 82/31, `below_good` 125 = 4/121), of which **167** carry a cause-token
+(**71 do not; they enter alignment (a) only and are counted**).
+
+### 2 · The curves
+
+**Alignment (b) — offset from the first cause-token — is flat.** At L29, `primary` (n=167):
+
+| bin | −250 | −225 | −200 | −175 | −150 | −125 | −100 | −75 | **−50** | **−25** | +0 | +25 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| bacc | .442 | .540 | .479 | .436 | .497 | .544 | .512 | .560 | .545 | **.603** | .546 | .473 |
+| null p95 | .572 | .561 | .568 | .565 | .572 | .565 | .570 | .569 | .572 | .567 | .568 | .643 |
+| p | .93 | .13 | .66 | .94 | .52 | .13 | .35 | .08 | .12 | **.016** | .15 | .59 |
+
+**One bin of twelve clears p95 and none clears p99.5.** `above_good` (n=75) is the same shape
+with a wider null: only **[−50,−25) = 0.6575** (p=0.020, null p95 0.6189) and, at L25/L27,
+**[−25,+0) ≈ 0.67** clear p95. **The last 50 tokens before the cause word are where anything
+at all happens** — and at the frozen resolving power that is not a result.
+
+**Alignment (a) — trace-fraction deciles — rises monotonically and is significant, but see
+§3.** `above_good`, L29: decile 0 **0.621** (p=0.012) → 3 **0.710** → 6 **0.673** → 8 **0.740**
+→ 9 **0.772** (p=0.002), against null p95 ≈ 0.58 throughout. `primary` is far weaker:
+0.526–0.554 for deciles 0–7, then **0.595** (p=0.012) and **0.644** (p=0.002) in deciles 8–9.
+
+**Absolute early bins** (acceptance check 4; computed **after** the freeze, descriptive,
+`src/w12_extra.py` → `analysis/out/w12_curves_abs.csv`, same probe, folds and 500-perm null):
+
+| bin | `above_good` L29 | best layer | `primary` L29 | `control_arm` |
+|---|---|---|---|---|
+| **[0,25) tokens into the trace** | **0.4207** (p=0.93) | 0.4428 (L35) | 0.5047 (p=0.46) | 0.5000 |
+| **[25,50)** | **0.5357** (p=0.23) | 0.5528 (L31) | 0.5277 (p=0.19) | 0.5000 |
+| [50,75) | 0.5608 (p=0.12) | 0.5706 (L27) | 0.5230 | 0.5000 |
+| [75,100) | 0.4827 (p=0.61) | 0.4882 (L23) | 0.5084 | 0.5000 |
+
+**Nothing is decodable in the first 100 tokens of a trace on a length-invariant alignment.**
+
+### 3 · The finding that reframes §2 — see D-042
+
+`above_good` decile 0 reads **0.621**. A probe with **one feature — the trace's output length,
+no activations at all** — reads **0.6421** on the same traces, same folds, same 500-permutation
+null (p=0.004); pooled it reads **0.5906** (p=0.016). **Decile boundaries scale with `n_gen`,
+and `n_gen` is associated with p̂**: in `above_good`, p̂=−1 traces are **123 tokens longer** on
+average (526.2 vs 402.9, permutation p < 0.0001, 20,000 draws). **The alignment-(a) curve is
+therefore confounded with trace length and cannot be read as a timing result.** Alignments (b)
+and (c) are anchored on absolute token counts, are **not** confounded, and both are flat.
+
+### 4 · Flips and trajectories
+
+**0 flips in 238 traces** under the ordered rule and 0 under the strict rule, with an
+**empirical label-shuffled false-flip rate of 0.0000** — so the rule is calibrated on this
+capture and finds nothing. The trajectories are not degenerate: smoothed scores span
+**0.122–0.651** (sd 0.093), **194 of 238** cross 0.5 somewhere, and **123** make an excursion
+of ≥0.10 from 0.5. **What does not happen is a *sustained two-sided* reversal**: no trace holds
+≥0.10 on one side for 50 tokens and then ≥0.10 on the other. Post-flip estimate behaviour is
+**undefined — there are no flips to count**, in either direction.
+
+### 5 · Cut points and W13 sizing
+
+98 of the 167 cause-token traces have a valid cut point; **69 do not, and the binding
+constraint is `settle_pos`, not the cause token** — those traces' smoothed trajectories are
+already within 0.10 of their final value more than 25 tokens before the cause word, so there is
+no position that is both pre-cause and pre-settle. Cut points: `above_good` **47** (43 p̂=+1,
+4 p̂=−1), median 288 (range 168–515); `below_good` **51** (2 / 49), median 299 (range 25–883).
+
+**W13 sizing: 270 possible opposite-belief same-condition pairs, but only 6 DISJOINT pairs**
+(4 + 2). A paired transplant drawing disjoint pairs has **n = 6**. This is the packet's
+load-bearing output for W13 and it is a **stop-and-think number**, not a green light.
+
+### 6 · Which hypothesis, per standing constraint 7
+
+**(1) A bug in new code** — checked before the data and again after. `analyze_w12.py --smoke`
+runs the whole path on synthetic activations with a **planted** belief signal switching on 100
+tokens before the cause token and a **planted arm signal 2.5× larger**: it recovers the onset
+at exactly **[−100,−75)** in both the `primary` and `above_good` families and holds
+`control_arm` at chance in all 12 bins. On the real capture `control_arm` is **0.5000 in all
+176 cells**, and the position-alignment check is **10/10**. One real bug was found and fixed
+**during** the packet (`reduce_shards` hard-coded the two frozen alignments, so the after-the-
+freeze absolute bins came back as all-zero rows and sklearn refused them — it crashed loudly
+rather than returning a number; **D-045**). **(2) A flaw in the instruction** — yes, two, and
+they are the packet's substance: the ordered onset criterion cannot be frozen (**D-043**) and
+the ordered alignment (a) is length-confounded (**D-042**). **(3) A discovery** — what is left
+is a **measured null on a length-invariant alignment**: the believed side is not linearly
+decodable, at this resolving power, from bin-mean residuals at any absolute position or at any
+offset from the cause word except possibly the last 50 tokens before it.
+
+### 7 · The load-bearing recount
+
+`python3 src/w12_recount.py 29` on the laptop, over the **5 % audit subsample alone**
+(`runs/w12_acts/w12_sub_*.safetensors`, 509 MB, rsync'd before termination). Fresh script:
+imports `json`/`sys`/`numpy`/`safetensors`, re-implements the p̂ recipe, the binning, the
+arm-centring, the split and the **logistic probe by hand (gradient descent, no sklearn)**.
+
+```
+best layer L29 | 1767 (trace,bin) cells from the 5% subsample
+ bin  offset            bacc    null p99.5   sig
+   0  [-250,-225)   0.5129   0.6851
+   4  [-150,-125)   0.5420   0.6859
+   8  [ -50, -25)   0.5204   0.7084
+   9  [ -25,  +0)   0.5063   0.6820
+  11  [ +25, +50)   0.5625   1.0000
+RECOUNT onset bin = NONE
+```
+
+**Pod-side onset NONE; offline recount onset NONE. Agreement (both no-onset).** The recount is
+bit-identical run on the pod and on the laptop. Its per-bin accuracies are flatter than the
+full capture's (0.47–0.56 against 0.44–0.60) with much wider nulls, as a 5 % sample of positions
+must be; **no bin stands out in either.**
+
+---
+
+## D-042 · Trace-fraction deciles are length-confounded, and trace length predicts p̂ · 2026-08-30
+
+**The work order froze alignment (a) as "trace-fraction deciles". A decile bin's boundaries
+are `[k·n_gen/10, (k+1)·n_gen/10)`, so the SET OF POSITIONS a bin averages over is a function
+of the trace's length.** In this dataset that is not innocent:
+
+| arm | p̂ | n | mean `n_gen` | median |
+|---|---|---|---|---|
+| `above_good` | **+1** | 82 | **402.9** | 386.5 |
+| `above_good` | **−1** | 31 | **526.2** | 459.0 |
+| `below_good` | +1 | 4 | 397.0 | 399.5 |
+| `below_good` | −1 | 121 | 444.8 | 414.0 |
+
+`above_good`: **+123.3 tokens** for p̂=−1, **permutation p < 0.0001** (20,000 shuffles of the
+label, difference of means).
+
+**A probe with one feature — `n_gen`, and no activations at all** — trained and scored on the
+identical 20 folds against the identical 500-permutation trace-level null:
+
+| cell | balanced accuracy | null p95 | p |
+|---|---|---|---|
+| `above_good` (W5's cell) | **0.6421** | 0.5882 | **0.0040** |
+| pooled, 238 traces | **0.5906** | 0.5595 | **0.0160** |
+
+**0.6421 from a scalar is more than the `above_good` alignment-(a) decile-0 activation probe
+achieves (0.6207) and most of what its decile-9 probe achieves (0.7717).** The alignment-(a)
+curve therefore **cannot** be read as "the belief becomes decodable and stays decodable":
+some — at the early deciles, plausibly all — of it is the probe learning how long the trace is.
+
+**This is a flaw in the ordered instrument, found after the freeze and reported rather than
+patched** (the D-011/D-016/D-027/D-033/D-040 discipline: the constant or the rule is corrected
+by a later entry, not edited in place). The two **length-invariant** alignments in this packet —
+(b), offsets from the cause token, and (c), absolute token offsets from the trace start — are
+not confounded, and **both are flat**. Every timing claim in P-011 rests on those two.
+
+**It also reaches backwards, and the researcher should rule on how far.** W5's p̂ probe
+(**E-007 / P-007**, 0.743 at ℓ\*=22, form B) scored `est` points aggregated to the trace. It did
+not use length as a feature — but the number and the positions of a trace's `est` points are
+functions of its length, and residual streams encode absolute position strongly, so the same
+channel is available to it. **W12 does not test W5's probe and does not claim it is
+confounded**; it establishes that the channel exists in this dataset and is worth **0.64
+balanced accuracy on its own**. A one-line check would settle it and W12 was not authorised to
+run it.
+
+---
+
+## D-043 · The ordered onset criterion fires 65 % of the time on pure noise; tightening it did NOT cause the null · 2026-08-30
+
+**Before the data (PR-008 item 4, R-013).** The work order's criterion — *two consecutive bins
+above the null's 95th percentile, at the best layer* — was simulated under the global null over
+the 8 × 12 grid, scored as firing if **any** layer fires (an upper bound over every best-layer
+selection rule), 20,000 sims per cell. Its family-wise false-onset rate is **0.202** when the
+null statistic is independent across bins and **0.649** when adjacent bins correlate at 0.7 —
+which they must, since adjacent bins share traces and nearly share positions.
+
+**Both tightenings the order named also fail**: 3-consecutive @ p95 → **0.459**; 2-consecutive
+@ p99 → **0.205**; and even together, 3-consecutive @ p99 → **0.114**. The ladder was continued
+past the two named rungs to **4 consecutive bins @ p99.5**, whose worst cell is **0.0279**, and
+that was frozen. (Judgment call **JC-1**.)
+
+**After the data — and this is the part that matters.** A tightened criterion that finds
+nothing invites the objection "you tightened away your own result". It did not:
+
+| family | criterion | fires? |
+|---|---|---|
+| `primary` | **frozen**: 4 consec @ p99.5, L29 | **no** |
+| `primary` | ordered: 2 consec @ p95, **at every one of the 8 layers** | **no** |
+| `primary` | 3 consec @ p95, at every layer | **no** |
+| `above_good` | frozen: 4 consec @ p99.5, L29 | **no** |
+| `above_good` | ordered: 2 consec @ p95, at the frozen best layer **L29** | **no** |
+| `above_good` | ordered: 2 consec @ p95, at **L21/23/25/27** | **yes, bin 8 = [−50,−25)** |
+| `above_good` | 3 consec @ p95, at any layer | **no** |
+
+**The only firing anywhere is the ordered criterion, in the robustness family, at four layers
+that are not the frozen best layer — and that criterion fires on noise 20–65 % of the time.**
+It is reported because it is the one place a signal might live (the last 50 tokens before the
+cause word), and it is banked as **nothing**.
+
+**Register, extending D-032.** D-032 said: *a pre-registration must freeze evidence that its
+setting and threshold are inside the range the design can resolve.* W12 adds the other half:
+**R-013's null simulation controls false positives and says nothing about power.** PR-008
+simulated the criterion under the null, as ordered, and did **not** simulate it under an
+alternative — so W12 cannot say whether a real onset of a stated size would have been detected.
+**The rule should be amended to require both**, as PR-007's did (it simulated the alternative
+too, which is where its 0.851 came from). This is the recommendation W12 makes to the
+researcher.
+
+---
+
+## D-044 · The W12 stack is not W4's, and the alignment check is what makes that safe · 2026-08-30
+
+W11's stack was byte-identical to W3's, which mattered because W11 compared W11 cells against
+W3 cells. **W12's is not identical to W4's** — this pod ran **transformers 5.16.1** on
+torch 2.8.0+cu128, installed fresh (W12 needs no vLLM, so the ~21-minute `provision_pod.sh`
+venv build was skipped; a 4-package pip install replaced it and the pod's whole life was
+57 minutes). W12 nevertheless maps W4's **stored** position index onto its own capture.
+
+**PR-008 item 2 froze the check that makes this safe and it passes 10/10**
+(`analysis/out/w12_align_check.md`): for 10 `est` points sampled by a fixed stride over the W4
+form-B index, the W4 absolute token index, the derived `gen_pos`, the W12 row and the decoded
+literal all agree, and `capture_w12.py` **imports** `replay_w4.build_positions` rather than
+re-implementing it, so V1–V4 are W4's own assertions. **0 of 300 traces quarantined.**
+
+**Recorded because the reasoning is transferable:** an identical stack is one way to make two
+packets comparable; a *checked* correspondence is another, and it is cheaper when the second
+packet needs a different library anyway.
+
+---
+
+## D-045 · `--smoke` writes to the shipped filenames; it overwrote real results mid-packet · 2026-08-30
+
+`analyze_w12.py --smoke` writes `w12_curves.csv`, `w12_flips.csv`, `w12_trajectories.csv`,
+`w12_cutpoints.csv` and `w12_headline.json` **to the same `analysis/out/` paths as a real run**.
+After the real pod-side run, a laptop re-smoke (verifying the D-045-adjacent `reduce_shards`
+fix) **silently overwrote the pulled copies of all five with synthetic numbers.** They were
+re-pulled from the pod, which still held them, and every number in P-011 comes from the
+re-pulled files — but had the pod already been terminated, the packet's results would have been
+destroyed by its own test suite.
+
+**No number in this ledger is affected**, and the near-miss is recorded rather than fixed
+because fixing it is a change to a smoke path mid-packet. **Recommendation for W13: a `--smoke`
+run must write under a `smoke_` prefix or to a scratch directory.** The general form of the
+rule, which W4's D-020 and W11's D-039 also point at: **the only copy of a result must never
+live where a test can write.**
+
+---
+
+## S-013 · Spend, W12 · 2026-08-30
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| **`avyrlo9271lq1v`** | A100-SXM4-80GB | **1.39** | 11:10:35 → **12:07:35 TERMINATED** | **0.9500** | **$1.32** |
+
+Rate from the created pod record's `costPerHr` per R-006(3); rate card and pod record both
+**$1.39**, no D-031 mismatch. **Independently confirmed by the R-014 balance probes**:
+RunPod `clientBalance` **$22.3685 before → $21.0406 after = $1.3279 spent**, against the
+$1.32 computed from the window. **GPU this packet: $1.32. Cumulative GPU: $15.12.**
+
+**API this packet: $0.00003** — one 8-token-in / 1-token-out probe call (R-014). Every label
+W12 used came from the frozen `w3_direction_cache.json`. **Cumulative API: $20.65.**
+
+**Total project spend: $15.12 GPU + $20.65 API = $35.77 of the $60 cap; balance $24.23.**
+The **$45** surfacing threshold is **not** approached and no owner approval was required.
+
+Where the 57 minutes went: **28 GB model download 6 m** (fresh volume) · pip install 1 m ·
+**capture 63 s for all 300 traces** · curve analysis **14 m 31 s** (528 cells × 20 folds ×
+501 fits, 32 procs) · after-freeze absolute bins 6 m · recount 30 s · **subsample rsync 9 m**.
+**Compute was ~55 % of billed time**; the 9-minute rsync of the 0.53 GB audit subsample is the
+single largest avoidable slice and it bought the offline recount.
+
+**Account state at close, verified:** `terminate` → **HTTP 204** at 12:07:35 UTC;
+`GET /pods` → **200, empty**; `GET /pods/avyrlo9271lq1v` → **404 "pod not found"**;
+`myself.currentSpendPerHr` **$0.00**. No volume survives.
+
+---
+
+## T-015 · Time, W12 · 2026-08-30
+
+Owner-clock minutes: **not supplied — D-025 / D-026 / R-010(5).**
+Runner wall time, W12: **≈ 2 h 05 m** (2026-08-30 10:35 → 12:40 UTC). GPU wall **0.950 h**.
+
+| phase | wall | note |
+|---|---|---|
+| re-orientation (`ORIENTATION.md`, ledger tail, `replay_w4.py`, `direction_w5.py`, the W3 form-B data) | ~18 m | |
+| transcribe V-018; allocate R-014 / E-010; **R-014 balance probes** | ~8 m | `w12_balance.py`, both services green before anything was bought |
+| **the R-013 pre-freeze simulations** | **~16 m** | including one rewrite: the naive version drew 500 permutation values per cell per sim and did not finish in 2 minutes; the Beta order-statistic identity made it 3 seconds |
+| capture/analysis/recount/sample code + laptop smokes | ~26 m | the planted-signal smoke is what makes the null readable |
+| write and commit PR-008 | ~14 m | |
+| pod create → terminate | **57 m** | see S-013 |
+| after-freeze absolute bins, the length-confound check, ledger, commit | ~22 m | **D-042 came out of a two-minute check run because the absolute bins disagreed with the deciles** |
+
+**The most valuable minutes in this packet were not the simulation this time — they were the
+two minutes spent asking why the absolute early bins (0.42, 0.54) disagreed with the deciles
+(0.62, 0.59).** That question produced D-042. The pre-freeze simulation was still decisive in
+its own way: it showed the ordered criterion fires on noise two times in three, which is what
+lets P-011 report a null instead of an onset.
+
+---
+
+## V-019 · W12 runner verification: precedence, alignment, recount, termination · 2026-08-30
+
+**A runner verification note, not a researcher audit.** The researcher's audit is the reading
+of `analysis/out/w12_flip_sample.md` and the ruling on P-011 (and on how far D-042 reaches).
+
+**(1) PR-008 preceded every captured activation — from `git log`, not from memory.**
+
+```
+d5c9eb0 2026-08-30T19:10:14+08:00  W12: transcribe V-018 …; pre-register PR-008 …
+09e7dae 2026-08-30T18:18:14+08:00  W11: orientation status …
+```
+
+`d5c9eb0` is **11:10:14 UTC**. The pod was created **11:10:35** (+21 s), the stack was installed
+at 11:16, the first activation was written at **11:17**, and the full capture ran **11:18:52 →
+11:19:55**. `runs/w12_acts/` did not exist on the laptop when `d5c9eb0` was written and `runs/`
+is gitignored, so nothing could have been staged.
+
+**(2) The balance probes preceded provisioning (R-014).** `w12_balance.py` was run and its
+output pasted into PR-008 item 0 **before** `pod.py create`. The close-of-packet re-probe
+independently confirms the GPU bill to the cent (S-013).
+
+**(3) The position-alignment check is 10/10** and is pasted in full in the report;
+`capture_w12.py` imports W4's `build_positions`, so V1–V4 are W4's assertions and **0 of 300**
+traces were quarantined.
+
+**(4) The load-bearing recount agrees.** `src/w12_recount.py` (fresh; `json`/`sys`/`numpy`/
+`safetensors` only; probe by hand) run **offline on the laptop over the 5 % audit subsample**
+returns **onset = NONE**, matching the pod-side **NONE**. Identical output pod-side and
+laptop-side.
+
+**(5) The apparatus is validated in both directions.** Planted-signal smoke: onset recovered at
+exactly the planted bin, arm control at chance. Real capture: **`control_arm` = 0.5000 at all
+176 cells**. A pipeline that recovers a planted onset and refuses a planted confound is one
+whose null is worth reading.
+
+**(6) The pod is terminated and nothing pod-side is unique.** HTTP 204 at 12:07:35 UTC;
+`/pods` empty; `404` on the id; `currentSpendPerHr` $0.00. The **10.61 GB of activations were
+destroyed with the volume, by design (R-010(3))**; the 0.53 GB audit subsample, both position
+indices, and every shipped CSV were pulled first.
+
+**(7) What is NOT verified here.** (a) The 0.0279 family-wise false-onset rate is a property of
+the **design under its null**; **no alternative was simulated**, so this packet cannot say what
+size of real onset it would have detected (**D-043**). (b) **D-042's reach into W5 is not
+tested** — W12 shows the length channel is worth 0.64 in this dataset and does **not** rerun
+W5's probe. (c) p̂ labels inherit V-009's 20–30 % label-noise carve-out unchanged; W12 adds no
+new judging. (d) The flip rule's calibration is empirical on **this** capture (label-shuffled
+rate 0.0000) and the parametric grid in PR-008 item 5 shows it is unusable at higher trajectory
+noise; a stronger probe would need it re-simulated.
+
