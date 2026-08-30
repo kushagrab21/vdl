@@ -1,0 +1,22 @@
+statistic,basis,value,ci_lo,ci_hi,extra,note
+"sham P(>tau_B)  [REUSED W7 arm, seeds 8664-8713]",regex_corr,0.68,,,,"PR-006 item 2: W7's alpha=0 control, NOT regenerated; 34/50"
+primary delta_pm  P(+0.5)-P(-0.5),regex_corr,0.1,-0.1,0.3,,"PR-006 item 4.1; 10000-resample percentile bootstrap, seed 64"
+descriptive delta_pm  P(+0.25)-P(-0.25),regex_corr,-0.02,-0.22,0.18,,"PR-006 item 4.4 — DESCRIPTIVE, enters no verdict"
+null delta_pm_10 (seed 9011),regex_corr,0.2,0.0,0.4,,"PR-006 item 4.2 — random equal-norm direction, same +-0.5 contrast"
+null delta_pm_11 (seed 9012),regex_corr,-0.04,-0.24,0.16,,"PR-006 item 4.2 — random equal-norm direction, same +-0.5 contrast"
+null delta_pm_12 (seed 9013),regex_corr,0.28,0.1,0.46,,"PR-006 item 4.2 — random equal-norm direction, same +-0.5 contrast"
+null delta_pm_13 (seed 9014),regex_corr,0.02,-0.18,0.22,,"PR-006 item 4.2 — random equal-norm direction, same +-0.5 contrast"
+null delta_pm spread,regex_corr,0.115,-0.04,0.28,"{""nulls"": [0.2, -0.04, 0.28, 0.02]}",mean / min / max over the 4 random directions
+|delta_pm(v_phat)| vs |null delta_pm|,regex_corr,0.1,,,,"beats 2/4 random directions in absolute size (descriptive: PR-006's verdict is the CI, not a null-beating count)"
+D_bar  mean |P_arm - P_sham| over the 8 null arms,regex_corr,0.1875,0.08,0.36,"{""devs"": [0.1, 0.3, 0.2, 0.16, 0.08, 0.36, 0.14, 0.16]}",PR-006 item 4.3; line is 0.06; min/max in ci columns
+"sham P(>tau_B)  [REUSED W7 arm, seeds 8664-8713]",judge,0.6,,,,"PR-006 item 2: W7's alpha=0 control, NOT regenerated; 30/50"
+primary delta_pm  P(+0.5)-P(-0.5),judge,0.16,-0.04,0.34,,"PR-006 item 4.1; 10000-resample percentile bootstrap, seed 64"
+descriptive delta_pm  P(+0.25)-P(-0.25),judge,-0.04,-0.22,0.16,,"PR-006 item 4.4 — DESCRIPTIVE, enters no verdict"
+null delta_pm_10 (seed 9011),judge,0.1,-0.1,0.3,,"PR-006 item 4.2 — random equal-norm direction, same +-0.5 contrast"
+null delta_pm_11 (seed 9012),judge,0.02,-0.18,0.2,,"PR-006 item 4.2 — random equal-norm direction, same +-0.5 contrast"
+null delta_pm_12 (seed 9013),judge,0.26,0.08,0.44,,"PR-006 item 4.2 — random equal-norm direction, same +-0.5 contrast"
+null delta_pm_13 (seed 9014),judge,0.04,-0.16,0.24,,"PR-006 item 4.2 — random equal-norm direction, same +-0.5 contrast"
+null delta_pm spread,judge,0.105,0.02,0.26,"{""nulls"": [0.1, 0.02, 0.26, 0.04]}",mean / min / max over the 4 random directions
+|delta_pm(v_phat)| vs |null delta_pm|,judge,0.16,,,,"beats 3/4 random directions in absolute size (descriptive: PR-006's verdict is the CI, not a null-beating count)"
+D_bar  mean |P_arm - P_sham| over the 8 null arms,judge,0.1425,0.06,0.32,"{""devs"": [0.12, 0.22, 0.12, 0.14, 0.06, 0.32, 0.06, 0.1]}",PR-006 item 4.3; line is 0.06; min/max in ci columns
+PR-006 item 5 interpretation row FIRED,regex_corr,,,,,"row 3 — D_bar = 0.1875 > 0.06: even alpha=0.5 distorts; the dose ladder ends here by R-011; bounding, not tested further"

@@ -4010,3 +4010,427 @@ on the first run — `seeds 8664–8713` against the asserted `8064–8113` — 
 $0.00/hr, before a pod existed. V-011's laptop-smoke-before-provisioning rule has now caught a
 resolver bug (W7) and a pre-registration transcription error (W7b). The smoke was corrected to
 assert the true range and re-run to 13/13.
+
+---
+
+## F-016 · W7b freeze record: pod, stack, and the direction actually injected · 2026-08-30
+
+| item | value |
+|---|---|
+| pod | `u3g0qm180kvqnd`, name `vdl-w7b`, machine `4t6pfinaga0j` |
+| GPU | **NVIDIA A100-SXM4-80GB**, driver 580.126.16, `costPerHr` **$1.59** — **rate card said $1.39; see D-031** |
+| image | `runpod/pytorch:1.2.0-rc.162-cu1281-torch280-ubuntu2204`, volume 60 GB, container 60 GB |
+| interpreter | **`/usr/local/bin/python` 3.12.13** — `python3` is 3.10 with **no torch**. D-022's trap, hit again and resolved by D-022's rule before it cost anything |
+| stack | torch **2.8.0+cu128** (image), transformers **4.57.6**, plus `accelerate safetensors huggingface_hub anthropic python-dotenv tenacity fire tqdm openai`. **`anthropic` installed up front** — T-011 recorded a 40 s re-run caused by omitting it; that waste did not recur |
+| model | `Qwen/Qwen2.5-14B-Instruct`, snapshot **`cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8`** — **byte-identical to W7's** (F-015) |
+| direction | `analysis/out/w5_vectors/w5_vphat_B.safetensors`, key `vphat`, sha256 `cbdbbb4a4eccfd085549d3aa1a6b94170c77252bd2dd64718b4f950426b9be64` — verified at load time on every arm, recorded in all 12 output files |
+| ‖Δμ‖ = ‖v_p̂^B(27)‖ | **12.726012** (identical to W7) |
+| ‖injected vector‖ | **6.363** at \|α\|=0.5, **3.182** at \|α\|=0.25 |
+| **dose, as a fraction of the residual stream** | mean ‖h‖ at L27 = 111.65 → **α=0.5 is 5.7 %**, **α=0.25 is 2.8 %**. W7's grid was **11.4 % / 22.8 % / 45.6 %** |
+| null directions | seeds **9011, 9012, 9013, 9014**, `np.random.default_rng(seed).standard_normal(5120)` normalised — W7's construction, disjoint seeds |
+| laptop smoke | `python3 src/steer_w7b.py --smoke` → **13/13 PASS** (W7's 7 clauses re-run through the shared code path + 6 new) |
+| laptop rehearsal | `--tiny`, 2 arms × 4 on Qwen2.5-0.5B, CPU, real `run_arm` path — before the pod existed |
+| GPU sanity | 2 arms × 4 on the real model, **43.4 s**, both coherent and on-task, `SANITY_RC=0` |
+
+**The injection code is W7's, by import.** `steer_w7b.py` imports `Injector`, `run_arm`,
+`direction_vector` and `load_vphat` from `steer_w7` and re-implements none of them, so the
+arithmetic under test is exactly the code F-015's S4/S5 clauses certified. The **only** change
+to that module's state is that its frozen null-seed list is **appended to** — indices 0–9 keep
+W7's seeds 9001–9010 and smoke clause **B1** re-derives all ten directions and asserts they are
+**bit-identical** after the append (**JC-1**).
+
+**The W7b smoke, clause by clause** (run of record 2026-08-30 06:47 UTC, laptop, CPU):
+
+```
+=== B0: steer_w7 smoke (7/7 expected), through the extended module ===
+ok   S1 … S7                                            [W7's seven clauses, all PASS]
+SMOKE PASS
+=== W7b clauses ===
+ok   B0   steer_w7.smoke() returned 0 (0 = 7/7 PASS)
+ok   B1   W7 null seeds [9001, 9002, '…', 9010] unchanged; all 10 directions bit-identical after append
+ok   B2   seeds [9011, 9012, 9013, 9014] unit-norm, reproducible, disjoint from W7's ten;
+          cos(u_null, u_vphat) = ['-0.0309', '-0.0024', '+0.0000', '-0.0182']
+ok   B3   12 arms, 600 seeds 9214–9813 contiguous, 0 collisions with W7's 8064–9213
+ok   B4   ‖Δμ‖=12.726012 ; ‖δ‖ = 6.363 at |α|=0.5 (5.7% of ‖h‖=111.65) and 3.182 at |α|=0.25 (2.8%)
+ok   B5   alpha=+0.5: prefill delta=0 ; decode |added - 0.5*||dmu||*u| max=2.24e-07 over 9 steps
+ok   B6   REUSED sham B_above_sham.json: alpha=+0 L27 above_good n=50 seeds 8664–8713
+W7b SMOKE PASS
+```
+
+**Clause B6 failed on its first run and that is the packet's best infrastructure moment** — it
+caught a transcription error in PR-006 itself, on a laptop, before a pod existed. See **D-030**.
+
+---
+
+## P-009 · W7b: at 2.8–5.7 % of the residual norm, nothing direction-specific appears — and the distortion gate cannot resolve the question it was built for · 2026-08-30
+
+**Provisional. STAGE-2 FOLLOW-UP, DESIGNED AFTER W7's RESULT WAS KNOWN (R-011).** The doses
+were chosen *because* W7's doses failed. PR-006 froze the rules before the data
+(commit `32667d7`, 2026-08-30 **06:44:14 UTC** — 5 m 14 s before the pod and **11 m 51 s**
+before the first steered token) and that is all it buys. **W7's verdict — P-008 §6, PR-005
+item 6 row 4, v_p̂ correlational — is NOT reopened by this packet.**
+
+filter: all 600 generations, no exclusions (none needed). n = **50 per arm × 12 arms**, form B,
+`above_good`, τ_B = **4,500,000,000**, seeds **9214–9813**, 600 distinct and contiguous,
+disjoint from W7's 8064–9213.
+source: `runs/w7b_steer/*.json` → `analysis/out/w7b_arms.csv`, `w7b_primary.csv`,
+`w7b_extractions.json`, `w7b_api_usage.json`, `w7b_samples/*.md`
+command: `python3 src/steer_w7b.py --out-root runs/w7b_steer` (pod `u3g0qm180kvqnd`, 656.5 s)
+then `python3 src/analyze_w7b.py --run --procs 14`
+
+### 1 · The twelve arms
+
+Primary basis: **D-016-corrected regex**. `α=0` column is W7's **REUSED** sham (PR-006 item 2).
+
+| arm | α | null seed | ‖δ‖ | % of ‖h‖ | coher | **P(>τ_B) corr** | judge | raw | median log10 | med tok |
+|---|---|---|---|---|---|---|---|---|---|---|
+| *sham (REUSED, W7)* | *0* | — | *0* | *0* | *1.000* | ***0.68*** | *0.60* | *0.24* | *9.977* | — |
+| `L27_ap05` | **+0.50** | — | 6.363 | 5.7 | 1.000 | **0.46** | 0.48 | 0.24 | 9.602 | 411 |
+| `L27_ap025` | +0.25 | — | 3.182 | 2.8 | 1.000 | 0.46 | 0.42 | 0.24 | 9.639 | 411 |
+| `L27_am025` | −0.25 | — | 3.182 | 2.8 | 1.000 | 0.48 | 0.46 | 0.26 | 9.602 | 411 |
+| `L27_am05` | **−0.50** | — | 6.363 | 5.7 | 1.000 | **0.36** | 0.32 | 0.20 | 9.602 | 415 |
+| `null10_ap05` | +0.50 | 9011 | 6.363 | 5.7 | 1.000 | 0.58 | 0.48 | 0.22 | 9.829 | 434 |
+| `null10_am05` | −0.50 | 9011 | 6.363 | 5.7 | 1.000 | 0.38 | 0.38 | 0.12 | 9.602 | 400 |
+| `null11_ap05` | +0.50 | 9012 | 6.363 | 5.7 | 1.000 | 0.48 | 0.48 | 0.28 | 9.602 | 439 |
+| `null11_am05` | −0.50 | 9012 | 6.363 | 5.7 | 1.000 | 0.52 | 0.46 | 0.24 | 9.796 | 392 |
+| `null12_ap05` | +0.50 | 9013 | 6.363 | 5.7 | 1.000 | 0.60 | 0.54 | 0.18 | 9.977 | 416 |
+| `null12_am05` | −0.50 | 9013 | 6.363 | 5.7 | 1.000 | 0.32 | 0.28 | 0.10 | 9.340 | 415 |
+| `null13_ap05` | +0.50 | 9014 | 6.363 | 5.7 | 1.000 | 0.54 | 0.54 | 0.34 | 9.699 | 409 |
+| `null13_am05` | −0.50 | 9014 | 6.363 | 5.7 | 1.000 | 0.52 | 0.50 | 0.30 | 9.749 | 403 |
+
+**Coherence is 1.000 in all twelve arms. Zero truncations and zero degenerate generations in
+600.** Median output length **392–439** tokens against W3's *unsteered* **395**; median log10
+estimate **9.34–9.98** against W3's unsteered **9.611** and the sham's **9.977**. Per **D-029**
+that is a statement about well-formedness — but here the *content* markers agree with it: the
+three-order-of-magnitude collapse W7 saw at α=+4 (median log10 **6.828**) has no counterpart
+anywhere in this packet.
+
+### 2 · The pre-registered primary contrast
+
+PR-006 item 4.1, corrected-regex basis, 10,000-resample percentile bootstrap, seed 64:
+
+| statistic | corrected regex | 95 % CI | judge | judge CI |
+|---|---|---|---|---|
+| **Δ±(v_p̂) = P(+0.5) − P(−0.5)** | **+0.1000** | **[−0.1000, +0.3000]** | +0.1600 | [−0.0400, +0.3400] |
+| Δ±(v_p̂) at ±0.25 *(descriptive)* | −0.0200 | [−0.2200, +0.1800] | −0.0400 | [−0.2200, +0.1600] |
+
+**The CI includes zero on both extractors.** The sign at ±0.5 is, for the first time in this
+project, the **pre-registered** one (+α raising landing) — and it is not distinguishable from
+zero, it **reverses** at the half-dose ±0.25, and the four random directions do it *more*:
+
+| j | seed | Δ±_j corrected | 95 % CI | judge |
+|---|---|---|---|---|
+| 10 | 9011 | **+0.2000** | [+0.0000, +0.4000] | +0.1000 |
+| 11 | 9012 | −0.0400 | [−0.2400, +0.1600] | +0.0200 |
+| 12 | 9013 | **+0.2800** | [+0.1000, +0.4600] | +0.2600 |
+| 13 | 9014 | +0.0200 | [−0.1800, +0.2200] | +0.0400 |
+
+**Mean null Δ±_j = +0.115, against v_p̂'s +0.100.** v_p̂ beats **2 of 4** random directions in
+absolute size and is beaten by two, one of which (seed 9013, +0.28) has a CI that **excludes
+zero** where v_p̂'s does not. A random direction produced a cleaner ± asymmetry than the value
+direction did.
+
+### 3 · The frozen interpretation table resolves to its THIRD row
+
+PR-006 item 4.3: **D̄ = mean over the 8 null arms of |P_arm − P_sham| = 0.1875** on the
+corrected basis (min 0.08, max 0.36) and **0.1425** on the judge basis. Both exceed the frozen
+**0.06** line, so **PR-006 item 5 row 3 fires on both extractors**:
+
+> **D̄ > 0.06 → even α = 0.5 distorts; the dose ladder ends here by R-011; reported as
+> bounding, not tested further.**
+
+**That is the verdict of record and it stands as frozen.** It is also, on the evidence of §4,
+**not a measurement of distortion** — and the packet says so at full volume rather than quietly
+banking a verdict it does not believe.
+
+### 4 · Bug-first discipline (standing constraint 7): the gate fired on its own noise
+
+The surprise is that row 3 fired while **every independent distortion indicator says these
+doses do not distort**: coherence 1.000/12 arms, zero degenerate in 600, output lengths and
+median estimates on top of the unsteered baseline, and — see §5 — bet engagement *above* the
+sham's.
+
+**(i) A bug in new code — checked and rejected.** The 12 arm files pass a structural check
+arm-for-arm (50 rows; `seed == seed_lo + i` for all 600; `layer`/`alpha`/`direction`/`null_seed`
+equal to PR-006 item 2's table; ‖δ‖ = |α|·12.726012 to 1e-3; the v_p̂ sha256 equal to PR-006
+item 1's; `packet == "W7b"`, `pre_registration == "PR-006"`). Smoke clause B5 confirms the
+injected delta inside a real `generate()` at the dose actually run. The load-bearing recount
+(V-014) reproduces the primary contrast to the count from raw text.
+
+**(ii) A flaw in the instruction — YES, and it is decisive.** **D̄'s 0.06 line sits below D̄'s
+own null floor.** D̄ averages eight |P_arm − P_sham| differences in which *both* terms are n=50
+binomials. `python3 src/w7b_floor.py`, 200,000 simulations under the exact design PR-006 froze,
+with **every arm the same coin and the injection doing nothing at all**:
+
+| scenario (zero real effect) | E[D̄] | **P(D̄ > 0.06)** | 95 % interval |
+|---|---|---|---|
+| sham also n=50, true rate 0.5933 (W3 unsteered) | **0.0781** | **66.2 %** | [0.033, 0.165] |
+| sham also n=50, true rate 0.50 | 0.0795 | 69.3 % | [0.035, 0.168] |
+| sham FIXED at its observed 0.68, true rate 0.68 | 0.0523 | 26.8 % | [0.028, 0.083] |
+
+**A design that does nothing whatsoever trips the 0.06 gate about two-thirds of the time.** The
+gate cannot distinguish "α=0.5 distorts" from "n=50 arms scatter." Even D̄ recomputed against
+the **null arms' own mean** — removing the reference arm's noise entirely — is **0.0744**,
+still above the line, on arms that by construction differ from each other only by sampling.
+
+**(iii) A discovery — a flat, direction-independent offset that is not a dose response.** The
+twelve W7b arms are **mutually homogeneous**: χ² = 16.38, dof = 11, **p = 0.128** — consistent
+with **one common landing rate** across v_p̂ *and* random directions, both signs, both dose
+sizes. Pooled: **285/600 = 0.475**. Broken out: v_p̂ arms **0.440** (88/200), null arms **0.4925**
+(197/400), |α|=0.25 **0.470** (47/100), |α|=0.50 **0.476** (238/500).
+
+That pooled rate *is* below the α=0 references — 0.475 vs the sham's 0.68 (Fisher **p=0.0075**),
+vs W3's unsteered 0.5933 (**p=0.0105**), vs both pooled 0.615 (**p=0.0006**). **But it does not
+scale with dose:** |α|=0.25 (2.8 % of ‖h‖) gives 0.470 and |α|=0.50 (5.7 %) gives 0.476,
+Fisher **p = 1.000**. Doubling the perturbation changes landing by **0.006**.
+
+**A distortion that is flat in dose is not a distortion story.** Nor is it monotone across the
+project's full ladder: 0.68 (α=0) → 0.47 (|α|=0.25) → 0.476 (|α|=0.5) → 0.53 (|α|=1, W7)
+→ 0.41 (|α|=2) → 0.14 (|α|=4). The rise from 0.476 to 0.53 at a *larger* dose is the tell. The
+most economical reading of everything at |α| ≤ 1 is **one common rate near 0.50 with n=50
+scatter around it, and an α=0 reference (n=50, 0.68) that sits high** — which is exactly the
+limitation **PR-006 item 2 declared before the data**: *"Sampling noise on a 50-seed sham is
+±0.07 at 1 s.e. and that is a known, stated limitation of D̄, not a discovered one."* It is
+stated as a limitation, not offered as a rescue: the packet cannot separate the two readings,
+because PR-006 did not commission a fresh sham.
+
+### 5 · The intervention did not suppress engagement with the bet
+
+The deterministic cause-string screen (PR-005 item 4b's rule, applied descriptively):
+mention rate ranges **0.32–0.58 across the twelve arms, mean 0.44** — against W7's **sham 0.38**,
+α=+2 **0.28**, α=+4 **0.08**. P-008 §5(3) identified dose-driven *selection* (the model
+declining to commit to a side) as a confound at high dose. **At these doses it is absent, and if
+anything reversed.** The **D-029 low-ball fabrication signature appears in 1 of 600
+generations**, and **no generation verbalizes the injected preference** (0 of 600) — V-013(b)'s
+text-level-causation failure mode again did not occur.
+
+### 6 · What this packet establishes
+
+- **A direction-specific effect at non-distorting doses was not detected.** Δ±(v_p̂) = +0.10,
+  CI [−0.10, +0.30]; the mean random direction does +0.115.
+- **The pre-registered gate that was supposed to license that statement is not fit to license
+  it.** Row 3 fired on a threshold below the statistic's own noise floor, so PR-006 item 5's
+  row 2 — the strongest form of the causal null — was **never reachable by this design**, at
+  any outcome.
+- **W7's verdict stands untouched** (R-011). What W7b adds is a *bound*: whatever v_p̂-specific
+  landing effect exists at 2.8–5.7 % of the residual norm is smaller than four random
+  directions' typical excursion at the same norm, at n=50 per arm.
+
+---
+
+## D-031 · The pod billed $1.59/hr against a $1.39 rate card · 2026-08-30
+
+`pod.py create --max-price 2.20` re-confirmed the live on-demand price for
+`NVIDIA A100-SXM4-80GB` at **$1.39/hr, stock High** immediately before deploying. The pod
+record returned **`costPerHr: 1.59`** — a **+14.4 %** mismatch, and the D-008 failure mode
+recurring after F-015 recorded "rate card and pod record agree; no D-008 mismatch" for W7.
+
+**Handling (JC-4).** Per **R-006(3)** the **pod record's `costPerHr` is the billing rate of
+record**, so S-010 bills at **$1.59**. $1.59 is inside the standing **$2.20/hr** envelope, so
+the `--price-check` guard correctly did not refuse; the guard compares the *rate card* against
+the envelope and is blind to the deployed rate. The pod was **not** destroyed and re-created to
+chase $1.39: a re-roll costs a full model download (~2.5 min ≈ $0.07) to save ~$0.06 on a
+20-minute run, and W7b's whole GPU budget is $0.51.
+
+**For W10's planning:** GPU cost projections in this project have been built from
+`gpuTypes.lowestPrice`, and that number was optimistic by 14 % here. The balance cross-check in
+S-010 — not the rate card — is what confirms a packet's true GPU spend.
+
+---
+
+## D-032 · PR-006's distortion gate was set below its own noise floor · 2026-08-30
+
+**The third instance of the D-028 pattern, and the sharpest.** PR-004 froze the right statistic
+at the wrong layer. PR-005 froze the right statistic at the wrong dose. **PR-006 froze the
+right statistic at a threshold its own design cannot deliver.**
+
+D̄ = mean over 8 null arms of |P_arm − P_sham| is a mean of absolute differences between n=50
+binomial proportions. Under the exact null the gate exists to detect — every arm the same coin,
+injection doing nothing — `src/w7b_floor.py` (200,000 simulations, seed 64) gives
+**E[D̄] = 0.078** and **P(D̄ > 0.06) = 66 %**. The gate was **more likely than not to fire on
+noise alone**, whatever the experiment found.
+
+**Consequence:** PR-006 item 5's rows 1 and 2 — the two rows that would have licensed a
+statement *about the direction* — were jointly unreachable with probability ≈ 2/3 before a
+single token was generated. The packet's pre-registered verdict (row 3) is therefore
+**weakly informative by construction**, and P-009 §6 says so rather than banking it.
+
+**What would have caught it, and it is cheap:** simulate the pre-registered statistic under its
+own null *before* freezing the threshold, and set the line above the resulting floor. Five
+minutes of laptop simulation at the pre-registration stage, on a statistic whose null
+distribution is a closed-form binomial convolution. **No packet in this project has ever done
+this**, and PR-004, PR-005 and PR-006 each paid for it in a different currency.
+
+**For the register, superseding D-028's phrasing:** a pre-registration must freeze not only
+*what* is measured and *at what setting*, but **evidence that the chosen setting and threshold
+are inside the range the design can resolve.** Freezing a rule before the data is necessary and
+is not sufficient.
+
+---
+
+## D-033 · Refinement of D-027's chars-per-token constant · 2026-08-30
+
+W7b's number-judge projection used **D-027's corrected constants** (3.2 chars/token in, 20.5
+output tokens per number-judge call) rather than the unpatched 4.0/20.0 estimator, and both
+numbers were printed side by side before the first call.
+
+| | projected | actual | error |
+|---|---|---|---|
+| **D-027-corrected (used)** | **$1.741** | **$1.9334** | **+11.1 %** |
+| uncorrected W7 estimator | $1.425 | $1.9334 | +35.7 % |
+
+**The correction worked** — it cut the projection error from 36 % to 11 % — **and it is still
+optimistic.** Measured on 600 W7b finals: **1,659,763 chars → 584,391 input tokens = 2.84
+chars/token**, not 3.2. Output was **12,017 / 600 = 20.03 tokens per number-judge call**, so
+D-027's 20.5 for the *number* judge is accurate; its ~117 figure applies only to the *direction*
+judge, which this packet did not run.
+
+**For W10:** use **2.84 chars/token** for Qwen2.5 markdown-and-LaTeX answers under this judge
+prompt, **20.0** output tokens per number-judge call, **117** per direction-judge call. Per the
+D-011/D-016/D-027 discipline the estimator in `analyze_w7.py` is **still not patched**; the
+constant is recorded here and `analyze_w7b.py` carries it explicitly and prints both.
+
+**Extractor agreement improved under low dose:** judge-vs-corrected-regex landing-verdict
+disagreement is **22/600 = 3.7 %**, against W7's **10.5 %** under heavy steering, and the judge
+returned a value on **600 of 600** (W7: 1,148 of 1,150). Undistorted text is easier to extract,
+which is itself weak corroboration of §4's reading.
+
+---
+
+## V-014 · W7b apparatus checks: PR-006's precedence, the recount, the arm table, termination · 2026-08-30
+
+**(1) PR-006 preceded every W7b token — from `git log`, not from memory.**
+
+```
+943ba22 06:49:03  W7b: tighten w7b_recount.py to 18 body lines (PR-006 item 8 froze <=20)
+97337ea 06:48:31  W7b: steer_w7b.py (12 low-dose arms, four new nulls, ...), 13/13 laptop smoke
+32667d7 06:44:14  W7b: transcribe V-013 / R-011; adopt D-029; pre-register PR-006 ...
+e4b877a 06:35:48  W7: the intervention. 1,150 steered generations ...
+```
+
+`32667d7` (PR-006) is committed **06:44:14 UTC**. The pod was created **06:49:28** (+5 m 14 s),
+the GPU sanity's first steered token landed **≈06:56:05** (+11 m 51 s) and the 12-arm run began
+**06:56:49**. `runs/w7b_steer/` did not exist when `32667d7` was written. **D-030** was filed as
+a correction *before* generation, not after, and is itself inside `97337ea`, still pre-pod.
+
+**(2) The load-bearing recount** (PR-006 item 8). `src/w7b_recount.py` is **18 lines of body**,
+imports only `json`/`re`/`sys`, re-implements the numeric-literal parse from scratch, and
+imports **none** of `extract_regex`, `analyze_w7`, `analyze_w7b`, `steer_w7`, `steer_w7b`.
+Output, verbatim:
+
+```
+ap05                     P(final>tau_B) = 23/50 = 0.4600
+ap025                    P(final>tau_B) = 23/50 = 0.4600
+am025                    P(final>tau_B) = 24/50 = 0.4800
+am05                     P(final>tau_B) = 18/50 = 0.3600
+sham(REUSED W7 alpha=0)  P(final>tau_B) = 34/50 = 0.6800
+PRIMARY  delta_pm(v_phat) = P(+0.50) - P(-0.50) = +0.1000
+descrip. delta_pm(v_phat) = P(+0.25) - P(-0.25) = -0.0200
+```
+
+Against `analysis/out/w7b_primary.csv`: Δ± **+0.1000 = +0.1000**, quarter-dose **−0.0200 =
+−0.0200**, sham **0.6800 = 0.6800**, and 23/50, 18/50, 23/50, 24/50, 34/50 reproduce
+`k_gt_tau_regex_corr` / `n_nonnull_regex_corr` in `w7b_arms.csv` exactly. **Match, to the
+count.** The sham count 34/50 also reproduces V-012(2)'s W7 recount, which is a second,
+cross-packet check that the reused arm is the arm it is declared to be.
+
+**(3) The shipped arms tie to PR-006 item 2's frozen table.** Structural check over all 12
+files: 50 rows each; `seed_lo`/`seed_hi` equal to `64 + offset` and `+49` for the tabulated
+offset; every row's `seed == seed_lo + i`; `layer == 27`, `condition == above_good`, `alpha`,
+`direction` and `null_seed` equal to the frozen values (null seeds **9011–9014** in arm order);
+`‖δ‖ = |α|·12.726012` to 1e-3; recorded v_p̂^B sha256 equal to PR-006 item 1's; `packet ==
+"W7b"` and `pre_registration == "PR-006"`; `n_truncated == 0` and `n_degenerate == 0`.
+**12/12 pass.** Seeds: **600 distinct, 9214–9813, contiguous, zero collisions** with W7's
+8064–9213 or any earlier block. Total generations **600 = 12 × 50**.
+
+**(4) The reading obligation is blind, and confirmed so.** `analysis/out/w7b_samples/*.md`, four
+files, 5 traces each at indices **0–4** frozen in PR-006 item 6. Verified: the indices written
+are exactly `[0,1,2,3,4]` and they map to seeds `seed_lo + 0…4` in every arm
+(9214–9218, 9264–9268, 9314–9318, 9364–9368). Chosen by position, never by outcome.
+
+**(5) Nothing unique remained pod-side at termination.** Shipped before the DELETE: all 12 arm
+files (3.2 MB), the generation log `w7b_gen.log`, and `runs/w7b_smoke_pod/` (64 KB) holding the
+two GPU-sanity arms plus the pod-side provisioning scripts and log (`prep.sh`, `prep.log`,
+`run7b.sh`). A `find /workspace -maxdepth 2` at 07:08 listed, beyond those, only
+`/workspace/hf` (the public HF snapshot), `/workspace/bootstrap.sh` (a copy of the committed
+`src/bootstrap.sh`) and `/workspace/vdl` (the rsync'd copy of this repo). **Attested: nothing
+pod-side was unique.**
+
+**(6) What was NOT verified.** (a) Batched generation is reproducible at **batch** granularity,
+not per-sequence — W7's JC-3 carries forward unchanged; the batch layout is recorded per row but
+no run-twice-and-compare was performed. (b) **No fresh sham was generated** (PR-006 item 2,
+declared): every D̄ term compares a new-seed arm against W7's old-seed α=0 arm, and P-009 §4(iii)
+is explicit that this is the packet's principal un-separated confound. (c) **No direction judge
+ran** (PR-006 item 3), so W7b makes no verbalized-belief claim of any kind.
+
+---
+
+## T-012 · Time, W7b · 2026-08-30
+
+Owner-clock minutes: **not asked for and not supplied — D-025 / D-026 / R-010(5).**
+Runner wall time, W7b: **≈ 45 m** (2026-08-30 ≈06:37 → 07:22 UTC).
+GPU wall time (pod running, billed): **19 m 25 s** (06:49:28 → 07:08:53 UTC).
+
+| phase | wall | note |
+|---|---|---|
+| create → SSH ready | ~2 m 30 s | `u3g0qm180kvqnd`, first attempt, no capacity refusal |
+| interpreter hunt | ~40 s | `python3` has no torch; **D-022 already documents this** and named `/usr/local/bin/python`. Cost: two probe commands. **Avoidable had the runner read D-022 before probing.** |
+| pip install + HF snapshot (28 GB) | ~3 m 20 s | deps ~35 s; model ~2.5 m. `anthropic` included up front, so T-011's re-run did not recur |
+| rsync repo in | ~25 s | |
+| GPU sanity (2 arms × 4) | 43 s | `SANITY_RC=0`, chained into the full run so the pod never idled between them (**JC-5**) |
+| **the 12-arm generation** | **10 m 56 s** | 656.5 s, 600 generations, ~54.7 s/arm, ~1.09 s/generation |
+| rsync out + integrity + terminate | ~1 m 5 s | |
+
+**W7b is 60.1 % compute** (699.9 s of sanity + generation, against 1,165 s billed) — below W7's
+72.7 % because the fixed setup cost (~6 min of download and install) is amortised over a run
+half W7's size, not because more was wasted. Absolute non-compute time was **7 m 45 s** against
+W7's **8 m 36 s**.
+
+The laptop work — 13/13 smoke, the `--tiny` rehearsal, judging, statistics, the null-floor
+simulation and the samples — ran **before and after** the pod window and cost **$0.00 GPU**.
+
+---
+
+## S-010 · Spend, W7b · 2026-08-30
+
+Rate from the pod record's `costPerHr` per R-006(3) — **$1.59**, not the rate card's $1.39
+(**D-031**).
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| `u3g0qm180kvqnd` | A100-SXM4-80GB | **1.59** | 06:49:28 → 07:08:53 (**terminated**) | 0.32361 | **$0.51** |
+
+**GPU spend this packet: $0.51.** Cross-check against the account: `clientBalance` was
+**$23.27251** immediately before create and settled at **$22.75032**, a delta of **$0.52219**
+against the computed **$0.51454** — agreement to **0.8 cents**, the residual being 60 GB of
+volume storage inside the window. (At the rate card's $1.39 the packet would have cost $0.45;
+the balance says otherwise, which is what D-031 records.)
+
+**API this packet: $1.9334**, against a D-027-corrected projection of **$1.741** (+11.1 %,
+**D-033**) and the PR-006 item 9 pause line of **$4.00**, which was not approached.
+
+| pass | calls | in tok | out tok | cost |
+|---|---|---|---|---|
+| number judge (extractor 2), 600 finals | 600 | 584,391 | 12,017 | **$1.9334** |
+| direction judge | **0** | 0 | 0 | **$0.00** — NOT RUN, PR-006 item 3 |
+| **total** | **600** | **584,391** | **12,017** | **$1.9334** |
+
+The reused-sham decision saved a 13th arm (50 generations, ~55 s GPU) and its 50 judge calls
+(~$0.16); the no-direction-judge decision saved ~200 calls at W7's measured $0.80/100 for that
+pass, ≈ **$1.6**.
+
+**Cumulative GPU: $13.42 of $60.00. Cumulative API: $16.06. Total project spend: $29.48 of the
+$60 cap; balance $30.52.** The **$45** surfacing threshold is **not** approached and
+ORIENTATION.md constraint 6 requires no action. **The API remains the dominant line**
+($16.06 vs $13.42), as D-027 first noted at W7.
+
+**Account state at close, verified 07:14:29 UTC:** balance **$22.75032**, `currentSpendPerHr`
+**$0.000**, `/pods` returns an empty body — **no pod and no volume exists in this account.**
+Pod `u3g0qm180kvqnd` was terminated at **2026-08-30 07:08:53 UTC** (`DELETE /pods/…` → **HTTP
+204**), 1 m 06 s after the last arm file was written.
+
+**Nothing unique remains pod-side** — attested in V-014(5). Everything P-009 cites is on the
+laptop in `runs/w7b_steer/` (3.2 MB, committed by exception, MANIFESTed) and
+`analysis/out/w7b_*`.
+
+**Experiments END here (R-011). W10 is next, regardless of outcome.**

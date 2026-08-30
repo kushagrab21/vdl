@@ -1,0 +1,52 @@
+=== GPU SANITY Sun Aug 30 06:55:55 UTC 2026 ===
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:00<00:03,  1.86it/s]Loading checkpoint shards:  25%|██▌       | 2/8 [00:01<00:03,  1.79it/s]Loading checkpoint shards:  38%|███▊      | 3/8 [00:01<00:03,  1.52it/s]Loading checkpoint shards:  50%|█████     | 4/8 [00:02<00:02,  1.47it/s]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:03<00:02,  1.41it/s]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:03<00:01,  1.54it/s]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:04<00:00,  1.57it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:04<00:00,  1.97it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:04<00:00,  1.69it/s]
+model Qwen/Qwen2.5-14B-Instruct loaded in 6.4s | dtype torch.bfloat16 | layers 48 | d_model 5120
+  [B7b_above_L27_ap05] batch 1/1 seed_block=9214 decode_steps=483 wall=20.1s
+[B7b_above_L27_ap05] cond=above_good L27 alpha=+0.5 |delta|=6.363 n=4 trunc=0 degen=0 median_tokens=391 wall=20.1s -> runs/w7b_smoke_pod/B7b_above_L27_ap05.json
+  [B7b_above_null10_am05] batch 1/1 seed_block=9464 decode_steps=412 wall=16.9s
+[B7b_above_null10_am05] cond=above_good L27 alpha=-0.5 |delta|=6.363 n=4 trunc=0 degen=0 median_tokens=389 wall=16.9s -> runs/w7b_smoke_pod/B7b_above_null10_am05.json
+
+all 2 W7b arms done in 43.4s
+SANITY_RC=0
+=== FULL RUN Sun Aug 30 06:56:45 UTC 2026 ===
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:00<00:03,  1.94it/s]Loading checkpoint shards:  25%|██▌       | 2/8 [00:01<00:03,  1.88it/s]Loading checkpoint shards:  38%|███▊      | 3/8 [00:01<00:03,  1.59it/s]Loading checkpoint shards:  50%|█████     | 4/8 [00:02<00:02,  1.52it/s]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:03<00:02,  1.48it/s]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:03<00:01,  1.61it/s]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:04<00:00,  1.64it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:04<00:00,  2.06it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:04<00:00,  1.77it/s]
+model Qwen/Qwen2.5-14B-Instruct loaded in 6.1s | dtype torch.bfloat16 | layers 48 | d_model 5120
+  [B7b_above_L27_ap05] batch 1/2 seed_block=9214 decode_steps=710 wall=30.6s
+  [B7b_above_L27_ap05] batch 2/2 seed_block=9239 decode_steps=609 wall=55.8s
+[B7b_above_L27_ap05] cond=above_good L27 alpha=+0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=411 wall=55.9s -> runs/w7b_steer/B7b_above_L27_ap05.json
+  [B7b_above_L27_ap025] batch 1/2 seed_block=9264 decode_steps=795 wall=33.1s
+  [B7b_above_L27_ap025] batch 2/2 seed_block=9289 decode_steps=773 wall=65.1s
+[B7b_above_L27_ap025] cond=above_good L27 alpha=+0.2 |delta|=3.182 n=50 trunc=0 degen=0 median_tokens=414 wall=65.1s -> runs/w7b_steer/B7b_above_L27_ap025.json
+  [B7b_above_L27_am025] batch 1/2 seed_block=9314 decode_steps=673 wall=27.8s
+  [B7b_above_L27_am025] batch 2/2 seed_block=9339 decode_steps=734 wall=58.1s
+[B7b_above_L27_am025] cond=above_good L27 alpha=-0.2 |delta|=3.182 n=50 trunc=0 degen=0 median_tokens=411 wall=58.1s -> runs/w7b_steer/B7b_above_L27_am025.json
+  [B7b_above_L27_am05] batch 1/2 seed_block=9364 decode_steps=662 wall=27.4s
+  [B7b_above_L27_am05] batch 2/2 seed_block=9389 decode_steps=636 wall=53.6s
+[B7b_above_L27_am05] cond=above_good L27 alpha=-0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=417 wall=53.6s -> runs/w7b_steer/B7b_above_L27_am05.json
+  [B7b_above_null10_ap05] batch 1/2 seed_block=9414 decode_steps=737 wall=30.5s
+  [B7b_above_null10_ap05] batch 2/2 seed_block=9439 decode_steps=798 wall=63.5s
+[B7b_above_null10_ap05] cond=above_good L27 alpha=+0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=435 wall=63.6s -> runs/w7b_steer/B7b_above_null10_ap05.json
+  [B7b_above_null10_am05] batch 1/2 seed_block=9464 decode_steps=516 wall=21.5s
+  [B7b_above_null10_am05] batch 2/2 seed_block=9489 decode_steps=654 wall=48.7s
+[B7b_above_null10_am05] cond=above_good L27 alpha=-0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=401 wall=48.7s -> runs/w7b_steer/B7b_above_null10_am05.json
+  [B7b_above_null11_ap05] batch 1/2 seed_block=9514 decode_steps=733 wall=30.4s
+  [B7b_above_null11_ap05] batch 2/2 seed_block=9539 decode_steps=574 wall=54.2s
+[B7b_above_null11_ap05] cond=above_good L27 alpha=+0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=440 wall=54.2s -> runs/w7b_steer/B7b_above_null11_ap05.json
+  [B7b_above_null11_am05] batch 1/2 seed_block=9564 decode_steps=643 wall=26.7s
+  [B7b_above_null11_am05] batch 2/2 seed_block=9589 decode_steps=547 wall=49.5s
+[B7b_above_null11_am05] cond=above_good L27 alpha=-0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=393 wall=49.5s -> runs/w7b_steer/B7b_above_null11_am05.json
+  [B7b_above_null12_ap05] batch 1/2 seed_block=9614 decode_steps=577 wall=24.0s
+  [B7b_above_null12_ap05] batch 2/2 seed_block=9639 decode_steps=749 wall=55.0s
+[B7b_above_null12_ap05] cond=above_good L27 alpha=+0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=417 wall=55.0s -> runs/w7b_steer/B7b_above_null12_ap05.json
+  [B7b_above_null12_am05] batch 1/2 seed_block=9664 decode_steps=644 wall=26.7s
+  [B7b_above_null12_am05] batch 2/2 seed_block=9689 decode_steps=641 wall=53.3s
+[B7b_above_null12_am05] cond=above_good L27 alpha=-0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=422 wall=53.3s -> runs/w7b_steer/B7b_above_null12_am05.json
+  [B7b_above_null13_ap05] batch 1/2 seed_block=9714 decode_steps=581 wall=24.1s
+  [B7b_above_null13_ap05] batch 2/2 seed_block=9739 decode_steps=527 wall=46.1s
+[B7b_above_null13_ap05] cond=above_good L27 alpha=+0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=414 wall=46.1s -> runs/w7b_steer/B7b_above_null13_ap05.json
+  [B7b_above_null13_am05] batch 1/2 seed_block=9764 decode_steps=641 wall=26.6s
+  [B7b_above_null13_am05] batch 2/2 seed_block=9789 decode_steps=493 wall=47.2s
+[B7b_above_null13_am05] cond=above_good L27 alpha=-0.5 |delta|=6.363 n=50 trunc=0 degen=0 median_tokens=404 wall=47.2s -> runs/w7b_steer/B7b_above_null13_am05.json
+
+all 12 W7b arms done in 656.5s
+FULL_RC=0 DONE Sun Aug 30 07:07:47 UTC 2026

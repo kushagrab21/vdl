@@ -97,12 +97,13 @@ W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W7)
+## Where things stand (end of W7b — experiments are OVER)
 
 W0–W5 accepted (**R-003**, **V-001**, **V-002**, **V-003**, **V-006**, **V-009**, **V-011**).
-**PR-001** remains the pre-registration of record; **PR-002**–**PR-005** bind. **R-008** pivoted
-the model to `Qwen2.5-14B-Instruct`; **R-009 (owner-approved)** re-targeted the interp work to
-the trace-level believed favoured side `p̂`; **R-010** set the transfer policy.
+**W7 accepted (V-013).** **PR-001** remains the pre-registration of record; **PR-002**–**PR-006**
+bind. **R-008** pivoted the model to `Qwen2.5-14B-Instruct`; **R-009 (owner-approved)** re-targeted
+the interp work to the trace-level believed favoured side `p̂`; **R-010** set the transfer policy;
+**R-011 (owner-approved)** authorised W7b and **ended experimentation after it**.
 
 **Gate G1 FAILED at W3** (form A +0.017, form B +0.120). **W4** replayed all 700 traces with
 hooks (6,668 points, 34/34 decode check). **W5** produced v_p̂ (P-007, V-010): form B's p̂ probe
@@ -111,47 +112,55 @@ form B's decodability is **entirely pre-verbalization**. The result of record at
 **marginal cosine pass (0.2608 vs null p95 0.2443)** and a **transfer FAIL (0.5310)**; the
 layers-24–36 band is **EXPLORATORY** and labelled so everywhere (V-011).
 
-**W7 complete (F-015, P-008, V-012).** The project's one causal rung. 23 arms × 50 = **1,150
-steered generations** on a fresh A100, PR-005 frozen **13 minutes** before the first steered
-token. Injection is α·‖Δμ‖·u added to L27's (or L30's) output at every decode position;
-‖Δμ‖ = 12.726 at L27, and α=2 is 22.8 % of the residual-stream norm.
+**W7 complete and ACCEPTED (F-015, P-008, V-012, V-013).** 23 arms × 50 = **1,150 steered
+generations**, PR-005 frozen 13 minutes before the first steered token. Injecting α·‖Δμ‖·u at
+L27 is **powerfully causal on the estimate and not believed-side-specific**: at α=+4 the median
+estimate falls **three orders of magnitude** and landing 0.68 → 0.04. **The pre-registered
+primary test FAILS** (Δ+ = −0.34, beating **0 of 10** random directions, p = 1.000); dose-response
+is an **inverted U centred on sham**; the verbalized flip's CI includes zero and a *random*
+direction beat it. **PR-005 item 6 resolved to row 4 — v_p̂ is correlational — and V-013 ratified
+that as the verdict of record.** H3′ is **[not tested]**.
 
-- **The intervention is powerfully causal and not believed-side-specific.** At α=+4 the median
-  estimate falls **three orders of magnitude** (9.5×10⁹ → 6.7×10⁶) and landing falls 0.68 → 0.04,
-  with **fluent, on-task, arithmetic-showing text** — coherence is **1.000 in 22 of 23 arms**,
-  zero degenerate generations in 1,150, so the |α|-halving retry was never triggered.
-- **The pre-registered primary test FAILS.** PR-005 froze +α as the believed-**above** pole, so
-  +α should have *raised* P(final > τ_B). Δ+ = **−0.34**, beating **0 of 10** matched random
-  directions (one-sided p = 1.000); Δ± = −0.14, beats 7/10. Dose-response is an **inverted U
-  centred on sham**, monotone in |α| and **not** in α (Spearman ρ = −0.131, p = 0.016 — significant
-  and negative).
-- **The verbalized flip does not survive.** +0.213 in the predicted direction but CI
-  **[−0.041, +0.466]** includes zero; it is carried entirely by the −α arm; the mirrored
-  `below_good` arm does not move (0.049 vs 0.068); and a **random** direction (seed 9005) reaches
-  P(p̂=+1) = **0.878** against v_p̂'s 0.700 and sham's 0.692.
-- **The neutral rung is the sharpest result.** With the bet removed there is nothing to
-  rationalize, and ±2 still moves the median estimate by **0.54 log10** and landing by **0.28**
-  (CI [−0.46, −0.10]).
-- **PR-005 item 6 therefore resolves to its fourth row: v_p̂ is correlational, reported at full
-  volume as the null result.** H3′ is **[not tested]**. The leading alternative — that the
-  pre-registered α grid sits entirely in a regime where generic distortion dominates (the ten
-  nulls suppress landing by 0.158 on average) — is stated in P-008(7) and is **not separable**
-  by this design, because no α small enough was pre-registered.
-- **Register entry (D-028):** *PR-004 froze the right statistic at the wrong layer; PR-005 froze
-  the right statistic at the wrong dose.*
-- **Infrastructure: clean.** `heenrekmx8f4da` created 05:51:31, terminated **06:23:00** (HTTP
-  204); `/pods` empty, `currentSpendPerHr` $0.00, no volume. **72.7 % of billed GPU time was
-  compute** (best in the project), because V-011's laptop-smoke-before-provisioning rule was
-  executed: 7/7 smoke plus an end-to-end 0.5B rehearsal before a pod existed.
+**W7b complete (F-016, P-009, V-014) — the stage-2 low-dose follow-up, designed AFTER W7's
+result (R-011), which does NOT reopen W7's verdict.** 12 arms × 50 = **600 generations** at
+**2.8 % and 5.7 %** of the residual-stream norm (W7's grid was 11.4 / 22.8 / 45.6 %), PR-006
+frozen **11 m 51 s** before the first steered token; W7's sham REUSED as the α=0 reference.
 
-**Spend: $12.91 GPU + $14.13 API = $27.04 of $60.** W7 cost **$0.73 GPU and $7.78 API** — and
-the API projection under-shot by **53 %** (**D-027**: 4 chars/token is really ~3.2, and
-sonnet-5's thinking block makes the direction judge cost ~117 output tokens per call, not 20).
-**The API is now the dominant spend line.** The $45 threshold is not approached.
+- **No direction-specific effect was detected.** Δ±(v_p̂) = **+0.10, CI [−0.10, +0.30]** (judge
+  +0.16, [−0.04, +0.34]); it **reverses** at ±0.25; and the **mean random direction does +0.115**,
+  with seed 9013 reaching +0.28 on a CI that excludes zero where v_p̂'s does not.
+- **The frozen gate fired on its own noise.** D̄ = **0.1875** > the 0.06 line, so **PR-006 item 5
+  row 3 is the verdict of record**. But **D-032**: 200,000 simulations (`src/w7b_floor.py`) show
+  that under a design doing **nothing at all**, E[D̄] = **0.078** and D̄ exceeds 0.06 **66 %** of
+  the time. **Rows 1 and 2 were jointly unreachable before a token existed.**
+- **Every independent distortion indicator says these doses do not distort:** coherence
+  **1.000 in all 12 arms**, 0 truncated and 0 degenerate in 600, output lengths **392–439** vs
+  unsteered 395, median log10 **9.34–9.98** vs unsteered 9.611, bet-engagement **0.44** vs W7's
+  sham 0.38, the D-029 fabrication signature in **1 of 600**, verbalized preference in **0 of 600**.
+- **The twelve arms are mutually homogeneous** (χ² = 16.38, dof = 11, **p = 0.128**) at a pooled
+  **0.475**, with **no dose gradient**: |α|=0.25 → 0.470, |α|=0.50 → 0.476, Fisher **p = 1.000**.
+  A flat, direction-independent offset from the α=0 references is not a dose response, and the
+  packet **cannot separate** it from the reused n=50 sham reading high — a limitation **PR-006
+  item 2 declared before the data**.
+- **Register (D-032), superseding D-028's phrasing:** PR-004 froze the right statistic at the
+  wrong layer; PR-005 at the wrong dose; **PR-006 at a threshold its own design cannot resolve.**
+  A pre-registration must freeze evidence that its setting and threshold are inside the range the
+  design can resolve. **No packet in this project ever simulated a statistic under its own null
+  before freezing its threshold.**
+- **Infrastructure: clean.** `u3g0qm180kvqnd` created 06:49:28, terminated **07:08:53** (HTTP
+  204); `/pods` empty, `currentSpendPerHr` $0.00, no volume. **60.1 % of billed GPU time was
+  compute.** Smoke clause B6 caught a transcription error **in PR-006 itself** on the laptop
+  before a pod existed (**D-030**).
 
-**Next: W10 only** — skepticism pass, build script, write-up assembly from `E-`/`V-` entries.
-**Do not start it:** the researcher reads `analysis/out/w7_samples/*.md` (13 arms × 10 traces at
-the blind indices 0–9) before any W7 number is promoted to `E-`.
+**Spend: $13.42 GPU + $16.06 API = $29.48 of $60; balance $30.52.** W7b cost **$0.51 GPU and
+$1.93 API**. The API projection over-shot by only **11 %** using D-027's corrected constants
+against the old estimator's 36 % (**D-033**; refine to **2.84 chars/token** for W10). The pod
+billed **$1.59/hr against a $1.39 rate card** (**D-031**). The $45 threshold is not approached.
+
+**Next: W10 only, and it is the last packet** — skepticism pass, build script, write-up assembly
+from `E-`/`V-` entries. **Do not start it:** the researcher reads
+`analysis/out/w7b_samples/*.md` (4 arms × 5 traces at the blind indices 0–4), rules on the final
+verdict row, and issues the assembly order.
 
 Tooling in `src/`: `pod.py` · `pod_survey.py` · `runpod_client.py` · `extract_runpod_key.py` ·
 `bootstrap.sh` (interpreter-aware since D-022) · `provision_pod.sh` · `gen_neutral.py` ·
@@ -159,6 +168,7 @@ Tooling in `src/`: `pod.py` · `pod_survey.py` · `runpod_client.py` · `extract
 `landing_gap.py` · `behaviour_w3.py` · `direction_judge.py` · `recount_w2.py` · `recount_w3.py` ·
 `trace_sample.py` · `trace_sample_w2.py` · `samples_w3.py` · `samples_w4.py` ·
 `judge_check_w4.py` · `replay_w4.py` · **`direction_w5.py`** · **`w5_integrity.py`** ·
-**`w5_cell.py`** · **`w5_recount.py`** · **`steer_w7.py`** · **`analyze_w7.py`** · **`samples_w7.py`** · **`w7_recount.py`** · both smoke scripts.
+**`w5_cell.py`** · **`w5_recount.py`** · **`steer_w7.py`** · **`analyze_w7.py`** · **`samples_w7.py`** · **`w7_recount.py`** ·
+**`steer_w7b.py`** · **`analyze_w7b.py`** · **`samples_w7b.py`** · **`w7b_recount.py`** · **`w7b_floor.py`** · both smoke scripts.
 Laptop-side judging/analysis runs in `.venv-w1/` (now also holds `scikit-learn`, which is what
 makes `--smoke` and `w5_recount.py` laptop-reproducible).
