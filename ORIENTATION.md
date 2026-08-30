@@ -95,12 +95,78 @@ W8  intervention II: inject ±α·v_p on neutral prompts; dose-response (priorit
 W9  intervention III: mirrored macrostate patch; single- vs all-points (H1/H2/H3 fork)
 W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 W11 Wave 2: comprehension intervention (clarified wording) — the mixture model's causal test
-W12 Wave 2: belief-formation timing
+W12 Wave 2: belief-formation timing (done)
 W13 Wave 2: paired belief transplant
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W11 — Wave 2's first experiment; C1 fired)
+## Where things stand (end of W12 — Wave 2's second experiment; a measured null and a confound)
+
+**W10 ships and is unchanged. W11 is ACCEPTED and promoted (V-018 → E-010, with two permanent
+qualifications). W12 is complete and its headline is a NULL plus a flaw in the ordered
+instrument.** Wave-2 results remain **addendum-only** to the Sep 5 deliverable; W10 wins any
+wall-clock conflict.
+
+**W12 asked WHEN and WHERE the believed side forms inside a trace.** 300 frozen W3 form-B
+incentive traces were replayed teacher-forced and the residual stream recorded at **every one
+of 129,515 generated-token positions**, layers {21,23,25,27,29,31,33,35}, 10.61 GB, **0
+quarantined**, position-alignment check **10/10** (F-018). Three probe families were frozen
+before the capture: **`primary`** (both arms, **arm-centred on training folds**, because
+pooling naively lets a probe hit 0.912 by decoding the *prompt*), **`control_arm`** (must be at
+chance — it is **0.5000 in all 176 cells**), and **`above_good`** (W5's confound-free cell).
+
+**The result: the frozen onset criterion does not fire, at any layer, in any family.** Alignment
+(b) — offsets from the first cause-token — is flat: one bin of twelve, **[−50,−25) = 0.603**
+(p = 0.016), clears p95 and none clears p99.5. Absolute early bins are flat too
+(**[0,25) = 0.421**, **[25,50) = 0.536** in `above_good`). **0 flips in 238 traces**, with an
+empirical label-shuffled false-flip rate of **0.0000**. **The believed side is not linearly
+decodable from bin-mean residuals at any absolute position, at this resolving power.**
+
+**Two findings make that null readable rather than empty.**
+- **D-043** — the criterion the order specified (2 consecutive bins > null p95) fires **20 %**
+  of the time on pure noise when bins are independent and **65 %** when adjacent bins correlate
+  at 0.7. Both named tightenings also fail (0.459, 0.205); the ladder was continued to
+  **4 consecutive @ p99.5**, worst-cell FWER **0.0279**. **The tightening did not cause the
+  null**: the untightened criterion also fails on `primary` at every layer, and fires only in
+  the robustness family at four non-best layers. D-043 also names the gap R-013 still has:
+  **it mandates a null simulation and not a power simulation.**
+- **D-042 — the ordered alignment (a) is length-confounded.** Decile boundaries scale with
+  `n_gen`; in `above_good`, p̂=−1 traces run **123 tokens longer** (p < 0.0001), and **a probe
+  whose only feature is `n_gen` scores 0.6421** (p = 0.004) — more than the decile-0 activation
+  probe's 0.6207. **The rising decile curve cannot be read as timing.** Whether the same channel
+  reaches **E-007's** 0.743 is **not tested here** and is the researcher's call.
+
+**W13 sizing, the packet's load-bearing output: 270 possible opposite-belief same-condition
+pairs but only SIX DISJOINT ones** (4 `above_good`, 2 `below_good`), from 98 valid cut points.
+69 of the 167 cause-token traces have no valid cut point, bound by `settle_pos`, not the cause
+word.
+
+**Infrastructure, W12.** Pod `avyrlo9271lq1v` created 11:10:35, **terminated 12:07:35** (HTTP
+204, `/pods` empty, 404 on the id, `currentSpendPerHr` $0.00). **R-014's balance probes ran
+before provisioning** and confirmed the GPU bill to the cent afterwards. **D-044**: the stack is
+*not* W4's (transformers 5.16.1, no vLLM) and the alignment check is what makes that safe.
+**D-045**: `--smoke` writes to the shipped filenames and overwrote real results mid-packet;
+they were re-pulled from the still-live pod. **W13 must give smoke runs their own prefix.**
+
+**Spend: $15.12 GPU + $20.65 API = $35.77 of $60; balance $24.23.** W12 cost **$1.32 GPU +
+$0.00003 API**. The **$45** threshold is not approached. Runner wall time W12 **≈2 h 05 m**
+(T-015).
+
+**Next: the researcher reads `analysis/out/w12_flip_sample.md` (zero flips exist, so the frozen
+fallback shows the 5 largest-excursion trajectories), rules on P-011, rules on how far D-042
+reaches into W5, and issues W13 — for which the honest input is n = 6 disjoint pairs.**
+Do not start W13.
+
+Tooling added by W12: **`w12_balance.py`** (R-014's implementation) · **`w12_power.py`** (the
+R-013 pre-freeze sims, both statistics) · **`capture_w12.py`** (full-position capture; imports
+W4's `build_positions`; `--dry-run`, `--align-check`) · **`analyze_w12.py`** (three probe
+families, both alignments, trajectories, flips, cut points; `--smoke` plants a signal *and* a
+confound) · **`w12_extra.py`** (after-freeze absolute bins) · **`w12_length.py`** (D-042) ·
+**`samples_w12.py`** · **`w12_recount.py`** (fresh; probe by hand; runs on the 5 % subsample).
+
+---
+
+## Archived status (end of W11 — Wave 2's first experiment; C1 fired)
 
 **W10 ships and is unchanged. Wave 2 is open (R-013, owner-initiated) and W11 is complete.**
 Wave-2 results are **addendum-only** to the Sep 5 deliverable; W10 remains the deadline-critical
