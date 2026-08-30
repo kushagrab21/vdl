@@ -94,10 +94,79 @@ W7  intervention I: ablate/subtract v_p during generation; landing gap vs random
 W8  intervention II: inject ±α·v_p on neutral prompts; dose-response (priority rung if time binds)
 W9  intervention III: mirrored macrostate patch; single- vs all-points (H1/H2/H3 fork)
 W10 skepticism pass, build script, write-up assembly from E-/V- entries only
+W11 Wave 2: comprehension intervention (clarified wording) — the mixture model's causal test
+W12 Wave 2: belief-formation timing
+W13 Wave 2: paired belief transplant
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W10 — the project is assembled)
+## Where things stand (end of W11 — Wave 2's first experiment; C1 fired)
+
+**W10 ships and is unchanged. Wave 2 is open (R-013, owner-initiated) and W11 is complete.**
+Wave-2 results are **addendum-only** to the Sep 5 deliverable; W10 remains the deadline-critical
+path and wins any wall-clock conflict.
+
+**R-013 added a STANDING RULE** that now binds every future pre-registration: no threshold or
+decision statistic is frozen without a **pre-freeze simulation of that statistic under its own
+null** (and under the alternative, where a prediction is tested), pasted into the PR entry with
+the achieved resolving power. A design that cannot resolve its question is fixed before data
+collection **or not run**.
+
+**W11 is the first packet to obey it, and the rule changed the design twice before any token:**
+`src/w11_power.py` showed the ordered n=100/arm gave **0.471** (form A) and **0.775** (form B)
+distinguishing power — both under the 0.8 bar — so **n was raised to 150/arm (600 rollouts)**;
+and it showed **form A's mixture test plateaus at ~0.53 at any n** (its ceiling is W3's own cell
+uncertainty, one cell being n=21), so **form A's C1/C2 verdict was DECLARED NOT RUN** before
+generation. The same sim chose between two defensible interval definitions on **measured
+coverage** (0.973 vs 0.999 against a nominal 0.95) rather than taste.
+
+**The result: PR-007 item 6 row C1 fires on form B, the designated test form (P-010).**
+One sentence appended to W3's bet note — symmetric across conditions, byte-verified as the only
+change — lifted direction-correct comprehension on the `above_good` arms from W3's ~0.54 to
+**0.833 (form B)** and **0.900 (form A)**, and `below_good` to **1.000** and **0.987**. Form B's
+aggregate landing gap moved **+0.120 → +0.2867 [+0.180, +0.393]**, **inside** the
+**[+0.2409, +0.4758]** interval the belief-mixture model predicts from **W3's four cell rates
+alone**, at a **pre-registered 0.851** distinguishing power. **The mixture model survives a
+causal manipulation of belief through its natural channel — the words. Belief-upstream
+[measured, text-level].** Form A agrees descriptively (+0.187 inside [+0.104, +0.358]) and its
+**0.486** travels with it everywhere.
+
+**Two qualifications travel with C1.** (a) On **both** forms the observed gap sits in the
+**lower half** of its interval — the mixture slightly over-predicts. (b) **D-041**: five of six
+estimable conditional cells fell (form B `above/corr` 0.793 → 0.696), and both estimable
+conditional gaps fell (+0.446 → +0.374, +0.280 → +0.222). **No single move is resolved** — every
+W11 CI contains its W3 value — but the sign is consistent and it predicts (a). W12 should size
+for it: "does clarified wording lower estimates overall, independent of belief?" is a cheap
+one-arm neutral comparison.
+
+**Infrastructure, W11.** Pod `t1mm1e0l3f7fuh` created 09:45:50, **terminated 10:02:12** (HTTP
+204, `/pods` empty, 404 on the id, `currentSpendPerHr` $0.00). Stack **byte-identical to W3's**
+(vllm 0.28.0, torch 2.13.0+cu130, model snapshot `cf98f3b3…`) — which matters, because W11
+compares W11 cells against W3 cells. **0 truncations in 600.** **D-038**: the judge transport was
+parallelised (12 workers, ~0.2 → ~6 calls/s); prompts and model unchanged, caches interchangeable.
+**D-039**: the Anthropic account ran out of credit after 255 of 600 direction verdicts, all of
+form B blocked; the owner restored it mid-packet and the run resumed from cache with 0 failures.
+**D-040**: D-033's direction-judge constant (117 output tokens/call) is 2.6× too high — use
+**3.15 chars/token and 56 out** for the direction judge, **2.84 and 20.0** for the number judge,
+which now predicts to **1.3 %**.
+
+**Spend: $13.80 GPU + $20.65 API = $34.45 of $60; balance $25.55.** W11 cost **$0.38 GPU +
+$4.59 API**. The **$45** threshold is not approached. Runner wall time W11 **≈1 h 05 m** (T-014).
+
+**Next: the researcher reads `analysis/out/w11_samples/*.md` (4 arms × 5 traces at the frozen
+blind indices 0–4), rules on P-010, and issues W12 (belief-formation timing) with W13 (paired
+belief transplant) to follow.** Do not start W12.
+
+Tooling added by W11: **`prompts_w11.py`** (clarified forms by string-append, 16/16 selftest) ·
+**`gen_w11.py`** (24-clause laptop selftest) · **`w11_cells.py`** (recovers W3's four conditional
+cell rates and validates them against `w3_direction.csv`) · **`w11_power.py`** (the R-013
+pre-freeze simulation) · **`judge_w11.py`** / **`judge_w11_par.py`** (D-038 transport) ·
+**`analyze_w11.py`** · **`w11_sensitivity.py`** (superseded; kept for W12 sizing) ·
+**`samples_w11.py`** · **`w11_recount.py`** (18 body lines).
+
+---
+
+## Archived status (end of W10 — the project is assembled)
 
 **Experiments ended at W7b (R-011). W10 is the final packet and it is complete**: the skepticism
 pass, the build machinery, and the draft write-up. Nothing remains but the researcher's review of
