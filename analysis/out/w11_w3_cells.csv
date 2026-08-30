@@ -1,0 +1,9 @@
+form,arm,group,n,n_above_tau,rate
+A,below_good,corr,129,51,0.395349
+A,below_good,ncorr,21,20,0.952381
+A,above_good,corr,80,54,0.675
+A,above_good,ncorr,69,19,0.275362
+B,below_good,corr,121,42,0.347107
+B,below_good,ncorr,29,24,0.827586
+B,above_good,corr,82,65,0.792683
+B,above_good,ncorr,68,19,0.279412
