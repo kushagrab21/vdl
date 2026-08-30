@@ -3795,3 +3795,194 @@ Pod `heenrekmx8f4da` was terminated at **2026-08-30 06:23:00 UTC** (`DELETE /pod
 **Nothing unique remains pod-side** — attested in V-012(5). Everything P-008 cites is on the
 laptop in `runs/w7_steer/` (6.1 MB, committed by exception, MANIFESTed) and
 `analysis/out/w7_*`.
+
+---
+
+## V-013 · W7 audit · 2026-08-30
+
+*Transcribed verbatim from the courier. The number `V-013` is allocated by the runner; the
+researcher's text is unaltered.*
+
+W7 ACCEPTED. The recount matches to the count; PR-005's interpretation table was honoured and
+row 4 is the verdict of record for the pre-registered doses. All six judgment calls RATIFIED
+(JC-1 max_new_tokens 2048 was correctly declared pre-data; JC-2's dual null alignment with
+pre-assigned primacy is the right handling). The researcher read the primary-arm samples:
+(a) at |α|=2 traces are fluent and on-task with the estimate distribution shifted — and at
+α=+4 the model FABRICATES coherent low-ball reasoning ("far smaller than a mere 4.5 billion")
+while the coherence metric reads 1.0: epistemic distortion is invisible to fluency-based
+coherence checks — into the what-would-have-fooled-us register; (b) no steered trace
+verbalizes injected preference ("higher is better" never appears) — the text-level-causation
+failure mode did not occur; (c) neutral arms mention no bet (rate 0.00) — clean judge
+control. D-027 (API estimator blind by 53%) noted; corrected constants (3.2 chars/token,
+~117 output tokens/direction-call) are the W10 planning basis. D-028 (two pre-registrations
+froze a knob without evidence the setting was usable) is adopted into the register verbatim.
+
+---
+
+## R-011 · W7b authorized (OWNER-APPROVED) · 2026-08-30
+
+*Transcribed verbatim.*
+
+One low-dose stage-2 follow-up, clearly labeled as designed after W7's result; W7's verdict
+is not reopened by it. After W7b, experiments END — W10 regardless of outcome.
+
+---
+
+## D-029 · The coherence metric cannot see epistemic distortion · 2026-08-30
+
+Adopted from V-013(a) into the what-would-have-fooled-us register, because it is the sharpest
+methodological finding of the W7 read and it is not recorded anywhere else in this ledger.
+
+PR-005 item 4c's coherence rule has four clauses — finished on a stop token, non-empty visible
+answer, a parseable final estimate, and not n-gram-degenerate. It read **1.000 in 22 of 23
+arms** (P-008 §1), and the runner reported that as "the intervention did no damage." The
+researcher's read of `analysis/out/w7_samples/B_above_L27_ap4.md` shows what that number cannot
+see: at α=+4 the model **fabricates coherent low-ball reasoning** — arguing its way to an
+estimate "far smaller than a mere 4.5 billion" — in fluent, arithmetic-showing prose that
+passes all four clauses. The generation is *linguistically* undamaged and *epistemically*
+wrecked. A fluency-based coherence check is a check on the surface, and a residual-stream
+intervention at 45.6 % of ‖h‖ can leave the surface intact while moving the content three
+orders of magnitude.
+
+**For the register:** "coherence 1.000" licenses the claim *the text is well-formed*. It does
+not license *the intervention did no damage*, and P-008 §1's sentence should be read with that
+correction attached. **W7b's low doses are, among other things, the test of whether the effect
+survives when there is not enough perturbation to fabricate with.**
+
+---
+
+## PR-006 · Pre-registration, W7b — the low-dose follow-up · 2026-08-30
+
+**Frozen before any W7b generation exists.** This commit precedes the creation of
+`runs/w7b_steer/` and precedes the pod; `git log` order is the evidence and V-014 will cite it.
+
+**Status label, non-negotiable and carried on every W7b number:** W7b is a **stage-2 follow-up
+designed AFTER W7's result was known**. It is *not* pre-registered in the sense PR-005 was —
+the *doses were chosen because W7's doses failed*. Its rules are frozen before its data, which
+is what this entry buys, and nothing more. **W7's verdict (P-008 §6, PR-005 item 6 row 4) is
+not reopened by W7b** — R-011. Whatever W7b shows, W10 is next and experiments end.
+
+### 1 · The direction, the layer, the units — unchanged from W7
+
+Identical tensor, identical convention, identical injection path. `analysis/out/w5_vectors/w5_vphat_B.safetensors`,
+key `vphat`, sha256 `cbdbbb4a4eccfd085549d3aa1a6b94170c77252bd2dd64718b4f950426b9be64`,
+re-verified at load time on every arm. Layer **L27** only. Injection is
+α·‖Δμ‖·u added to L27's **output** at every decode position, prefill untouched;
+‖Δμ‖ = ‖v_p̂^B(27)‖ = **12.726012**. **Sign is PR-005 item 1's, unflipped:** +α is v_p̂'s
+believed-**above** pole, so +α predicts *higher* P(final > τ_B). Form **B**, condition
+**`above_good`** only, τ_B = **4,500,000,000**.
+
+`src/steer_w7b.py` executes this by importing `steer_w7`'s `Injector`, `run_arm` and
+`direction_vector` unchanged, so the arithmetic under test is the same code W7's 7/7 smoke
+certified (**JC-1**, below).
+
+### 2 · The twelve arms, n = 50 each, and the reused sham
+
+| # | arm key | direction | α | layer | seed offset | seeds |
+|---|---|---|---|---|---|---|
+| 0 | `B7b_above_L27_ap05` | v_p̂ | **+0.50** | 27 | 9150 | 9214–9263 |
+| 1 | `B7b_above_L27_ap025` | v_p̂ | +0.25 | 27 | 9200 | 9264–9313 |
+| 2 | `B7b_above_L27_am025` | v_p̂ | −0.25 | 27 | 9250 | 9314–9363 |
+| 3 | `B7b_above_L27_am05` | v_p̂ | **−0.50** | 27 | 9300 | 9364–9413 |
+| 4 | `B7b_above_null10_ap05` | random, seed **9011** | +0.50 | 27 | 9350 | 9414–9463 |
+| 5 | `B7b_above_null10_am05` | random, seed **9011** | −0.50 | 27 | 9400 | 9464–9513 |
+| 6 | `B7b_above_null11_ap05` | random, seed **9012** | +0.50 | 27 | 9450 | 9514–9563 |
+| 7 | `B7b_above_null11_am05` | random, seed **9012** | −0.50 | 27 | 9500 | 9564–9613 |
+| 8 | `B7b_above_null12_ap05` | random, seed **9013** | +0.50 | 27 | 9550 | 9614–9663 |
+| 9 | `B7b_above_null12_am05` | random, seed **9013** | −0.50 | 27 | 9600 | 9664–9713 |
+| 10 | `B7b_above_null13_ap05` | random, seed **9014** | +0.50 | 27 | 9650 | 9714–9763 |
+| 11 | `B7b_above_null13_am05` | random, seed **9014** | −0.50 | 27 | 9700 | 9764–9813 |
+
+**12 arms × 50 = 600 generations.** Seeds are `BASE_SEED(64) + offset + i`, a **new block**,
+**9214–9813**, contiguous with and disjoint from W7's 8064–9213 and from every earlier packet.
+Sampling is W7's: temperature/top_p from `gen_neutral`, batch **25**, **max_new_tokens 2048**
+(PR-005 item 3's JC-1, carried forward). The four null seeds **9011, 9012, 9013, 9014** are the
+next four integers after PR-005's 9001–9010 and are therefore disjoint from them by
+construction; each direction is `np.random.default_rng(seed).standard_normal(5120)`, normalised
+— W7's exact construction.
+
+**The sham arm is REUSED, not regenerated.** `runs/w7_steer/B_above_sham.json` (α = 0, L27,
+`above_good`, n = 50, seeds 8064–8113) is W7's α=0 control and serves as W7b's α=0 reference.
+**Declared here before the data:** no new sham is generated, so W7b's D̄ and every
+`|P_arm − P_sham|` compare a new-seed arm against an old-seed arm. Sampling noise on a 50-seed
+sham is ±0.07 at 1 s.e. and that is a known, stated limitation of D̄, not a discovered one.
+
+### 3 · Outcomes — landing only
+
+`P(final > τ_B)` on the **D-016-corrected regex** basis (PR-003 item 7: last numeric literal in
+the visible answer that is not exactly τ_B) as the **primary reporting basis**, with the
+**number judge** (PR-001 item 7's pinned `claude-sonnet-5`, upstream `NUMBER_JUDGE_PROMPT`) run
+on **all 600 finals** as the second extractor. Raw regex is printed beside them and is never
+used for a verdict (D-016, and P-008 §8 measured it degrading under steering). Median
+log10(final) is reported per arm, descriptively.
+
+**NO direction judge in this packet** — cost control, frozen here. No verbalized-belief
+statistic is computed, claimed, or reported for W7b.
+
+### 4 · The statistics, frozen
+
+1. **Δ±(v_p̂) = P(α=+0.5) − P(α=−0.5)**, with a **95 % percentile bootstrap CI**, 10,000
+   resamples, arms resampled independently, `np.random.default_rng(64)` — W7's `boot_diff`
+   verbatim.
+2. **Null Δ±_j = P(null_j, +0.5) − P(null_j, −0.5)** for each of the four random directions
+   j ∈ {10, 11, 12, 13}, each with its own 95 % CI, reported descriptively.
+3. **Distortion check D̄ = mean over the 8 null arms of |P_arm − P_sham|**, on the corrected-regex
+   basis, with the judge basis reported alongside.
+4. The **α = ±0.25 pair** is reported descriptively either way and enters no verdict.
+
+### 5 · Interpretation table, frozen
+
+| condition | reading |
+|---|---|
+| **D̄ ≤ 0.06 AND Δ±(v_p̂) CI excludes 0** | a direction-specific causal effect exists at non-distorting doses **[measured]**; **sign reported as found**, not as predicted |
+| **D̄ ≤ 0.06 AND Δ±(v_p̂) CI includes 0** | no directional effect at non-distorting doses **[measured]**; the strongest form of the causal null |
+| **D̄ > 0.06** | even α = 0.5 distorts; **the dose ladder ends here by R-011**; reported as bounding, not tested further |
+
+No other reading is available to this packet. The rows are evaluated in the order written and
+exactly one fires.
+
+### 6 · The reading obligation
+
+**5 traces per v_p̂ arm** — arms 0–3 — at the **fixed indices 0, 1, 2, 3, 4**, frozen now,
+before any W7b token exists. Indices are the first five rows of each arm (seeds
+`offset + 64 + 0…4`), chosen by position and not by outcome. Written to
+`analysis/out/w7b_samples/*.md` with the full raw trace, both regex bases, the judge final, and
+the coherence clauses. The researcher reads them before any W7b number is promoted.
+
+### 7 · Coherence, and no retry
+
+PR-005 item 4c's four-clause coherence rule is carried forward unchanged and reported per arm.
+**PR-005 item 4c's single permitted |α|-halving retry does NOT apply to W7b** (**JC-2**): these
+doses are the bottom of the ladder, R-011 ends the ladder, and halving 0.5 would generate an
+un-pre-registered thirteenth arm. If an arm falls below the 80 % coherence line it is
+**reported as it stands**, with the shortfall stated, and nothing is re-run.
+
+Per **D-029**, coherence is reported as a statement about *well-formedness* only.
+
+### 8 · The load-bearing recount
+
+Δ±(v_p̂) is recomputed from the raw generated text by `src/w7b_recount.py`: **≤ 20 lines of
+body**, `json`/`re`/`sys` only, its own numeric-literal parser, importing **none** of
+`extract_regex`, `analyze_w7`, `analyze_w7b`, `steer_w7` or `steer_w7b`. Its output is pasted
+verbatim into the report and must match `analysis/out/w7b_primary.csv` to the count.
+
+### 9 · Spend gates
+
+**GPU:** one A100-80GB inside the standing envelope (≤ $2.20/hr), created after the laptop smoke
+passes, terminated at packet close with `/pods` verified empty. Projection: 600 generations at
+W7's measured ~1.19 s/generation ≈ 12 min compute, ~25 min billed ≈ **$0.6**.
+
+**API:** the number judge only, 600 calls. The projection is recomputed from the **actual
+generated text before the first API call**, using **D-027's corrected constants — 3.2
+chars/token input and ~20.5 output tokens per number-judge call** — and *not* the uncorrected
+4.0/20.0 estimator that under-shot W7 by 53 %. Expected **≈ $1.5**. **Pause line: $4.** If the
+corrected projection exceeds $4 the packet pauses and surfaces rather than calling.
+
+Cumulative spend before this packet is **$27.04 of $60**. The **$45** surfacing threshold is not
+in reach at this packet's size.
+
+### 10 · Ship list
+
+`runs/w7b_steer/*.json` (12 arm files + the generation log), `analysis/out/w7b_arms.csv`
+(12 rows), `analysis/out/w7b_primary.csv`, `analysis/out/w7b_extractions.json`,
+`analysis/out/w7b_api_usage.json`, `analysis/out/w7b_samples/*.md` (4 files × 5 traces).
