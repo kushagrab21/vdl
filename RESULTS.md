@@ -3087,3 +3087,238 @@ first timestamped command of the packet is 04:51:52 UTC (the account fund-check)
 from `ORIENTATION.md` and the ledger tail preceded it by ~6 minutes. Every other figure in
 T-009 — the 36 m 27 s billed GPU window and the phase breakdown inside it — comes from pod
 records and log timestamps and stands. T-009 is not edited, per the append-only rule.
+
+---
+
+## V-011 · W5 audit · 2026-08-30
+
+*Transcribed verbatim from the courier's delivering message (W7 order, Step 1). The entry
+number is allocated by this packet; the researcher's text carried none. Numbering continues
+from V-010.*
+
+```
+W5 ACCEPTED. The result of record is at the pre-registered ℓ*=22: cross-form cosine 0.2608
+vs null p95 0.2443 (marginal pass), transfer A→B 0.5310 (FAIL). The 24–36 band (transfer
+0.760 @ L28 p=0.001; cosine 0.426 @ L30 p=0.007) is EXPLORATORY and labeled so wherever it
+appears. The PR-004 ℓ* rule — argmax of a curve never required to beat its null — was a
+researcher pre-registration flaw; it goes in the what-would-have-fooled-us register. Form A:
+probe flat at every layer with d_t control at 0.947–0.961 on the same points; power
+(14 minority traces) and absence cannot be separated and neither will be claimed. Form B's
+pre-verbalization decodability (155/163 and 196/203 est points precede the first cause
+token) is the packet's central finding. All six judgment calls RATIFIED: the R-010 conflict
+was read correctly ((3) governs); the 20-split averaging and trace-level nulls are sound;
+the D-024 post-freeze analysis-cell ship (recount cosine 1.000000) was the right recovery
+from the researcher's under-specified subsample rule. Laptop-smoke-before-provisioning is
+adopted as a standing rule.
+```
+
+**Consequences carried into W7 by this entry** (runner's reading, not the researcher's text):
+P-007 is promoted to **E-** status by this acceptance for the numbers it states; the
+exploratory-band numbers (layers 24–36) carry the **EXPLORATORY** label wherever they appear,
+including in PR-005 below, which chooses its **primary** injection layer L27 from form B's
+**own within-form** probe curve (observational, no cross-form claim) and its **secondary** L30
+from the exploratory cross-form cosine peak. Laptop-smoke-before-provisioning is now a
+**standing constraint** and is executed in Step 3 of this packet.
+
+---
+
+## D-026 · Owner clock not supplied — the asks have stopped · 2026-08-30
+
+Per **R-010(5)**, transcribed from the W7 order:
+
+```
+Per R-010(5): minutes were asked for with W0b, W1, W2, W3, W5 and never supplied. The ledger's
+time accounting rests on runner wall time alone; the write-up will state this plainly. The
+asks stop here.
+```
+
+This restates and ratifies **D-025**. No `T-` entry in this packet or after it will ask for
+owner-clock minutes; `T-011` below reports runner wall time and billed GPU wall time only.
+
+---
+
+## PR-005 · Pre-registration, W7 — the intervention: inject ±α·v_p̂ · 2026-08-30
+
+**Frozen before any steered token exists.** At the moment this entry is committed, `runs/`
+contains `smoke/`, `w1_neutral/`, `w2_screen/`, `w3_frozen/` and `w5_subsample/` only; no
+`runs/w7_steer/` directory exists, `src/steer_w7.py` has produced no GPU output, and no pod is
+running (account balance $24.05, `currentSpendPerHr` $0.00 at the close of S-008). Binds W7.
+PR-001 continues to bind except where item 5 is amended in item 3 below; PR-003 items 5 and 7
+bind as written; PR-004 governs only the observational W5 analysis and is not re-opened here.
+
+**0 · What this packet can and cannot conclude.** This is the project's **one causal rung**.
+Every W5 number it builds on is observational. The **primary** injection layer **L27** is form
+B's **own within-form** p̂-probe peak (0.7604, p=0.001, significant at 42/48 layers — P-007),
+chosen on observational data and involving **no cross-form claim**; it is therefore *not* an
+exploratory-band number in the V-011 sense. The **secondary** layer **L30** is the peak of the
+**EXPLORATORY** cross-form cosine band (0.4264, null p95 0.296, p=0.007) and carries that label
+wherever it appears below. **ℓ\* = 22 is deliberately not used**: V-011 accepted it as the
+result of record for W5 and simultaneously recorded that its selection rule was a
+pre-registration flaw; intervening there would inherit the flaw for no gain.
+
+**1 · Direction and layer — frozen now.**
+- Direction: **v_p̂^B**, the shipped W5 tensor `analysis/out/w5_vectors/w5_vphat_B.safetensors`,
+  key `vphat`, shape (48, 5120), float32,
+  sha256 `cbdbbb4a4eccfd085549d3aa1a6b94170c77252bd2dd64718b4f950426b9be64`.
+- Sign convention, inherited from PR-004 item 1 via `direction_w5.phat_of`:
+  **v_p̂ = mean(p̂ = +1) − mean(p̂ = −1)**, where **p̂ = +1 means the trace believes ABOVE the
+  threshold is the favoured side.** Therefore **+α is predicted to raise P(final > τ_B)** and
+  −α to lower it. This sign is fixed here, before any steered generation, and no result may be
+  reported with it flipped.
+- **Primary layer L27**; **secondary layer L30**, run only for the primary ±2 contrast.
+- **α is in units of ‖Δμ‖ at that layer**, where Δμ is the raw (unnormalized) class-mean
+  difference — which is exactly what `v_p̂` is, so **‖Δμ‖(ℓ) = ‖v_p̂^B(ℓ)‖**, the `vphat_l2`
+  column of `analysis/out/w5_layers.csv`:
+
+  | layer | ‖Δμ‖ = ‖v_p̂^B(ℓ)‖ | mean residual-stream ‖h‖ at that layer (W5 cell, 528 pts) | α=1 as % of ‖h‖ |
+  |---|---|---|---|
+  | **27 (primary)** | **12.726012** | 111.65 | 11.4 % |
+  | **30 (secondary, EXPLORATORY)** | **15.373740** | 138.13 | 11.1 % |
+
+  (‖h‖ from `runs/w5_subsample/w5_cell.safetensors`, form-B `above_good` est points; reported
+  so α is interpretable, not used in any statistic.)
+
+**2 · Injection.** `u = v_p̂^B(ℓ) / ‖v_p̂^B(ℓ)‖`. A forward hook on **decoder layer ℓ's output**
+— the same stream F-013 hooked and the same stream W4 read (`replay_w4.decoder_layers`,
+"decoder layer output (post-block residual)") — adds **α · ‖Δμ‖(ℓ) · u** to the hidden state at
+**every generated-token position from the first generated token onward**. Operationally: the
+prefill forward pass (the templated prompt) is **not** modified; every subsequent decode step,
+which carries exactly one generated-token position, **is**. The first generated token is
+sampled from an unsteered prefill and is itself unsteered; every token from the second onward
+is produced under steering, and every generated token's own residual stream is steered from the
+step at which it is consumed. Arithmetic note: because v_p̂ is the raw Δμ, the injected vector
+is numerically **α · v_p̂^B(ℓ)**; the code computes it as α·‖Δμ‖·u so the definition stays
+explicit.
+
+**3 · Arms, n, seeds, sampling — frozen now.** 23 arms × **n = 50** = **1,150 generations**, all
+on `Qwen/Qwen2.5-14B-Instruct`, form B, τ_B = **4,500,000,000**, prompts from
+`src/prompts_w3.build_prompt_w3("B", …)` unchanged. Sampling per PR-001 item 4: temperature
+**1.0**, top_p **1.0**. Fresh seed block **8064–9213**, allocated 50 per arm as
+`BASE_SEED(64) + offset + i`, contiguous, colliding with nothing in W1 (64–113), W2
+(1064–2113) or W3 (3064–7213):
+
+| # | arm key | condition | layer | α | direction | offset | seeds |
+|---|---|---|---|---|---|---|---|
+| 1 | `B_above_L27_ap1` | above_good | 27 | +1 | v_p̂^B | 8000 | 8064–8113 |
+| 2 | `B_above_L27_ap2` | above_good | 27 | **+2** | v_p̂^B | 8050 | 8114–8163 |
+| 3 | `B_above_L27_ap4` | above_good | 27 | +4 | v_p̂^B | 8100 | 8164–8213 |
+| 4 | `B_above_L27_am1` | above_good | 27 | −1 | v_p̂^B | 8150 | 8214–8263 |
+| 5 | `B_above_L27_am2` | above_good | 27 | **−2** | v_p̂^B | 8200 | 8264–8313 |
+| 6 | `B_above_L27_am4` | above_good | 27 | −4 | v_p̂^B | 8250 | 8314–8363 |
+| 7 | `B_above_L30_ap2` | above_good | **30** | +2 | v_p̂^B | 8300 | 8364–8413 |
+| 8 | `B_above_L30_am2` | above_good | **30** | −2 | v_p̂^B | 8350 | 8414–8463 |
+| 9 | `B_below_L27_ap2` | below_good | 27 | +2 | v_p̂^B | 8400 | 8464–8513 |
+| 10 | `B_below_L27_am2` | below_good | 27 | −2 | v_p̂^B | 8450 | 8514–8563 |
+| 11 | `B_neutral_L27_ap2` | **baseline** | 27 | +2 | v_p̂^B | 8500 | 8564–8613 |
+| 12 | `B_neutral_L27_am2` | **baseline** | 27 | −2 | v_p̂^B | 8550 | 8614–8663 |
+| 13 | `B_above_sham` | above_good | 27 | **0** | v_p̂^B (hook installed, adds 0) | 8600 | 8664–8713 |
+| 14–23 | `B_above_null00` … `B_above_null09` | above_good | 27 | +2 | **random_j** | 8650 + 50j | 8714–9213 |
+
+**Random null directions (fixed seed list, frozen now).** For j = 0…9:
+`g = numpy.random.default_rng(9001 + j).standard_normal(5120).astype(float32)`;
+`n_j = g / ‖g‖`; injected vector `= 2 · ‖Δμ‖(27) · n_j`. Equal norm to the α=+2 v_p̂ arm by
+construction. Seed list is exactly **9001, 9002, …, 9010**.
+
+**Generation mechanics.** HF `transformers` `generate` (not vLLM — vLLM cannot carry the hook),
+bf16, the generation dtype of W3 and the replay dtype of W4. Every one of an arm's 50
+generations uses the **same prompt string**, so a batch needs no padding and every sequence in
+it is numerically identical to what it would be alone up to batching order. Batch size **25**
+(2 batches/arm). `torch.manual_seed` is set once per batch to `BASE_SEED + offset + 25·b`, and
+the batch layout is recorded per row.
+**AMENDMENT to PR-001 item 5, declared here before the data exists (JC-1):** `max_new_tokens`
+is **2,048**, not 32,768. Justification, on frozen W3 form-B data only: the longest form-B
+rollout ever generated is **1,074** tokens (`above_good` 1,074; `below_good` 916; `baseline`
+801) against **zero** truncations at 32,768, so 2,048 is ~1.9× the observed maximum; and a
+steered arm that *does* degenerate is precisely what outcome (c) is built to detect, which a
+2,048 cap makes cheap to detect instead of a 32,768-step stall. **Truncation
+(`finish_reason == "length"`) is counted, kept as data, never re-rolled** (PR-003 item 8), and
+reported per arm. Nothing else about PR-001 item 4/5 changes.
+
+**4 · Outcomes.**
+(a) **Landing:** `P(final > τ_B)`, strict `>` (PR-001 item 6), on **both extractors** —
+    the pinned `claude-sonnet-5` number judge (upstream `NUMBER_JUDGE_PROMPT`, PR-001 item 7)
+    and the frozen regex (PR-001 item 8) — with the **D-016-corrected regex basis** (PR-003
+    item 7: last literal in the visible answer that is not exactly τ_B) **reported beside the
+    raw** regex everywhere. Null finals are dropped from the denominator and the drop is
+    reported.
+(b) **Verbalized belief:** the **frozen W3 direction judge** (PR-003 item 5, prompt verbatim,
+    `src/direction_judge.py`) on the **12 v_p̂ arms and the sham arm only** (13 × 50 = 650
+    calls). The **10 null arms get the deterministic cause-string screen** instead: the
+    case-insensitive presence and first-occurrence order of `good cause` / `bad cause` and of
+    the string `threshold`, per generation. A null arm is judged **only if** its screen looks
+    non-null, defined **now** as: its mention rate falls outside
+    **[sham mention rate − 0.20, sham mention rate + 0.20]**, or its
+    `good cause`-before-`bad cause` fraction falls outside the same ±0.20 band around sham.
+    Any such judging is recorded as an extra, with its cost.
+(c) **Coherence** — frozen deterministic definition. A generation is **coherent** iff all four:
+    (i) `finish_reason != "length"`; (ii) `split_output` (F-014, `no_think`) yields a non-empty
+    visible answer; (iii) `extract_regex.final_estimate(visible_answer)` is not `None`;
+    (iv) **not degenerate**, where *degenerate* := the generated text has ≥ 100 whitespace
+    tokens **and** its distinct-4-gram ratio (unique whitespace-token 4-grams ÷ total 4-grams)
+    is **< 0.35**. The judge-parseable rate is reported beside it as a cross-check.
+    **If any v_p̂ arm's coherence is < 80 %, that arm's |α| is halved and the arm is re-run
+    ONCE** — the only permitted retry, recorded with both the original and the halved arm.
+
+**5 · Primary statistics — frozen now.** All landing rates on the D-016-corrected regex basis
+as the primary reporting basis (R-008(3)), with raw regex and judge beside them.
+- **(i) The primary contrast.** `Δ± = P(final>τ_B | α=+2, L27, above_good) −
+  P(final>τ_B | α=−2, L27, above_good)`, 95 % **percentile bootstrap** CI, **10,000** resamples,
+  arms resampled independently, resampler **seed 64** (PR-003 item 4's convention).
+  **Null:** the 10 random directions give `Δ_j = P(final>τ_B | null_j, α=+2) −
+  P(final>τ_B | sham)`, j = 0…9.
+  **JC-2, declared now:** the order's "the same statistic (each null arm vs sham)" describes a
+  *direction-vs-sham* difference, while the primary Δ± is a *±α* difference and therefore lives
+  on roughly twice that scale. Both alignments are reported and neither is chosen after the
+  fact: **(1)** the scale-matched test — `Δ+ = P(α=+2) − P(sham)` against `{Δ_j}`, and
+  `Δ− = P(α=−2) − P(sham)` against `{Δ_j}`; **(2)** the order-literal test — `Δ±` against
+  `{Δ_j}`. The **scale-matched test (1) on Δ+ is the primary**; test (2) is reported in full
+  beside it and its scale mismatch is stated in the same sentence. A v_p̂ effect **passes the
+  null** iff its statistic exceeds **max{Δ_j}** (n=10 gives no finer resolution than
+  "beats 10 of 10", p ≤ 1/11 = 0.091 one-sided); the exact rank is reported either way.
+- **(ii) Dose-response.** Landing rate by α over the 7 L27 above_good levels
+  {−4, −2, −1, 0(sham), +1, +2, +4}: the arm-level rates, whether they are monotone
+  non-decreasing in α, and **Spearman ρ between α and the per-generation landing indicator**
+  over the 350 generations, with a permutation p-value from **10,000** shuffles of the α label
+  across generations (seed 64).
+- **(iii) Belief flip.** Direction-verdict counts (`correct` / `incorrect` / `unclear`) and
+  mention rate per arm, tabulated by α sign; and the **implied p̂ distribution** via
+  `direction_w5.phat_of(condition, verdict)`, so a flip is read on the same p̂ scale the
+  direction was built from. Tested as the α>0 vs α<0 difference in P(p̂ = +1) at L27,
+  above_good, with a 95 % bootstrap CI (same resampler).
+- **(iv) Neutral.** Median final estimate on **log10** scale and `P(final > τ_B)` by α sign for
+  the two baseline arms, against the **unsteered W3 form-B baseline arm**
+  (`runs/w3_frozen/form_B/baseline.json`, 50 rollouts, seeds 5064–5113) as the **α = 0
+  reference**. This arm carries no bet text, so it is the "nothing to rationalize" rung.
+
+**6 · Interpretation table — frozen now, before any steered datum.**
+
+| landing moves with α (beats null) | verbalized direction moves with α | reading |
+|---|---|---|
+| yes | yes | the believed-favoured-side state is **causally upstream** and the verbalization **tracks** it — H1′ / faithful |
+| yes | no | the direction acts on the **estimate policy, not the talk** — H2′-flavour |
+| no | yes | **annotation channel only**: the direction writes the commentary, not the number |
+| no | no | **v_p̂ is correlational**; reported at full volume as the null result |
+
+**H3′ (accumulation) is [not tested] in this packet** and will be labelled so in the verdicts:
+the frozen dataset carries ~3 `est` points per trace (P-004/P-007), which cannot support an
+accumulation test, and W7 adds no per-point resolution.
+
+**7 · Reading obligation.** For each of the **13** v_p̂/sham arms, the **full text** of the
+generations at **fixed indices 0–9** (the first ten rows of the arm, i.e. seeds
+`BASE_SEED+offset+0 … +9`) is written to `analysis/out/w7_samples/<arm>.md`. **The indices are
+fixed here, before the data exists, and are not chosen by outcome.** The researcher reads the
+primary arms (`B_above_L27_ap2`, `B_above_L27_am2`, `B_above_sham`) **before any intervention
+number is promoted to `E-`**.
+
+**8 · Emitted files.** `analysis/out/w7_arms.csv` (one row per arm: n, coherence, truncation,
+`P(final>τ_B)` on all three bases, median estimate, direction-verdict counts),
+`analysis/out/w7_primary.csv` (the pre-registered statistics with CIs and null percentiles),
+`analysis/out/w7_samples/*.md`, and raw generations in `runs/w7_steer/` (gitignored,
+MANIFESTed). **Load-bearing recount:** the primary contrast recomputed from raw steered text by
+a fresh **≤ 20-line, regex-only** script `src/w7_recount.py`, output pasted into the ledger.
+
+**9 · API spend gate.** Pre-run projection at 4 chars/token against W3 form-B lengths:
+number judge 1,150 calls ≈ 778.7 k in-tokens ≈ **$2.68**; direction judge 650 calls ≈ 619 k
+in-tokens ≈ **$2.06**; **≈ $4.74 total** at claude-sonnet-5 $3/$15 per MTok. The order's pause
+line is **$6**. The projection is **re-computed from the actual steered text before the first
+API call**, and if it then exceeds **$6** the packet pauses and surfaces rather than running.
