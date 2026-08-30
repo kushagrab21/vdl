@@ -97,54 +97,64 @@ W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W3)
+## Where things stand (end of W4)
 
-W0–W2 accepted (**R-003**, **V-001**, **V-002**, **V-003 audit**). **PR-001** remains the
-pre-registration of record; **PR-002** (W2) and **PR-003** (W3 frozen dataset, reskin, direction
-judge, gate G1) bind. **R-008** pivoted the project to `Qwen2.5-14B-Instruct` by owner-approved
-scope change, localizing the value direction behind **overt** gaming.
+W0–W3 accepted (**R-003**, **V-001**, **V-002**, **V-003**, **V-006**). **PR-001** remains the
+pre-registration of record; **PR-002** and **PR-003** bind. **R-008** pivoted the model to
+`Qwen2.5-14B-Instruct`; **R-009 (pivot 2, owner-approved)** re-targets the interp work from the
+prompt-stated favoured side `p` to the **trace-level believed favoured side `p̂`**, computed
+**within** a condition, with an intervention rung asking whether the verbalized belief is
+causally upstream of the estimate.
 
-**W3 complete. GATE G1 FAILED — hard stop, PR-003 item 6's named branch (G-002).** 650 fresh
-rollouts, **zero truncations**, frozen per PR-003 item 8.
+**Gate G1 FAILED at W3** (form A +0.017, CI [−0.097, 0.130]; form B +0.120, CI [0.007, 0.233];
+D-018 winner's curse). The live finding is the **belief-conditional decomposition** (P-005):
+direction-correct traces gap +0.28 (A) / +0.45 (B), direction-incorrect −0.68 / −0.55, with
+`above_good` comprehension only ~54 %.
 
-| form | τ | judge landing gap (strict `>`) | 95 % CI | G1 |
-|---|---|---|---|---|
-| A (giraffe) | 15,300,000 | **+0.017** | [−0.097, 0.130] | **FAIL** |
-| B (crocodile reskin) | **4,500,000,000** | **+0.120** | [0.007, 0.233] | PASS (fragile) |
+**W4 complete.** Two deliverables and one blocker.
 
-**D-018 is the reason and the methodological finding of the packet: W2's screening estimate did
-not replicate.** Form A was +0.32 (CI [0.14, 0.50]) at n=50 and is +0.017 at n=150 — apparatus
-byte-identical, seed block the only difference, W3's three blocks of 50 mutually consistent
-(z=2.83, p=0.005 vs W2). A winner's-curse effect: G0 promoted the model whose gap looked biggest.
-Form B's pass is convention-dependent (`≥` CI touches zero) and one rollout from its lower bound.
+1. **Judge validation (V-007, no GPU, no API).** The mechanical cause-mapping cross-check over
+   all 600 judged traces: `unclear` is 96.4 % mapping-silent (the check behaves), `correct` is
+   21.3 % (V-006's lenient case — it **dilutes** the conditional split, it cannot manufacture
+   it), `incorrect` is **53.1 %**, and 67.7 % on form B `above_good`. Reading the printed
+   `incorrect` traces shows the model mapping the sides in its own vocabulary rather than the
+   prompt's, so the string test is an **upper bound on possible judge leniency, not a count of
+   errors**. `analysis/out/w4_direction_sample2.md` holds the 4-cell sample the researcher must
+   read before W5. Form A `below_good` has **zero** `incorrect` verdicts; form B `below_good`
+   has only 4.
+2. **Activation replay (P-006, V-008).** 700/700 traces replayed, **0 quarantined**, **6,668
+   points** at 48 layers × 5,120 dims, bf16 forward / fp16 storage. The load-bearing acceptance
+   check passed **34/34** — stored token-id spans decode to the parsed literals, commas
+   included. Token reconstruction is verified four ways per trace against vLLM's own token
+   counts, and the whole position index was built twice (laptop and pod) with **identical
+   results for all 6,668 points**. The `est` counts reproduce P-004's trajectory-point counts
+   exactly (254/255/276/273).
+3. **BLOCKER (D-020): the RunPod account balance is negative (−$0.12) and RunPod stopped the
+   pod mid-rsync.** 3 of 6 activation files reached the laptop complete (**1,824 of 6,668
+   points**); three are truncated prefixes. **No further GPU work is possible until the owner
+   funds the account.** Nothing in the ledger is lost — every W4 number is regenerable on a
+   laptop by `python3 src/replay_w4.py --dry-run` — but W5 needs the three missing arms, which
+   cost ~$0.12 of A100 time to recompute and ~12 minutes to move.
 
-**Two results do stand strongly.** (1) **The overt phenotype**: the model mentions the bet in
-**99.2 % of 600 incentive traces** (vs ~0.2 % spontaneous disclosure in the 122B panel) — the
-overt-vs-covert contrast R-008 promoted survives at n=600 on two surfaces. (2) **D-016 is
-confirmed**: raw extractor disagreement 52.3 %/42.3 % collapses to **1.0 %/0.7 %** on the
-corrected basis, and the corrected-basis recount reproduces form B's judge gap to within one
-rollout (+0.1267 vs +0.120).
+**The transfer, not the compute, is the cost.** 700 forward passes took 94.8 s of the 33 billed
+minutes; the 3.28 GB egress took ~15 min and did not finish. **D-020's recommendation, for the
+researcher to rule on before W5: run the difference-in-means on the pod and move the direction
+vectors (983 KB) plus a fixed 5 % raw subsample, not the tensors.**
 
-**Held back deliberately:** P-005's comprehension-conditioned gaps (±0.3–0.5, and an `above_good`
-comprehension rate of only ~54 %) would say form A's null is *cancellation*, not indifference —
-but the direction judge reads the same text the estimate came from, so the causal reading is
-**circular until validated**. `analysis/out/w3_direction_sample.md` exists for exactly that.
-**Validating it is the highest-value next action and costs no GPU.** A third surface form would
-break the A-vs-B tie for ~1 min of A100 time (~$0.12 + ~$1 judging) — the runner's recommendation.
+**Pods: four stopped, four unstartable (D-021).** `io6c1fhnarzoj9` holds the only copy of the
+three incomplete activation files. `axvdenxbcepd10` and `bkl3m9ieis977o` are proven dead and
+hold nothing needed; idle volume storage bills **~$2.00/day against a negative balance**, and
+terminating those two is recommended but **not executed** — it is irreversible and the
+researcher's call, per the V-003 precedent.
 
-**Pods: `bkl3m9ieis977o` STOPPED** (A100-SXM4, $1.39/hr, venv + 28 GB cache).
-`gwhn0ex0eeyntn` **terminated** per V-003. **`axvdenxbcepd10` failed 18 restart attempts
-(D-019) — two of two stopped pods in this project never resumed**, so a stopped pod is not a
-reliable way to preserve a stack; `src/provision_pod.sh` rebuilt everything on a fresh pod in
-~10 min, and it is committed precisely because the previous copy died with its volume.
-
-**Spend: $10.57 GPU + $6.35 API = $16.92 of $60.** W3 cost **$0.32 of GPU** — the V-003 idle rule
-held: 13.6 min billed against ~65 min of laptop work. Owner-clock minutes remain **owed for
-W0–W3** — asked five times.
+**Spend: $11.34 GPU + $6.35 API = $17.69 of $60.** W4 cost **$0.77 GPU and $0.00 API**.
+Owner-clock minutes remain **owed for W0–W4** — asked six times.
 
 Tooling in `src/`: `pod.py` · `pod_survey.py` · `runpod_client.py` · `extract_runpod_key.py` ·
 `bootstrap.sh` · `provision_pod.sh` · `gen_neutral.py` · `gen_mirrored.py` · `gen_w3.py` ·
 `prompts_w3.py` · `extract_regex.py` · `tau.py` · `landing_gap.py` · `behaviour_w3.py` ·
 `direction_judge.py` · `recount_w2.py` · `recount_w3.py` · `trace_sample.py` ·
-`trace_sample_w2.py` · `samples_w3.py` · both smoke scripts.
-Laptop-side judging/analysis runs in `.venv-w1/`.
+`trace_sample_w2.py` · `samples_w3.py` · **`samples_w4.py`** · **`judge_check_w4.py`** ·
+**`replay_w4.py`** · both smoke scripts.
+Laptop-side judging/analysis runs in `.venv-w1/` (now also holds `transformers` + `safetensors`,
+which is what makes `--dry-run` and `--decode-check` laptop-reproducible).

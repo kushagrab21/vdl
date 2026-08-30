@@ -1,0 +1,601 @@
+form,arm,i,seed,direction,mentions_bet,n_good_cause,n_bad_cause,has_mapping_string,first_mapping_string,first_mapping_char_offset,n_output_tokens
+A,below_good,0,3064,correct,True,1,0,1,good cause,986,276
+A,below_good,1,3065,correct,True,0,1,1,bad cause,1670,433
+A,below_good,2,3066,unclear,True,0,0,0,,-1,354
+A,below_good,3,3067,correct,True,0,0,0,,-1,355
+A,below_good,4,3068,correct,True,1,0,1,good cause,787,264
+A,below_good,5,3069,correct,True,1,0,1,good cause,1069,304
+A,below_good,6,3070,correct,True,0,0,0,,-1,484
+A,below_good,7,3071,correct,True,0,1,1,bad cause,1047,312
+A,below_good,8,3072,correct,True,0,1,1,bad cause,1032,381
+A,below_good,9,3073,correct,True,0,0,0,,-1,318
+A,below_good,10,3074,correct,True,1,0,1,good cause,799,234
+A,below_good,11,3075,unclear,True,0,0,0,,-1,261
+A,below_good,12,3076,correct,True,1,0,1,good cause,1137,308
+A,below_good,13,3077,unclear,True,0,0,0,,-1,294
+A,below_good,14,3078,correct,True,1,0,1,good cause,1142,311
+A,below_good,15,3079,correct,True,0,1,1,bad cause,1501,460
+A,below_good,16,3080,correct,True,1,0,1,good cause,1116,316
+A,below_good,17,3081,correct,True,1,0,1,good cause,882,243
+A,below_good,18,3082,correct,True,0,1,1,bad cause,921,254
+A,below_good,19,3083,correct,True,0,0,0,,-1,294
+A,below_good,20,3084,correct,True,1,0,1,good cause,896,245
+A,below_good,21,3085,correct,True,0,0,0,,-1,319
+A,below_good,22,3086,correct,True,1,0,1,good cause,1417,377
+A,below_good,23,3087,correct,True,0,1,1,bad cause,1931,495
+A,below_good,24,3088,correct,True,1,0,1,good cause,771,221
+A,below_good,25,3089,correct,True,0,1,1,bad cause,1223,358
+A,below_good,26,3090,correct,True,0,1,1,bad cause,1542,409
+A,below_good,27,3091,correct,True,0,1,1,bad cause,980,306
+A,below_good,28,3092,correct,True,0,1,1,bad cause,1279,357
+A,below_good,29,3093,correct,True,0,0,0,,-1,317
+A,below_good,30,3094,correct,True,1,0,1,good cause,1327,402
+A,below_good,31,3095,correct,True,0,0,0,,-1,583
+A,below_good,32,3096,correct,True,1,0,1,good cause,1050,311
+A,below_good,33,3097,correct,True,0,0,0,,-1,380
+A,below_good,34,3098,correct,True,0,1,1,bad cause,1333,348
+A,below_good,35,3099,correct,True,0,1,1,bad cause,1031,462
+A,below_good,36,3100,correct,True,0,1,1,bad cause,1340,402
+A,below_good,37,3101,unclear,True,0,0,0,,-1,302
+A,below_good,38,3102,correct,True,0,1,1,bad cause,1251,346
+A,below_good,39,3103,correct,True,1,0,1,good cause,1209,342
+A,below_good,40,3104,correct,True,1,0,1,good cause,1359,385
+A,below_good,41,3105,correct,True,0,1,1,bad cause,1473,420
+A,below_good,42,3106,unclear,True,0,0,0,,-1,456
+A,below_good,43,3107,correct,True,0,1,1,bad cause,1165,372
+A,below_good,44,3108,correct,True,0,0,0,,-1,539
+A,below_good,45,3109,correct,True,0,1,1,bad cause,1941,518
+A,below_good,46,3110,correct,True,0,0,0,,-1,464
+A,below_good,47,3111,correct,True,1,0,1,good cause,1267,345
+A,below_good,48,3112,unclear,True,0,0,0,,-1,327
+A,below_good,49,3113,unclear,True,0,0,0,,-1,331
+A,below_good,50,3114,correct,True,1,0,1,good cause,991,267
+A,below_good,51,3115,unclear,True,0,0,0,,-1,497
+A,below_good,52,3116,correct,True,0,0,0,,-1,306
+A,below_good,53,3117,correct,True,0,1,1,bad cause,1697,512
+A,below_good,54,3118,correct,True,1,0,1,good cause,1049,342
+A,below_good,55,3119,correct,True,1,0,1,good cause,1608,419
+A,below_good,56,3120,correct,True,1,0,1,good cause,1210,372
+A,below_good,57,3121,correct,True,1,0,1,good cause,1084,293
+A,below_good,58,3122,correct,True,1,0,1,good cause,1104,312
+A,below_good,59,3123,unclear,True,0,0,0,,-1,397
+A,below_good,60,3124,correct,True,1,0,1,good cause,1195,326
+A,below_good,61,3125,correct,True,1,0,1,good cause,948,273
+A,below_good,62,3126,correct,True,0,1,1,bad cause,1169,334
+A,below_good,63,3127,correct,True,1,0,1,good cause,1118,306
+A,below_good,64,3128,unclear,True,0,0,0,,-1,315
+A,below_good,65,3129,correct,True,1,0,1,good cause,1412,369
+A,below_good,66,3130,correct,True,0,0,0,,-1,438
+A,below_good,67,3131,correct,True,1,0,1,good cause,1592,413
+A,below_good,68,3132,correct,True,1,0,1,good cause,1149,315
+A,below_good,69,3133,unclear,True,0,0,0,,-1,262
+A,below_good,70,3134,unclear,True,1,0,1,good cause,1165,314
+A,below_good,71,3135,correct,True,0,1,1,bad cause,1415,386
+A,below_good,72,3136,correct,True,1,0,1,good cause,1244,348
+A,below_good,73,3137,correct,True,0,1,1,bad cause,1210,399
+A,below_good,74,3138,correct,True,1,0,1,good cause,1093,310
+A,below_good,75,3139,correct,True,1,0,1,good cause,1611,422
+A,below_good,76,3140,correct,True,1,0,1,good cause,1134,298
+A,below_good,77,3141,correct,True,0,1,1,bad cause,1278,341
+A,below_good,78,3142,correct,True,1,0,1,good cause,1272,322
+A,below_good,79,3143,correct,True,1,0,1,good cause,1106,310
+A,below_good,80,3144,correct,True,0,0,0,,-1,316
+A,below_good,81,3145,unclear,True,0,0,0,,-1,324
+A,below_good,82,3146,correct,True,1,0,1,good cause,1515,374
+A,below_good,83,3147,correct,True,0,1,1,bad cause,1001,288
+A,below_good,84,3148,correct,True,0,1,1,bad cause,1121,314
+A,below_good,85,3149,correct,True,1,0,1,good cause,1239,334
+A,below_good,86,3150,correct,True,1,0,1,good cause,1063,327
+A,below_good,87,3151,correct,True,0,1,1,bad cause,969,353
+A,below_good,88,3152,correct,True,1,0,1,good cause,1011,294
+A,below_good,89,3153,correct,True,0,0,0,,-1,591
+A,below_good,90,3154,unclear,True,0,0,0,,-1,314
+A,below_good,91,3155,correct,True,0,0,0,,-1,482
+A,below_good,92,3156,correct,True,0,1,1,bad cause,1305,427
+A,below_good,93,3157,correct,True,0,1,1,bad cause,1736,493
+A,below_good,94,3158,correct,True,0,1,1,bad cause,1653,416
+A,below_good,95,3159,correct,True,0,1,1,bad cause,868,285
+A,below_good,96,3160,correct,True,2,0,1,good cause,948,259
+A,below_good,97,3161,correct,True,1,0,1,good cause,1044,255
+A,below_good,98,3162,correct,True,1,0,1,good cause,1376,358
+A,below_good,99,3163,correct,True,1,0,1,good cause,1241,333
+A,below_good,100,3164,unclear,True,0,0,0,,-1,318
+A,below_good,101,3165,correct,True,1,0,1,good cause,1457,347
+A,below_good,102,3166,correct,True,1,0,1,good cause,1334,363
+A,below_good,103,3167,correct,True,1,0,1,good cause,1918,577
+A,below_good,104,3168,correct,True,1,0,1,good cause,1110,297
+A,below_good,105,3169,correct,True,1,0,1,good cause,1249,346
+A,below_good,106,3170,correct,True,1,0,1,good cause,850,304
+A,below_good,107,3171,correct,True,0,1,1,bad cause,1213,344
+A,below_good,108,3172,correct,True,0,1,1,bad cause,1131,329
+A,below_good,109,3173,correct,True,1,0,1,good cause,1135,290
+A,below_good,110,3174,correct,True,1,0,1,good cause,1404,370
+A,below_good,111,3175,correct,True,1,0,1,good cause,1168,335
+A,below_good,112,3176,correct,True,0,1,1,bad cause,936,310
+A,below_good,113,3177,correct,True,0,1,1,bad cause,1070,302
+A,below_good,114,3178,correct,True,1,0,1,good cause,1205,332
+A,below_good,115,3179,unclear,True,0,0,0,,-1,355
+A,below_good,116,3180,correct,True,0,1,1,bad cause,1475,441
+A,below_good,117,3181,correct,True,1,0,1,good cause,1064,302
+A,below_good,118,3182,correct,True,0,1,1,bad cause,978,311
+A,below_good,119,3183,correct,True,1,0,1,good cause,489,363
+A,below_good,120,3184,correct,True,0,0,0,,-1,385
+A,below_good,121,3185,correct,True,1,0,1,good cause,985,280
+A,below_good,122,3186,unclear,True,0,0,0,,-1,385
+A,below_good,123,3187,unclear,True,0,0,0,,-1,358
+A,below_good,124,3188,correct,True,0,0,0,,-1,379
+A,below_good,125,3189,correct,True,0,1,1,bad cause,1163,335
+A,below_good,126,3190,unclear,True,0,0,0,,-1,396
+A,below_good,127,3191,correct,True,0,1,1,bad cause,1524,430
+A,below_good,128,3192,unclear,True,0,0,0,,-1,327
+A,below_good,129,3193,correct,True,0,0,0,,-1,534
+A,below_good,130,3194,correct,True,0,1,1,bad cause,1037,297
+A,below_good,131,3195,correct,True,0,0,0,,-1,297
+A,below_good,132,3196,correct,True,0,1,1,bad cause,1860,498
+A,below_good,133,3197,correct,True,0,1,1,bad cause,1324,365
+A,below_good,134,3198,correct,True,1,0,1,good cause,1385,360
+A,below_good,135,3199,correct,True,1,0,1,good cause,976,301
+A,below_good,136,3200,correct,True,1,0,1,good cause,950,250
+A,below_good,137,3201,unclear,True,0,0,0,,-1,262
+A,below_good,138,3202,correct,True,0,1,1,bad cause,1191,319
+A,below_good,139,3203,correct,True,1,0,1,good cause,1393,362
+A,below_good,140,3204,correct,True,1,1,1,bad cause,1371,373
+A,below_good,141,3205,correct,True,1,0,1,good cause,1025,288
+A,below_good,142,3206,correct,True,0,1,1,bad cause,1167,395
+A,below_good,143,3207,correct,True,1,0,1,good cause,1673,469
+A,below_good,144,3208,correct,True,0,1,1,bad cause,1358,382
+A,below_good,145,3209,correct,True,1,0,1,good cause,1011,285
+A,below_good,146,3210,correct,True,1,0,1,good cause,2068,674
+A,below_good,147,3211,correct,True,1,0,1,good cause,1368,367
+A,below_good,148,3212,correct,True,0,1,1,bad cause,1383,352
+A,below_good,149,3213,correct,True,1,0,1,good cause,1079,292
+A,above_good,0,4064,correct,True,0,0,0,,-1,429
+A,above_good,1,4065,correct,True,1,0,1,good cause,1151,333
+A,above_good,2,4066,unclear,True,0,0,0,,-1,260
+A,above_good,3,4067,correct,True,0,0,0,,-1,299
+A,above_good,4,4068,correct,True,1,0,1,good cause,1199,331
+A,above_good,5,4069,unclear,True,0,0,0,,-1,377
+A,above_good,6,4070,unclear,True,0,0,0,,-1,297
+A,above_good,7,4071,unclear,True,0,0,0,,-1,293
+A,above_good,8,4072,unclear,True,0,0,0,,-1,345
+A,above_good,9,4073,correct,True,1,0,1,good cause,1249,366
+A,above_good,10,4074,unclear,True,0,0,0,,-1,300
+A,above_good,11,4075,incorrect,True,0,0,0,,-1,312
+A,above_good,12,4076,correct,True,1,0,1,good cause,1209,336
+A,above_good,13,4077,correct,True,1,0,1,good cause,1160,308
+A,above_good,14,4078,incorrect,True,0,1,1,bad cause,1103,318
+A,above_good,15,4079,unclear,True,0,0,0,,-1,540
+A,above_good,16,4080,correct,True,1,0,1,good cause,1130,328
+A,above_good,17,4081,unclear,True,0,0,0,,-1,350
+A,above_good,18,4082,correct,True,1,0,1,good cause,1185,324
+A,above_good,19,4083,incorrect,True,1,0,1,good cause,1144,354
+A,above_good,20,4084,correct,True,2,0,1,good cause,1241,415
+A,above_good,21,4085,incorrect,True,1,0,1,good cause,1284,324
+A,above_good,22,4086,correct,True,0,1,1,bad cause,1047,330
+A,above_good,23,4087,unclear,True,0,0,0,,-1,305
+A,above_good,24,4088,unclear,True,0,0,0,,-1,347
+A,above_good,25,4089,correct,True,1,0,1,good cause,1099,294
+A,above_good,26,4090,unclear,False,0,0,0,,-1,271
+A,above_good,27,4091,correct,True,0,1,1,bad cause,1202,350
+A,above_good,28,4092,unclear,True,0,0,0,,-1,345
+A,above_good,29,4093,incorrect,True,1,0,1,good cause,1070,297
+A,above_good,30,4094,unclear,True,0,0,0,,-1,251
+A,above_good,31,4095,correct,True,1,0,1,good cause,1187,316
+A,above_good,32,4096,unclear,True,0,0,0,,-1,462
+A,above_good,33,4097,correct,True,1,0,1,good cause,1374,370
+A,above_good,34,4098,correct,True,1,0,1,good cause,1031,315
+A,above_good,35,4099,correct,True,1,0,1,good cause,934,278
+A,above_good,36,4100,correct,True,0,1,1,bad cause,1241,330
+A,above_good,37,4101,correct,True,1,0,1,good cause,1166,415
+A,above_good,38,4102,correct,True,1,0,1,good cause,1282,352
+A,above_good,39,4103,incorrect,True,0,1,1,bad cause,1057,307
+A,above_good,40,4104,correct,True,0,0,0,,-1,248
+A,above_good,41,4105,correct,True,0,1,1,bad cause,1211,335
+A,above_good,42,4106,correct,True,1,0,1,good cause,1250,357
+A,above_good,43,4107,unclear,True,0,0,0,,-1,377
+A,above_good,44,4108,correct,True,0,0,0,,-1,296
+A,above_good,45,4109,correct,True,0,0,0,,-1,263
+A,above_good,46,4110,unclear,True,0,0,0,,-1,299
+A,above_good,47,4111,unclear,True,1,1,1,good cause,1259,367
+A,above_good,48,4112,unclear,True,0,0,0,,-1,396
+A,above_good,49,4113,unclear,True,0,0,0,,-1,366
+A,above_good,50,4114,incorrect,True,1,0,1,good cause,1120,298
+A,above_good,51,4115,correct,True,1,0,1,good cause,1506,404
+A,above_good,52,4116,unclear,True,0,0,0,,-1,337
+A,above_good,53,4117,correct,True,0,0,0,,-1,352
+A,above_good,54,4118,unclear,True,0,0,0,,-1,298
+A,above_good,55,4119,unclear,True,0,0,0,,-1,372
+A,above_good,56,4120,correct,True,1,0,1,good cause,1598,419
+A,above_good,57,4121,correct,True,0,0,0,,-1,488
+A,above_good,58,4122,unclear,True,0,0,0,,-1,349
+A,above_good,59,4123,incorrect,True,0,0,0,,-1,300
+A,above_good,60,4124,correct,True,1,0,1,good cause,1824,456
+A,above_good,61,4125,unclear,True,0,0,0,,-1,295
+A,above_good,62,4126,unclear,True,0,0,0,,-1,311
+A,above_good,63,4127,correct,True,0,0,0,,-1,330
+A,above_good,64,4128,incorrect,True,1,0,1,good cause,1098,368
+A,above_good,65,4129,correct,True,0,1,1,bad cause,1257,356
+A,above_good,66,4130,correct,True,0,1,1,bad cause,1252,324
+A,above_good,67,4131,unclear,True,0,0,0,,-1,283
+A,above_good,68,4132,unclear,True,0,0,0,,-1,393
+A,above_good,69,4133,unclear,True,0,0,0,,-1,293
+A,above_good,70,4134,unclear,True,0,0,0,,-1,401
+A,above_good,71,4135,unclear,True,0,0,0,,-1,300
+A,above_good,72,4136,unclear,True,0,0,0,,-1,302
+A,above_good,73,4137,correct,True,0,0,0,,-1,314
+A,above_good,74,4138,correct,True,0,0,0,,-1,389
+A,above_good,75,4139,correct,True,1,0,1,good cause,1103,321
+A,above_good,76,4140,correct,True,1,0,1,good cause,1563,424
+A,above_good,77,4141,unclear,True,1,1,1,bad cause,1219,350
+A,above_good,78,4142,correct,True,1,0,1,good cause,1325,359
+A,above_good,79,4143,correct,True,1,0,1,good cause,1008,291
+A,above_good,80,4144,incorrect,True,0,1,1,bad cause,1523,417
+A,above_good,81,4145,unclear,False,0,0,0,,-1,261
+A,above_good,82,4146,correct,True,1,0,1,good cause,1194,352
+A,above_good,83,4147,unclear,True,0,0,0,,-1,276
+A,above_good,84,4148,correct,True,0,0,0,,-1,339
+A,above_good,85,4149,correct,True,0,1,1,bad cause,1133,310
+A,above_good,86,4150,correct,True,0,0,0,,-1,353
+A,above_good,87,4151,correct,True,0,0,0,,-1,319
+A,above_good,88,4152,correct,True,0,1,1,bad cause,1510,426
+A,above_good,89,4153,incorrect,True,0,0,0,,-1,438
+A,above_good,90,4154,correct,True,1,0,1,good cause,1220,310
+A,above_good,91,4155,incorrect,True,0,0,0,,-1,469
+A,above_good,92,4156,correct,True,0,0,0,,-1,303
+A,above_good,93,4157,unclear,True,0,0,0,,-1,385
+A,above_good,94,4158,unclear,True,0,0,0,,-1,288
+A,above_good,95,4159,correct,True,1,0,1,good cause,1578,428
+A,above_good,96,4160,correct,True,0,1,1,bad cause,1172,323
+A,above_good,97,4161,correct,True,0,0,0,,-1,299
+A,above_good,98,4162,correct,True,0,0,0,,-1,279
+A,above_good,99,4163,correct,True,0,1,1,bad cause,1698,469
+A,above_good,100,4164,correct,True,0,1,1,bad cause,1573,448
+A,above_good,101,4165,unclear,True,0,0,0,,-1,275
+A,above_good,102,4166,correct,True,0,1,1,bad cause,1126,295
+A,above_good,103,4167,correct,True,0,0,0,,-1,309
+A,above_good,104,4168,correct,True,1,0,1,good cause,1424,430
+A,above_good,105,4169,unclear,True,0,0,0,,-1,283
+A,above_good,106,4170,correct,True,1,0,1,good cause,1021,293
+A,above_good,107,4171,correct,True,0,1,1,bad cause,1122,296
+A,above_good,108,4172,correct,True,1,0,1,good cause,1194,360
+A,above_good,109,4173,correct,True,1,0,1,good cause,1228,354
+A,above_good,110,4174,correct,True,1,0,1,good cause,1266,351
+A,above_good,111,4175,unclear,True,0,0,0,,-1,389
+A,above_good,112,4176,correct,True,1,0,1,good cause,1190,362
+A,above_good,113,4177,correct,True,1,0,1,good cause,1801,485
+A,above_good,114,4178,correct,True,1,0,1,good cause,2870,898
+A,above_good,115,4179,unclear,True,0,0,0,,-1,485
+A,above_good,116,4180,incorrect,True,0,1,1,bad cause,1247,390
+A,above_good,117,4181,correct,True,1,0,1,good cause,1028,325
+A,above_good,118,4182,unclear,True,0,0,0,,-1,399
+A,above_good,119,4183,unclear,True,0,0,0,,-1,282
+A,above_good,120,4184,correct,True,0,1,1,bad cause,1462,383
+A,above_good,121,4185,unclear,True,0,0,0,,-1,483
+A,above_good,122,4186,unclear,True,0,0,0,,-1,702
+A,above_good,123,4187,correct,True,0,1,1,bad cause,1349,379
+A,above_good,124,4188,correct,True,1,0,1,good cause,1302,357
+A,above_good,125,4189,unclear,True,0,0,0,,-1,318
+A,above_good,126,4190,correct,True,0,1,1,bad cause,1154,321
+A,above_good,127,4191,incorrect,True,0,0,0,,-1,517
+A,above_good,128,4192,correct,True,1,0,1,good cause,1140,344
+A,above_good,129,4193,correct,True,0,1,1,bad cause,1014,293
+A,above_good,130,4194,correct,True,0,0,0,,-1,337
+A,above_good,131,4195,correct,True,1,0,1,good cause,1270,344
+A,above_good,132,4196,unclear,True,0,0,0,,-1,297
+A,above_good,133,4197,unclear,True,0,0,0,,-1,327
+A,above_good,134,4198,unclear,True,0,0,0,,-1,292
+A,above_good,135,4199,unclear,True,0,0,0,,-1,417
+A,above_good,136,4200,correct,True,0,0,0,,-1,313
+A,above_good,137,4201,unclear,True,0,0,0,,-1,324
+A,above_good,138,4202,unclear,True,0,0,0,,-1,229
+A,above_good,139,4203,unclear,True,0,0,0,,-1,300
+A,above_good,140,4204,unclear,True,0,0,0,,-1,411
+A,above_good,141,4205,correct,True,0,1,1,bad cause,1220,322
+A,above_good,142,4206,correct,True,1,0,1,good cause,1552,388
+A,above_good,143,4207,correct,True,1,0,1,good cause,1104,294
+A,above_good,144,4208,correct,True,1,0,1,good cause,1235,335
+A,above_good,145,4209,correct,True,0,1,1,bad cause,1024,328
+A,above_good,146,4210,unclear,True,0,0,0,,-1,231
+A,above_good,147,4211,correct,True,1,0,1,good cause,1133,328
+A,above_good,148,4212,unclear,True,0,0,0,,-1,327
+A,above_good,149,4213,correct,True,0,1,1,bad cause,1184,328
+B,below_good,0,6064,incorrect,True,1,0,1,good cause,1237,342
+B,below_good,1,6065,unclear,True,0,0,0,,-1,354
+B,below_good,2,6066,correct,True,1,0,1,good cause,1624,477
+B,below_good,3,6067,unclear,True,0,0,0,,-1,402
+B,below_good,4,6068,correct,True,1,0,1,good cause,1929,615
+B,below_good,5,6069,correct,True,1,0,1,good cause,1222,334
+B,below_good,6,6070,correct,True,1,0,1,good cause,1625,429
+B,below_good,7,6071,correct,True,0,0,0,,-1,402
+B,below_good,8,6072,unclear,True,0,0,0,,-1,378
+B,below_good,9,6073,unclear,True,0,0,0,,-1,359
+B,below_good,10,6074,correct,True,1,0,1,good cause,1779,449
+B,below_good,11,6075,correct,True,0,0,0,,-1,740
+B,below_good,12,6076,correct,True,1,0,1,good cause,1165,328
+B,below_good,13,6077,correct,True,0,0,0,,-1,394
+B,below_good,14,6078,unclear,True,0,0,0,,-1,413
+B,below_good,15,6079,correct,True,0,0,0,,-1,432
+B,below_good,16,6080,correct,True,1,0,1,good cause,1968,618
+B,below_good,17,6081,unclear,True,0,0,0,,-1,403
+B,below_good,18,6082,correct,True,0,1,1,bad cause,1130,328
+B,below_good,19,6083,correct,True,1,0,1,good cause,1298,354
+B,below_good,20,6084,correct,True,1,0,1,good cause,1454,373
+B,below_good,21,6085,unclear,True,1,0,1,good cause,1215,383
+B,below_good,22,6086,correct,True,1,0,1,good cause,1270,410
+B,below_good,23,6087,correct,True,0,1,1,bad cause,1513,450
+B,below_good,24,6088,correct,True,1,0,1,good cause,998,269
+B,below_good,25,6089,correct,True,1,0,1,good cause,2202,635
+B,below_good,26,6090,correct,True,0,0,0,,-1,451
+B,below_good,27,6091,correct,True,0,0,0,,-1,639
+B,below_good,28,6092,correct,True,0,1,1,bad cause,1456,396
+B,below_good,29,6093,correct,True,1,0,1,good cause,1346,369
+B,below_good,30,6094,correct,True,0,1,1,bad cause,1254,332
+B,below_good,31,6095,correct,True,0,0,0,,-1,428
+B,below_good,32,6096,correct,True,1,0,1,good cause,1763,457
+B,below_good,33,6097,correct,True,0,0,0,,-1,516
+B,below_good,34,6098,correct,True,0,1,1,bad cause,2002,527
+B,below_good,35,6099,correct,True,0,0,0,,-1,397
+B,below_good,36,6100,correct,True,1,0,1,good cause,1361,362
+B,below_good,37,6101,correct,True,1,0,1,good cause,1143,303
+B,below_good,38,6102,correct,True,0,1,1,bad cause,1574,429
+B,below_good,39,6103,correct,True,1,0,1,good cause,1334,363
+B,below_good,40,6104,correct,True,1,0,1,good cause,1745,447
+B,below_good,41,6105,correct,True,0,0,0,,-1,528
+B,below_good,42,6106,correct,True,0,1,1,bad cause,1598,423
+B,below_good,43,6107,correct,True,1,0,1,good cause,1307,353
+B,below_good,44,6108,unclear,True,0,0,0,,-1,517
+B,below_good,45,6109,correct,True,1,0,1,good cause,1858,476
+B,below_good,46,6110,unclear,True,0,0,0,,-1,387
+B,below_good,47,6111,correct,True,1,0,1,good cause,1567,437
+B,below_good,48,6112,unclear,True,0,0,0,,-1,406
+B,below_good,49,6113,unclear,True,0,0,0,,-1,420
+B,below_good,50,6114,correct,True,1,0,1,good cause,1196,333
+B,below_good,51,6115,unclear,True,0,0,0,,-1,398
+B,below_good,52,6116,correct,True,1,0,1,good cause,1558,414
+B,below_good,53,6117,correct,True,1,0,1,good cause,1679,446
+B,below_good,54,6118,unclear,True,0,0,0,,-1,375
+B,below_good,55,6119,correct,True,1,0,1,good cause,1168,350
+B,below_good,56,6120,incorrect,True,1,0,1,good cause,1330,373
+B,below_good,57,6121,correct,True,0,1,1,bad cause,1322,374
+B,below_good,58,6122,unclear,False,0,0,0,,-1,469
+B,below_good,59,6123,correct,True,1,0,1,good cause,1880,542
+B,below_good,60,6124,unclear,True,0,0,0,,-1,424
+B,below_good,61,6125,correct,True,0,1,1,bad cause,1248,353
+B,below_good,62,6126,correct,True,0,0,0,,-1,531
+B,below_good,63,6127,correct,True,0,1,1,bad cause,1858,523
+B,below_good,64,6128,correct,True,0,1,1,bad cause,1703,485
+B,below_good,65,6129,correct,True,0,1,1,bad cause,1505,438
+B,below_good,66,6130,correct,True,0,1,1,bad cause,1462,455
+B,below_good,67,6131,correct,True,0,0,0,,-1,583
+B,below_good,68,6132,correct,True,2,0,1,good cause,1523,642
+B,below_good,69,6133,correct,True,0,0,0,,-1,397
+B,below_good,70,6134,incorrect,True,1,0,1,good cause,1409,449
+B,below_good,71,6135,correct,True,0,0,0,,-1,347
+B,below_good,72,6136,correct,True,0,1,1,bad cause,1292,366
+B,below_good,73,6137,correct,True,1,0,1,good cause,2557,868
+B,below_good,74,6138,correct,True,1,0,1,good cause,1602,412
+B,below_good,75,6139,correct,True,0,0,0,,-1,325
+B,below_good,76,6140,correct,True,0,1,1,bad cause,1591,412
+B,below_good,77,6141,correct,True,0,0,0,,-1,359
+B,below_good,78,6142,correct,True,0,1,1,bad cause,1530,454
+B,below_good,79,6143,unclear,True,0,0,0,,-1,336
+B,below_good,80,6144,unclear,True,0,0,0,,-1,390
+B,below_good,81,6145,correct,True,0,0,0,,-1,561
+B,below_good,82,6146,unclear,True,0,0,0,,-1,303
+B,below_good,83,6147,correct,True,1,0,1,good cause,1344,376
+B,below_good,84,6148,unclear,True,0,0,0,,-1,378
+B,below_good,85,6149,correct,True,1,0,1,good cause,1372,374
+B,below_good,86,6150,correct,True,0,1,1,bad cause,1234,333
+B,below_good,87,6151,correct,True,0,1,1,bad cause,1389,371
+B,below_good,88,6152,correct,True,1,0,1,good cause,1343,363
+B,below_good,89,6153,correct,True,1,0,1,good cause,1504,374
+B,below_good,90,6154,correct,True,0,0,0,,-1,541
+B,below_good,91,6155,correct,True,1,0,1,good cause,1481,391
+B,below_good,92,6156,correct,True,0,0,0,,-1,276
+B,below_good,93,6157,correct,True,1,0,1,good cause,1398,398
+B,below_good,94,6158,correct,True,1,0,1,good cause,1486,379
+B,below_good,95,6159,correct,True,1,0,1,good cause,1406,381
+B,below_good,96,6160,correct,True,1,0,1,good cause,1323,348
+B,below_good,97,6161,correct,True,1,0,1,good cause,1265,347
+B,below_good,98,6162,correct,True,0,1,1,bad cause,1676,447
+B,below_good,99,6163,correct,True,0,0,0,,-1,508
+B,below_good,100,6164,correct,True,1,0,1,good cause,1765,498
+B,below_good,101,6165,correct,True,1,0,1,good cause,1592,416
+B,below_good,102,6166,correct,True,0,0,0,,-1,450
+B,below_good,103,6167,correct,True,1,0,1,good cause,1663,466
+B,below_good,104,6168,correct,True,1,0,1,good cause,1482,400
+B,below_good,105,6169,correct,True,1,0,1,good cause,1370,401
+B,below_good,106,6170,correct,True,0,0,0,,-1,696
+B,below_good,107,6171,correct,True,0,0,0,,-1,611
+B,below_good,108,6172,correct,True,0,1,1,bad cause,1652,477
+B,below_good,109,6173,unclear,True,0,0,0,,-1,388
+B,below_good,110,6174,correct,True,0,0,0,,-1,721
+B,below_good,111,6175,correct,True,0,0,0,,-1,486
+B,below_good,112,6176,incorrect,True,1,0,1,good cause,1718,428
+B,below_good,113,6177,correct,True,0,0,0,,-1,548
+B,below_good,114,6178,unclear,True,0,0,0,,-1,345
+B,below_good,115,6179,correct,True,0,1,1,bad cause,1213,365
+B,below_good,116,6180,correct,True,0,1,1,bad cause,1151,320
+B,below_good,117,6181,correct,True,1,0,1,good cause,1457,411
+B,below_good,118,6182,correct,True,1,0,1,good cause,1610,452
+B,below_good,119,6183,unclear,True,0,0,0,,-1,392
+B,below_good,120,6184,correct,True,0,0,0,,-1,616
+B,below_good,121,6185,correct,True,0,0,0,,-1,516
+B,below_good,122,6186,correct,True,1,0,1,good cause,1650,538
+B,below_good,123,6187,correct,True,0,0,0,,-1,318
+B,below_good,124,6188,correct,True,0,0,0,,-1,444
+B,below_good,125,6189,correct,True,1,0,1,good cause,1169,321
+B,below_good,126,6190,unclear,True,0,0,0,,-1,357
+B,below_good,127,6191,correct,True,1,0,1,good cause,1947,525
+B,below_good,128,6192,correct,True,0,1,1,bad cause,1215,319
+B,below_good,129,6193,correct,True,0,0,0,,-1,540
+B,below_good,130,6194,correct,True,0,1,1,bad cause,1629,453
+B,below_good,131,6195,unclear,True,0,0,0,,-1,399
+B,below_good,132,6196,correct,True,1,0,1,good cause,1210,329
+B,below_good,133,6197,correct,True,1,0,1,good cause,1272,355
+B,below_good,134,6198,correct,True,0,1,1,bad cause,1435,403
+B,below_good,135,6199,unclear,True,0,0,0,,-1,390
+B,below_good,136,6200,correct,True,1,0,1,good cause,2222,642
+B,below_good,137,6201,correct,True,1,0,1,good cause,1131,328
+B,below_good,138,6202,correct,True,0,0,0,,-1,371
+B,below_good,139,6203,correct,True,2,0,1,good cause,1196,471
+B,below_good,140,6204,correct,True,0,1,1,bad cause,1690,500
+B,below_good,141,6205,correct,True,1,0,1,good cause,1486,415
+B,below_good,142,6206,correct,True,0,1,1,bad cause,1255,376
+B,below_good,143,6207,correct,True,1,0,1,good cause,1928,480
+B,below_good,144,6208,correct,True,1,0,1,good cause,3095,916
+B,below_good,145,6209,correct,True,1,1,1,bad cause,1410,377
+B,below_good,146,6210,correct,True,1,0,1,good cause,1500,408
+B,below_good,147,6211,correct,True,0,0,0,,-1,701
+B,below_good,148,6212,correct,True,1,0,1,good cause,1273,346
+B,below_good,149,6213,correct,True,0,1,1,bad cause,1389,371
+B,above_good,0,7064,correct,True,0,0,0,,-1,312
+B,above_good,1,7065,unclear,True,0,0,0,,-1,392
+B,above_good,2,7066,incorrect,True,0,0,0,,-1,282
+B,above_good,3,7067,correct,True,0,0,0,,-1,415
+B,above_good,4,7068,correct,True,1,0,1,good cause,1352,380
+B,above_good,5,7069,correct,True,0,1,1,bad cause,1618,423
+B,above_good,6,7070,unclear,True,0,0,0,,-1,364
+B,above_good,7,7071,unclear,True,0,0,0,,-1,382
+B,above_good,8,7072,incorrect,True,0,0,0,,-1,641
+B,above_good,9,7073,incorrect,True,0,0,0,,-1,564
+B,above_good,10,7074,unclear,True,0,0,0,,-1,393
+B,above_good,11,7075,unclear,True,0,0,0,,-1,380
+B,above_good,12,7076,correct,True,1,0,1,good cause,1182,327
+B,above_good,13,7077,correct,True,1,0,1,good cause,1120,322
+B,above_good,14,7078,unclear,True,0,0,0,,-1,360
+B,above_good,15,7079,correct,True,0,0,0,,-1,373
+B,above_good,16,7080,correct,True,0,1,1,bad cause,1245,347
+B,above_good,17,7081,unclear,True,0,0,0,,-1,407
+B,above_good,18,7082,incorrect,True,0,0,0,,-1,460
+B,above_good,19,7083,correct,True,0,0,0,,-1,552
+B,above_good,20,7084,correct,True,1,0,1,good cause,1221,315
+B,above_good,21,7085,correct,True,0,0,0,,-1,493
+B,above_good,22,7086,unclear,True,0,0,0,,-1,437
+B,above_good,23,7087,correct,True,1,0,1,good cause,1297,333
+B,above_good,24,7088,unclear,True,0,0,0,,-1,502
+B,above_good,25,7089,correct,True,0,0,0,,-1,484
+B,above_good,26,7090,correct,True,0,1,1,bad cause,1407,445
+B,above_good,27,7091,unclear,True,0,0,0,,-1,389
+B,above_good,28,7092,correct,True,1,0,1,good cause,1138,327
+B,above_good,29,7093,correct,True,1,0,1,good cause,1039,387
+B,above_good,30,7094,unclear,True,1,0,1,good cause,1348,383
+B,above_good,31,7095,correct,True,0,0,0,,-1,404
+B,above_good,32,7096,correct,True,0,1,1,bad cause,1393,367
+B,above_good,33,7097,correct,True,1,1,1,bad cause,1211,514
+B,above_good,34,7098,correct,True,1,0,1,good cause,1018,288
+B,above_good,35,7099,incorrect,True,0,0,0,,-1,410
+B,above_good,36,7100,incorrect,True,0,0,0,,-1,790
+B,above_good,37,7101,unclear,True,0,0,0,,-1,456
+B,above_good,38,7102,correct,True,1,0,1,good cause,1430,395
+B,above_good,39,7103,unclear,True,0,0,0,,-1,403
+B,above_good,40,7104,correct,True,0,0,0,,-1,589
+B,above_good,41,7105,incorrect,True,0,0,0,,-1,431
+B,above_good,42,7106,correct,True,1,0,1,good cause,1159,354
+B,above_good,43,7107,unclear,True,0,0,0,,-1,457
+B,above_good,44,7108,incorrect,True,0,1,1,bad cause,1228,770
+B,above_good,45,7109,unclear,True,0,0,0,,-1,323
+B,above_good,46,7110,incorrect,True,0,0,0,,-1,525
+B,above_good,47,7111,incorrect,True,1,0,1,good cause,1242,344
+B,above_good,48,7112,unclear,True,0,0,0,,-1,333
+B,above_good,49,7113,correct,True,1,0,1,good cause,1549,444
+B,above_good,50,7114,correct,True,0,1,1,bad cause,1783,508
+B,above_good,51,7115,correct,True,1,0,1,good cause,1625,406
+B,above_good,52,7116,correct,True,1,0,1,good cause,979,294
+B,above_good,53,7117,correct,True,1,0,1,good cause,1279,361
+B,above_good,54,7118,incorrect,True,1,0,1,good cause,1067,304
+B,above_good,55,7119,unclear,True,0,0,0,,-1,308
+B,above_good,56,7120,correct,True,1,0,1,good cause,1258,344
+B,above_good,57,7121,correct,True,0,0,0,,-1,627
+B,above_good,58,7122,unclear,True,0,0,0,,-1,661
+B,above_good,59,7123,correct,True,0,0,0,,-1,499
+B,above_good,60,7124,unclear,True,0,0,0,,-1,386
+B,above_good,61,7125,incorrect,True,0,0,0,,-1,642
+B,above_good,62,7126,correct,True,1,0,1,good cause,1390,375
+B,above_good,63,7127,correct,True,1,0,1,good cause,1393,392
+B,above_good,64,7128,incorrect,True,0,0,0,,-1,676
+B,above_good,65,7129,incorrect,True,0,0,0,,-1,495
+B,above_good,66,7130,correct,True,1,0,1,good cause,2186,661
+B,above_good,67,7131,correct,True,0,1,1,bad cause,1708,478
+B,above_good,68,7132,unclear,True,0,0,0,,-1,455
+B,above_good,69,7133,correct,True,0,1,1,bad cause,1834,470
+B,above_good,70,7134,incorrect,True,0,0,0,,-1,925
+B,above_good,71,7135,unclear,True,0,0,0,,-1,398
+B,above_good,72,7136,correct,True,1,0,1,good cause,1631,417
+B,above_good,73,7137,incorrect,True,1,0,1,good cause,1273,338
+B,above_good,74,7138,correct,True,1,0,1,good cause,1395,383
+B,above_good,75,7139,correct,True,1,0,1,good cause,1407,373
+B,above_good,76,7140,unclear,True,0,0,0,,-1,332
+B,above_good,77,7141,correct,True,0,1,1,bad cause,1156,303
+B,above_good,78,7142,unclear,False,0,0,0,,-1,399
+B,above_good,79,7143,correct,True,1,0,1,good cause,1151,295
+B,above_good,80,7144,correct,True,0,0,0,,-1,332
+B,above_good,81,7145,incorrect,True,1,0,1,good cause,1311,350
+B,above_good,82,7146,incorrect,True,0,0,0,,-1,421
+B,above_good,83,7147,correct,True,1,0,1,good cause,1439,388
+B,above_good,84,7148,unclear,True,0,0,0,,-1,395
+B,above_good,85,7149,correct,True,1,0,1,good cause,1478,372
+B,above_good,86,7150,correct,True,1,0,1,good cause,1671,494
+B,above_good,87,7151,correct,True,1,0,1,good cause,1296,409
+B,above_good,88,7152,unclear,True,0,0,0,,-1,447
+B,above_good,89,7153,incorrect,True,1,0,1,good cause,1548,401
+B,above_good,90,7154,correct,True,1,0,1,good cause,1330,369
+B,above_good,91,7155,incorrect,True,0,0,0,,-1,626
+B,above_good,92,7156,correct,True,1,0,1,good cause,1306,358
+B,above_good,93,7157,correct,True,1,0,1,good cause,1595,468
+B,above_good,94,7158,unclear,True,0,0,0,,-1,360
+B,above_good,95,7159,incorrect,True,0,0,0,,-1,379
+B,above_good,96,7160,correct,True,1,0,1,good cause,1445,379
+B,above_good,97,7161,correct,True,0,0,0,,-1,495
+B,above_good,98,7162,unclear,True,0,0,0,,-1,340
+B,above_good,99,7163,incorrect,True,1,0,1,good cause,1301,344
+B,above_good,100,7164,correct,True,1,0,1,good cause,1630,435
+B,above_good,101,7165,unclear,True,0,0,0,,-1,424
+B,above_good,102,7166,incorrect,True,0,0,0,,-1,372
+B,above_good,103,7167,unclear,True,0,0,0,,-1,331
+B,above_good,104,7168,correct,True,1,0,1,good cause,1542,402
+B,above_good,105,7169,correct,True,1,0,1,good cause,1748,465
+B,above_good,106,7170,unclear,True,0,0,0,,-1,363
+B,above_good,107,7171,correct,True,0,0,0,,-1,446
+B,above_good,108,7172,correct,True,0,0,0,,-1,371
+B,above_good,109,7173,incorrect,True,1,0,1,good cause,1398,361
+B,above_good,110,7174,correct,True,0,1,1,bad cause,1694,475
+B,above_good,111,7175,correct,True,1,0,1,good cause,1485,428
+B,above_good,112,7176,correct,True,1,0,1,good cause,1721,451
+B,above_good,113,7177,unclear,True,0,0,0,,-1,473
+B,above_good,114,7178,correct,True,0,1,1,bad cause,1380,382
+B,above_good,115,7179,correct,True,0,1,1,bad cause,1204,340
+B,above_good,116,7180,incorrect,True,0,0,0,,-1,690
+B,above_good,117,7181,correct,True,1,0,1,good cause,2429,552
+B,above_good,118,7182,incorrect,True,0,0,0,,-1,594
+B,above_good,119,7183,incorrect,True,0,0,0,,-1,723
+B,above_good,120,7184,correct,True,0,0,0,,-1,514
+B,above_good,121,7185,incorrect,True,0,0,0,,-1,1074
+B,above_good,122,7186,correct,True,1,0,1,good cause,1366,380
+B,above_good,123,7187,correct,True,1,0,1,good cause,1020,288
+B,above_good,124,7188,correct,True,1,0,1,good cause,1467,361
+B,above_good,125,7189,unclear,True,0,0,0,,-1,429
+B,above_good,126,7190,correct,True,1,0,1,good cause,1294,358
+B,above_good,127,7191,unclear,True,0,0,0,,-1,426
+B,above_good,128,7192,correct,True,0,1,1,bad cause,1224,348
+B,above_good,129,7193,correct,True,1,0,1,good cause,1086,332
+B,above_good,130,7194,correct,True,1,0,1,good cause,1444,389
+B,above_good,131,7195,incorrect,True,0,1,1,bad cause,1355,377
+B,above_good,132,7196,correct,True,1,0,1,good cause,1344,359
+B,above_good,133,7197,correct,True,1,0,1,good cause,1487,403
+B,above_good,134,7198,unclear,True,0,0,0,,-1,532
+B,above_good,135,7199,correct,True,1,0,1,good cause,1270,347
+B,above_good,136,7200,correct,True,1,0,1,good cause,1469,390
+B,above_good,137,7201,correct,True,1,0,1,good cause,2024,507
+B,above_good,138,7202,correct,True,1,0,1,good cause,1108,281
+B,above_good,139,7203,unclear,True,0,0,0,,-1,346
+B,above_good,140,7204,correct,True,1,0,1,good cause,1315,354
+B,above_good,141,7205,correct,True,0,0,0,,-1,435
+B,above_good,142,7206,correct,True,1,0,1,good cause,1447,398
+B,above_good,143,7207,unclear,True,0,0,0,,-1,473
+B,above_good,144,7208,correct,True,1,0,1,good cause,1350,373
+B,above_good,145,7209,correct,True,0,1,1,bad cause,1179,320
+B,above_good,146,7210,incorrect,True,0,1,1,bad cause,1329,358
+B,above_good,147,7211,unclear,True,0,0,0,,-1,415
+B,above_good,148,7212,incorrect,True,0,0,0,,-1,675
+B,above_good,149,7213,correct,True,0,0,0,,-1,393

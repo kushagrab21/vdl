@@ -1,0 +1,7 @@
+form,arm,n_traces,n_replayed,n_quarantined,n_points,n_end_of_prompt,n_est,n_est_offwin,n_tau_echo,n_final,n_final_corrected,n_belief,belief_absent,belief_absent_rate,bytes,wall_secs
+A,below_good,150,150,0,1192,150,254,217,160,150,150,111,39,0.26,585892144,24.7
+A,above_good,150,150,0,1137,150,255,205,154,150,150,73,77,0.5133,558858544,16.8
+A,neutral,50,50,0,272,50,60,62,0,50,50,0,50,1.0,133693736,4.8
+B,below_good,150,150,0,1859,150,276,847,193,150,150,93,57,0.38,913735984,21.6
+B,above_good,150,150,0,1793,150,273,817,177,150,150,76,74,0.4933,881295664,21.2
+B,baseline,50,50,0,415,50,45,218,2,50,50,0,50,1.0,203981096,5.7

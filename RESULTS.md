@@ -2289,3 +2289,332 @@ terminated, volume holding `/workspace/venv` + 28 GB Qwen2.5-14B cache. `axvdenx
 **terminated** 02:33:06 UTC per V-003; its deploy key `161661175` should be revoked at the
 researcher's convenience since the private half died with the volume.
 
+
+---
+
+## V-006 · W3 audit · 2026-08-30
+
+*Transcribed verbatim from the W4 order (Step 1). Entry number allocated by the runner:
+`V-00x` in the order → **V-006** (V-005 was the last V- entry). The one placeholder inside the
+body, `(P-00x)`, is resolved to **P-005** — the belief-conditional decomposition entry — and
+that resolution is flagged as a runner judgment call rather than made silently.*
+
+W3 ACCEPTED. The form-B recount (+0.1267 corrected-basis vs judge +0.120) is the packet's
+load-bearing recount and passes. D-018 is promoted to a headline behavioural finding: the
+screening gap did not replicate (winner's curse across n; z=2.83); G-002 STANDS as FAIL on
+form A. The belief-conditional decomposition (P-005) is the central W3 result, provisional
+pending the judge validation completed in this packet. All nine W3 judgment calls RATIFIED,
+including discarding the D-017 first-pass rather than caveating it, and the V-003/V-003R
+collision handling; from now on the RUNNER allocates all entry numbers and reports them.
+The direction-judge sample read by the researcher: 5/6 verdicts unambiguous; one lenient
+case (form A above_good rollout 0: 'correct' credited with no explicit cause mapping in the
+trace) — the 'correct' class may absorb mapping-silent traces, which would dilute rather
+than inflate the conditional split; the 'incorrect' class is unvalidated and load-bearing.
+Completed in Step 2 before any W5 analysis is trusted.
+
+---
+
+## R-009 · Pivot 2 (OWNER-APPROVED): localize the believed direction p̂ · 2026-08-30
+
+*Transcribed verbatim from the W4 order (Step 1). The order supplied the number R-009 itself;
+R-008 was the last R- entry, so it is allocated unchanged.*
+
+The interp target is reframed from the prompt-stated favoured side p to the trace-level
+believed favoured side p̂ (the direction-judge verdict). Rationale of record: (a) aggregate
+leakage on form A is ~0 while belief-conditional gaps are large and opposite — the operative
+variable is p̂; (b) computing v_p̂ WITHIN a condition holds the prompt fixed across belief
+groups, eliminating the p-stated-in-prompt confound more strongly than the mirrored design;
+(c) the correlational split cannot distinguish belief→estimate from estimate→belief
+annotation — the intervention rung (inject ±v_p̂ during generation; measure landing AND
+verbalized-belief flips, with coherence gates) is now the project's causal question, a
+faithfulness question. H1/H2/H3 are retained with p̂ substituted for p. All of this is
+conditional on the incorrect-class judge validation passing (Step 2); if it fails, the
+belief-conditional result is demoted and the researcher re-rules before W5.
+
+---
+
+## V-007 · The direction judge, mechanically cross-checked · 2026-08-30
+
+metric: for each of the 600 judged incentive traces, does the response text contain
+`good cause` or `bad cause` (case-insensitive substring)? Those are the two phrases the
+prompt itself uses to map a side of τ to a cause, so a trace that commits to a direction in
+the prompt's own vocabulary contains one of them. **This is a deterministic string test, not
+a second judge and not a new extractor.**
+source: `analysis/out/w3_direction_cache.json` + `runs/w3_frozen/**` →
+`analysis/out/w4_judge_check.csv` (600 rows, one per judged trace)
+command: `python3 src/judge_check_w4.py`
+
+**No-mapping ("lenient-case") rate, per arm and per verdict class:**
+
+| form | arm | `correct` | `incorrect` | `unclear` |
+|---|---|---|---|---|
+| A | below_good | 14.7 % (19/129) | — (0 in arm) | 95.2 % (20/21) |
+| A | above_good | 23.5 % (19/81) | 35.7 % (5/14) | 96.4 % (53/55) |
+| B | below_good | 27.3 % (33/121) | **0.0 %** (0/4) | 96.0 % (24/25) |
+| B | above_good | 20.7 % (17/82) | **67.7 %** (21/31) | 97.3 % (36/37) |
+| **all** | **all** | **21.3 %** (88/413) | **53.1 %** (26/49) | **96.4 %** (133/138) |
+
+**Three readings, in decreasing confidence.**
+
+**(1) The check behaves.** `unclear` is 96.4 % mapping-silent — a class defined by never
+committing to a side ought to be almost exactly that, and it is. That the same test separates
+`unclear` from `correct` by 75 percentage points is what licenses reading the other two rows.
+
+**(2) V-006's lenient-case worry is real but bounded, and it dilutes.** 21.3 % of `correct`
+verdicts sit on traces that never say `good cause` or `bad cause`. If some of those are
+credited without a mapping in the text, the `correct` group is contaminated with
+belief-silent traces, which pushes the direction-correct conditional gap of P-005 **toward
+zero**, not away from it. The observed +0.28 / +0.45 would then be an underestimate of the
+gap among genuinely-comprehending traces. It cannot manufacture the split.
+
+**(3) The `incorrect` class — the load-bearing one — is 53 % mapping-silent, and on form B
+`above_good`, 68 %.** This is the number the researcher should read the sample for. It does
+**not** establish that those verdicts are wrong: reading the five printed form-B `above_good`
+`incorrect` traces (all five are mapping-silent) shows the model reasoning about the bet in
+its **own** vocabulary — *"significantly below the threshold of 4.5 billion, ensuring the
+bet's donation stipulation is met"*, *"falls well above your threshold, so it meets the
+criteria of not exceeding the threshold"* — and in each case committing to a side the prompt
+does not favour. On those five the judge looks right and the string test simply cannot see
+the mapping. **So the string test is an upper bound on how often the judge could have scored
+a mapping the text does not carry, not a count of judge errors.** The 4-cell `incorrect`
+sample is in `w4_direction_sample2.md` for the researcher to adjudicate.
+
+**This entry does not promote P-005.** It supplies the two rates V-006 asked for and the
+sample; the promotion is the researcher's.
+
+---
+
+## P-006 · W4 activation replay of the frozen dataset · 2026-08-30
+
+filter: every non-truncated stored trace of the frozen W3 dataset plus both neutral arms —
+**700 traces, 700 replayed, 0 quarantined**.
+source: `runs/w3_frozen/**` + `runs/w1_neutral/Qwen2.5-14B-Instruct/neutral.json` →
+`runs/w4_acts/*.safetensors` (gitignored, MANIFESTed) +
+`analysis/out/w4_positions/*.json` (committed) + `analysis/out/w4_replay_summary.csv`
+command: `python3 src/replay_w4.py` (pod `io6c1fhnarzoj9`);
+`python3 src/replay_w4.py --dry-run` reproduces every count in this entry on a laptop with
+no GPU, because the counts are properties of the text and the tokenizer, not of the model.
+
+Qwen2.5-14B-Instruct, **bf16** (the generation dtype), transformers 5.16.1, torch 2.8.0+cu128,
+A100-SXM4-80GB. **48 decoder layers, d_model 5120.** Hook: `register_forward_hook` on each
+decoder layer, taking the layer **output** — the same stream smoke-B hooked at F-013 — sliced
+at the wanted positions inside the hook and cast to fp16.
+
+**Points captured, 6,668 over 700 traces:**
+
+| form | arm | traces | points | `est` | `est_offwin` | `tau_echo` | `final` | `final_corr` | `belief` | belief absent | wall |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| A | below_good | 150 | 1192 | 254 | 217 | 160 | 150 | 150 | 111 | **26.0 %** | 24.7 s |
+| A | above_good | 150 | 1137 | 255 | 205 | 154 | 150 | 150 | 73 | **51.3 %** | 16.8 s |
+| A | neutral | 50 | 272 | 60 | 62 | 0 | 50 | 50 | 0 | 100 % | 4.8 s |
+| B | below_good | 150 | 1859 | 276 | 847 | 193 | 150 | 150 | 93 | **38.0 %** | 21.6 s |
+| B | above_good | 150 | 1793 | 273 | 817 | 177 | 150 | 150 | 76 | **49.3 %** | 21.2 s |
+| B | baseline | 50 | 415 | 45 | 218 | 2 | 50 | 50 | 0 | 100 % | 5.7 s |
+
+Every arm also carries one `end_of_prompt` point per trace (700 total). Model load 4.3 s;
+**all 700 forward passes in 94.8 s.**
+
+**The `est` counts are an independent reproduction of P-004.** P-004's trajectory metrics
+report 254 / 255 parsed τ-echo-excluded in-window points for form A's two arms and 276 / 273
+for form B's; this replay's span-keeping parser, written independently and asserted
+value-for-value against `extract_regex.intermediates()` on every trace, returns **exactly
+those four numbers**. The frozen rule and the position rule are the same rule.
+
+**Belief-point absence is itself a result.** The `above_good` arms are half mapping-silent
+(51.3 % / 49.3 % with no `good cause` / `bad cause` string) against 26.0 % / 38.0 % for
+`below_good` — the same asymmetry P-005 found with the judge, now from a string test with no
+model in it. Both neutral arms are 100 % absent, as they must be: their prompts carry no bet.
+
+**Two additions to the order's position list, both flagged as judgment calls (JC-3, JC-4):**
+`est_offwin` (parsed literals outside the frozen `[τ/100, 100τ]` window — the intermediate
+factors, which are the natural within-trace control for `est`) and `final_corrected` (the
+D-016-corrected final span, PR-003 item 7). The second matters: on form A the frozen PR-001
+item-8 final is a τ-echo in ~57 % of traces (P-004), so a `final`-only capture would have
+localized the model echoing the prompt's threshold rather than stating its estimate.
+
+**Provisional pending audit. The tensors are NOT all on the laptop — see D-020.**
+
+---
+
+## V-008 · The load-bearing positional acceptance check · 2026-08-30
+
+The order makes this check the condition of the packet. Rule fixed in `src/replay_w4.py`
+before the replay ran: **every 35th `est` point in the global point index**, arm order
+`A/below_good, A/above_good, A/neutral, B/below_good, B/above_good, B/baseline`, trace order
+then parse order inside an arm. Over 1,163 `est` points the rule selects **34**; the order
+asks for 20, so all 34 are pasted in `analysis/out/w4_decode_check.md` with the first 20
+marked.
+command: `python3 src/replay_w4.py --decode-check`
+
+For each point the STORED span token ids are decoded and compared to the parsed literal as
+rendered in the trace. **34 / 34 exact, commas included** — e.g. `[16,17,11,23,22,15,11,15,15,15]`
+→ `12,870,000`, `[19,20,11,15,15,15,11,15,15,15,11,15,15,15]` → `45,000,000,000`. Not one
+point is off by a token, and no span is a bare digit-run missing its comma groups.
+
+Position-kind inventory for the three sampled traces (fixed rule: lowest-index replayed trace
+of arms 1, 4, 5):
+
+| form | arm | trace | end_of_prompt | est | est_offwin | tau_echo | final | final_corr | belief | total |
+|---|---|---|---|---|---|---|---|---|---|---|
+| A | below_good | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 7 |
+| B | below_good | 0 | 1 | 0 | 5 | 1 | 1 | 1 | 1 | 10 |
+| B | above_good | 0 | 1 | 2 | 4 | 1 | 1 | 1 | 0 | 10 |
+
+**Token-sequence reconstruction, verified four ways per trace (V1–V4 in the module
+docstring), 700 / 700 passing, 0 quarantined.** The stored rollouts keep no generated token
+ids, so identity is established against the two token counts vLLM itself recorded:
+**V1** `len(tok(templated_prompt))` equals the stored `n_prompt_tokens` (195 / 195 / 131 /
+197 / 197 / 130 by arm); **V2** and **V3** the concatenation re-tokenizes to exactly
+`tok(prompt) + tok(generation)`, so no BPE merge crosses the prompt/generation boundary and
+the replayed prefix is the generated prefix; **V4** the replayed generated-token count equals
+the stored `n_output_tokens`, allowing exactly one trailing token when `finish_reason=="stop"`
+(the `<|im_end|>` vLLM counts but does not emit into the text). A trace failing any of the
+four is quarantined rather than captured; none was.
+
+**Independent cross-check on the tokenizer.** The full position index was built twice — once
+on the laptop before the pod existed (`--dry-run`, transformers 5.16.1, no torch) and once on
+the pod during the replay — and the two agree on **(trace, kind, token index, span token ids)
+for all 6,668 points in all 6 arms**. The positions are therefore not an artifact of the pod's
+stack.
+
+---
+
+## D-020 · The RunPod account ran out of credit mid-rsync, and 3 of 6 activation files did not survive · 2026-08-30
+
+**What happened.** The replay finished cleanly at 04:22 UTC — 3.28 GB written to the pod
+volume, all six arms verified against their indexes on the pod. The rsync back was still
+running at **04:37:00 UTC**, when RunPod stopped the pod itself:
+`lastStatusChange: "Exited by Runpod"`. Three concurrent transfers died with
+`Connection reset by peer` in the same second. The cause is on the account, not the host:
+
+```
+$ query { myself { clientBalance currentSpendPerHr } }
+clientBalance      = -0.1209192003        # NEGATIVE
+currentSpendPerHr  = 0.083                # idle volume storage, three stopped pods
+$ python3 src/pod.py start io6c1fhnarzoj9
+start pod: Your account balance is too low to rent a pod. Please add funds to your account.
+```
+
+**This is not the project's $60 cap.** Cumulative project GPU spend is $11.34 of $60. The
+**RunPod account's own credit balance** is exhausted, which is a different quantity and is the
+OWNER's to fix. **No further GPU work is possible in this project until the account is
+funded.** Surfaced, not worked around.
+
+**What survived, verified by shape against the committed indexes:**
+
+| arm | bytes local / remote | state | `acts` shape | rows == index `n_points` |
+|---|---|---|---|---|
+| A above_good | 558,858,544 / 558,858,544 | **COMPLETE** | [1137, 48, 5120] | yes |
+| A neutral | 133,693,736 / 133,693,736 | **COMPLETE** | [272, 48, 5120] | yes |
+| B baseline | 203,981,096 / 203,981,096 | **COMPLETE** | [415, 48, 5120] | yes |
+| A below_good | 170,754,048 / 585,892,144 | truncated prefix | — | — |
+| B above_good | 181,272,576 / 881,295,664 | truncated prefix | — | — |
+| B below_good | 216,236,032 / 913,735,984 | truncated prefix | — | — |
+
+**1,824 of 6,668 points (27 %) are on the laptop.** sha256 of all six files is in
+`runs/MANIFEST.md`. The three truncated files are kept only as rsync resume material and are
+marked do-not-read; if the pod cannot be restarted they are worthless, because per D-012 and
+D-019 a stopped pod in this project has never resumed — and this one now cannot even be tried
+until the balance is positive.
+
+**Nothing the ledger reports is lost.** Every number in P-006 and V-008 comes from the
+committed positions indexes (2.6 MB, all six arms complete) and is regenerable on a laptop by
+`python3 src/replay_w4.py --dry-run`. What is lost is **W5's input for three arms**.
+
+**The recovery is cheap in GPU and expensive in bandwidth, and that is the real finding.**
+Re-running the replay on a funded pod costs ~5 minutes and ~$0.12 of A100 time. Moving the
+result costs ~12 minutes at the ~4.8 MB/s the parallel rsync achieved (single-stream managed
+**0.9 MB/s**, which is why 10 minutes bought only 533 MB and why the transfer was still
+running half an hour after the compute finished). **Compute was 1.6 % of this packet's pod
+time; the file transfer was the packet.**
+
+**The design recommendation this forces, for the researcher to rule on before W5.** Do not
+move activations. **Run the W5 difference-in-means and probe fits on the pod and rsync the
+direction vectors** — `v_p̂` at 48 layers is 48 × 5120 fp32 = **983 KB**, a 3,300× reduction —
+keeping the raw tensors on the volume only as long as the pod lives. This also removes the
+laptop as a storage constraint for W6–W9. The counter-argument is auditability: an auditor
+cannot recompute `v_p̂` from a vector. The compromise the runner recommends is to transfer
+the vectors plus a **fixed 5 % point-stratified subsample** of the raw activations (~165 MB,
+~1 minute) so the fit is spot-checkable offline.
+
+---
+
+## D-021 · Three of three, then four of four: no stopped pod in this project has ever restarted · 2026-08-30
+
+W4 pod-up began, as the order anticipated, by trying `bkl3m9ieis977o` (STOPPED at W3 close
+holding the venv and 28 GB of cache). **Three attempts, 04:03:20–04:03:24 UTC, all HTTP 500**,
+verbatim: `start pod: There are not enough free GPUs on the host machine to start this pod.`
+Identical to D-012 and D-019. **`bkl3m9ieis977o` joins `axvdenxbcepd10` and `7e5mpxvu487v3h`;
+`io6c1fhnarzoj9` now makes four stopped pods and four failures to resume**, the fourth for a
+different reason (D-020).
+
+D-019's recommendation is now unconditional: **stopping a pod is a way to stop billing, and
+nothing else.** It preserves neither the stack nor the data with any probability this project
+has ever observed. Provision fresh each packet, rsync everything out before stopping, and
+treat `/workspace` as scratch.
+
+**The fresh-pod path was faster than D-019's ~10 min and cheaper than a venv build, because
+this packet skipped the venv entirely** (JC-5): W4 does no generation, so vLLM is not needed,
+and the `runpod/pytorch:1.2.0-…-cu1281-torch280` image already ships torch 2.8.0+cu128. Only
+`transformers accelerate safetensors huggingface_hub` were installed. Recovery timeline:
+create 04:03:58 → SSH up ~04:13 (**~9 min, slower than D-019's 2 min**) → code+data rsync'd
+04:16 → deps installed 04:17 → 28 GB model cached in **90 s** → replay launched 04:21 →
+replay finished 04:22. **Create to finished replay: 18 minutes**, of which 9 was waiting for
+the host to expose SSH.
+
+One trap recorded for the next packet: in this image `python3` is `/usr/bin/python3` (3.10,
+**no torch**) while `python` is `/usr/local/bin/python` (3.12, torch 2.8, and where `pip`
+installs). The first prep pass ran under `python3` and failed on `ModuleNotFoundError: torch`.
+`src/bootstrap.sh` prints `python=$(command -v python3)` and would have reported the wrong
+interpreter; it should be taught the difference before it is trusted again.
+
+---
+
+## T-008 · Time, W4 · 2026-08-30
+
+Owner-clock minutes: **still pending courier — SIXTH ask**, now for W0, W0b, W1, W2, W3 and
+W4. No figure has ever been supplied for any packet, and the 16 h budget remains unauditable.
+Runner wall time, W4: **≈1 h 05 m** (2026-08-30 03:50 → 04:55 UTC).
+GPU wall time (pod running, billed): **33 m 02 s** (04:03:58 → 04:37:00 UTC).
+
+Where the GPU time went, and the number that matters: **model load 4.3 s, all 700 forward
+passes 94.8 s — 1.6 min of the 33 billed minutes was compute.** The other 31.4 min were
+~9 min waiting for the host to expose SSH, ~4 min of dependency install and model download,
+and **~15 min of file transfer that had still not finished when RunPod pulled the plug**
+(D-020).
+
+**The idle rule held in intent and failed in effect.** Nothing ran on the pod that could have
+run on the laptop: Step 2's entire judge validation, the position-index build, the decode
+acceptance check and the tokenizer cross-check were all done laptop-side, two of them
+*before* the pod was created. But the rule cannot help with a 3.28 GB egress, which is why
+D-020 recommends moving vectors instead of tensors from W5 on.
+
+---
+
+## S-007 · Spend, W4 · 2026-08-30
+
+Rate from the created pod record's `costPerHr`, per R-006(3).
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| `bkl3m9ieis977o` | A100-SXM4-80GB | 1.39 | 3 start attempts refused (D-021) | 0.000 | $0.00 |
+| **`io6c1fhnarzoj9`** | A100-SXM4-80GB | **1.39** | 04:03:58 → **04:37:00 (stopped by RunPod)** | **0.5506** | **$0.77** |
+
+**GPU spend this packet: $0.77.** **Cumulative GPU: $11.34 of $60.00.** ($45 threshold not
+approached.) **API this packet: $0.00** — Step 2 used the stored W3 judge cache and made no
+calls; nothing else in W4 touches an API. **Cumulative API: $6.35.**
+**Total project spend: $11.34 GPU + $6.35 API = $17.69 of the $60 cap.**
+
+**Two spend facts that are not the project's cap and need the owner.** (1) The RunPod
+account's own credit balance is **−$0.12** and is what stopped the pod (D-020); the project
+cap has nothing to do with it. (2) `currentSpendPerHr` is **$0.083** with every pod stopped —
+idle storage on three 100 GB volumes, **~$2.00/day**, accruing against a negative balance.
+Two of those volumes (`axvdenxbcepd10`, `bkl3m9ieis977o`) are proven unstartable across seven
+attempts on two days and hold nothing this project needs; `io6c1fhnarzoj9` holds the only
+copy of three incomplete activation files. **The runner recommends terminating the first two
+and keeping the third, and is not doing it**: termination is irreversible and V-003 set the
+precedent that it is the researcher's call.
+
+**Pod state at close, verified 04:39 UTC:** `io6c1fhnarzoj9` **`EXITED`**, stopped by RunPod
+04:37:00, unstartable (balance). `bkl3m9ieis977o` `EXITED`, unstartable (D-021).
+`axvdenxbcepd10` `EXITED`, unstartable (D-019). `gwhn0ex0eeyntn` terminated at W3 per V-003.

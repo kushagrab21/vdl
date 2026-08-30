@@ -37,7 +37,7 @@
     "community": true,
     "on_demand_usd_hr": 1.39,
     "spot_usd_hr": 1.39,
-    "stock": "Medium"
+    "stock": "High"
   },
   {
     "id": "NVIDIA A40",
@@ -135,9 +135,9 @@
     "vram_gb": 16,
     "secure": false,
     "community": true,
-    "on_demand_usd_hr": 0.27,
-    "spot_usd_hr": 0.27,
-    "stock": "Low"
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
   },
   {
     "id": "NVIDIA GeForce RTX 4080 SUPER",
@@ -177,7 +177,7 @@
     "community": true,
     "on_demand_usd_hr": 0.69,
     "spot_usd_hr": 0.69,
-    "stock": "Medium"
+    "stock": "High"
   },
   {
     "id": "NVIDIA H100 80GB HBM3",
@@ -235,9 +235,9 @@
     "vram_gb": 24,
     "secure": true,
     "community": false,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.44,
+    "spot_usd_hr": 0.44,
+    "stock": "Low"
   },
   {
     "id": "NVIDIA L40",
@@ -285,9 +285,9 @@
     "vram_gb": 20,
     "secure": false,
     "community": true,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.18,
+    "spot_usd_hr": 0.18,
+    "stock": "Low"
   },
   {
     "id": "NVIDIA RTX 5000 Ada Generation",
@@ -325,9 +325,9 @@
     "vram_gb": 16,
     "secure": true,
     "community": true,
-    "on_demand_usd_hr": null,
-    "spot_usd_hr": null,
-    "stock": null
+    "on_demand_usd_hr": 0.17,
+    "spot_usd_hr": 0.17,
+    "stock": "Low"
   },
   {
     "id": "NVIDIA RTX A4500",
