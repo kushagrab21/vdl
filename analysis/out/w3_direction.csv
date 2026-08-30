@@ -1,0 +1,9 @@
+form,arm,metric,n_judged,mention_rate,direction_correct_rate,n_correct,n_incorrect,n_unclear,n_unparsed,n_below_in_group,n_above_in_group,value,ci_lo,ci_hi
+A,below_good,per_arm,150,100.0,86.0,129,0,21,0,,,,,
+A,above_good,per_arm,150,98.7,54.0,81,14,55,0,,,,,
+A,both,direction_correct,209,,,,,,,129,80,0.279651,0.143895,0.408946
+A,both,direction_not_correct,90,,,,,,,21,69,-0.677019,-0.811594,-0.52795
+B,below_good,per_arm,150,99.3,80.7,121,4,25,0,,,,,
+B,above_good,per_arm,150,99.3,54.7,82,31,37,0,,,,,
+B,both,direction_correct,203,,,,,,,121,82,0.445575,0.322012,0.563596
+B,both,direction_not_correct,97,,,,,,,29,68,-0.548174,-0.715517,-0.366126

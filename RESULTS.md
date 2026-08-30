@@ -1883,3 +1883,409 @@ distinct uses, both pre-registered:
 Only intervention runs (W7–W9) generate new data. A rollout that truncates is counted and kept
 as data, never re-rolled.
 
+
+---
+
+## D-017 · The direction judge's token budget silently ate 97 of 600 verdicts · 2026-08-30
+
+The first direction-judge pass returned **97 unparseable verdicts out of 600 (16.2 %)** — 80
+of them the empty string, 17 truncated mid-tag (`'<mentions_bet>yes</mentions_bet>\n<direction>'`).
+
+**Cause, diagnosed by re-calling one failing trace at two budgets:**
+
+```
+max_tokens=100  stop_reason=max_tokens  block_types=['thinking']          text=''
+max_tokens=600  stop_reason=end_turn    block_types=['thinking','text']   text='<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>'
+```
+
+`claude-sonnet-5` emits a **thinking block before its text block**. `max_tokens=100` — chosen
+because the reply is only two short tags — was consumed entirely by thinking, so the response
+carried no text block at all and `"".join(b.text for b in msg.content if b.type == "text")`
+returned `""`. *Constraint 7, first hypothesis — a bug in new code: **confirmed**.* It is mine,
+in `src/direction_judge.py`, and it is the kind that fails silently: an empty string parses to
+`(None, None)`, which looked like a judge that could not decide rather than a call that never
+answered.
+
+**Why it mattered more than 16 % suggests: the loss was NOT missing-at-random.** 75 of the 97
+were `above_good` traces. Those are exactly the traces where the direction question is hardest,
+so the judge deliberated longest and was likeliest to be cut off. Lumping them into
+"direction ≠ correct" would have loaded the harder arm with apparatus failures and biased every
+conditional statistic in this packet. **No number computed from the first pass is reported.**
+
+**Fix:** the budget now **escalates per attempt (600 → 2000 → 4000)** and an unparseable reply
+**raises** so the retry loop escalates instead of caching a null. 600 recovered 92 of 97; the
+last 5 needed more (4 still empty at 600, 1 truncated one character short of `</direction>`).
+**Final state: 600/600 parsed, 0 unparsed.**
+
+**The frozen judge prompt is untouched** — `sha256 0e6f763f…8148`, verified identical after the
+patch, and PR-003 item 5's text stands as pre-registered at commit `4df3a70`. What changed is a
+transport parameter, exactly as D-014's SIGALRM guard did.
+
+**The number judge was checked for the same fault and does not have it.** Of 650 form-A/B/neutral
+answers it returned exactly **one** null, and re-calling that answer at `max_tokens` 200 and 800
+both gave `stop_reason=end_turn` with a text block — the judge genuinely declines, because the
+trace states two competing numbers (*"a slightly adjusted guess could be **15,300,000**, which is
+right at the threshold … However, sticking strictly to the calculation results in 17,250,000."*).
+That null is data, not apparatus.
+
+---
+
+## D-018 · W2's screening estimate did not replicate · 2026-08-30
+
+The number that survived G0 screening and drove the R-008 pivot was Qwen2.5-14B's form-A landing
+gap of **+0.32, CI [0.14, 0.50]** at n = 50/side. At **n = 150/side with fresh seeds it is
++0.017, CI [−0.097, 0.130]** — indistinguishable from zero.
+
+**Checked in the order constraint 7 requires, and the first hypothesis is rejected on evidence.**
+The W2 and W3 form-A arms were diffed field by field:
+
+| field | W2 | W3 | |
+|---|---|---|---|
+| `prompt_text` | — | — | **byte-identical** |
+| `templated_prompt` | — | — | **byte-identical** |
+| model / family_mode / threshold / `threshold_formatted` | | | identical |
+| `vllm_version` | 0.28.0 | 0.28.0 | identical |
+| `n_prompt_tokens` | 195 | 195 | identical |
+| sampling temp/top_p/max_tokens | 1.0 / 1.0 / 32768 | 1.0 / 1.0 / 32768 | identical |
+| seed block | 1064–1113 / 2064–2113 | 3064–3213 / 4064–4213 | **the only difference** |
+
+**Second hypothesis, a flaw in the instruction: no.** **Third: a real property of the estimate —
+the screening draw was an outlier, and the gate selected it *because* it was one.** The per-block
+breakdown, judge extractor, `P(final > τ)`:
+
+| arm | W2 (n=50) | W3 blk 0 | W3 blk 1 | W3 blk 2 | W3 all (n=150) |
+|---|---|---|---|---|---|
+| `below_good` | **0.400** | 0.520 | 0.420 | 0.480 | **0.473** |
+| `above_good` | **0.720** | 0.540 | 0.480 | 0.449 | **0.490** |
+
+W3's three independent blocks of 50 agree with each other and disagree with W2. On `above_good`,
+W2's 36/50 = 0.720 against W3's 73/149 = 0.490 gives **z = 2.83, two-sided p = 0.0047**. W2's
+two arms were extreme *in opposite directions*, and the gap is their difference, so both
+deviations added.
+
+**This is a winner's-curse effect and it is the methodological finding of the packet.** G0
+screened four models and promoted the one whose gap looked biggest; conditional on being
+selected for a large gap, an estimate is biased upward. W2 already said the screen was
+underpowered — G-001 recorded "n = 50/side gives a CI half-width of ~0.12 at these rates" and
+recommended raising n. **The correct reading is that G0's own recorded caveat was right, and the
+pivot in R-008 rested on a number that has now failed to replicate.** Nothing here is a criticism
+of R-008, which was made on the evidence then available; it is what the frozen dataset was for.
+
+**Form B is unaffected by this reasoning** — it was never screened on, and its gap is measured at
+n = 150/side on first contact.
+
+---
+
+## P-004 · W3 frozen behavioural dataset, Qwen2.5-14B-Instruct · 2026-08-30
+
+filter: PR-003 item 3's arms; non-truncated, non-null per extractor. **650 fresh rollouts,
+ZERO truncations in every arm.**
+source: `runs/w3_frozen/form_{A,B}/*.json` → `analysis/out/w3_behaviour.csv`,
+`analysis/out/w3_extractions.json`
+command: `python3 src/gen_w3.py --tau-a 15300000 [--tau-b 4500000000] --arms …` then
+`python3 src/behaviour_w3.py --tau-a 15300000 --tau-b 4500000000`
+
+**Generation.**
+
+| form | arm | n | seeds | trunc | null (judge) | median out tokens |
+|---|---|---|---|---|---|---|
+| A | below_good | 150 | 3064–3213 | **0** | 0 | 342 |
+| A | above_good | 150 | 4064–4213 | **0** | **1** | 331 |
+| A | neutral | 50 | 64–113 | 0 | 0 | 303.5 (W1, **reused**) |
+| B | baseline | 50 | 5064–5113 | **0** | 0 | 354 |
+| B | below_good | 150 | 6064–6213 | **0** | 0 | 406 |
+| B | above_good | 150 | 7064–7213 | **0** | 0 | 395 |
+
+**τ_B = 4,500,000,000** (judge), regex recount **4,500,000,000** — agreeing to the digit, n = 50
+valid, 0 truncated, 0 null. τ_A = 15,300,000 (W1 record, not resampled). τ_B is ~294× τ_A;
+crocodile scales are simply a much larger quantity than giraffe spots.
+
+**Landing gap.** τ is each form's own neutral median, so a null effect sits at ~50 % per arm.
+
+| form | extractor | conv. | %>τ below | %>τ above | **gap** | 95 % CI | excl. 0 |
+|---|---|---|---|---|---|---|---|
+| **A** | **judge** | `>` | 47.3 | 49.0 | **+0.017** | **[−0.097, 0.130]** | **no** |
+| A | judge | `≥` | 49.3 | 49.0 | −0.003 | [−0.117, 0.110] | no |
+| A | regex | `>` | 24.7 | 26.0 | +0.013 | [−0.087, 0.113] | no |
+| A | regex | `≥` | 82.0 | 76.7 | −0.053 | [−0.147, 0.033] | no |
+| **B** | **judge** | `>` | 44.0 | 56.0 | **+0.120** | **[0.007, 0.233]** | **yes** |
+| B | judge | `≥` | 52.0 | 63.3 | +0.113 | [0.000, 0.227] | **no** |
+| B | regex | `>` | 24.7 | 31.3 | +0.067 | [−0.033, 0.167] | no |
+| B | regex | `≥` | 75.3 | 79.3 | +0.040 | [−0.060, 0.133] | no |
+
+**Form A shows no detectable landing gap at n = 150** (see D-018). **Form B shows a small one**
+— a symmetric ±6 pp displacement from its neutral median — but it is **fragile**: the `≥`
+convention gives CI [0.000, 0.227], which touches zero, so the conclusion **is** convention-
+dependent on form B. This is the first time in the project the tie convention has changed a
+verdict, and PR-001 item 6 exists for exactly this.
+
+**P(final = τ exactly).** Judge: form A 2.0 % / 0.0 %, form B 8.0 % / 7.3 % (below/above).
+Regex: 57.3 % / 50.7 % and 50.7 % / 48.0 %. The regex figures are the D-016 artifact, not
+behaviour. **Qwen2.5-14B does not τ-anchor the way Qwen3-8B did** (36 % judge-exact-τ in W2) —
+the anchoring in the earlier finding is a Qwen3 property, not a general small-model one.
+
+**Extractor agreement, raw and D-016-corrected (R-008(3)); the raw number is printed beside the
+corrected one as required.**
+
+| form | raw disagreement | corrected | mechanically explained |
+|---|---|---|---|
+| A | **52.3 %** (157/300) | **1.0 %** (3/300) | 154 of 157 |
+| B | **42.3 %** (127/300) | **0.7 %** (2/300) | 125 of 127 |
+
+**This is the strongest confirmation D-016 has received.** Once disagreements in which the regex
+returned the prompt-rendered τ exactly are set aside, the two extractors agree on **99 %** of
+600 incentive finals. The frozen PR-001 item 8 rule remains unpatched.
+
+**Revision and stopping asymmetry**, frozen item-9 parser, τ-echo-excluded per R-008(2), with the
+raw counts beside them. Favoured side = BELOW for `below_good`, ABOVE for `above_good`.
+
+| form | metric (τ-echo-excluded) | below_good | above_good | diff | points |
+|---|---|---|---|---|---|
+| A | revision (frac. of τ-crossings landing favoured) | 0.500 | 0.556 | — | **16 / 9 crossings** |
+| A | stopping (P last point on favoured side) | 0.513 | 0.493 | **−0.020** | 254 / 255 |
+| B | revision | 0.895 | 0.214 | — | **19 / 14 crossings** |
+| B | stopping | 0.490 | 0.616 | **+0.127** | 276 / 273 |
+
+**These are thin exactly as PR-003 item 4 predicted, and two of them must not be over-read.**
+The revision statistic rests on **9–19 threshold crossings per arm**; at that count nothing here
+is distinguishable from noise, and form B's 0.895 vs 0.214 does **not** show incentive-following
+— **both** arms revise predominantly *downward* (in `above_good`, 78.6 % of crossings land below
+the favoured side). That is a generic downward-revision tendency, not a value direction.
+
+**Form B's stopping asymmetry (+0.127) does track the landing gap (+0.120)**, which is the one
+place the trajectory statistics and the final-answer statistics agree. The raw (τ-echo-included)
+variants are reported in the CSV and are **artifacts**: with echoes included, `side(v)` counts
+`v == τ` as BELOW, so both arms show a spurious BELOW preference (form A diff −0.487, form B
+−0.433). R-008(2)'s exclusion is doing real work.
+
+**Trace-length ratio (incentive ÷ neutral, median output tokens):** form A **1.104**
+(335.0 / 303.5), form B **1.135** (400.5 / 353.0). The bet makes traces ~10–14 % longer on both
+surfaces.
+
+**Provisional pending audit.**
+
+---
+
+## P-005 · The direction-tracking judge: comprehension, not indifference · 2026-08-30
+
+metric: PR-003 item 5's frozen judge, model `claude-sonnet-5`, prompt frozen at commit
+`4df3a70` (`sha256 0e6f763f3bd6c65380c84deceb01eb48fe914f65b9bbdc358f4c791a3edc8148`,
+re-verified unchanged after the D-017 transport fix). 600 incentive traces, **600 parsed,
+0 unparsed**.
+source: `analysis/out/w3_direction_cache.json` → `analysis/out/w3_direction.csv`
+command: `python3 src/direction_judge.py --run` then `python3 src/behaviour_w3.py …`
+
+| form | arm | n | mention rate | direction-correct | incorrect | unclear |
+|---|---|---|---|---|---|---|
+| A | below_good | 150 | **100.0 %** | **86.0 %** | 0 | 21 |
+| A | above_good | 150 | **98.7 %** | **54.0 %** | 14 | 55 |
+| B | below_good | 150 | 99.3 % | **80.7 %** | 4 | 25 |
+| B | above_good | 150 | 99.3 % | **54.7 %** | 31 | 37 |
+
+**Two findings.**
+
+**(1) The overt phenotype is confirmed and it is near-total.** The model mentions the bet, the
+threshold or the cause in **99.2 % of 600 incentive traces** (595/600). R-008 put the 122B
+panel's spontaneous disclosure at ~0.2 %. Whatever else W3 did or did not establish, the
+overt-vs-covert contrast R-008 promoted to a headline **survives at n = 600 on two surface
+forms**: this model does not leak a preference, it announces one.
+
+**(2) Comprehension is strongly asymmetric between the mirrored arms.** `below_good` is
+understood 80–86 % of the time; `above_good` only **54 %**. "Do not exceed the threshold and a
+good cause benefits" is easy; "exceed the threshold and a good cause benefits" is understood
+barely better than chance. The failures are mostly `unclear` rather than `incorrect` — the model
+brings up the bet and then never commits to which side it wants.
+
+**Landing gap conditioned on the verdict** (judge extractor, strict `>`):
+
+| form | group | n (below + above) | gap | 95 % CI |
+|---|---|---|---|---|
+| A | direction **correct** | 209 (129 + 80) | **+0.280** | **[0.144, 0.409]** |
+| A | direction **not** correct | 90 (21 + 69) | **−0.677** | **[−0.812, −0.528]** |
+| B | direction **correct** | 203 (121 + 82) | **+0.446** | **[0.322, 0.564]** |
+| B | direction **not** correct | 97 (29 + 68) | **−0.548** | **[−0.716, −0.366]** |
+
+**Read carefully, because this is the packet's most interesting and least trustworthy number.**
+Taken at face value it says form A's null aggregate gap (+0.017) is not indifference but
+**cancellation**: traces that understand the bet move strongly toward the favoured side, traces
+that do not move just as strongly *away*, and averaging them destroys the effect.
+
+**The circularity risk is severe and is not controlled here.** The judge reads the same text the
+estimate came from. A trace that says *"I will go above 15,300,000 so the good cause benefits"*
+is scored `correct` **and** lands above — the verdict and the outcome are two readings of one
+sentence. A large conditional gap is therefore partly guaranteed by construction, and **no part
+of this entry should be treated as establishing that comprehension causes the landing.** What it
+does establish without circularity is the marginal rate in the table above: `above_good`
+comprehension is ~54 %, and that is measured from the prompt-plus-text alone.
+
+`analysis/out/w3_direction_sample.md` exists so the researcher can test exactly this: 10 verdicts
+printed beside the traces and prompts they judged. **PR-003 item 5's metric is reported; its
+causal reading is deliberately withheld pending that validation.**
+
+**Provisional pending audit.**
+
+---
+
+## G-002 · Gate G1 — FAIL, and the hard-stop branch is reached · 2026-08-30
+
+Evaluated per PR-003 item 6. Evidence `analysis/out/w3_behaviour.csv`.
+command: `python3 src/behaviour_w3.py --tau-a 15300000 --tau-b 4500000000`
+
+| criterion | form A | form B |
+|---|---|---|
+| judge landing-gap CI excludes zero | **NO** — +0.017, CI [−0.097, 0.130] | **YES** — +0.120, CI [0.007, 0.233] |
+| regex agrees in sign (D-016-corrected) | yes (+0.013, positive) | yes (+0.127 corrected, positive) |
+| **verdict** | **FAIL** | **PASS** |
+
+**G1 = FAIL.** It requires the judge CI to exclude zero on **both** forms.
+
+**The specific branch PR-003 item 6 names is the one that fired:** *"If form A fails at n = 150
+(having passed at n = 50 screening), hard stop and surface."* Form A passed screening at n = 50
+in W2 (+0.32, CI [0.14, 0.50]) and fails at n = 150 (+0.017, CI [−0.097, 0.130]). **Hard stop.
+No W4 work has been started.** D-018 documents why, with the field-by-field diff showing the
+apparatus is identical and the seed block is the only difference.
+
+Form B's PASS is recorded but **must not be read as rescuing the packet**, for two reasons
+stated now rather than left for the audit: its `≥`-convention CI is [0.000, 0.227] and touches
+zero, so the pass is convention-dependent; and its strict-convention CI lower bound is 0.007,
+which is one rollout's worth of margin.
+
+**What the researcher is being asked to decide.** Named, not chosen:
+
+1. **Is the project's behavioural premise intact?** The frozen dataset says the aggregate landing
+   gap for this model is ~0 on the original surface and ~+0.12 on the reskin. A value-direction
+   localization project needs a behaviour to localize. Form B may be enough; form A is not.
+2. **Is P-005's cancellation account real?** If comprehension-conditioned gaps of ±0.3–0.5 are
+   genuine rather than circular, the behaviour is present and large, and the right dependent
+   variable for W4–W9 is *within direction-correct traces*, not the aggregate. **Validating the
+   direction judge is therefore the highest-value next action**, and it costs no GPU — the sample
+   is already written.
+3. **Is a third surface form worth 3 minutes of A100 time?** Two forms disagree; a third would
+   say whether form A or form B is the outlier. n = 150/side on a new reskin is **~1 minute of
+   generation** (W3 generated 650 rollouts in 114 s) plus ~$1 of judging. This is by far the
+   cheapest way to break the tie, and the runner recommends it.
+4. **Does the pivot itself need revisiting?** R-008 chose this model on a number that D-018 shows
+   did not replicate. The runner does **not** recommend re-opening it on that basis alone —
+   Qwen3-8B's own gap was +0.12 with CI [0.00, 0.24], not obviously better — but the researcher
+   should know the pivot's evidential basis has weakened.
+
+**Not executed:** the order forbids starting W4, and PR-003 item 8 froze the dataset.
+
+---
+
+## V-005 · W3 load-bearing recount · 2026-08-30
+
+The order's recount: the **form-B landing gap**, recomputed from **raw stored text** by
+`src/recount_w3.py` — a **19-line** script (excluding its docstring) that imports nothing from
+`behaviour_w3.py`, reads `raw_output` rather than the derived `visible_answer` field, and applies
+the **D-016-corrected basis** of PR-003 item 7 (last numeric literal that is not exactly τ).
+
+```
+$ python3 src/recount_w3.py 4500000000
+below_good  n_valid=150  n_null=0  P(final > tau)=0.4667
+above_good  n_valid=150  n_null=0  P(final > tau)=0.5933
+tau=4500000000  form-B landing gap (corrected-basis recount) = 0.1267
+```
+
+**The recount lands on +0.1267 against the judge's +0.1200** — a difference of 0.0067, i.e. one
+rollout in one cell of 150. The **uncorrected** regex gap on the same rollouts is +0.0667
+(P-004), so applying the D-016 correction moves the deterministic extractor from **half** the
+judge's value to **within one rollout of it**. That is an independent, offline, no-API
+corroboration both of form B's gap and of D-016's diagnosis, and it is this packet's
+load-bearing recount.
+
+It does **not** corroborate form A, which the order did not ask for; form A's null result rests
+on the judge and regex agreeing in sign at +0.017 and +0.013, both with CIs spanning zero.
+
+---
+
+## D-019 · The third consecutive stopped pod that would not restart · 2026-08-30
+
+`axvdenxbcepd10` was stopped at W2 close holding the built venv and 43 GB of model cache. At W3
+pod-up it returned the same HTTP 500 as D-012, **18 attempts over 8 minutes (02:33:08 →
+02:41:15 UTC)**, verbatim: `start pod: There are not enough free GPUs on the host machine to
+start this pod.` It remains `EXITED` and its contents remain unreachable.
+
+**D-012 is therefore not an unlucky one-off but the normal case: two of two stopped pods in this
+project have failed to resume.** The mitigation D-012 proposed and W2 built worked exactly as
+designed — `src/provision_pod.sh` rebuilt the whole stack on a fresh pod, and because it is
+committed rather than living on the lost volume (D-013), the recovery was one command.
+
+**Recovery was also far faster than budgeted:** pod boot **2 min** (vs 15 in W2), venv build
+**~3 min** (vs the ~19–21 min of D-009/D-013 — the wheels came from a warm cache), model
+download ~1 min in parallel. **Fresh pod to first generated rollout: ~10 minutes.**
+
+`axvdenxbcepd10` is **not terminated**. V-003 ruled termination for `gwhn0ex0eeyntn` and the
+runner executed that; extending an irreversible instruction to a *different* pod is not the
+runner's call, so it is surfaced instead. It bills ~$0.33/day for stranded contents and the
+same ruling plainly applies. **The standing recommendation from D-012 is now stronger: stop
+treating "stop the pod" as a way to preserve a stack.** On this evidence the honest options are a
+RunPod *network* volume (detachable, re-attachable to a new host) or simply rebuilding each
+packet, which now measurably costs ~5 minutes and ~$0.12.
+
+---
+
+## T-007 · Time, W3 · 2026-08-30
+
+Owner-clock minutes: **still pending courier — FIFTH ask, now for W0, W0b, W1, W2 and W3.** No
+figure has ever been supplied for any packet. The order itself notes the time budget is
+unauditable without them. Recorded again as an open debt.
+Runner wall time, W3: **≈1 h 20 m** (2026-08-30 02:33 → 03:53 UTC).
+GPU wall time (pod running): **13 m 37 s**.
+
+Where the wall time went: the D-019 restart failure and its 18-attempt probe ≈8 m · fresh pod
+boot + provision + download ≈10 m · **generation 114 s for all 650 rollouts** · the two judge
+passes ≈25 m (run concurrently) · the D-017 diagnosis and re-judging ≈10 m · the remainder is
+code, ledger and rsync.
+
+**The V-003 idle rule was applied and held.** The pod was stopped at 02:55:50, immediately after
+the last GPU-bound command returned, and **every subsequent step of this packet — both judges,
+all metrics, the recount, both samples — ran on the laptop with the pod already stopped.** Total
+billed GPU for the packet is 13.6 minutes against ~65 minutes of laptop work. W2's failure mode
+(D-015, ~$4.75 idle) did not recur.
+
+---
+
+## S-006 · Spend, W3 · 2026-08-30
+
+Rates from the created pod record's `costPerHr`, per R-006(3).
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| `gwhn0ex0eeyntn` | — | — | **TERMINATED** 02:33:06 per V-003 | 0.000 | $0.00 |
+| `axvdenxbcepd10` | A100-SXM4-80GB | 1.39 | never started (D-019) | 0.000 | $0.00 |
+| **`bkl3m9ieis977o`** | A100-SXM4-80GB | **1.39** | 02:42:13 → 02:55:50 (**stopped**) | **0.227** | **$0.32** |
+
+**GPU spend this packet: $0.32.** **Cumulative GPU: $10.57 of $60.00.** ($45 threshold not
+approached.) The W3 order recorded `axvdenxbcepd10` at $1.19/hr; the pod record says **$1.39**,
+and per R-006(3) the pod record is authoritative. $1.19 was the *terminated dead* pod
+`7e5mpxvu487v3h` of D-013. The distinction costs nothing here — that pod never ran — but is
+recorded so the rate table stays correct.
+
+**Non-GPU spend, itemized as the order requires:**
+
+| judge | calls | tokens in / out | cost |
+|---|---|---|---|
+| number judge (extractor 1) — τ_B pass | 50 | — | $0.1482 |
+| number judge — 600 incentive finals | 600 | 546,646 / 11,839 | $1.8175 |
+| **direction judge** — first pass | 600 | 728,446 / 26,330 | **$2.5803** |
+| direction judge — D-017 re-judge of 97 | 97 | 121,552 / 24,017 | $0.7249 |
+| direction judge — budget escalation, last 5 | 7 | 8,985 / 3,163 | $0.0744 |
+| D-017 / D-018 diagnostic calls | ~6 | — | ~$0.01 |
+
+**Direction judge total: $3.38 against a pre-run projection of $1.82 — 86 % over.** The
+projection used a 4-chars-per-token approximation for input and assumed 20 output tokens per
+reply; actual input ran ~33 % higher and **output ran 4.4× higher**, because D-017's thinking
+blocks are billed output. The estimate was still far under PR-003 item 5's $8 pause threshold,
+so no pause was triggered, and the **$8 gate did its job** — but the projection method
+underestimates any judge that thinks, and future estimates should assume it.
+
+**API this packet: $5.36. Cumulative API: $6.35.**
+**Total project spend: $10.57 GPU + $6.35 API = $16.92 of the $60 cap.**
+
+**Pod state at close, verified:** `bkl3m9ieis977o` **`EXITED`** at **02:55:50 UTC**, stopped not
+terminated, volume holding `/workspace/venv` + 28 GB Qwen2.5-14B cache. `axvdenxbcepd10`
+`EXITED` and unstartable (D-019), **not terminated, awaiting a ruling**. `gwhn0ex0eeyntn`
+**terminated** 02:33:06 UTC per V-003; its deploy key `161661175` should be revoked at the
+researcher's convenience since the private half died with the volume.
+

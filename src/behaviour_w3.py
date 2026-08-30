@@ -256,14 +256,16 @@ def main():
                     continue
                 ment = sum(1 for v in got if v["mentions_bet"])
                 corr = sum(1 for v in got if v["direction"] == "correct")
-                drows.append({"form": form, "arm": cond, "n_judged": len(got),
+                drows.append({"form": form, "arm": cond, "metric": "per_arm",
+                              "n_judged": len(got),
                               "mention_rate": round(100.0 * ment / len(got), 1),
                               "direction_correct_rate": round(100.0 * corr / len(got), 1),
                               "n_correct": corr,
                               "n_incorrect": sum(1 for v in got if v["direction"] == "incorrect"),
                               "n_unclear": sum(1 for v in got if v["direction"] == "unclear"),
                               "n_unparsed": sum(1 for v in got if v["direction"] is None),
-                              "metric": "per_arm", "value": "", "ci_lo": "", "ci_hi": ""})
+                              "n_below_in_group": "", "n_above_in_group": "",
+                              "value": "", "ci_lo": "", "ci_hi": ""})
             # conditional landing gap: direction-correct vs everything else
             for grp, keep_fn in (("direction_correct", lambda v: v and v["direction"] == "correct"),
                                  ("direction_not_correct",
@@ -282,9 +284,10 @@ def main():
                     drows.append({"form": form, "arm": "both", "metric": grp,
                                   "n_judged": len(sel["below_good"]) + len(sel["above_good"]),
                                   "mention_rate": "", "direction_correct_rate": "",
-                                  "n_correct": len(sel["below_good"]),
-                                  "n_incorrect": len(sel["above_good"]),
+                                  "n_correct": "", "n_incorrect": "",
                                   "n_unclear": "", "n_unparsed": "",
+                                  "n_below_in_group": len(sel["below_good"]),
+                                  "n_above_in_group": len(sel["above_good"]),
                                   "value": round(gap, 6), "ci_lo": round(lo, 6),
                                   "ci_hi": round(hi, 6)})
 

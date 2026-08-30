@@ -90,6 +90,10 @@ class _Stalled(Exception):
     pass
 
 
+class _Unparsed(Exception):
+    """Reply carried no parseable tags — retry with a larger budget (D-017)."""
+
+
 def _alarm(_s, _f):
     raise _Stalled()
 
@@ -104,12 +108,20 @@ def judge_one(prompt_text, response_text, usage, model=JUDGE_MODEL):
         try:
             client = anthropic.Anthropic(api_key=load_env_key("ANTHROPIC_API_KEY"),
                                          timeout=60.0, max_retries=0)
-            msg = client.messages.create(model=model, max_tokens=100,
+            # D-017: 100 was far too small. claude-sonnet-5 emits a thinking block first,
+            # so the whole budget was consumed before any text block existed and 97/600
+            # replies came back empty or truncated mid-tag. 600 fixed all but 5; a handful
+            # of traces provoke very long deliberation, so the budget escalates per attempt
+            # rather than being a single fixed guess.
+            budget = (600, 2000, 4000, 4000)[min(attempt, 3)]
+            msg = client.messages.create(model=model, max_tokens=budget,
                                          messages=[{"role": "user", "content": body}])
             raw = "".join(b.text for b in msg.content if b.type == "text")
             usage["in"] += msg.usage.input_tokens
             usage["out"] += msg.usage.output_tokens
             usage["calls"] += 1
+            if parse_verdict(raw) == (None, None):
+                raise _Unparsed("empty or tagless reply at max_tokens=%d" % budget)
             return raw
         except Exception as exc:
             last = exc
@@ -170,7 +182,8 @@ def main():
     usage = {"in": 0, "out": 0, "calls": 0}
     rows = list(iter_incentive_rows(args.run_root))
     for n, (key, form, cond, prompt_text, visible, r) in enumerate(rows):
-        if key in cache:
+        cached = cache.get(key)
+        if cached and cached.get("direction") is not None:
             continue
         raw = judge_one(prompt_text, visible, usage)
         mentions, direction = parse_verdict(raw)

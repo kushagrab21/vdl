@@ -97,48 +97,54 @@ W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W2)
+## Where things stand (end of W3)
 
-W0/W0b/W1 accepted (**R-003**, **V-001**, **V-002**). **PR-001 remains the pre-registration of
-record**, frozen at commit `0152943` (**F-014**); **PR-002** adds R-007(1),(2),(4) plus the
-incentive seed scheme and the landing-gap definition, all frozen before any incentive rollout
-existed.
+W0–W2 accepted (**R-003**, **V-001**, **V-002**, **V-003 audit**). **PR-001** remains the
+pre-registration of record; **PR-002** (W2) and **PR-003** (W3 frozen dataset, reskin, direction
+judge, gate G1) bind. **R-008** pivoted the project to `Qwen2.5-14B-Instruct` by owner-approved
+scope change, localizing the value direction behind **overt** gaming.
 
-**W2 complete. GATE G0 FAILED ON BOTH ELIGIBLE MODELS — the project is at a hard stop pending
-an owner/researcher ruling (G-001).** 200 incentive rollouts, zero truncations:
+**W3 complete. GATE G1 FAILED — hard stop, PR-003 item 6's named branch (G-002).** 650 fresh
+rollouts, **zero truncations**, frozen per PR-003 item 8.
 
-| model | judge gap (strict `>`) | 95 % CI | filtered inter. median | G0 |
+| form | τ | judge landing gap (strict `>`) | 95 % CI | G1 |
 |---|---|---|---|---|
-| `Qwen/Qwen3-8B` | +0.12 | **[0.00, 0.24]** | 54.0 | **FAIL** — CI touches zero |
-| `Qwen/Qwen2.5-14B-Instruct` | **+0.32** | **[0.14, 0.50]** | 3.0 | **FAIL** — extractor disagreement |
+| A (giraffe) | 15,300,000 | **+0.017** | [−0.097, 0.130] | **FAIL** |
+| B (crocodile reskin) | **4,500,000,000** | **+0.120** | [0.007, 0.233] | PASS (fragile) |
 
-Qwen2.5-14B meets **both** stated G0 conditions and is failed only by the corroborating regex
-extractor, whose CI is [−0.04, 0.32]. **D-016** is why: the incentive prompt contains τ, both
-models answer-first-then-justify, and PR-001 item 8's LAST-literal rule reads the echoed
-threshold instead of the answer — **28 %/44 % disagreement on incentive vs 2 %/0 % on neutral**.
-The extractor was **not** amended. The tie convention changes no verdict.
+**D-018 is the reason and the methodological finding of the packet: W2's screening estimate did
+not replicate.** Form A was +0.32 (CI [0.14, 0.50]) at n=50 and is +0.017 at n=150 — apparatus
+byte-identical, seed block the only difference, W3's three blocks of 50 mutually consistent
+(z=2.83, p=0.005 vs W2). A winner's-curse effect: G0 promoted the model whose gap looked biggest.
+Form B's pass is convention-dependent (`≥` CI touches zero) and one rollout from its lower bound.
 
-**Four options are on the researcher's desk (G-001): accept Qwen2.5; amend item 8 and re-run
-both extractors over all W1+W2 data; raise n to ~150/side (~$0.60, the runner's recommendation);
-or invoke the fallback ladder (never transcribed here).** The trace sample the order requires
-before W3 is `analysis/out/w2_trace_sample.md` — 10 traces per model at fixed indices
-0/10/20/30/40 per condition, no substitutions needed.
+**Two results do stand strongly.** (1) **The overt phenotype**: the model mentions the bet in
+**99.2 % of 600 incentive traces** (vs ~0.2 % spontaneous disclosure in the 122B panel) — the
+overt-vs-covert contrast R-008 promoted survives at n=600 on two surfaces. (2) **D-016 is
+confirmed**: raw extractor disagreement 52.3 %/42.3 % collapses to **1.0 %/0.7 %** on the
+corrected basis, and the corrected-basis recount reproduces form B's judge gap to within one
+rollout (+0.1267 vs +0.120).
 
-**Pods: BOTH STOPPED (`EXITED`).** `axvdenxbcepd10` (A100-SXM4-80GB, $1.39/hr) holds the current
-stack — `/workspace/venv` + 43 GB model cache, 52 GB of 100 GB. **`gwhn0ex0eeyntn` could not be
-restarted at all (D-012: "not enough free GPUs on the host machine", 20 attempts) — its 60 GB
-volume is unreachable and still billing ~$0.33/day; terminating it needs a ruling.** Because a
-stop can be one-way, `src/bootstrap.sh` and `src/provision_pod.sh` are now **committed**, and a
-fresh pod rebuilds the whole stack in ~19 min with one command.
+**Held back deliberately:** P-005's comprehension-conditioned gaps (±0.3–0.5, and an `above_good`
+comprehension rate of only ~54 %) would say form A's null is *cancellation*, not indifference —
+but the direction judge reads the same text the estimate came from, so the causal reading is
+**circular until validated**. `analysis/out/w3_direction_sample.md` exists for exactly that.
+**Validating it is the highest-value next action and costs no GPU.** A third surface form would
+break the A-vs-B tie for ~1 min of A100 time (~$0.12 + ~$1 judging) — the runner's recommendation.
 
-**Spend: $10.25 GPU of $60, plus $0.99 Anthropic API.** Of W2's $6.64, only ~$1.11 bought the
-experiment — $0.78 was a dead container (D-013) and ~$4.75 an idle pod (D-015). From W3 the pod
-is stopped the moment the last GPU command returns. Owner-clock minutes remain **owed for W0,
-W0b, W1 and W2** — asked four times.
+**Pods: `bkl3m9ieis977o` STOPPED** (A100-SXM4, $1.39/hr, venv + 28 GB cache).
+`gwhn0ex0eeyntn` **terminated** per V-003. **`axvdenxbcepd10` failed 18 restart attempts
+(D-019) — two of two stopped pods in this project never resumed**, so a stopped pod is not a
+reliable way to preserve a stack; `src/provision_pod.sh` rebuilt everything on a fresh pod in
+~10 min, and it is committed precisely because the previous copy died with its volume.
 
-Tooling in `src/`: `pod.py` (now with `start`) · `pod_survey.py` · `runpod_client.py` ·
-`extract_runpod_key.py` · `bootstrap.sh` · `provision_pod.sh` · `gen_neutral.py` ·
-`gen_mirrored.py` · `extract_regex.py` · `tau.py` · `landing_gap.py` · `recount_w2.py` ·
-`trace_sample.py` · `trace_sample_w2.py` · both smoke scripts.
-Laptop-side judge/analysis runs in `.venv-w1/` (fire, anthropic, openai, tenacity, numpy, tqdm,
-dotenv).
+**Spend: $10.57 GPU + $6.35 API = $16.92 of $60.** W3 cost **$0.32 of GPU** — the V-003 idle rule
+held: 13.6 min billed against ~65 min of laptop work. Owner-clock minutes remain **owed for
+W0–W3** — asked five times.
+
+Tooling in `src/`: `pod.py` · `pod_survey.py` · `runpod_client.py` · `extract_runpod_key.py` ·
+`bootstrap.sh` · `provision_pod.sh` · `gen_neutral.py` · `gen_mirrored.py` · `gen_w3.py` ·
+`prompts_w3.py` · `extract_regex.py` · `tau.py` · `landing_gap.py` · `behaviour_w3.py` ·
+`direction_judge.py` · `recount_w2.py` · `recount_w3.py` · `trace_sample.py` ·
+`trace_sample_w2.py` · `samples_w3.py` · both smoke scripts.
+Laptop-side judging/analysis runs in `.venv-w1/`.

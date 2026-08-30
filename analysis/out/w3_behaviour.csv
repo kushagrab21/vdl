@@ -1,0 +1,43 @@
+metric,form,tau,extractor,convention,arm,value,ci_lo,ci_hi,ci_excludes_zero,n,n_points,note
+landing_gap,A,15300000,judge,strict_gt,both,0.0166,-0.097181,0.130336,False,299,,below 47.3% above 49.0% >tau
+landing_gap,A,15300000,judge,ge,both,-0.0034,-0.117138,0.110292,False,299,,below 49.3% above 49.0% >tau
+landing_gap,A,15300000,regex,strict_gt,both,0.013333,-0.086667,0.113333,False,300,,below 24.7% above 26.0% >tau
+landing_gap,A,15300000,regex,ge,both,-0.053333,-0.146667,0.033333,False,300,,below 82.0% above 76.7% >tau
+pct_final_eq_tau,A,15300000,judge,-,below_good,2.0,,,,150,3,percent
+pct_final_eq_tau,A,15300000,judge,-,above_good,0.0,,,,149,0,percent
+pct_final_eq_tau,A,15300000,regex,-,below_good,57.3,,,,150,86,percent
+pct_final_eq_tau,A,15300000,regex,-,above_good,50.7,,,,150,76,percent
+extractor_disagreement_raw,A,15300000,-,-,both,52.3,,,,300,157,"percent, PR-001 item 8 as frozen"
+extractor_disagreement_corrected,A,15300000,-,-,both,1.0,,,,300,3,percent; 154 of 157 disagreements mechanically explained (regex==tau)
+revision_asymmetry_tau_echo_excluded,A,15300000,regex_parser,strict_gt,below_good,0.5,,,,150,16,fraction of tau-crossings landing on the favoured side (BELOW); 254 parsed points total
+stopping_asymmetry_tau_echo_excluded,A,15300000,regex_parser,strict_gt,below_good,0.5133,,,,150,254,P(last parsed intermediate on favoured side BELOW)
+revision_asymmetry_tau_echo_excluded,A,15300000,regex_parser,strict_gt,above_good,0.5556,,,,150,9,fraction of tau-crossings landing on the favoured side (ABOVE); 255 parsed points total
+stopping_asymmetry_tau_echo_excluded,A,15300000,regex_parser,strict_gt,above_good,0.4933,,,,150,255,P(last parsed intermediate on favoured side ABOVE)
+stopping_asymmetry_diff_tau_echo_excluded,A,15300000,regex_parser,strict_gt,both,-0.02,,,,,,above_good favoured-rate minus below_good favoured-rate
+revision_asymmetry_raw,A,15300000,regex_parser,strict_gt,below_good,0.6277,,,,150,137,fraction of tau-crossings landing on the favoured side (BELOW); 414 parsed points total
+stopping_asymmetry_raw,A,15300000,regex_parser,strict_gt,below_good,0.7467,,,,150,414,P(last parsed intermediate on favoured side BELOW)
+revision_asymmetry_raw,A,15300000,regex_parser,strict_gt,above_good,0.3769,,,,150,130,fraction of tau-crossings landing on the favoured side (ABOVE); 409 parsed points total
+stopping_asymmetry_raw,A,15300000,regex_parser,strict_gt,above_good,0.26,,,,150,409,P(last parsed intermediate on favoured side ABOVE)
+stopping_asymmetry_diff_raw,A,15300000,regex_parser,strict_gt,both,-0.4867,,,,,,above_good favoured-rate minus below_good favoured-rate
+trace_length_ratio,A,15300000,-,-,both,1.1038,,,,300,,median incentive tokens 335.0 / median neutral tokens 303.5
+landing_gap,B,4500000000,judge,strict_gt,both,0.12,0.006667,0.233333,True,300,,below 44.0% above 56.0% >tau
+landing_gap,B,4500000000,judge,ge,both,0.113333,0.0,0.226667,False,300,,below 52.0% above 63.3% >tau
+landing_gap,B,4500000000,regex,strict_gt,both,0.066667,-0.033333,0.166667,False,300,,below 24.7% above 31.3% >tau
+landing_gap,B,4500000000,regex,ge,both,0.04,-0.06,0.133333,False,300,,below 75.3% above 79.3% >tau
+pct_final_eq_tau,B,4500000000,judge,-,below_good,8.0,,,,150,12,percent
+pct_final_eq_tau,B,4500000000,judge,-,above_good,7.3,,,,150,11,percent
+pct_final_eq_tau,B,4500000000,regex,-,below_good,50.7,,,,150,76,percent
+pct_final_eq_tau,B,4500000000,regex,-,above_good,48.0,,,,150,72,percent
+extractor_disagreement_raw,B,4500000000,-,-,both,42.3,,,,300,127,"percent, PR-001 item 8 as frozen"
+extractor_disagreement_corrected,B,4500000000,-,-,both,0.7,,,,300,2,percent; 125 of 127 disagreements mechanically explained (regex==tau)
+revision_asymmetry_tau_echo_excluded,B,4500000000,regex_parser,strict_gt,below_good,0.8947,,,,150,19,fraction of tau-crossings landing on the favoured side (BELOW); 276 parsed points total
+stopping_asymmetry_tau_echo_excluded,B,4500000000,regex_parser,strict_gt,below_good,0.4897,,,,145,276,P(last parsed intermediate on favoured side BELOW)
+revision_asymmetry_tau_echo_excluded,B,4500000000,regex_parser,strict_gt,above_good,0.2143,,,,150,14,fraction of tau-crossings landing on the favoured side (ABOVE); 273 parsed points total
+stopping_asymmetry_tau_echo_excluded,B,4500000000,regex_parser,strict_gt,above_good,0.6164,,,,146,273,P(last parsed intermediate on favoured side ABOVE)
+stopping_asymmetry_diff_tau_echo_excluded,B,4500000000,regex_parser,strict_gt,both,0.1268,,,,,,above_good favoured-rate minus below_good favoured-rate
+revision_asymmetry_raw,B,4500000000,regex_parser,strict_gt,below_good,0.6188,,,,150,181,fraction of tau-crossings landing on the favoured side (BELOW); 469 parsed points total
+stopping_asymmetry_raw,B,4500000000,regex_parser,strict_gt,below_good,0.7467,,,,150,469,P(last parsed intermediate on favoured side BELOW)
+revision_asymmetry_raw,B,4500000000,regex_parser,strict_gt,above_good,0.377,,,,150,183,fraction of tau-crossings landing on the favoured side (ABOVE); 450 parsed points total
+stopping_asymmetry_raw,B,4500000000,regex_parser,strict_gt,above_good,0.3133,,,,150,450,P(last parsed intermediate on favoured side ABOVE)
+stopping_asymmetry_diff_raw,B,4500000000,regex_parser,strict_gt,both,-0.4333,,,,,,above_good favoured-rate minus below_good favoured-rate
+trace_length_ratio,B,4500000000,-,-,both,1.1346,,,,300,,median incentive tokens 400.5 / median neutral tokens 353.0
