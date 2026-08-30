@@ -3322,3 +3322,476 @@ number judge 1,150 calls ≈ 778.7 k in-tokens ≈ **$2.68**; direction judge 65
 in-tokens ≈ **$2.06**; **≈ $4.74 total** at claude-sonnet-5 $3/$15 per MTok. The order's pause
 line is **$6**. The projection is **re-computed from the actual steered text before the first
 API call**, and if it then exceeds **$6** the packet pauses and surfaces rather than running.
+
+---
+
+## F-015 · W7 freeze record: pod, stack, and the direction actually injected · 2026-08-30
+
+| item | value |
+|---|---|
+| pod | `heenrekmx8f4da`, name `vdl-w7`, machine `zwtqdin590js` |
+| GPU | **NVIDIA A100-SXM4-80GB**, `costPerHr` **$1.39** (rate card and pod record agree; no D-008 mismatch) |
+| image | `runpod/pytorch:1.2.0-rc.162-cu1281-torch280-ubuntu2204`, volume 60 GB, container 60 GB |
+| stack | torch **2.8.0+cu128** (image), transformers **4.57.6**, plus `accelerate safetensors huggingface_hub anthropic python-dotenv tenacity fire tqdm openai` (pip, ~40 s). **No vLLM**: W7 needs a generation-time hook and vLLM cannot carry one. No `provision_pod.sh` venv build was needed, which is why this packet skipped W0b's ~21 min. |
+| model | `Qwen/Qwen2.5-14B-Instruct`, snapshot `cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8`, bf16 |
+| direction | `analysis/out/w5_vectors/w5_vphat_B.safetensors`, key `vphat`, (48, 5120) float32, sha256 `cbdbbb4a4eccfd085549d3aa1a6b94170c77252bd2dd64718b4f950426b9be64` — **verified by the script at load time on every arm**, recorded in all 23 output files |
+| ‖Δμ‖ = ‖v_p̂^B(ℓ)‖ | **L27 = 12.726012**, **L30 = 15.373740** (= `vphat_l2`, `analysis/out/w5_layers.csv`, form B) |
+| ‖injected vector‖ | L27: 12.726 (α=±1), 25.452 (α=±2), 50.904 (α=±4); L30: 30.747 (α=±2); sham 0.000 |
+| residual-stream scale | mean ‖h‖ at L27 = **111.65**, L30 = **138.13** (W5 cell, 528 form-B `above_good` est points). α=2 is **22.8 %** of ‖h‖ at L27; α=4 is **45.6 %** |
+| laptop smoke | `python src/steer_w7.py --smoke` → **7/7 PASS**, on `Qwen/Qwen2.5-0.5B-Instruct` (CPU, fp32) so that the *same* `replay_w4.decoder_layers` resolver and the *same* Qwen2 `model.layers` path are exercised |
+| GPU sanity | `--arms B_above_sham B_above_L27_ap4 --n 4` before the real run, 51.8 s, both arms coherent and on-task |
+
+**The smoke test, clause by clause** (`src/steer_w7.py --smoke`, reproducible on any laptop with
+CPU torch; the run of record is 2026-08-30 05:44 UTC):
+
+```
+ok   S1    ||dmu|| L27=12.726012 (csv 12.726012)  L30=15.373740 (csv 15.373740)
+ok   S2    null00 reproducible, unit-norm, cos(null00, u_vphat)=-0.0132
+smoke model=Qwen/Qwen2.5-0.5B-Instruct layers=24 d_model=896
+ok   S3    prefill=1 decode=11 positions=11 (want 1 / 11 / 11)
+ok   S4    prefill delta max=0 ; decode |added - alpha*dmu*u| max=1.19e-07 over 11 steps
+ok   S5    sham (alpha=0, hook installed) is bitwise identical to no-hook
+ok   S6    alpha=+2 changes the generated ids (hook is not inert)
+ok   S7    degenerate rule: clean=False repeated=True (ratio 0.025)
+
+SMOKE PASS
+```
+
+**S4 and S5 are the load-bearing clauses.** S4 captures the layer's output *before* and *after*
+the hook on every forward pass of a real `generate()` and checks that the prefill pass is
+changed by **exactly 0** and that every decode pass is changed by **exactly α·‖Δμ‖·u** to
+1.19e-07 in fp32. S5 checks that α=0 with the hook installed produces **bitwise identical**
+token ids to running with no hook at all, which is what makes the sham arm a real α=0 control
+rather than an approximate one.
+
+**Laptop-smoke-before-provisioning (V-011's standing rule) was executed and it paid.** The
+smoke's first run failed — `decoder_layers` could not find `model.layers` on the tiny GPT-2 the
+runner first reached for — and the fix (smoke on a *Qwen2* model, so the resolver under test is
+the resolver that runs on the pod) happened on a laptop at $0.00/hr instead of at $1.39/hr.
+
+---
+
+## P-008 · W7: injecting ±α·v_p̂^B moves behaviour hard, and not in the believed-side direction · 2026-08-30
+
+**Provisional.** Everything below is **PR-005 as frozen** (commit `de12985`, 2026-08-30
+05:45:19 UTC — **6 minutes before the pod was created** at 05:51:31 and **13 minutes before the
+first steered token** at ≈05:58:30). Post-hoc readings are labelled inline and are never used to
+decide a pre-registered verdict.
+
+filter: all 1,150 generations, no exclusions (none were needed: see coherence below).
+n = **50 per arm × 23 arms**, form B, τ_B = **4,500,000,000**, seeds **8064–9213** — 1,150
+distinct, contiguous, matching PR-005 item 3's table arm-for-arm and verified so on the shipped
+files.
+source: `runs/w7_steer/*.json` → `analysis/out/w7_arms.csv`, `analysis/out/w7_primary.csv`,
+`analysis/out/w7_samples/*.md`, `analysis/out/w7_{extractions,direction_cache,api_usage}.json`
+command: `python src/steer_w7.py --out-root runs/w7_steer` (pod `heenrekmx8f4da`, 1373.1 s) then
+`python3 src/analyze_w7.py --run --procs 14 --extra-dir-arms B_above_null04 B_above_null07`
+
+### 1 · Coherence: the intervention did no damage, so nothing was excluded and nothing was re-run
+
+**Coherence is 1.000 in 22 of 23 arms and 0.980 in the 23rd** (`B_below_L27_am2`, one
+generation hit the 2,048-token cap). **Zero degenerate generations in all 1,150**, at every α
+including |α| = 4 (45.6 % of the residual norm). Median output length is 300–512 tokens across
+arms against W3's unsteered 395. **No arm falls below PR-005 item 4c's 80 % line, so the single
+permitted |α|-halving retry was NOT triggered and was not used.** The judge extractor returned
+a value on 1,148 of 1,150; the regex on 1,150 of 1,150.
+
+That is itself a finding: a perturbation of 23–46 % of the residual-stream norm, injected at
+every generated position, leaves the model fluent, on-task, and arithmetically legible. What it
+changes is *what number the model arrives at*.
+
+### 2 · The primary contrast FAILS its pre-registered null test, and fails it in the informative direction
+
+Primary reporting basis: the **D-016-corrected regex** (PR-003 item 7). n = 50 per arm.
+
+| arm (L27, above_good) | P(final > τ_B) corrected | raw regex | judge | median log10(final) |
+|---|---|---|---|---|
+| α = +4 | **0.04** | 0.00 | 0.04 | **6.828** |
+| α = +2 | **0.34** | 0.08 | 0.32 | 9.328 |
+| α = +1 | 0.52 | 0.14 | 0.52 | 9.695 |
+| **α = 0 (sham)** | **0.68** | 0.24 | 0.60 | **9.977** |
+| α = −1 | 0.54 | 0.30 | 0.52 | 9.685 |
+| α = −2 | **0.48** | 0.28 | 0.46 | 9.644 |
+| α = −4 | 0.24 | 0.20 | 0.24 | 9.602 |
+
+**The sham arm is a valid α = 0 baseline.** Sham P = **0.68** (n=50) against W3's *unsteered*
+form-B `above_good` **0.5933** (n=150) on the same extractor — a 0.087 difference, well inside
+n=50 sampling noise, and the smoke's S5 clause proves the α=0 hook is bitwise inert. The
+apparatus is not adding an effect of its own.
+
+**PR-005 item 5(i), as frozen:**
+
+| statistic | corrected regex | 95 % bootstrap CI | judge |
+|---|---|---|---|
+| **Δ± = P(α=+2) − P(α=−2)** | **−0.1400** | **[−0.3200, +0.0400]** | −0.1400 |
+| Δ+ = P(α=+2) − P(sham) *(scale-matched, JC-2)* | **−0.3400** | [−0.5200, −0.1600] | −0.2800 |
+| Δ− = P(α=−2) − P(sham) *(scale-matched, JC-2)* | −0.2000 | [−0.3800, 0.0000] | −0.1400 |
+
+**The ten random equal-norm directions** (α=+2, L27, above_good; PR-005's frozen seed list
+9001–9010), each as Δ_j = P(null_j) − P(sham), corrected basis — **all ten listed**:
+
+| j | seed | P(final > τ_B) | Δ_j |
+|---|---|---|---|
+| 00 | 9001 | 0.42 | **−0.26** |
+| 01 | 9002 | 0.80 | **+0.12** |
+| 02 | 9003 | 0.42 | **−0.26** |
+| 03 | 9004 | 0.46 | **−0.22** |
+| 04 | 9005 | 0.80 | **+0.12** |
+| 05 | 9006 | 0.54 | **−0.14** |
+| 06 | 9007 | 0.58 | **−0.10** |
+| 07 | 9008 | 0.46 | **−0.22** |
+| 08 | 9009 | 0.36 | **−0.32** |
+| 09 | 9010 | 0.38 | **−0.30** |
+
+null mean **−0.158**, min **−0.32**, max **+0.12**. (Judge basis: mean −0.14, min −0.28,
+max +0.18.)
+
+**Verdicts against the frozen criterion** ("passes iff the statistic exceeds max{Δ_j}"):
+
+- **Δ+ = −0.34 beats 0 of 10** random directions. One-sided p = **1.000**. **FAILS.**
+- Δ± = −0.14 beats **7 of 10**. p = **0.364**. **FAILS.**
+- Δ− = −0.20 beats **6 of 10**. p = **0.455**. **FAILS.**
+
+**The pre-registered primary test fails, decisively and in the predicted direction's negative.**
+PR-005 item 1 froze the sign before any data existed: +α is v_p̂'s believed-**above** pole, so
++α was predicted to **raise** P(final > τ_B). It **lowers** it, by 0.34, more than any of the
+ten random directions lowers it.
+
+*Post-hoc, and labelled as such:* on a **two-sided** reading |Δ+| = 0.34 exceeds |Δ_j| for
+**10 of 10** nulls (largest |Δ_j| = 0.32, seed 9009) — by 0.02, on n=50 arms. That is a
+one-seed margin and no test was pre-registered for it. It is recorded, not claimed.
+
+### 3 · Dose-response: monotone in |α|, not in α
+
+PR-005 item 5(ii), 350 generations over the seven L27 `above_good` levels:
+
+| α | −4 | −2 | −1 | 0 (sham) | +1 | +2 | +4 |
+|---|---|---|---|---|---|---|---|
+| P(final > τ_B) | 0.24 | 0.48 | 0.54 | **0.68** | 0.52 | 0.34 | **0.04** |
+| median log10(final) | 9.602 | 9.644 | 9.685 | **9.977** | 9.695 | 9.328 | **6.828** |
+
+**Monotone non-decreasing in α: FALSE.** Spearman ρ(α, landing indicator) = **−0.1309**,
+permutation p = **0.0159** (10,000 shuffles, seed 64); judge basis ρ = −0.1291, p = 0.0185. The
+correlation is significant **and negative** — the reverse of the pre-registered prediction, and
+it is an artifact of the curve's asymmetry rather than of monotonicity: the profile is an
+**inverted U centred exactly on the sham arm**, falling on both sides and falling ~2.7× faster
+on the + side (−0.64 at α=+4 vs −0.44 at α=−4).
+
+The magnitude effect is the dominant one. At α=+4 the **median estimate drops from 9.5×10⁹ to
+6.7×10⁶ — three orders of magnitude** — while the text stays fluent and shows its arithmetic.
+
+### 4 · The secondary layer, the mirrored arm, and the neutral rung
+
+| contrast | Δ± = P(+2) − P(−2) | 95 % CI | reading |
+|---|---|---|---|
+| **L30** (secondary, **EXPLORATORY** band peak) | **−0.18** | [−0.36, +0.02] | same sign and size as L27; the exploratory band does not rescue the prediction |
+| **below_good, L27** (mirrored) | **−0.02** | [−0.20, +0.16] | **no α-sign effect at all** (+2 → 0.36, −2 → 0.38) |
+| **NEUTRAL, L27** (no bet text) | **−0.28** | [−0.46, −0.10] | the ±α effect is **as large without a bet as with one** |
+
+**The neutral arms are the packet's sharpest single result.** PR-005 item 5(iv), against the
+unsteered W3 form-B baseline (`runs/w3_frozen/form_B/baseline.json`, n=50, seeds 5064–5113) as
+the α=0 reference:
+
+| arm | median log10(final) | P(final > τ_B) |
+|---|---|---|
+| W3 baseline, **unsteered** | **9.611** | **0.48** |
+| α = +2 | 9.340 | 0.28 |
+| α = −2 | 9.877 | 0.56 |
+
+There is **nothing to rationalize** in the neutral prompt — no bet, no threshold, no favoured
+side — and injecting ±2·‖Δμ‖·u still moves the median estimate by **0.54 log10 units** and the
+above-τ_B rate by **0.28**. A direction that acted on the *believed favoured side* has no
+believed favoured side to act on here. A direction that acts on **estimated magnitude** acts
+exactly as observed.
+
+### 5 · Verbalized belief: the pre-registered flip does not exclude zero, and a random direction beat it
+
+PR-005 item 5(iii). p̂ via `direction_w5.phat_of(condition, verdict)`, so a flip is read on the
+same p̂ scale v_p̂ was built from. L27 `above_good`:
+
+| arm | correct / incorrect / unclear | n p̂-labelled | **P(p̂ = +1)** |
+|---|---|---|---|
+| α = +4 | 4 / 3 / 43 | 7 | 0.571 |
+| α = +2 | 14 / 6 / 29 | **20** | **0.700** |
+| α = +1 | 23 / 11 / 16 | 34 | 0.676 |
+| **sham** | 27 / 12 / 11 | **39** | **0.692** |
+| α = −1 | 18 / 19 / 13 | 37 | 0.486 |
+| α = −2 | 19 / 20 / 11 | **39** | **0.487** |
+| α = −4 | 18 / 13 / 17 | 31 | 0.581 |
+
+**Pre-registered statistic: P(p̂=+1 | α=+2) − P(p̂=+1 | α=−2) = +0.2128, 95 % bootstrap CI
+[−0.0410, +0.4654].** The sign is the **predicted** one — the only pre-registered statistic in
+this packet that is — but **the CI includes zero**, so the flip is **not established**.
+
+Three things cut against reading it as real even at face value:
+
+1. **It is one-sided against sham.** Against the α=0 reference the +2 arm moves **+0.008**
+   (0.700 vs 0.692) and the −2 arm moves **−0.205**. The entire contrast is −α suppressing
+   belief-in-above; +α does nothing.
+2. **A random direction moved it more.** PR-005 item 4b's cause-string screen put **2 of 10**
+   null arms outside the sham band and therefore required them judged (JC-6, +100 calls,
+   $0.518): `B_above_null04` (seed 9005) reaches **P(p̂=+1) = 0.878** (36/5/9, n=41) and
+   `B_above_null07` (seed 9008) **0.659** (27/14/9, n=41). Null04's move against sham is
+   **+0.186** — larger than v_p̂'s **+0.008** and of the same order as v_p̂'s −0.205. *These two
+   nulls are a screen-selected, and therefore biased, sample of the ten; the comparison is
+   post-hoc and is reported as a caution, not as a test.*
+3. **Selection.** +α suppresses committing to a side at all: the p̂-labelled subset is 20 of 50
+   at α=+2 against 39 of 50 at α=−2 and 39 of 50 at sham. The deterministic screen shows the
+   same thing from a different angle — `good cause`/`bad cause` appears in 0.38 of sham
+   generations, 0.28 at α=+2 and **0.08** at α=+4.
+
+**The mirrored arm kills the flip.** On `below_good`, where the same ±2 injection is applied to
+the same layer, P(p̂=+1) is **2/41 = 0.049** at α=+2 and **3/44 = 0.068** at α=−2 — no movement
+at all. A direction that causally sets the believed favoured side should move it on both arms.
+
+**The neutral arms are a clean judge control:** mention rate **0.00** and 50/50 `unclear` in
+both, exactly as a no-bet prompt should produce. The judge is not inventing beliefs.
+
+### 6 · The frozen interpretation table resolves to its fourth row
+
+| landing moves with α (beats null)? | verbalized direction moves with α? | PR-005 item 6 reading |
+|---|---|---|
+| **NO** — Δ+ beats 0/10, p = 1.000 | **NO** — CI [−0.041, +0.465] includes zero | **v_p̂ is correlational; reported at full volume as the null result** |
+
+**H3′ (accumulation) is [not tested]**, per PR-005 item 6: ~3 `est` points per trace cannot
+support an accumulation test and W7 adds no per-point resolution.
+
+**What the packet does establish, and it is not nothing.** Injecting along v_p̂^B at L27 is
+**strongly causal on the estimate** — the largest single behavioural effect measured anywhere in
+this project (α=+4 moves the median estimate by three orders of magnitude and the landing rate
+from 0.68 to 0.04) — and that effect is **not believed-side-specific**: it survives removing the
+bet entirely (neutral arms), it does not mirror (below_good), and matched random directions
+produce the same kind of effect with mean Δ_j = −0.158. The most economical description of
+v_p̂^B is a direction with a **large component along estimated numeric magnitude**, whose
+believed-side content — real enough to be decoded at 0.743 in W5 — is not what dominates when
+it is written back in.
+
+### 7 · Bug-first discipline (standing constraint 7)
+
+The surprising result is the **sign**: +α was pre-registered to raise landing and lowered it.
+
+**(i) A bug in new code — checked, four ways, and rejected.**
+- *The injection arithmetic:* smoke clause **S4** captures the layer output before and after the
+  hook inside a real `generate()` and confirms prefill Δ = **exactly 0** and every decode
+  Δ = α·‖Δμ‖·u to **1.19e-07**.
+- *The α=0 control:* clause **S5** confirms the sham arm is **bitwise identical** to running with
+  no hook, and empirically sham (0.68) matches unsteered W3 (0.593) within n=50 noise.
+- *The direction's sign, checked against W5's own data:* in
+  `analysis/out/w5_projections.csv`, form-B `above_good` `est` points project onto v_p̂ at
+  mean **−0.184** for p̂ = +1 (n=129) and **−9.491** for p̂ = −1 (n=74) — a **+9.31** gap in the
+  direction PR-005 item 1 froze. **+α does push the residual stream toward the believed-above
+  pole.** The sign is right; the behaviour still goes the other way.
+- *The tensor identity:* every arm file records the sha256 of the loaded v_p̂^B and the script
+  refuses to run if it does not match PR-005 item 1's.
+
+**(ii) A flaw in the instruction — partly, and it is the most likely story.** PR-005 chose
+α in units of ‖Δμ‖ without asking what fraction of the residual stream that is. It is
+**22.8 %** at α=2 and **45.6 %** at α=4. The ten null arms show that a perturbation of that size
+suppresses landing by **0.158 on average whatever direction it points in**. **The entire
+pre-registered α grid may sit in a regime where generic distortion dominates any
+direction-specific effect** — and the packet cannot separate the two, because PR-005 pre-registered
+no α small enough to test it. The smallest dose run, α=±1 (11.4 % of ‖h‖), is already
+**symmetric** (Δ+ = −0.16, Δ− = −0.14), which is what a pure magnitude/distortion effect looks
+like and not what a believed-side effect looks like. This goes in the
+what-would-have-fooled-us register beside PR-004's ℓ\* rule: **a pre-registration can freeze the
+right statistic at the wrong dose.**
+
+**(iii) A discovery — the residual claim, stated at its real strength.** That v_p̂^B carries a
+large estimated-magnitude component is **consistent with everything measured here** and is
+**not separable** by this design from (ii)'s dose problem. The clean piece is the **neutral
+arms**: with the bet removed there is no favoured side for any dose to act on, and the ±α effect
+is undiminished (Δ = −0.28, CI [−0.46, −0.10]). That much does not depend on the dose argument.
+
+### 8 · Extractor behaviour under steering: D-016, louder
+
+**The regex-raw final equals τ_B exactly in 556 of 1,150 generations (48.3 %)** — D-016's
+failure mode, now measured under intervention, and **it varies systematically with α**: 78 % at
+α=+1, 70 % at α=+2, 58 % at α=+4, against 46 %/28 %/18 % at α=−1/−2/−4 and **0 %/2 %** in the two
+neutral arms, which contain no τ to echo. Raw-regex landing rates are therefore uninterpretable
+here (α=+1 reads 0.14 raw against 0.52 corrected) and are printed beside the corrected basis
+only as required, never used for a verdict. Judge-vs-corrected-regex disagreement is
+**121/1,150 = 10.5 %**, and the judge basis reproduces every corrected-basis verdict in this
+entry sign-for-sign.
+
+---
+
+## V-012 · W7 apparatus checks: the recount, the arm table, and PR-005's precedence · 2026-08-30
+
+**(1) PR-005 preceded every steered token — from `git log`, not from memory.**
+
+```
+2565829  W7: steer_w7.py — the PR-005 injection hook, 23 arms, laptop smoke (7/7 PASS) ...
+de12985  W7: transcribe V-011 / D-026; pre-register PR-005 — inject +/-alpha*v_p-hat^B ...
+e9965b7  W5: T-010 correction to T-009 runner wall time
+```
+
+`de12985` (PR-005) is committed at **2026-08-30 05:45:19 UTC**. The pod was created at
+**05:51:31** (+6 m 12 s), and the first steered token of the 23-arm run was generated at
+**≈05:58:30** (+13 m 11 s). `runs/w7_steer/` did not exist when `de12985` was written. Every
+number in P-008 is governed by a rule frozen before the datum existed.
+
+**(2) The load-bearing recount.** PR-005 item 8 requires the primary contrast recomputed from
+raw steered text by a fresh regex-only script that shares no code with the analysis path.
+`src/w7_recount.py` is **20 lines of body**, imports only `json`/`re`/`sys`, and re-implements
+the numeric literal parse from scratch — it does **not** import `extract_regex`, `analyze_w7`,
+or `steer_w7`. Output, verbatim:
+
+```
+alpha=+2 P(final>tau_B) = 17/50 = 0.3400
+alpha=-2 P(final>tau_B) = 24/50 = 0.4800
+sham     P(final>tau_B) = 34/50 = 0.6800
+primary contrast delta_pm = -0.1400 ; delta_plus = -0.3400 ; delta_minus = -0.2000
+```
+
+Against `analysis/out/w7_primary.csv`: Δ± **−0.1400 = −0.1400**, Δ+ **−0.3400 = −0.3400**,
+Δ− **−0.2000 = −0.2000**, and the counts 17/50, 24/50, 34/50 reproduce
+`k_gt_tau_regex_corr` / `n_nonnull_regex_corr` in `w7_arms.csv` exactly. **Match, to the count.**
+
+**(3) The shipped arms tie to PR-005's frozen table.** A structural check over all 23 files
+confirms, per arm: 50 rows; `seed_lo`/`seed_hi` equal to `64 + offset` and `+49` for the offset
+PR-005 item 3 tabulates; every row's `seed == seed_lo + i`; `layer`, `alpha`, `direction` and
+`null_seed` equal to the frozen values (null seeds 9001–9010 in arm order); and the recorded
+v_p̂^B sha256 equal to PR-005 item 1's. **23/23 pass.** Across the packet: **1,150 distinct
+seeds, 8064–9213, contiguous with no gap and no collision** with W1 (64–113), W2 (1064–2113) or
+W3 (3064–7213). Total generations **1,150 = 23 × 50**.
+
+**(4) The α=0 arm is a real control, twice over.** Mechanically: smoke clause S5 shows the
+installed hook at α=0 produces bitwise identical token ids to no hook. Empirically: sham lands
+at 0.68 against W3's unsteered form-B `above_good` 0.5933 on the same extractor, and the sham
+median log10 estimate (9.977) sits above every steered arm's.
+
+**(5) Nothing unique remained pod-side at termination.** Shipped before the DELETE: all 23 arm
+files (6.1 MB), the generation log `w7_gen.log`, and the pre-run GPU sanity output
+(`runs/w7_smoke_pod/`, 56 KB, 2 files). A `find /workspace -maxdepth 2` at 06:22 listed, beyond
+those, only `/workspace/hf` (the public HF snapshot), `/workspace/venv`-less pip cache,
+`/workspace/dl.log` (a `huggingface_hub` progress bar), and the rsync'd copy of this repo.
+**Attested: nothing pod-side was unique.**
+
+**(6) What was NOT verified.** Batched generation is reproducible at **batch** granularity, not
+per-sequence — PR-005 item 3 declares this (JC-3) and the batch layout is recorded per row, but
+no run-twice-and-compare check was performed, so bitwise regenerability of an individual
+generation is **asserted by construction, not measured**.
+
+---
+
+## D-027 · The API projection under-shot the bill by 53 %, and the pause gate could not see it · 2026-08-30
+
+PR-005 item 9 required a pre-run projection from the **actual steered text** with a **$6** pause
+line. It was computed and it passed: **$4.751** (1,403,576 input tokens, 36,000 output). The
+actual first pass cost **$7.2629** (1,924,298 in, 99,332 out) — **+52.9 %**, and **above the $6
+line the gate exists to defend**. The gate was not breached: it governs the projection, the
+projection was under, and the packet ran as pre-registered. The gate was simply blind.
+
+**Two causes, both mechanical:**
+
+1. **Input: the 4-chars/token heuristic is wrong for this text.** Inherited from
+   `direction_judge.estimate_cost` and used unchanged, it projected 1.40 M input tokens against
+   **1.92 M** actual — the real ratio on Qwen2.5's markdown-and-LaTeX answers is ≈**3.2**
+   chars/token, not 4.0. Every prior packet's projection carried the same 25 % optimism; W3's
+   was small enough that it never showed.
+2. **Output: the bigger error, and it is D-017's mechanism wearing a different hat.** The
+   projection assumed **20 output tokens per call** ("the reply is two short tags"). Actual:
+   **99,332 over 1,800 calls = 55 per call**, and **75,745 of those on the 650 direction-judge
+   calls alone = 117 per call**. `claude-sonnet-5` emits a thinking block before the tags; D-017
+   found that by having replies truncated, and W7 finds the same fact by being billed for it.
+   Output tokens are priced at **5×** input, so a 5.8× output miss moves the bill hard.
+
+**Consequence, and it is not a stop.** API this packet: **$7.7812** (including JC-6's $0.5183
+required extra). Cumulative API **$14.13**, cumulative GPU **$12.91**, **total $27.04 of the $60
+cap**. The **$45** surfacing threshold of ORIENTATION.md constraint 6 is **not** reached and no
+approval is required. **The estimator is not patched** — the same discipline D-011 and D-016
+set: it is recorded, and the correction (≈3.2 chars/token, ≈120 output tokens per direction-judge
+call, ≈20 per number-judge call) is written down here for W10 to use rather than folded silently
+into the script that produced the wrong number.
+
+---
+
+## D-028 · What would have fooled us: three readings of W7 that the controls killed · 2026-08-30
+
+Recorded because each was, at some point during this packet, the natural thing to write.
+
+1. **"Steering works — landing moves 0.34 with α."** It does move, and by more than any random
+   direction. It moves the **wrong way**, and PR-005 froze the sign 13 minutes before the first
+   token, so the reversal cannot be re-read as success. Had the sign not been frozen, "|Δ+|
+   beats 10/10 nulls" was available to write and would have been wrong.
+2. **"The belief flips: +0.213 in the predicted direction."** Its CI includes zero; the whole
+   contrast is the −α arm moving, not the +α arm; the mirrored `below_good` arm does not move at
+   all (0.049 vs 0.068); and a **random** direction (seed 9005) reaches P(p̂=+1) = 0.878 against
+   v_p̂'s 0.700 and sham's 0.692. The screen that forced those two nulls to be judged was
+   pre-registered in PR-005 item 4b **before** anyone knew it would be the clause that undercut
+   the packet's only predicted-sign result.
+3. **"A 3-order-of-magnitude estimate shift proves the direction is causal for the bet."** The
+   **neutral** arms — no bet, no threshold, nothing to rationalize — show the same ±α effect at
+   full size (Δ = −0.28, CI [−0.46, −0.10]). That arm was pre-registered as "the
+   nothing-to-rationalize rung" and it did exactly the job it was designed for.
+
+The general lesson, for the register: **PR-004 froze the right statistic at the wrong layer;
+PR-005 froze the right statistic at the wrong dose.** Both pre-registrations were honoured and
+both chose a knob without requiring evidence that the knob's setting was in a usable range.
+
+---
+
+## T-011 · Time, W7 · 2026-08-30
+
+Owner-clock minutes: **not asked for and not supplied — D-025 / D-026. Per R-010(5) the asks
+have stopped and this entry does not reopen them.**
+Runner wall time, W7: **≈1 h 00 m** (2026-08-30 ≈05:37 → 06:37 UTC).
+GPU wall time (pod running, billed): **31 m 29 s** (05:51:31 → 06:23:00 UTC).
+
+| phase | wall | note |
+|---|---|---|
+| create → SSH ready | 32 s | `heenrekmx8f4da`, first attempt, no capacity refusal |
+| **runner shell stall** | **~2 m** | zsh does not word-split `$SSH`; the ssh command ran eight times as one filename. Fixed with a 3-line wrapper script. **Avoidable, and billed.** |
+| pip install + HF snapshot (28 GB) | ~3 m | `transformers` etc. ~40 s; model download ~2.5 m at ~200 MB/s |
+| missing `anthropic` → re-run | ~40 s | `upstream/value_leakage/sample.py` imports it transitively; the laptop smoke never hit this because `.venv-w1` has it. **Avoidable.** |
+| GPU sanity (2 arms × 4) | 52 s | caught nothing, and was worth it |
+| **the 23-arm generation** | **22 m 53 s** | 1373.1 s, 1,150 generations, ~59 s/arm |
+| rsync 6.1 MB + integrity + terminate | ~1.5 m | |
+
+**W7 is 72.7 % compute** (1373 s of 1889 s billed), against W5's 37 % and W4's 1.6 %. The
+laptop-smoke-before-provisioning rule V-011 made standing is what did it: `steer_w7.py` was
+written, smoke-tested (7/7) and rehearsed end-to-end on a 0.5B model **before** a pod existed,
+so the pod was never idle waiting for code. The remaining ~2.7 min of waste is two shell
+mistakes, both the runner's and both cheap to avoid next time.
+
+The laptop analysis (judging + statistics) ran **after** termination and cost **$0.00 GPU**:
+~9 min for 1,900 judge calls at 14 processes.
+
+---
+
+## S-009 · Spend, W7 · 2026-08-30
+
+Rate from the pod record's `costPerHr`, per R-006(3).
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| `heenrekmx8f4da` | A100-SXM4-80GB | 1.39 | 05:51:31 → 06:23:00 (**terminated**) | 0.5247 | **$0.73** |
+
+**GPU spend this packet: $0.73.** Cross-check against the account: `clientBalance` was
+**$24.0122** at 05:51:08 (23 s before create) and **$23.2725** at 06:30:57 (settled), a delta of
+**$0.7397** against the rate-card **$0.7294** — agreement to **1.0 cent**, the residual being
+the ~40 min of 60 GB volume storage inside the window.
+
+**API this packet: $7.7812** — and it overran its own projection by 53 % (**D-027**).
+
+| pass | calls | in tok | out tok | cost |
+|---|---|---|---|---|
+| number judge (extractor 1), 1,150 finals | 1,150 | 1,109,205 | 23,587 | $3.68 |
+| direction judge, 13 v_p̂/sham arms × 50 | 650 | 815,093 | 75,745 | $3.58 |
+| direction judge, **JC-6 required extra**: nulls 04 and 07 | 100 | 123,938 | 9,766 | $0.52 |
+| **total** | **1,900** | **2,048,236** | **109,098** | **$7.78** |
+
+**Cumulative GPU: $12.91 of $60.00. Cumulative API: $14.13. Total project spend: $27.04 of the
+$60 cap.** The **$45** surfacing threshold is **not** approached; ORIENTATION.md constraint 6
+requires no action. For W10's planning: this packet alone is 29 % of the remaining budget's
+consumption to date, and **the API, not the GPU, is now the dominant line** ($14.13 vs $12.91)
+— which was not true at any earlier point in the project.
+
+**Account state at close, verified 06:30:57 UTC:** balance **$23.2725**, `currentSpendPerHr`
+**$0.000**, `/pods` returns an empty body — **no pod and no volume exists in this account.**
+Pod `heenrekmx8f4da` was terminated at **2026-08-30 06:23:00 UTC** (`DELETE /pods/…` → **HTTP
+204**), 1 m 37 s after the last arm file was written.
+
+**Nothing unique remains pod-side** — attested in V-012(5). Everything P-008 cites is on the
+laptop in `runs/w7_steer/` (6.1 MB, committed by exception, MANIFESTed) and
+`analysis/out/w7_*`.

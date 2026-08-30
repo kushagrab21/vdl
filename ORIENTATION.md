@@ -97,58 +97,61 @@ W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W5)
+## Where things stand (end of W7)
 
-W0–W4 accepted (**R-003**, **V-001**, **V-002**, **V-003**, **V-006**, **V-009**).
-**PR-001** remains the pre-registration of record; **PR-002**, **PR-003** and **PR-004** bind.
-**R-008** pivoted the model to `Qwen2.5-14B-Instruct`; **R-009 (owner-approved)** re-targeted
-the interp work from the prompt-stated favoured side `p` to the **trace-level believed
-favoured side `p̂`**. **R-010** set the transfer policy: activation analysis runs pod-side, the
-laptop receives summaries, scalars, direction tensors and a subsample — never the full tensors.
+W0–W5 accepted (**R-003**, **V-001**, **V-002**, **V-003**, **V-006**, **V-009**, **V-011**).
+**PR-001** remains the pre-registration of record; **PR-002**–**PR-005** bind. **R-008** pivoted
+the model to `Qwen2.5-14B-Instruct`; **R-009 (owner-approved)** re-targeted the interp work to
+the trace-level believed favoured side `p̂`; **R-010** set the transfer policy.
 
-**Gate G1 FAILED at W3** (form A +0.017, form B +0.120). The live finding is the
-belief-conditional decomposition (P-005). **W4** replayed all 700 traces with hooks
-(6,668 points, 48 layers × 5,120, 34/34 decode check, P-006/V-008).
+**Gate G1 FAILED at W3** (form A +0.017, form B +0.120). **W4** replayed all 700 traces with
+hooks (6,668 points, 34/34 decode check). **W5** produced v_p̂ (P-007, V-010): form B's p̂ probe
+reaches **0.743 at ℓ\*=22** (p=0.001) and **0.760 at L27**, form A is flat at every layer, and
+form B's decodability is **entirely pre-verbalization**. The result of record at ℓ\*=22 is a
+**marginal cosine pass (0.2608 vs null p95 0.2443)** and a **transfer FAIL (0.5310)**; the
+layers-24–36 band is **EXPLORATORY** and labelled so everywhere (V-011).
 
-**W5 complete (P-007, V-010).** v_p̂, the layer profile, probes with 1000-draw nulls, and
-cross-form invariance, all computed pod-side against PR-004 frozen beforehand (commit
-`956052c`, 91 s before the analysis started).
+**W7 complete (F-015, P-008, V-012).** The project's one causal rung. 23 arms × 50 = **1,150
+steered generations** on a fresh A100, PR-005 frozen **13 minutes** before the first steered
+token. Injection is α·‖Δμ‖·u added to L27's (or L30's) output at every decode position;
+‖Δμ‖ = 12.726 at L27, and α=2 is 22.8 % of the residual-stream norm.
 
-- **Form B carries the believed direction; form A does not.** p̂ probe balanced accuracy at
-  the pre-registered ℓ\* = 22: **B 0.743 (p = 0.001)**, **A 0.524 (p = 0.324)**. Form A is
-  below its null at **0 of 48 layers**; form B is above at **42 of 48**, peaking 0.760 at
-  layer 27. The d_t positive control reaches 0.96/0.99 on the same points and pipeline, so the
-  apparatus is not the reason.
-- **ℓ\* = 22 is a noise argmax.** PR-004 fixed ℓ\* as the argmax of the form-A curve, and
-  that curve is never significant. The signal band is **layers ~24–36**: cross-form cosine
-  beats its null at layers 21–36 (peak **0.426** at layer 30), transfer A→B at layers 24–41
-  (peak **0.760** at layer 28). At ℓ\* the cosine **passes** (0.261 vs null p95 0.244,
-  p = 0.045) and transfer **fails** (0.531, p = 0.203).
-- **Decodability is pre-verbalization.** 155/163 (A) and 196/203 (B) est points precede the
-  trace's first `good cause`/`bad cause` token, so the "after" cell (~2 traces) is not
-  estimable and form B's 0.743 is entirely a before-the-belief-is-stated number.
-- **cos(v_p, v_p̂)** at ℓ\*: B **0.432**, A **0.051** — related, not collinear, which is what
-  makes R-009's pivot non-cosmetic.
-- **Infrastructure: closed out.** `io6c1fhnarzoj9` **resumed on the first attempt** once the
-  account was funded (D-023 — the first resume in the project; D-021's "four of four" conflated
-  capacity refusals with a billing refusal), so no recompute was needed. All six activation
-  files were verified pod-side (rows == index, 30/30 decode, V-010) and **all three pods are
-  now terminated**: account balance $24.05, `currentSpendPerHr` **$0.00**, no volume anywhere.
-- **The 3.28 GB of W4 tensors no longer exist.** What survives is
-  `runs/w5_subsample/` (588 MB, gitignored, MANIFESTed): the pre-registered 10 % subsample and
-  — added as JC-4 after the analysis was frozen — the **analysis cell** (528 est points of both
-  `above_good` arms), because the 10 % rule lands only 17 cell points per form and cannot
-  support PR-004's recount (**D-024**). `python3 src/w5_recount.py` rebuilds v_p̂(ℓ\*) from the
-  cell at **cosine 1.000000**.
+- **The intervention is powerfully causal and not believed-side-specific.** At α=+4 the median
+  estimate falls **three orders of magnitude** (9.5×10⁹ → 6.7×10⁶) and landing falls 0.68 → 0.04,
+  with **fluent, on-task, arithmetic-showing text** — coherence is **1.000 in 22 of 23 arms**,
+  zero degenerate generations in 1,150, so the |α|-halving retry was never triggered.
+- **The pre-registered primary test FAILS.** PR-005 froze +α as the believed-**above** pole, so
+  +α should have *raised* P(final > τ_B). Δ+ = **−0.34**, beating **0 of 10** matched random
+  directions (one-sided p = 1.000); Δ± = −0.14, beats 7/10. Dose-response is an **inverted U
+  centred on sham**, monotone in |α| and **not** in α (Spearman ρ = −0.131, p = 0.016 — significant
+  and negative).
+- **The verbalized flip does not survive.** +0.213 in the predicted direction but CI
+  **[−0.041, +0.466]** includes zero; it is carried entirely by the −α arm; the mirrored
+  `below_good` arm does not move (0.049 vs 0.068); and a **random** direction (seed 9005) reaches
+  P(p̂=+1) = **0.878** against v_p̂'s 0.700 and sham's 0.692.
+- **The neutral rung is the sharpest result.** With the bet removed there is nothing to
+  rationalize, and ±2 still moves the median estimate by **0.54 log10** and landing by **0.28**
+  (CI [−0.46, −0.10]).
+- **PR-005 item 6 therefore resolves to its fourth row: v_p̂ is correlational, reported at full
+  volume as the null result.** H3′ is **[not tested]**. The leading alternative — that the
+  pre-registered α grid sits entirely in a regime where generic distortion dominates (the ten
+  nulls suppress landing by 0.158 on average) — is stated in P-008(7) and is **not separable**
+  by this design, because no α small enough was pre-registered.
+- **Register entry (D-028):** *PR-004 froze the right statistic at the wrong layer; PR-005 froze
+  the right statistic at the wrong dose.*
+- **Infrastructure: clean.** `heenrekmx8f4da` created 05:51:31, terminated **06:23:00** (HTTP
+  204); `/pods` empty, `currentSpendPerHr` $0.00, no volume. **72.7 % of billed GPU time was
+  compute** (best in the project), because V-011's laptop-smoke-before-provisioning rule was
+  executed: 7/7 smoke plus an end-to-end 0.5B rehearsal before a pod existed.
 
-**Spend: $12.18 GPU + $6.35 API = $18.53 of $60.** W5 cost **$0.84 GPU and $0.00 API**.
-Owner-clock minutes were never supplied, across seven asks; per **R-010(5)** the asks have
-**stopped** and **D-025** records that time accounting rests on runner wall time alone.
+**Spend: $12.91 GPU + $14.13 API = $27.04 of $60.** W7 cost **$0.73 GPU and $7.78 API** — and
+the API projection under-shot by **53 %** (**D-027**: 4 chars/token is really ~3.2, and
+sonnet-5's thinking block makes the direction judge cost ~117 output tokens per call, not 20).
+**The API is now the dominant spend line.** The $45 threshold is not approached.
 
-**Next: the researcher reads the layer profile and rules on the intervention design** (which is
-where H1/H2/H3-as-p̂ are decided). W7–W9 need a fresh pod and will have to regenerate the W4
-tensors (`python src/replay_w4.py`, 94.8 s of forward passes, ~$0.12) or hook during generation
-directly.
+**Next: W10 only** — skepticism pass, build script, write-up assembly from `E-`/`V-` entries.
+**Do not start it:** the researcher reads `analysis/out/w7_samples/*.md` (13 arms × 10 traces at
+the blind indices 0–9) before any W7 number is promoted to `E-`.
 
 Tooling in `src/`: `pod.py` · `pod_survey.py` · `runpod_client.py` · `extract_runpod_key.py` ·
 `bootstrap.sh` (interpreter-aware since D-022) · `provision_pod.sh` · `gen_neutral.py` ·
@@ -156,6 +159,6 @@ Tooling in `src/`: `pod.py` · `pod_survey.py` · `runpod_client.py` · `extract
 `landing_gap.py` · `behaviour_w3.py` · `direction_judge.py` · `recount_w2.py` · `recount_w3.py` ·
 `trace_sample.py` · `trace_sample_w2.py` · `samples_w3.py` · `samples_w4.py` ·
 `judge_check_w4.py` · `replay_w4.py` · **`direction_w5.py`** · **`w5_integrity.py`** ·
-**`w5_cell.py`** · **`w5_recount.py`** · both smoke scripts.
+**`w5_cell.py`** · **`w5_recount.py`** · **`steer_w7.py`** · **`analyze_w7.py`** · **`samples_w7.py`** · **`w7_recount.py`** · both smoke scripts.
 Laptop-side judging/analysis runs in `.venv-w1/` (now also holds `scikit-learn`, which is what
 makes `--smoke` and `w5_recount.py` laptop-reproducible).

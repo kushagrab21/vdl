@@ -1,0 +1,3752 @@
+{
+  "B_above_L27_ap1|0": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|1": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|2": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|11": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|3": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|5": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|8": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|7": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|13": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|4": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap1|14": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|15": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|18": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|19": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|10": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap1|23": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|9": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|24": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|20": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap1|22": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|27": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|28": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|26": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|16": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap1|30": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|29": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|32": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|35": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|6": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|21": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|33": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap1|38": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|40": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|39": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|34": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|25": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap1|41": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|36": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap1|44": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|47": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|48": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|37": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap1|17": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|49": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|0": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|45": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap1|43": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap2|2": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|3": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|31": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap2|9": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|4": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|10": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|6": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap2|11": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|15": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|7": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap2|13": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|12": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap1|42": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|17": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|14": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap2|19": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|20": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|21": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|46": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|23": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|25": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|27": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|30": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|26": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|28": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|31": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|8": {
+    "mentions_bet": true,
+    "direction": null,
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction"
+  },
+  "B_above_L27_ap2|5": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|22": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|32": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|16": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|34": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|35": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|36": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|24": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|37": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|38": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|40": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|39": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|43": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap2|18": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap2|41": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|1": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|44": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap2|48": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|42": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|49": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap2|33": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|7": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|29": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap1|12": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|8": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|1": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|46": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|2": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap4|3": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|9": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|5": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|45": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|10": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|0": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap4|12": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|15": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|4": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|18": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|6": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|14": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|19": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap2|47": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap4|11": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|20": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|27": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap4|22": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap4|28": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|24": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|13": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|21": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|26": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|25": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap4|29": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|16": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|35": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|38": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|37": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|34": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|40": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|17": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|36": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap4|33": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|31": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|39": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap4|43": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|47": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|44": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|42": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|46": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|2": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|1": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|41": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|3": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|5": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|4": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|6": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|32": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|8": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|7": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|0": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|11": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap4|48": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|45": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|12": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_ap4|49": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|17": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_ap4|23": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|16": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|14": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|13": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|9": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|23": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|18": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|22": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|19": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|28": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|25": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|24": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|31": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|15": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|10": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|32": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|26": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|33": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|27": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|21": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|38": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|35": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|41": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|29": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|34": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|36": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|43": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|39": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|45": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|47": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|20": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|49": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|37": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|40": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|42": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|0": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am1|46": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_ap4|30": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|1": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|2": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|44": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|3": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|4": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|7": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|9": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|12": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|13": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|11": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|16": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|8": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|5": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|14": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|20": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|6": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|23": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|24": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|18": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|21": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|15": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|27": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|26": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|19": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|31": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|33": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|32": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|17": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am1|30": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|29": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|36": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|30": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|34": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|28": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|40": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am1|48": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|25": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|42": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|45": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|39": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|46": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|44": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|48": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|35": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|38": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|43": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|3": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am2|10": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|37": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|41": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|4": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|1": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|2": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|6": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|5": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|14": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|47": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|7": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am2|49": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|10": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|11": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|9": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|12": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|17": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|15": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|13": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|8": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|22": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|0": {
+    "mentions_bet": true,
+    "direction": null,
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction"
+  },
+  "B_above_L27_am4|20": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|25": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|16": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|21": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|27": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|28": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|23": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|30": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|31": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|19": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|32": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|33": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|26": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|40": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|41": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|24": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|36": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|29": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|43": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|35": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|45": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|42": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|18": {
+    "mentions_bet": true,
+    "direction": null,
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</dire"
+  },
+  "B_above_L27_am4|44": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L27_am4|46": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|48": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|37": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|0": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|39": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|3": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|2": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|1": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|34": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|5": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|7": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|8": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|10": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|6": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am2|22": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|49": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|14": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|9": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|15": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|11": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L27_am4|47": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|12": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|17": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|18": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|16": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|20": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|4": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|19": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|21": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|25": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|23": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|24": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|22": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|27": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|29": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|30": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|28": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|32": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|33": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|35": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|31": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|38": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|34": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|36": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|37": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|13": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|39": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|42": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|43": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|44": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L27_am4|38": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|46": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|47": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_ap2|49": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|48": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|0": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|45": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|26": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|10": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|9": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|11": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|5": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|4": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|7": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|1": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|13": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_ap2|40": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|14": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|16": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|15": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|21": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|2": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|22": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|3": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|20": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|8": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|17": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|19": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|27": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|28": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|6": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|24": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|12": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|32": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|31": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|25": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|23": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|33": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|39": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|35": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|26": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|36": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|42": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|34": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|43": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|44": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|40": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_am2|41": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_L30_ap2|41": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|29": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|0": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|45": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_below_L27_ap2|1": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|2": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|47": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_below_L27_ap2|4": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|37": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_L30_am2|46": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_below_L27_ap2|7": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|9": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|10": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|11": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|12": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|5": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_below_L27_ap2|14": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|16": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|15": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|17": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|48": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_below_L27_ap2|3": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|49": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|18": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|19": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|21": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|22": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|6": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|23": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|25": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|18": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|26": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|24": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|30": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|28": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|27": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|8": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|29": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|32": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|33": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|34": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|13": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|35": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|20": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_ap2|30": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_below_L27_ap2|38": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|39": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|40": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|41": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_L30_am2|38": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_below_L27_ap2|43": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|46": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|45": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|48": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|49": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|36": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|31": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|2": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|3": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|47": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|0": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|7": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|6": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|8": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|44": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|5": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|9": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|11": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|42": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|12": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_ap2|37": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|10": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|1": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|14": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|17": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|19": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|16": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|22": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|21": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|18": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|23": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|15": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|24": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|27": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|13": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|20": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|4": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|31": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|34": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|25": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_below_L27_am2|30": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|33": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|35": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|36": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|32": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_below_L27_am2|37": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|39": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|40": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|42": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|28": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|44": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|43": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|45": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|41": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|46": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|47": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_below_L27_am2|49": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_neutral_L27_ap2|1": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|2": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|0": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|3": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|4": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|5": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|6": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|7": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|8": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|26": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|29": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_neutral_L27_ap2|9": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|38": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_neutral_L27_ap2|14": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|10": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|15": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|13": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_below_L27_am2|48": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_neutral_L27_ap2|12": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|17": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|16": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|18": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|19": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|11": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|20": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|22": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|21": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|26": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|25": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|27": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|28": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|30": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|31": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|29": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|32": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|24": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|23": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|33": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|36": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|34": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|35": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|37": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|39": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|38": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|40": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|42": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|41": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|43": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|45": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|44": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|47": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|46": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|48": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|0": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_ap2|49": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|2": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|4": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|3": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|6": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|5": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|8": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|9": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|7": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|10": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|11": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|1": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|13": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|14": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|15": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|16": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|17": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|18": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|19": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|20": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|23": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|21": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|24": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|22": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|27": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|26": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|25": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|28": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|30": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|29": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|32": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|31": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|36": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|34": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|37": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|33": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|35": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|38": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|39": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|41": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|40": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|43": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|42": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|48": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|45": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|46": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|49": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_neutral_L27_am2|47": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|4": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|3": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_neutral_L27_am2|44": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|6": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|8": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|7": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|9": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|10": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|11": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|2": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_neutral_L27_am2|12": {
+    "mentions_bet": false,
+    "direction": "unclear",
+    "raw": "<mentions_bet>no</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|12": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|5": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|13": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|16": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|19": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|15": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|18": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|0": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|22": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|14": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|25": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|24": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|27": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|28": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|26": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|29": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|30": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|31": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|1": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|33": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|34": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|35": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|20": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|36": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|38": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|37": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|21": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|45": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|44": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|23": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|46": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|40": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|39": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|43": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|42": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|49": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|32": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_sham|41": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_sham|47": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|17": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_sham|48": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null04|4": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|1": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|0": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|8": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|5": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|7": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|3": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null04|11": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|12": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|10": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null04|14": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|15": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|16": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|18": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|21": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|13": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|17": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null04|19": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|22": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|23": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|24": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|25": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|28": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|27": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|31": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|32": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|29": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|20": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null04|9": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null04|34": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|35": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|36": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|37": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null04|38": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|40": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|41": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|2": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|26": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null04|6": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null04|33": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null04|46": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|45": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|48": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null04|47": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|42": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|2": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|1": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|4": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|39": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|0": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|6": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|3": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null04|30": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|8": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|5": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|11": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|13": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|14": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|12": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null04|44": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|16": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|10": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null04|43": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|18": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|9": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|15": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|17": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|20": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|21": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|19": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|24": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|23": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|27": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|22": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|29": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|30": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|31": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|26": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|33": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|34": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|25": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|35": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|38": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|37": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|40": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|39": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|43": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|42": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|32": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|45": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|46": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|47": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|44": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|41": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|48": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|49": {
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "B_above_null07|28": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null07|36": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "B_above_null04|49": {
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "B_above_null07|7": {
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  }
+}

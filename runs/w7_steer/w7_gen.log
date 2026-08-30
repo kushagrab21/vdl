@@ -1,0 +1,73 @@
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:00<00:03,  2.01it/s]Loading checkpoint shards:  25%|██▌       | 2/8 [00:00<00:02,  2.60it/s]Loading checkpoint shards:  38%|███▊      | 3/8 [00:01<00:02,  2.49it/s]Loading checkpoint shards:  50%|█████     | 4/8 [00:01<00:01,  2.44it/s]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:01<00:01,  2.61it/s]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:02<00:00,  2.67it/s]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:02<00:00,  2.69it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:02<00:00,  3.37it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:02<00:00,  2.81it/s]
+model Qwen/Qwen2.5-14B-Instruct loaded in 4.2s | dtype torch.bfloat16 | layers 48 | d_model 5120
+  [B_above_L27_ap1] batch 1/2 seed_block=8064 decode_steps=806 wall=35.8s
+  [B_above_L27_ap1] batch 2/2 seed_block=8089 decode_steps=577 wall=60.6s
+[B_above_L27_ap1] cond=above_good L27 alpha=+1.0 |delta|=12.726 n=50 trunc=0 degen=0 median_tokens=435 wall=60.6s -> /workspace/vdl/runs/w7_steer/B_above_L27_ap1.json
+  [B_above_L27_ap2] batch 1/2 seed_block=8114 decode_steps=700 wall=29.7s
+  [B_above_L27_ap2] batch 2/2 seed_block=8139 decode_steps=588 wall=54.8s
+[B_above_L27_ap2] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=448 wall=54.8s -> /workspace/vdl/runs/w7_steer/B_above_L27_ap2.json
+  [B_above_L27_ap4] batch 1/2 seed_block=8164 decode_steps=659 wall=28.1s
+  [B_above_L27_ap4] batch 2/2 seed_block=8189 decode_steps=700 wall=58.0s
+[B_above_L27_ap4] cond=above_good L27 alpha=+4.0 |delta|=50.904 n=50 trunc=0 degen=0 median_tokens=458 wall=58.0s -> /workspace/vdl/runs/w7_steer/B_above_L27_ap4.json
+  [B_above_L27_am1] batch 1/2 seed_block=8214 decode_steps=733 wall=31.3s
+  [B_above_L27_am1] batch 2/2 seed_block=8239 decode_steps=628 wall=58.4s
+[B_above_L27_am1] cond=above_good L27 alpha=-1.0 |delta|=12.726 n=50 trunc=0 degen=0 median_tokens=378 wall=58.4s -> /workspace/vdl/runs/w7_steer/B_above_L27_am1.json
+  [B_above_L27_am2] batch 1/2 seed_block=8264 decode_steps=534 wall=23.2s
+  [B_above_L27_am2] batch 2/2 seed_block=8289 decode_steps=538 wall=46.4s
+[B_above_L27_am2] cond=above_good L27 alpha=-2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=360 wall=46.4s -> /workspace/vdl/runs/w7_steer/B_above_L27_am2.json
+  [B_above_L27_am4] batch 1/2 seed_block=8314 decode_steps=594 wall=25.4s
+  [B_above_L27_am4] batch 2/2 seed_block=8339 decode_steps=437 wall=44.2s
+[B_above_L27_am4] cond=above_good L27 alpha=-4.0 |delta|=50.904 n=50 trunc=0 degen=0 median_tokens=363 wall=44.2s -> /workspace/vdl/runs/w7_steer/B_above_L27_am4.json
+  [B_above_L30_ap2] batch 1/2 seed_block=8364 decode_steps=592 wall=25.2s
+  [B_above_L30_ap2] batch 2/2 seed_block=8389 decode_steps=576 wall=49.7s
+[B_above_L30_ap2] cond=above_good L30 alpha=+2.0 |delta|=30.747 n=50 trunc=0 degen=0 median_tokens=404 wall=49.7s -> /workspace/vdl/runs/w7_steer/B_above_L30_ap2.json
+  [B_above_L30_am2] batch 1/2 seed_block=8414 decode_steps=1044 wall=45.9s
+  [B_above_L30_am2] batch 2/2 seed_block=8439 decode_steps=881 wall=83.5s
+[B_above_L30_am2] cond=above_good L30 alpha=-2.0 |delta|=30.747 n=50 trunc=0 degen=0 median_tokens=518 wall=83.5s -> /workspace/vdl/runs/w7_steer/B_above_L30_am2.json
+  [B_below_L27_ap2] batch 1/2 seed_block=8464 decode_steps=722 wall=30.8s
+  [B_below_L27_ap2] batch 2/2 seed_block=8489 decode_steps=604 wall=57.3s
+[B_below_L27_ap2] cond=below_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=456 wall=57.3s -> /workspace/vdl/runs/w7_steer/B_below_L27_ap2.json
+  [B_below_L27_am2] batch 1/2 seed_block=8514 decode_steps=2047 wall=98.4s
+  [B_below_L27_am2] batch 2/2 seed_block=8539 decode_steps=653 wall=126.4s
+[B_below_L27_am2] cond=below_good L27 alpha=-2.0 |delta|=25.452 n=50 trunc=1 degen=0 median_tokens=374 wall=126.4s -> /workspace/vdl/runs/w7_steer/B_below_L27_am2.json
+  [B_neutral_L27_ap2] batch 1/2 seed_block=8564 decode_steps=585 wall=24.8s
+  [B_neutral_L27_ap2] batch 2/2 seed_block=8589 decode_steps=704 wall=54.5s
+[B_neutral_L27_ap2] cond=baseline L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=412 wall=54.5s -> /workspace/vdl/runs/w7_steer/B_neutral_L27_ap2.json
+  [B_neutral_L27_am2] batch 1/2 seed_block=8614 decode_steps=367 wall=15.7s
+  [B_neutral_L27_am2] batch 2/2 seed_block=8639 decode_steps=417 wall=33.7s
+[B_neutral_L27_am2] cond=baseline L27 alpha=-2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=302 wall=33.7s -> /workspace/vdl/runs/w7_steer/B_neutral_L27_am2.json
+  [B_above_sham] batch 1/2 seed_block=8664 decode_steps=662 wall=28.5s
+  [B_above_sham] batch 2/2 seed_block=8689 decode_steps=624 wall=55.2s
+[B_above_sham] cond=above_good L27 alpha=+0.0 |delta|=0.000 n=50 trunc=0 degen=0 median_tokens=436 wall=55.2s -> /workspace/vdl/runs/w7_steer/B_above_sham.json
+  [B_above_null00] batch 1/2 seed_block=8714 decode_steps=554 wall=23.9s
+  [B_above_null00] batch 2/2 seed_block=8739 decode_steps=725 wall=55.1s
+[B_above_null00] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=392 wall=55.1s -> /workspace/vdl/runs/w7_steer/B_above_null00.json
+  [B_above_null01] batch 1/2 seed_block=8764 decode_steps=656 wall=28.3s
+  [B_above_null01] batch 2/2 seed_block=8789 decode_steps=706 wall=58.5s
+[B_above_null01] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=441 wall=58.5s -> /workspace/vdl/runs/w7_steer/B_above_null01.json
+  [B_above_null02] batch 1/2 seed_block=8814 decode_steps=949 wall=40.7s
+  [B_above_null02] batch 2/2 seed_block=8839 decode_steps=458 wall=60.4s
+[B_above_null02] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=383 wall=60.4s -> /workspace/vdl/runs/w7_steer/B_above_null02.json
+  [B_above_null03] batch 1/2 seed_block=8864 decode_steps=636 wall=27.2s
+  [B_above_null03] batch 2/2 seed_block=8889 decode_steps=840 wall=63.6s
+[B_above_null03] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=412 wall=63.6s -> /workspace/vdl/runs/w7_steer/B_above_null03.json
+  [B_above_null04] batch 1/2 seed_block=8914 decode_steps=566 wall=24.6s
+  [B_above_null04] batch 2/2 seed_block=8939 decode_steps=631 wall=51.6s
+[B_above_null04] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=356 wall=51.7s -> /workspace/vdl/runs/w7_steer/B_above_null04.json
+  [B_above_null05] batch 1/2 seed_block=8964 decode_steps=527 wall=22.7s
+  [B_above_null05] batch 2/2 seed_block=8989 decode_steps=624 wall=49.8s
+[B_above_null05] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=393 wall=49.8s -> /workspace/vdl/runs/w7_steer/B_above_null05.json
+  [B_above_null06] batch 1/2 seed_block=9014 decode_steps=928 wall=40.4s
+  [B_above_null06] batch 2/2 seed_block=9039 decode_steps=559 wall=64.7s
+[B_above_null06] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=470 wall=64.7s -> /workspace/vdl/runs/w7_steer/B_above_null06.json
+  [B_above_null07] batch 1/2 seed_block=9064 decode_steps=665 wall=28.9s
+  [B_above_null07] batch 2/2 seed_block=9089 decode_steps=645 wall=56.6s
+[B_above_null07] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=422 wall=56.6s -> /workspace/vdl/runs/w7_steer/B_above_null07.json
+  [B_above_null08] batch 1/2 seed_block=9114 decode_steps=662 wall=28.3s
+  [B_above_null08] batch 2/2 seed_block=9139 decode_steps=703 wall=58.7s
+[B_above_null08] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=430 wall=58.7s -> /workspace/vdl/runs/w7_steer/B_above_null08.json
+  [B_above_null09] batch 1/2 seed_block=9164 decode_steps=819 wall=34.9s
+  [B_above_null09] batch 2/2 seed_block=9189 decode_steps=747 wall=66.9s
+[B_above_null09] cond=above_good L27 alpha=+2.0 |delta|=25.452 n=50 trunc=0 degen=0 median_tokens=425 wall=66.9s -> /workspace/vdl/runs/w7_steer/B_above_null09.json
+
+all arms done in 1373.1s

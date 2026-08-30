@@ -1,0 +1,58 @@
+statistic,basis,value,ci_lo,ci_hi,extra,note
+primary_delta_pm  P(+2)-P(-2),regex_corr,-0.14,-0.32,0.04,,"PR-005 item 5(i), L27 above_good, 10000-resample percentile bootstrap seed 64"
+delta_plus  P(+2)-P(sham),regex_corr,-0.34,-0.52,-0.16,,scale-matched to the nulls (JC-2)
+delta_minus P(-2)-P(sham),regex_corr,-0.2,-0.38,0.0,,scale-matched to the nulls (JC-2)
+null_delta_00 (seed 9001),regex_corr,-0.26,,,,random equal-norm direction vs sham
+null_delta_01 (seed 9002),regex_corr,0.12,,,,random equal-norm direction vs sham
+null_delta_02 (seed 9003),regex_corr,-0.26,,,,random equal-norm direction vs sham
+null_delta_03 (seed 9004),regex_corr,-0.22,,,,random equal-norm direction vs sham
+null_delta_04 (seed 9005),regex_corr,0.12,,,,random equal-norm direction vs sham
+null_delta_05 (seed 9006),regex_corr,-0.14,,,,random equal-norm direction vs sham
+null_delta_06 (seed 9007),regex_corr,-0.1,,,,random equal-norm direction vs sham
+null_delta_07 (seed 9008),regex_corr,-0.22,,,,random equal-norm direction vs sham
+null_delta_08 (seed 9009),regex_corr,-0.32,,,,random equal-norm direction vs sham
+null_delta_09 (seed 9010),regex_corr,-0.3,,,,random equal-norm direction vs sham
+null_test delta_plus,regex_corr,-0.34,,,"{""nulls"": [-0.26, 0.12, -0.26, -0.22, 0.12, -0.14, -0.1, -0.22, -0.32, -0.3]}",beats 0/10 random directions; null max 0.1200 min -0.3200; one-sided p=1.0000
+null_test delta_minus,regex_corr,-0.2,,,"{""nulls"": [-0.26, 0.12, -0.26, -0.22, 0.12, -0.14, -0.1, -0.22, -0.32, -0.3]}",beats 6/10 random directions; null max 0.1200 min -0.3200; one-sided p=0.4545
+null_test delta_pm,regex_corr,-0.14,,,"{""nulls"": [-0.26, 0.12, -0.26, -0.22, 0.12, -0.14, -0.1, -0.22, -0.32, -0.3]}",beats 7/10 random directions; null max 0.1200 min -0.3200; one-sided p=0.3636
+primary_delta_pm  P(+2)-P(-2),regex_raw,-0.2,-0.34,-0.06,,"PR-005 item 5(i), L27 above_good, 10000-resample percentile bootstrap seed 64"
+delta_plus  P(+2)-P(sham),regex_raw,-0.16,-0.3,-0.02,,scale-matched to the nulls (JC-2)
+delta_minus P(-2)-P(sham),regex_raw,0.04,-0.14,0.22,,scale-matched to the nulls (JC-2)
+null_delta_00 (seed 9001),regex_raw,-0.06,,,,random equal-norm direction vs sham
+null_delta_01 (seed 9002),regex_raw,0.1,,,,random equal-norm direction vs sham
+null_delta_02 (seed 9003),regex_raw,-0.04,,,,random equal-norm direction vs sham
+null_delta_03 (seed 9004),regex_raw,-0.02,,,,random equal-norm direction vs sham
+null_delta_04 (seed 9005),regex_raw,0.18,,,,random equal-norm direction vs sham
+null_delta_05 (seed 9006),regex_raw,-0.12,,,,random equal-norm direction vs sham
+null_delta_06 (seed 9007),regex_raw,0.06,,,,random equal-norm direction vs sham
+null_delta_07 (seed 9008),regex_raw,-0.12,,,,random equal-norm direction vs sham
+null_delta_08 (seed 9009),regex_raw,0.0,,,,random equal-norm direction vs sham
+null_delta_09 (seed 9010),regex_raw,-0.02,,,,random equal-norm direction vs sham
+null_test delta_plus,regex_raw,-0.16,,,"{""nulls"": [-0.06, 0.1, -0.04, -0.02, 0.18, -0.12, 0.06, -0.12, 0.0, -0.02]}",beats 0/10 random directions; null max 0.1800 min -0.1200; one-sided p=1.0000
+null_test delta_minus,regex_raw,0.04,,,"{""nulls"": [-0.06, 0.1, -0.04, -0.02, 0.18, -0.12, 0.06, -0.12, 0.0, -0.02]}",beats 7/10 random directions; null max 0.1800 min -0.1200; one-sided p=0.3636
+null_test delta_pm,regex_raw,-0.2,,,"{""nulls"": [-0.06, 0.1, -0.04, -0.02, 0.18, -0.12, 0.06, -0.12, 0.0, -0.02]}",beats 0/10 random directions; null max 0.1800 min -0.1200; one-sided p=1.0000
+primary_delta_pm  P(+2)-P(-2),judge,-0.14,-0.32,0.04,,"PR-005 item 5(i), L27 above_good, 10000-resample percentile bootstrap seed 64"
+delta_plus  P(+2)-P(sham),judge,-0.28,-0.46,-0.1,,scale-matched to the nulls (JC-2)
+delta_minus P(-2)-P(sham),judge,-0.14,-0.34,0.06,,scale-matched to the nulls (JC-2)
+null_delta_00 (seed 9001),judge,-0.28,,,,random equal-norm direction vs sham
+null_delta_01 (seed 9002),judge,0.18,,,,random equal-norm direction vs sham
+null_delta_02 (seed 9003),judge,-0.22,,,,random equal-norm direction vs sham
+null_delta_03 (seed 9004),judge,-0.22,,,,random equal-norm direction vs sham
+null_delta_04 (seed 9005),judge,0.18,,,,random equal-norm direction vs sham
+null_delta_05 (seed 9006),judge,-0.1,,,,random equal-norm direction vs sham
+null_delta_06 (seed 9007),judge,-0.1,,,,random equal-norm direction vs sham
+null_delta_07 (seed 9008),judge,-0.2,,,,random equal-norm direction vs sham
+null_delta_08 (seed 9009),judge,-0.24,,,,random equal-norm direction vs sham
+null_delta_09 (seed 9010),judge,-0.2,,,,random equal-norm direction vs sham
+null_test delta_plus,judge,-0.28,,,"{""nulls"": [-0.28, 0.18, -0.22, -0.22, 0.18, -0.1, -0.1, -0.2, -0.24, -0.2]}",beats 1/10 random directions; null max 0.1800 min -0.2800; one-sided p=0.9091
+null_test delta_minus,judge,-0.14,,,"{""nulls"": [-0.28, 0.18, -0.22, -0.22, 0.18, -0.1, -0.1, -0.2, -0.24, -0.2]}",beats 6/10 random directions; null max 0.1800 min -0.2800; one-sided p=0.4545
+null_test delta_pm,judge,-0.14,,,"{""nulls"": [-0.28, 0.18, -0.22, -0.22, 0.18, -0.1, -0.1, -0.2, -0.24, -0.2]}",beats 6/10 random directions; null max 0.1800 min -0.2800; one-sided p=0.4545
+dose_response_spearman_rho,regex_corr,-0.13092,,,"{""arm_rates"": [[-4.0, 0.24, 50], [-2.0, 0.48, 50], [-1.0, 0.54, 50], [0.0, 0.68, 50], [1.0, 0.52, 50], [2.0, 0.34, 50], [4.0, 0.04, 50]], ""perm_p"": 0.0159, ""monotone"": false}","n=350 generations over alpha [-4.0, -2.0, -1.0, 0.0, 1.0, 2.0, 4.0]; permutation p=0.0159 (10000, seed 64); arm-level rates monotone non-decreasing in alpha = False"
+dose_response_spearman_rho,judge,-0.129133,,,"{""arm_rates"": [[-4.0, 0.24, 50], [-2.0, 0.46, 50], [-1.0, 0.52, 50], [0.0, 0.6, 50], [1.0, 0.52, 50], [2.0, 0.32, 50], [4.0, 0.04, 50]], ""perm_p"": 0.0185, ""monotone"": false}","n=350 generations over alpha [-4.0, -2.0, -1.0, 0.0, 1.0, 2.0, 4.0]; permutation p=0.0185 (10000, seed 64); arm-level rates monotone non-decreasing in alpha = False"
+belief_flip  P(phat=+1 | a=+2) - P(. | a=-2),direction_judge,0.212821,-0.041026,0.465385,,PR-005 item 5(iii); n=20 / 39 p-hat-labelled traces
+neutral_reference median_log10 (W3 unsteered),regex_corr,9.610577,,,,"runs/w3_frozen/form_B/baseline.json, n=50; P(>tau_B)=0.4800"
+neutral B_neutral_L27_ap2 median_log10,regex_corr,9.340077,,,,n=50; P(>tau_B)=0.2800
+neutral B_neutral_L27_am2 median_log10,regex_corr,9.876792,,,,n=50; P(>tau_B)=0.5600
+neutral P(>tau|+2) - P(>tau|-2),regex_corr,-0.28,-0.46,-0.1,,PR-005 item 5(iv)
+L30_secondary_EXPLORATORY  P(+2)-P(-2),regex_corr,-0.18,-0.36,0.02,,PR-005 item 3
+below_good_L27  P(+2)-P(-2),regex_corr,-0.02,-0.2,0.16,,PR-005 item 3

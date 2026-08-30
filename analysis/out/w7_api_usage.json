@@ -1,0 +1,16 @@
+{
+  "number_judge": {
+    "in": 0,
+    "out": 0,
+    "calls": 0
+  },
+  "direction_judge": {
+    "in": 123938,
+    "out": 9766,
+    "calls": 100
+  },
+  "usd_this_run": 0.5183,
+  "model": "claude-sonnet-5",
+  "price_in_per_mtok": 3.0,
+  "price_out_per_mtok": 15.0
+}

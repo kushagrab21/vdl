@@ -85,9 +85,9 @@
     "vram_gb": 10,
     "secure": false,
     "community": true,
-    "on_demand_usd_hr": 0.17,
-    "spot_usd_hr": 0.17,
-    "stock": "Low"
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
   },
   {
     "id": "NVIDIA GeForce RTX 3080 Ti",
@@ -115,9 +115,9 @@
     "vram_gb": 24,
     "secure": false,
     "community": true,
-    "on_demand_usd_hr": 0.27,
-    "spot_usd_hr": 0.27,
-    "stock": "Low"
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
   },
   {
     "id": "NVIDIA GeForce RTX 4070 Ti",
@@ -225,9 +225,9 @@
     "vram_gb": 143,
     "secure": true,
     "community": false,
-    "on_demand_usd_hr": 0.5,
-    "spot_usd_hr": 0.5,
-    "stock": "Low"
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
   },
   {
     "id": "NVIDIA L4",
@@ -325,9 +325,9 @@
     "vram_gb": 16,
     "secure": true,
     "community": true,
-    "on_demand_usd_hr": 0.17,
-    "spot_usd_hr": 0.17,
-    "stock": "Low"
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
   },
   {
     "id": "NVIDIA RTX A4500",
@@ -345,9 +345,9 @@
     "vram_gb": 24,
     "secure": true,
     "community": true,
-    "on_demand_usd_hr": 0.16,
-    "spot_usd_hr": 0.16,
-    "stock": "Low"
+    "on_demand_usd_hr": null,
+    "spot_usd_hr": null,
+    "stock": null
   },
   {
     "id": "NVIDIA RTX A6000",
