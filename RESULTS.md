@@ -3075,3 +3075,15 @@ exists in this account.** The ~$2.00/day idle-storage leak reported in S-007 is 
 **Nothing unique remains pod-side.** Everything the ledger cites is on the laptop and hashed
 (V-010(4)); the 3.28 GB of W4 activation tensors died with the volume and are regenerable in
 94.8 s of forward passes for ~$0.12 (`runs/MANIFEST.md`, W5 note).
+
+---
+
+## T-010 · Correction to T-009's runner wall time · 2026-08-30
+
+T-009 states runner wall time "≈1 h 05 m (04:44 → 05:49 UTC)". The close figure was written
+before the packet actually closed and **overstates it by ~13 minutes**. The packet closed at
+**≈05:36 UTC**; runner wall time for W5 is **≈51 m** (2026-08-30 ≈04:45 → 05:36 UTC). The
+first timestamped command of the packet is 04:51:52 UTC (the account fund-check); orientation
+from `ORIENTATION.md` and the ledger tail preceded it by ~6 minutes. Every other figure in
+T-009 — the 36 m 27 s billed GPU window and the phase breakdown inside it — comes from pod
+records and log timestamps and stands. T-009 is not edited, per the append-only rule.
