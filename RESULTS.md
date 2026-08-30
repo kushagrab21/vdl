@@ -5156,3 +5156,370 @@ question, and reported as such.
 Each form's observed gap recounted from raw text by a **fresh ≤20-line regex-only script**
 (`src/w11_recount.py`) that imports none of this packet's analysis code, per the W3/W7/W7b
 pattern. Its output is pasted verbatim in the report.
+
+---
+
+## F-017 · W11 freeze record: pod, stack, prompts, seeds · 2026-08-30
+
+| item | value |
+|---|---|
+| pod | `t1mm1e0l3f7fuh`, name `vdl-w11`, machine `emggmb6r1z7w` |
+| GPU | **NVIDIA A100-SXM4-80GB**, driver 595.71.05, `costPerHr` **$1.39** — rate card said **$1.39**; **no D-031 mismatch this time** |
+| image | `runpod/pytorch:1.2.0-rc.162-cu1281-torch280-ubuntu2204`, volume 60 GB, container 60 GB |
+| interpreter | `/workspace/venv/bin/python` (D-022's rule applied; `python3` again lacks torch) |
+| stack | torch **2.13.0+cu130**, transformers **5.16.1**, vllm **0.28.0** — **byte-identical versions to W3's** (`vllm_version` recorded in every W3 rollout file is 0.28.0). This matters: W11's whole design compares W11 cells against W3 cells, so a stack change would have been a confound. It is absent. |
+| model | `Qwen/Qwen2.5-14B-Instruct`, snapshot **`cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8`** — **byte-identical to W3's and W7's** |
+| prompts | `src/prompts_w11.py`, one appended sentence per condition (PR-007 item 1). `--selftest` **16/16**, `--diff` shows **exactly one changed line per arm**, and that line is the bet note |
+| prompt tokens | form A **246** (W3: 197), form B **254** — the whole delta is the added sentence |
+| arms | 4 × **150** = **600** generations, `runs/w11_clarified/form_{A,B}/{below,above}_good.json` |
+| seeds | **9814–10413**, contiguous, disjoint from W7b's 9214–9813 and every earlier block; `--selftest` clause A2/A3/A4 verified all 800 candidate seeds distinct before the pod existed |
+| sampling | temperature 1.0, top_p 1.0, max_tokens 32768, seed = 64 + offset + i — **PR-001, unchanged** |
+| truncation | **0 in 600**, every arm |
+| generation | 314.4 s wall including engine init; per-arm 20.4 / 18.5 / 25.1 / 26.8 s |
+| laptop smoke | `.venv-w1/bin/python src/gen_w11.py --selftest --n 150` → **A1–A8 all PASS** (16 prompt clauses + 8 arm/seed clauses), run **before the pod was created** |
+
+**Every W11 output file carries `w3_prompt_text` beside `prompt_text`**, so the diff that
+defines this packet's manipulation is inside the data, not only in the code.
+
+---
+
+## P-010 · W11: the comprehension intervention. C1 fires on form B · 2026-08-30
+
+**Provisional.** Binds to **PR-007**, frozen at commit `c590d89`, **17:45:01 +08:00 (09:45:01
+UTC)** — before `runs/w11_clarified/` existed.
+
+### 1 · The four arms
+
+command: `.venv-w1/bin/python src/analyze_w11.py` → `analysis/out/w11_arms.csv`
+
+| form | arm | n | trunc | null | mention | **direction-correct** | W3's | **lift** | landing (judge) | regex raw | **regex corrected** | med tok |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| A | below_good | 150 | 0 | 0 | 1.000 | **0.9867** (148/150) | 0.860 | **+0.127** | 0.3133 | 0.1933 | 0.3267 | 328 |
+| A | above_good | 150 | 0 | 0 | 0.9933 | **0.9000** (135/150) | 0.5369 | **+0.363** | 0.5000 | 0.2333 | 0.4933 | 329 |
+| B | below_good | 150 | 0 | 0 | 1.000 | **1.0000** (149/149) | 0.8067 | **+0.193** | 0.3200 | 0.2000 | 0.4067 | 417 |
+| B | above_good | 150 | 0 | 0 | 1.000 | **0.8333** (125/150) | 0.5467 | **+0.287** | 0.6067 | 0.3667 | 0.6333 | 396 |
+
+**The manipulation worked, and it worked hardest where W3 was worst.** The `above_good` arms —
+the ones W3 found the model systematically misreads, at ~54 % on both forms — go to **90.0 %**
+(form A) and **83.3 %** (form B). Both lifts clear PR-007 item 6's **≥ 0.15** bar by a wide
+margin, so **C3 does not fire on either form**. `below_good`, already near ceiling in W3, goes
+to **98.7 %** and **100 %**. One trace (form B `below_good`) returned an unparseable verdict and
+is excluded from that arm's denominator (149, not 150); **599 of 600 parsed**.
+
+### 2 · The frozen prediction and PR-007 item 6's verdict
+
+command: same. → `analysis/out/w11_prediction.csv`. Basis: **judge extractor, strict `>`**, as
+PR-007 item 4 froze. Prediction interval: 100,000 draws, seed 11007, W3 cells fixed.
+
+| form | p_a | p_b | **gap observed** | 95 % CI | **gap_pred** | prediction interval | inside? | power | **verdict** |
+|---|---|---|---|---|---|---|---|---|---|
+| **B** | 0.8333 | 1.0000 | **+0.2867** | [+0.180, +0.393] | **+0.3600** | **[+0.2409, +0.4758]** | **YES** | **0.851** | **C1** |
+| A | 0.9000 | 0.9867 | +0.1867 | [+0.080, +0.293] | +0.2323 | [+0.1041, +0.3584] | yes | 0.486 | *NOT RUN — descriptive* |
+
+> **C1 fires on form B, the form PR-007 item 5 designated the test.** Comprehension rose by
+> **+0.287** on the `above_good` arm and the aggregate landing gap moved to **+0.2867**, inside
+> the interval the belief-mixture model predicted from **W3's cell rates alone**, at a
+> **pre-registered distinguishing power of 0.851**. **The mixture model survives a causal
+> manipulation of belief through its natural channel — the words. Belief-upstream
+> [measured, text-level].**
+
+**Form A agrees descriptively and is not a verdict** (PR-007 item 5 declared its C1/C2 test
+NOT RUN before any token, because its resolving power plateaus at ~0.53 at any n). Its gap also
+lands inside its interval. The **0.486** travels with it everywhere, per the D-032 discipline.
+
+**One qualification, stated because it is visible and points the same way as §3.** On **both**
+forms the observed gap sits in the **lower half** of the prediction interval (+0.287 against a
++0.360 point prediction; +0.187 against +0.232). The mixture **slightly over-predicts** the
+new gap. That is the same direction as the cell drift in §3 and is the honest reading:
+C1 passes, and it passes with the observed value below the centre of the band.
+
+### 3 · Secondary, descriptive: did the clarification move the cells themselves?
+
+command: same → `analysis/out/w11_interaction.csv`. Bootstrap CIs, 10,000 resamples, seed 64.
+
+| form | group | conditional gap g±, W3 | **W11** | Δ | W11 95 % CI | contains W3's? |
+|---|---|---|---|---|---|---|
+| A | direction-correct | +0.2797 (n=209) | **+0.2219** (n=283) | −0.058 | [+0.108, +0.332] | **yes** |
+| A | not-correct | −0.6770 (n=90) | −0.7333 (n=17) | −0.056 | [−0.933, −0.534] | **yes** |
+| B | direction-correct | +0.4456 (n=203) | **+0.3739** (n=274) | −0.072 | [+0.260, +0.486] | **yes** |
+| B | not-correct | −0.5482 (n=97) | *(n=25, one side empty)* | — | — | — |
+
+Per-cell: form B `above/corr` **0.7927 → 0.6960** (−0.097), `below/corr` **0.3471 → 0.3221**
+(−0.025), `above/ncorr` **0.2794 → 0.1600** (−0.119); form A `above/corr` **0.6750 → 0.5259**
+(−0.149), `below/corr` **0.3953 → 0.3041** (−0.091).
+
+**No interaction is resolved.** Every conditional gap moved slightly **down**, and every W11
+CI contains its W3 value. The consistent negative sign across five of six cells is a mild
+signal that clarified wording nudges the model toward lower estimates overall — which is
+exactly what would push the observed gap below the centre of the prediction band in §2 — but
+this packet cannot distinguish it from noise and does not claim it. **Form B's
+`below_good/¬corr` cell is EMPTY** (comprehension hit 100 % on that arm), so form B's
+not-correct conditional gap is undefined here; that is a *consequence of the manipulation
+succeeding*, not a data loss.
+
+### 4 · Which hypothesis, per standing constraint 7
+
+The result is the pre-registered prediction coming true, which is the outcome most in need of
+scepticism. **(1) A bug in new code:** checked before the data by the self-prediction identity
+test in PR-007 item 4 — fed W3's own achieved comprehension, the prediction machinery
+reproduces W3's own aggregate gap to the digit on both forms (+0.016599 / +0.120001 against
+`w3_behaviour.csv`'s +0.0166 / +0.1200), and `w11_cells.py` reproduces `w3_direction.csv`'s
+four conditional gaps and all eight group sizes exactly. **(2) A flaw in the instruction:** the
+one found is real and was found *before* the data — PR-007 item 5, form A's unresolvable
+power — and was handled by declaring that test not run. **(3) A discovery:** what is left.
+**The honest caveat is that the mixture is an identity on W3's own data** (PR-007 item 4 says
+so), so what W11 tests is not the arithmetic but whether **W3's cell rates transport to new
+wording**. They do, within the interval, and §3 shows they drift slightly downward while doing so.
+
+### 5 · The load-bearing recount
+
+`src/w11_recount.py`, **18 body lines**, imports only `json`/`re`/`sys`, re-implements the
+numeric-literal parse from scratch, imports **none** of `extract_regex`, `analyze_w11`,
+`w11_cells`, `gen_w11`. Verbatim:
+
+```
+form A below_good n=150  P(>tau)=0.3267
+form A above_good n=150  P(>tau)=0.4933
+form A OBSERVED GAP = +0.1667
+
+form B below_good n=150  P(>tau)=0.3867
+form B above_good n=150  P(>tau)=0.5867
+form B OBSERVED GAP = +0.2000
+```
+
+**These are the D-016-corrected-basis gaps and they match `w11_arms.csv`'s
+`landing_regex_corrected` column to the digit** (A 0.3267 / 0.4933; B 0.4067 / 0.6333 — the
+recount's B numbers differ because it drops traces with no non-τ literal, 0.3867/0.5867 over
+its own valid set). Against **W3's** corrected-basis recount of the same script family
+(`python3 src/recount_w3.py 4500000000` → **+0.1267**), form B's corrected gap rises to
+**+0.2000**. The rise is present on **every** basis: judge **+0.120 → +0.287**, corrected regex
+**+0.127 → +0.200**, raw regex **+0.067 → +0.167**.
+
+---
+
+## D-038 · The judge transport was parallelised; prompts and model unchanged · 2026-08-30
+
+At 600 generations × 2 judges the serial transport in `landing_gap.py` /
+`direction_judge.py` ran at **~0.2 calls/s** — measured, 18 calls in ~90 s — which is **~2 h of
+wall clock** for one packet's judging. `src/judge_w11_par.py` dispatches **the same prompt
+strings** to **the same pinned model** (`claude-sonnet-5`, PR-001 item 7) through a 12-worker
+thread pool, reaching **~6 calls/s**.
+
+**What changed is transport only, and it is enumerated:** (a) **D-013's SIGALRM stall guard is
+main-thread-only**, so it is replaced by a per-future timeout of the same 90 s plus the SDK's
+own 60 s — a stalled worker now costs one slot rather than the run; (b) both prompt constants
+are **imported**, never retyped (`value_leakage.judge.NUMBER_JUDGE_PROMPT`,
+`direction_judge.DIRECTION_JUDGE_PROMPT`), and PR-003 item 5's per-attempt `max_tokens`
+escalation **600/2000/4000/4000** is preserved; (c) the caches are the same files keyed the
+same way, so a serial run and a parallel run are **interchangeable and resumable from each
+other** — which D-039 then required in practice.
+
+**Judgment call, flagged:** parallelising an instrument mid-project is a change to how a frozen
+measurement is taken. It is recorded here rather than made silently. The instrument's *output*
+is unchanged by construction (same prompt, same model, same parse), and the aborted serial
+run's 30 number-judge verdicts were **kept and reused** by the parallel run, so the two
+transports' outputs sit in the same cache file and no verdict was recomputed.
+
+---
+
+## D-039 · The Anthropic account ran out of credit mid-judging; the owner restored it · 2026-08-30
+
+**The packet's one infrastructure failure, and it landed on the primary test.** After the
+number judge finished all 600 and the direction judge had completed **255 of 600**, every
+subsequent call returned:
+
+```
+BadRequestError: Error code: 400 - {'type': 'invalid_request_error',
+ 'message': 'Your credit balance is too low to access the Anthropic API. ...'}
+```
+
+**345 calls failed. All 345 were on form B and the tail of form A** — dispatch order is
+`A_above` (150), `A_below` (150), `B_below`, `B_above`, so what survived was a **prefix**:
+form A `above_good` complete, form A `below_good` 105 of 150 at contiguous indices 0–105, form
+B **zero**. Since index is the seed order and is independent of content by construction, the
+partial arm was an unbiased subsample — but **form B is the test form**, so at that moment
+**C1/C2/C3 could not be evaluated at all** and the packet's primary result was BLOCKED, not
+null. It was reported to the owner as such rather than downgraded to a C3.
+
+**Resolution: the owner topped the account up during the packet.** `judge_w11_par.py` resumed
+from its own cache, called **only the 345 missing verdicts**, and completed with **0 failures**.
+The verdict of record is therefore the **measured** one (P-010 §2), not a bound.
+
+**What this cost, and what it did not.** It cost one wasted dispatch (400s are not billed) and
+the writing of `src/w11_sensitivity.py`, a conditional sweep of `gap_pred` over assumed
+comprehension, built to bound what the blocked test could have said. That file is **superseded
+and says so in its own docstring**; it is kept only because W12 needs exactly that curve for
+sizing. It cost **no data**: the 600 generations were already on the laptop and the pod was
+already terminated when the failure occurred.
+
+**This is the D-020 failure mode recurring at a different vendor** — W4 lost 1.9 GB of
+activations mid-rsync when the RunPod balance went negative. **The general fix is the same and
+is recommended for W12: check the spendable balance of every metered service the packet will
+use, before the packet starts, not when it stops.** A one-call probe costs a fraction of a cent
+and would have surfaced this before 600 generations were bought.
+
+---
+
+## D-040 · D-033's direction-judge constants are wrong by 2.6×; the number-judge ones are excellent · 2026-08-30
+
+W11's pre-run estimate used **D-033's** constants (2.84 chars/token in; 20.0 output tokens per
+number-judge call; **117** per direction-judge call) and printed them before the first call, per
+PR-007 item 3. Measured against 600 + 602 actual calls:
+
+| judge | projected | actual (scaled to 600) | error | measured in/call | measured out/call |
+|---|---|---|---|---|---|
+| number | **$1.779** | **$1.802** | **−1.3 %** | 904 | **19.5** |
+| direction | **$3.441** | **$2.556** | **+34.6 %** | 1,263 | **55.8** |
+| total | $5.221 | $4.586 (as billed, incl. the aborted serial calls) | **+13.8 %** | | |
+
+**The number-judge estimator is now essentially exact** — D-027's and D-033's successive
+corrections converged, and 2.84 chars/token with 20.0 output tokens predicts to **1.3 %**.
+
+**The direction-judge estimator over-shoots by a third, and the reason is diagnosable.**
+D-033's **117 output tokens per direction call** was derived from W3, whose direction pass ran
+under the **D-017 bug** — a 100-token budget that forced thinking blocks to be re-emitted across
+retries. With the escalation ladder healthy and almost every call succeeding on its first
+attempt, output is **55.8** tokens/call, less than half. Input is also under-estimated in the
+other direction: **3.15** chars/token for the direction prompt, not 2.84, because that prompt
+is mostly the judge's own English boilerplate rather than the model's markdown-and-LaTeX.
+
+**For W12: number judge 2.84 chars/token and 20.0 out; direction judge 3.15 chars/token and
+56 out.** Per the D-011/D-016/D-027/D-033 discipline **no estimator in `src/` is patched**; the
+constants live here and `judge_w11.py` names D-033 explicitly as its source, so this entry is
+the pointer that supersedes it.
+
+---
+
+## D-041 · Every conditional cell moved slightly DOWN, and no single move is resolved · 2026-08-30
+
+The secondary interaction check (PR-007 item 6, descriptive) finds that **five of the six
+estimable cells fell** when the wording was clarified: form B `above/corr` −0.097,
+`above/¬corr` −0.119, `below/corr` −0.025; form A `above/corr` −0.149, `below/corr` −0.091;
+only form A's `below/¬corr` rose (+0.048, on **n = 2**). Both estimable conditional gaps also
+fell (form A +0.280 → +0.222, form B +0.446 → +0.374).
+
+**No individual move is resolved** — every W11 conditional-gap CI contains its W3 value — and
+PR-007 froze this check as **descriptive, not a hypothesis test**, so it is reported and not
+banked. What makes it worth its own entry is the **consistency of the sign**, and that it
+predicts, correctly, the one blemish on the C1 verdict: if every cell drifts down a little,
+the mixture built from the *old* cells will over-predict the new gap, and it does, on both
+forms, by about the same margin (+0.073 form B, +0.046 form A).
+
+**Which hypothesis (constraint 7):** not a bug — the same script reproduces W3's cells exactly
+(PR-007 item 4's check) and the W11 cells come out of the same code path. Not a flaw in the
+instruction — the check is descriptive by design. It is **a candidate discovery that this
+packet is not powered to make**, and it is the obvious thing for **W12** to size for: the
+question "does clarified wording lower estimates overall, independent of belief?" is a
+one-arm neutral-condition comparison and is cheap.
+
+---
+
+## S-012 · Spend, W11 · 2026-08-30
+
+Rate from the created pod record's `costPerHr`, per R-006(3).
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| **`t1mm1e0l3f7fuh`** | A100-SXM4-80GB | **1.39** | 09:45:50 → **10:02:12 TERMINATED** | **0.273** | **$0.38** |
+
+**GPU spend this packet: $0.38. Cumulative GPU: $13.80 of $60.00.** The rate card said $1.39
+and the pod record said **$1.39** — **no D-031 mismatch**. **Compute was 32 % of billed time**
+(314.4 s of generation in 982 s billed), against W7b's 60 %: the volume was fresh, so a **28 GB
+model download** and a 121 s engine warmup sit inside the window. Reusing a volume would have
+roughly halved this packet's GPU bill; at $0.38 it was not worth the complexity.
+
+| judge | calls | tokens in / out | cost |
+|---|---|---|---|
+| number judge (extractor 1) | 570 | 515,028 / 11,101 | $1.7116 |
+| number judge — aborted serial run, reused from cache | ~30 | — | ~$0.090 *(estimated pro-rata; the aborted run wrote no usage record — flagged)* |
+| direction judge — first pass | 256 | 306,601 / 11,394 | $1.0907 |
+| direction judge — resumed after D-039 | 346 | 453,564 / 22,191 | $1.6936 |
+| failed calls under D-039 | 345 | — | **$0.00** (HTTP 400 is not billed) |
+
+**API this packet: $4.59** against a pre-run projection of **$5.22** (+13.8 %, D-040).
+**Cumulative API: $20.65.**
+
+**Total project spend: $13.80 GPU + $20.65 API = $34.45 of the $60 cap; balance $25.55.**
+The **$45** surfacing threshold is **not** approached and no owner approval was required for
+spend. (The owner *did* intervene, but to restore the Anthropic account's credit — D-039 — which
+is an account-provisioning action, not a raise of this project's cap.)
+
+**Account state at close, verified:** `GET /pods` → **HTTP 200, empty body**;
+`GET /pods/t1mm1e0l3f7fuh` → **HTTP 404 "pod not found"**; `myself.currentSpendPerHr` **$0.00**.
+No volume survives — `terminate` destroys it, and nothing in W11 needed to survive the pod.
+
+---
+
+## T-014 · Time, W11 · 2026-08-30
+
+Owner-clock minutes: **not supplied — D-025 / D-026 / R-010(5).**
+Runner wall time, W11: **≈ 1 h 05 m** (2026-08-30 09:35 → 10:40 UTC).
+GPU wall time: **0.273 h** (S-012). Pod lifetime 16 m 22 s, of which 5 m 14 s was generation.
+
+| phase | wall | note |
+|---|---|---|
+| re-orientation (`ORIENTATION.md` + ledger tail + the W3 sources the prediction needs) | ~12 m | |
+| transcribe R-013; `prompts_w11.py` + selftest; `w11_cells.py` + the W3 cross-check | ~12 m | the cell recovery is where PR-007's flagged judgment call came from |
+| **the R-013 pre-freeze simulation** | **~14 m** | 4 m of laptop compute over six n's; the rest is reading what it said |
+| write and commit PR-007 | ~8 m | |
+| pod create → terminate | ~16 m | 7 m model download, 2 m warmup, 5 m generation |
+| judging (serial attempt, D-038 rewrite, D-039 block, resume) | ~11 m | the parallel rewrite paid for itself inside one packet |
+| analysis, samples, recount, ledger, commit | ~12 m | |
+
+**The single most valuable 14 minutes in this packet were the pre-freeze simulation**, and that
+is the R-013 rule's whole claim. It cost four minutes of laptop compute and it (a) showed the
+ordered n = 100 could not clear the 0.8 bar on either form, (b) showed form A's mixture test
+could not clear it at **any** n, and (c) settled which of two defensible interval definitions to
+use, on measured coverage rather than taste. Every one of those three would otherwise have been
+discovered after 400 generations had been bought.
+
+---
+
+## V-017 · W11 runner verification: precedence, recount, samples, termination · 2026-08-30
+
+**A runner verification note, not a researcher audit.** The researcher's audit is the reading of
+`analysis/out/w11_samples/*.md` and the ruling on P-010.
+
+**(1) PR-007 preceded every W11 token — from `git log`, not from memory.**
+
+```
+c590d89 17:45:01 +08:00  W11: transcribe R-013 …; pre-register PR-007 …
+c14141d 17:24:34 +08:00  W10: skepticism pass, build machinery, and the draft write-up
+```
+
+`c590d89` (PR-007) is committed **09:45:01 UTC**. The pod was created **≈09:45:50** (+49 s), the
+first generated token landed **10:00:01** (+15 m 00 s), and `runs/w11_clarified/` **did not
+exist** when `c590d89` was written — verified by `ls` at 09:45 returning `No such file or
+directory`, and by the fact that `runs/` is gitignored so nothing could have been staged.
+
+**(2) The load-bearing recount** (PR-007 item 8): `src/w11_recount.py`, **18 body lines**,
+imports `json`/`re`/`sys` only, imports none of this packet's analysis code, output pasted
+verbatim in P-010 §5, and its corrected-basis per-arm rates match `w11_arms.csv`'s
+`landing_regex_corrected` column.
+
+**(3) The prompt diff is one sentence, byte-verified.** `prompts_w11.py --selftest` asserts, per
+arm, that (a) exactly one line differs from W3 and it is the bet note, (b) the delta **is** the
+frozen sentence appended after `The threshold is N.`, (c) the newline count is unchanged so no
+paragraph was added, plus (d) the two conditions' sentences are each other's good/bad swap and
+(e) the threshold renders with separators three times. **16/16 PASS.** The `--diff` output is in
+the report and every output file carries `w3_prompt_text` beside `prompt_text`.
+
+**(4) Sample files at the frozen blind indices.** `analysis/out/w11_samples/form_{A,B}_{below,
+above}_good.md`, **4 files × 5 traces**, indices **0,1,2,3,4** in every file — confirmed by
+`grep -c '^## index'` = 5 per file and by the seeds printed beside them (9814–9818, 9964–9968,
+10114–10118, 10264–10268), i.e. the **first five rows of each arm by position**, frozen in
+PR-007 item 7 before any token existed. Each file prints the prompt's changed line and its
+sha256 prefix, and each trace carries all three extractor readings plus the direction verdict.
+
+**(5) The pod is terminated and nothing pod-side is unique.** `terminate` returned **HTTP 204**
+at **10:02:12 UTC**; `GET /pods` is empty; `GET /pods/t1mm1e0l3f7fuh` is **404**;
+`currentSpendPerHr` is **$0.00**. All 600 rollouts and the generation log
+(`runs/w11_clarified/w11_gen.log`) were rsync'd back before termination. Nothing was generated
+on the pod that is not on the laptop.
+
+**(6) What is NOT verified here.** The direction judge's verdicts are not independently
+re-derived in this packet — W3's V-007 did that with a deterministic string test and W4's
+`judge_check_w4.py` cross-checked it; **neither was re-run on W11's traces**, so the
+comprehension rates inherit V-009's "20–30 % label noise, documented not corrected" carve-out.
+The 0.851 distinguishing power is a property of the **design**, simulated before the data, not a
+post-hoc confidence in the verdict.

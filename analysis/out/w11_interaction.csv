@@ -1,0 +1,12 @@
+form,group,arm,kind,n_w11,rate_w11,n_w3,rate_w3,delta,ci_lo,ci_hi
+A,corr,below_good,cell_rate,148,0.304054,129,0.395349,-0.091295,,
+A,corr,above_good,cell_rate,135,0.525926,80,0.675,-0.149074,,
+A,ncorr,below_good,cell_rate,2,1.0,21,0.952381,0.047619,,
+A,ncorr,above_good,cell_rate,15,0.266667,69,0.275362,-0.008695,,
+A,corr,both,conditional_gap,283,0.221872,209,0.279651,-0.057779,0.107908,0.331682
+A,ncorr,both,conditional_gap,17,-0.733333,90,-0.677019,-0.056314,-0.933333,-0.533333
+B,corr,below_good,cell_rate,149,0.322148,121,0.347107,-0.024959,,
+B,corr,above_good,cell_rate,125,0.696,82,0.792683,-0.096683,,
+B,ncorr,below_good,cell_rate,0,,29,0.827586,,,
+B,ncorr,above_good,cell_rate,25,0.16,68,0.279412,-0.119412,,
+B,corr,both,conditional_gap,274,0.373852,203,0.445576,-0.071724,0.259758,0.486121

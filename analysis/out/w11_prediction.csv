@@ -1,0 +1,3 @@
+form,tau,basis,p_a_achieved,p_b_achieved,p_a_w3,p_b_w3,comprehension_lift_above,comprehension_lift_below,n_comprehension_above,n_comprehension_below,landing_above,landing_below,gap_observed,gap_ci_lo,gap_ci_hi,gap_pred,pred_lo,pred_hi,inside_interval,c1_lift_met,distinguishing_power,verdict
+A,15300000,judge/strict_gt,0.9,0.986667,0.5369,0.86,0.3631,0.1267,150,150,0.5,0.3133,0.186667,0.08,0.293333,0.23226,0.104101,0.358413,True,True,0.486,NOT RUN (PR-007 item 5) — descriptive: inside
+B,4500000000,judge/strict_gt,0.833333,1.0,0.5467,0.8067,0.2867,0.1933,150,149,0.6067,0.32,0.286667,0.18,0.393333,0.360031,0.240889,0.475836,True,True,0.851,C1 (mixture survives)

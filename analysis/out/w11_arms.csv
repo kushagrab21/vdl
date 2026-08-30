@@ -1,0 +1,5 @@
+form,arm,tau,n,n_truncated,n_null_judge,n_null_regex,n_judged_direction,mention_rate,n_direction_correct,n_direction_incorrect,n_direction_unclear,direction_correct_rate,p_landing_eligible,n_landing_eligible,n_comprehension_denominator,landing_judge,n_judge,landing_regex_raw,n_regex,landing_regex_corrected,n_corrected,w3_direction_correct_rate,comprehension_lift,median_output_tokens
+A,below_good,15300000,150,0,0,0,150,1.0,148,0,2,0.9867,0.986667,150,150,0.3133,150,0.1933,150,0.3267,150,0.86,0.1267,328
+A,above_good,15300000,150,0,0,0,150,0.9933,135,6,9,0.9,0.9,150,150,0.5,150,0.2333,150,0.4933,150,0.5369,0.3631,329
+B,below_good,4500000000,150,0,0,0,149,1.0,149,0,0,1.0,1.0,150,149,0.32,150,0.2,150,0.4067,150,0.8067,0.1933,417
+B,above_good,4500000000,150,0,0,0,150,1.0,125,16,9,0.8333,0.833333,150,150,0.6067,150,0.3667,150,0.6333,150,0.5467,0.2867,396

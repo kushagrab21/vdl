@@ -1,0 +1,29 @@
+{
+  "estimate": {
+    "n_generations": 600,
+    "answer_chars": 865792,
+    "chars_per_token": 2.84,
+    "number_judge_est_usd": 1.779,
+    "direction_judge_est_usd": 3.441,
+    "total_est_usd": 5.221,
+    "pause_line_usd": 10.0,
+    "under_pause_line": true
+  },
+  "transport": "parallel (D-038); prompts and model unchanged",
+  "procs": 12,
+  "number_judge": {
+    "in": 0,
+    "out": 0,
+    "calls": 0,
+    "usd": 0.0
+  },
+  "direction_judge": {
+    "in": 453564,
+    "out": 22191,
+    "calls": 346,
+    "usd": 1.6936
+  },
+  "actual_total_usd": 1.6936,
+  "projection_error_pct": 208.3,
+  "prior_partial_serial_run": 2.8023
+}
