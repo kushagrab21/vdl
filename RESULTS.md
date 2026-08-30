@@ -5523,3 +5523,286 @@ re-derived in this packet — W3's V-007 did that with a deterministic string te
 comprehension rates inherit V-009's "20–30 % label noise, documented not corrected" carve-out.
 The 0.851 distinguishing power is a property of the **design**, simulated before the data, not a
 post-hoc confidence in the verdict.
+
+---
+
+## V-018 · W11 audit — transcribed verbatim from the courier · 2026-08-30
+
+```
+## V- · W11 audit · 2026-08-30
+W11 ACCEPTED, and P-010 is PROMOTED: the belief-mixture model survived a causal text-level
+manipulation at pre-registered resolving power (form B: comprehension 0.833 vs W3 0.547;
+observed gap +0.2867 inside prediction interval [+0.2409, +0.4758]; C1). The E- entry carries
+two attached qualifications, permanently: (1) comprehension rates inherit V-009's 20–30%
+label-noise carve-out — the 0.851 power is a property of the design, not post-hoc confidence
+in the judge; (2) D-041 — five of six estimable conditional cells drifted down, consistent
+in sign, predicting the uniform over-prediction (+0.046/+0.073): the cells TRANSPORT
+APPROXIMATELY, not exactly, and the claim is worded accordingly. Form A's pre-freeze NOT-RUN
+declaration is exemplary R-013 compliance — a mixture test whose power plateaus at 0.53
+regardless of n is not run, and saying so before data is the whole point of the rule. All
+four judgment calls RATIFIED (JC-1's cell-rate recovery with identity validation; JC-2's
+explicit "the mixture is an identity on W3, W11 tests transport" framing is adopted into the
+write-up's wording; D-038's labeled transport change; D-039's BLOCKED-not-downgraded call
+was exactly right). NEW STANDING RULE from D-039/D-020: probe every metered service's
+balance (RunPod AND Anthropic) before each packet's first spend. D-040's corrected
+estimator constants are the planning basis. The W10 draft executive summary is reviewed and
+approved with two revision notes: spend/scale placeholders regenerate at final build, and a
+one-line addendum pointer (with C1) joins the summary when Wave 2 closes.
+```
+
+**Allocation.** The audit note is **V-018**; the promotion it orders is **E-010** below; the
+new standing rule is **R-014** below, transcribed out of the same block so that a future
+pre-registration can cite a rule number rather than an audit note.
+
+---
+
+## R-014 · Standing rule: probe every metered service's balance before the first spend · 2026-08-30
+
+Transcribed from V-018, which derives it from **D-039** (Anthropic ran out of credit after
+255 of 600 direction verdicts, blocking the primary test) and **D-020** (RunPod went negative
+mid-rsync in W4, losing 1.9 GB of activations).
+
+> **Before a packet's first spend, probe the spendable balance of EVERY metered service the
+> packet will use — RunPod AND Anthropic — and paste both probes into the report.**
+
+Binding from W12 onward. `src/w12_balance.py` is this project's implementation.
+
+---
+
+## E-010 · The belief-mixture model survives a causal text-level manipulation (was P-010) · 2026-08-30
+
+**Promoted from P-010 by V-018.** Metric definitions, filters, n, sources and regenerating
+commands are those of P-010 and are not restated; what this entry adds is the promotion and
+the two qualifications V-018 attaches **permanently**.
+
+- **The claim.** One sentence appended to W3's bet note, symmetric across conditions and
+  byte-verified as the only change, lifted form-B `above_good` direction-correct
+  comprehension from W3's **0.547** to **0.833**, and form B's aggregate landing gap moved
+  **+0.120 → +0.2867** [95 % CI +0.180, +0.393], **inside** the **[+0.2409, +0.4758]**
+  interval the belief-mixture model predicts from **W3's four conditional cell rates alone**,
+  at a **pre-registered distinguishing power of 0.851**. **PR-007 item 6 row C1.**
+  **Belief-upstream [measured, text-level].**
+- **Qualification 1 (V-018).** The comprehension rates inherit **V-009's 20–30 % label-noise
+  carve-out**: the direction judge's verdicts were not independently re-derived on W11's
+  traces (V-017 §6). The **0.851** is a property of the **design**, simulated before the data,
+  not post-hoc confidence in the judge.
+- **Qualification 2 (V-018, from D-041).** Five of six estimable conditional cells drifted
+  **down** and both estimable conditional gaps fell; the drift is consistent in sign and
+  predicts the uniform over-prediction (**+0.046** form A, **+0.073** form B). **The cells
+  TRANSPORT APPROXIMATELY, NOT EXACTLY**, and the claim is worded accordingly.
+- **Not promoted:** form A's C1/C2 verdict (declared NOT RUN before generation, PR-007 item 5;
+  its descriptive agreement and its 0.486 power travel together everywhere), and every
+  D-041 interaction move (descriptive by design, no move resolved).
+
+---
+
+## PR-008 · Pre-registration — W12 belief-formation timing · 2026-08-30
+
+**Frozen before any W12 replay.** Binds work order W12. Cites **R-013** (no threshold frozen
+without a pre-freeze simulation under its own null), **R-014** (balance probes first),
+**R-010(3)** (curves and small artifacts ship; tensors do not), **PR-004** (the p̂ recipe and
+the probe conventions this packet inherits), and **PR-001 item 7** (the pinned models).
+
+### 0 · Balance probes (R-014), run before anything was provisioned
+
+```
+$ python3 src/w12_balance.py
+RUNPOD   graphql myself -> HTTP 200  clientBalance=$22.3684697656  currentSpendPerHr=$0
+ANTHROPIC messages(max_tokens=1) -> HTTP 200  {'input_tokens': 8, 'output_tokens': 1, ...}
+```
+
+Both services are spendable. **API spend expected $0** — every label this packet uses is
+already in `analysis/out/w3_direction_cache.json`; the Anthropic probe above is the only
+call W12 makes, and it costs a fraction of a cent.
+
+### 1 · Data — frozen, no new generation
+
+The **W3 form-B incentive traces**: `runs/w3_frozen/form_B/above_good.json` and
+`.../below_good.json`, **150 + 150**. No generation of any kind. p̂ labels come from the
+**frozen W5 recipe** — `direction_w5.phat_of` over the frozen W3 judge cache
+`analysis/out/w3_direction_cache.json`: `above_good` correct → **+1**, incorrect → **−1**;
+`below_good` correct → **−1**, incorrect → **+1**; **`unclear` excluded entirely**.
+
+Counted before the capture, from the frozen files (`python3 src/capture_w12.py --dry-run`):
+
+| arm | traces | labelled | p̂=+1 | p̂=−1 | with cause-token | labelled **and** cause-token |
+|---|---|---|---|---|---|---|
+| `above_good` | 150 | **113** | 82 | 31 | 76 | **75** (65 / 10) |
+| `below_good` | 150 | **125** | 4 | 121 | 93 | **92** (4 / 88) |
+| both | 300 | **238** | 86 | 152 | 169 | **167** (69 / 98) |
+
+**71 labelled traces have no cause-token; they contribute to alignment (a) only and are
+counted** (PR-008 item 3).
+
+### 2 · Capture
+
+`src/capture_w12.py` — teacher-forced replay, **no generation**. It **imports**
+`replay_w4.build_positions`, so the tokenization, the **V1–V4** verification and the
+`est`/`belief` position conventions are literally W4's machinery, not a re-implementation.
+Residual stream = **decoder-layer output** (the stream F-013 smoked and W4 used), recorded at
+**every generated-token position**, layers **{21, 23, 25, 27, 29, 31, 33, 35}**, **fp16**.
+Expected size **129,515 rows × 8 × 5120 × 2 B = 10.61 GB**, written as 50-trace shards to the
+pod volume. **R-010(3) governs: curves and small artifacts ship; the tensors do not**, except
+the audit subsample of item 7.
+
+**Position-alignment check, frozen:** `python src/capture_w12.py --align-check` takes **10**
+`est` points by a fixed stride over the W4 form-B `est` index, maps each W4 absolute token
+index to this capture's `gen_pos = token_index − n_prompt_tokens`, and requires (a) the W4
+span decodes to the parsed literal under this capture's own tokenizer, (b) the row the W12
+index assigns is exactly `(trace_i, gen_pos)`, (c) `0 ≤ gen_pos < n_gen`. **All 10 must pass.**
+
+### 3 · Curves
+
+**Unit = TRACE.** For each (layer, alignment, bin), a trace contributes **one row**: the mean
+residual vector over that trace's generated positions falling in that bin. Logistic probe
+(**L2, C = 1, `class_weight="balanced"`, lbfgs, max_iter 2000** — PR-004's constants),
+trained and evaluated on **trace-level stratified 70/30 splits, 20 repeats, mean reported**,
+metric **balanced accuracy**, null = **500 trace-level label permutations per (layer, bin)**.
+The SVD-to-training-span projection of PR-004 is reused and is not a modelling choice.
+
+**Two alignments, both frozen.**
+(a) **trace-fraction deciles**: bin = `min(9, floor(10·gen_pos / n_gen))`. All 238 labelled
+traces contribute.
+(b) **token offset relative to the trace's FIRST cause-token**, bins of **25** from **−250 to
++50** (12 bins), the cause-token position being W4's `belief` point (the last token of the
+first `good cause` / `bad cause` occurrence). Only the **167** traces that have one contribute.
+
+**THE ARM CONFOUND, and how it is handled — declared before the data.** Pooling the two arms
+naively would let a probe reach balanced accuracy **0.912** by decoding the **prompt**: arm
+predicts p̂ that well (65/75 and 88/92 among cause-token traces), and arm is in the residual
+stream from position 0. An onset measured that way would be meaningless. Therefore **three
+probe families are frozen, all on the same folds**:
+
+| family | traces | what it does | role |
+|---|---|---|---|
+| **`primary`** | 238 (167 in (b)) | pooled, **arm-centred**: within each training fold each arm's mean row is subtracted from every row of that arm — **training rows only**, no test leakage | **the result of record** |
+| **`control_arm`** | same | identical pipeline, identical folds, predicting **ARM** on the same arm-centred rows | **must sit at chance.** If it does not, `primary` is downgraded to descriptive and `above_good` becomes the result of record |
+| **`above_good`** | 113 (75 in (b)) | `above_good` only — W5's cell, where the prompt is **constant**, so no centring is needed or done | the confound-free robustness reading |
+
+### 4 · Onset criterion — pre-simulated, and TIGHTENED by the simulation
+
+Ordered criterion: *earliest bin in alignment (b) where accuracy exceeds its null's 95th
+percentile in **two** consecutive bins at the best layer.* **R-013 requires the family-wise
+false-onset rate of that criterion under the global null to be simulated before freezing.**
+
+`python3 src/w12_power.py --onset` → `analysis/out/w12_power.csv`. **20,000 simulations per
+cell.** The family is the whole **8 layer × 12 bin** grid and the criterion is scored as
+firing if **ANY** of the 8 layers fires — a deliberate **upper bound** over every possible
+best-layer selection rule, so the number is valid however "best layer" is chosen. Each cell
+draws an observed statistic and its own **finite-500-permutation** p-th percentile: with 500
+iid null draws the k-th order statistic (k = ⌈p·500⌉) has an exact Beta(k, 501−k)
+probability-integral law, so it is drawn directly — identical law, and the **extra variance of
+a 500-draw permutation set is therefore inside the number**. The nuisance grid sweeps
+correlation of the null statistic **across layers** (ρ_L ∈ {0, 0.5, 0.8}) and **across
+adjacent bins** (ρ_B ∈ {0, 0.4, 0.7, 0.9}) — adjacent bins share traces and nearly share
+positions, so ρ_B is high and the **worst cell is taken as the operating number**.
+
+| criterion | ρ_B = 0 | ρ_B = 0.4 | ρ_B = 0.7 | ρ_B = 0.9 | **worst cell** | ≤ 0.05? |
+|---|---|---|---|---|---|---|
+| **2 consec @ p95 (as ordered)** | 0.202 | 0.507 | 0.649 | — | **0.6491** | **NO** |
+| 3 consec @ p95 | 0.010 | 0.120 | 0.339 | 0.459 | **0.4591** | **NO** |
+| 2 consec @ p99 | 0.012 | 0.083 | 0.181 | 0.205 | **0.2054** | **NO** |
+| 3 consec @ p99 | 0.0002 | 0.008 | 0.055 | 0.114 | **0.1144** | **NO** |
+| 4 consec @ p99 | 0.0000 | 0.0004 | 0.016 | 0.066 | **0.0661** | **NO** |
+| 3 consec @ p99.5 | 0.0000 | 0.002 | 0.019 | 0.051 | **0.0513** | **NO** |
+| **4 consec @ p99.5** | 0.0000 | 0.0001 | 0.005 | 0.028 | **0.0279** | **YES** |
+
+(ρ_L = 0 column shown; ρ_L only ever lowers the union, so the ρ_L = 0 row is the worst.)
+
+**FROZEN: onset = the earliest bin in alignment (b) that begins a run of FOUR consecutive
+bins whose balanced accuracy exceeds the 99.5th percentile of that bin's own 500-permutation
+null, at the best layer.** Family-wise false-onset rate **0.0279** at the worst nuisance cell,
+**0.0001–0.005** at moderate correlation.
+
+**Both options the order named were tried and both fail** (3-consecutive: 0.459; p99:
+0.205; and even their combination, 0.114). The order says *"tighten … until it does not"*, so
+the ladder was continued past the two named rungs. **Judgment call JC-1, flagged.**
+
+**Best layer, frozen:** `argmax` over the 8 layers of the **mean balanced accuracy across the
+ten alignment-(a) deciles** of the **`primary`** family. Chosen on alignment (a) — a different
+partition of the same traces from the one the onset is read on — and in any case the FWER
+above is an upper bound over all selection rules.
+
+### 5 · Belief-flip traces — descriptive, [suggested]-tier by construction
+
+Trajectory probe, at the best layer only, all frozen: rows are **individual generated
+positions**; **training** rows are every **5th** position of the training traces, arm-centred
+on training rows; **scoring** rows are **every** position of the held-out traces; dimensionality
+by `TruncatedSVD(n_components=128, random_state=0)` fit on training rows only; same L2
+logistic, same 20 folds. A trace's trajectory is the **mean of its held-out scores over the
+repeats in which it was held out**, then smoothed with a **centred moving average, window 25
+tokens**.
+
+**FLIP (the ordered rule, frozen):** an index `c` where `s[c−1]` and `s[c]` lie on opposite
+sides of **0.5**, the mean of the **50** samples ending at `c−1` is on the pre-side by
+**≥ 0.10**, and the mean of the **50** samples starting at `c` is on the post-side by
+**≥ 0.10**. Both windows must exist in full.
+
+`python3 src/w12_power.py --flip` — per-trace false-flip rate of a signal-free trajectory
+(AR(1) on the probability scale, lag-1 φ, marginal sd, 430 positions = form B's mean output
+length), **4,000 sims per cell**:
+
+| rule | sd = 0.10 | sd = 0.20 | sd = 0.30 | **worst cell** |
+|---|---|---|---|---|
+| **side 50, margin 0.10 (as ordered)** | 0.006–0.049 | 0.25–0.55 | 0.50–0.79 | **0.7895** |
+| side 50, margin 0.15 | 0.000–0.001 | 0.05–0.22 | 0.25–0.54 | 0.5410 |
+| side 100, margin 0.10 | 0.000–0.009 | 0.12–0.25 | 0.32–0.46 | 0.4610 |
+| **side 100, margin 0.15** | **0.000** | 0.011–0.100 | 0.09–0.28 | **0.2818** |
+
+The ordered rule's false-flip rate is **entirely governed by the trajectory's noise scale**
+and is unusable at sd ≥ 0.2. The order **froze** these parameters and gave no tightening
+instruction (unlike item 4), and flips are declared descriptive, so **the ordered rule is
+kept as primary and reported with its rate**; a **strict rule (side 100, margin 0.15)** is
+frozen alongside it as a second column. **Judgment call JC-2, flagged.**
+
+**Additionally — and this is the number that will be reported as the operating false-flip
+rate — the same flip rules are applied to trajectories produced by the identical pipeline with
+the trace labels SHUFFLED (5 shuffles, same folds, same SVD bases).** That is the empirical
+version of this simulation on the real capture and it supersedes the parametric grid.
+
+**Reported:** flip count under both rules; and for flipped traces, whether the intermediate
+`est` estimates **after** the flip move toward the newly believed side. Frozen rule: a flipped
+trace is **`toward`** if a strict majority of its post-flip `est` points lie on the newly
+believed side of τ, **`away`** if a strict minority, **`tied`**, or **`no_post_est`**. Both
+directions are counted.
+
+### 6 · W13 sizing outputs
+
+Per trace: **`settle_pos`** = the first position `t` with `|s[u] − s[n−1]| ≤ 0.10` for **every**
+`u ≥ t` (the smoothed trajectory has reached margin 0.10 from its final value and stays
+there). **`cut_point` = min(belief_gen_pos − 25, settle_pos − 1)**, valid only when it is
+`≥ 0` and the trace has a cause-token. Pairs: **opposite-p̂, same-arm** trace pairs where both
+members have a valid cut point — reported as the **possible** count (the cross-product) and
+the **disjoint** count (`min(n₊, n₋)` per arm), because W13 will need disjoint pairs.
+
+### 7 · Ship list, and the audit subsample rule
+
+`analysis/out/`: **`w12_curves.csv`** (family × layer × alignment × bin: balanced accuracy,
+null mean, null p95/p99/p99.5, permutation p, n) · **`w12_trajectories.csv`** (per-trace
+smoothed scores, **downsampled ×5**) · **`w12_flips.csv`** · **`w12_cutpoints.csv`** ·
+**`w12_headline.json`** · **`w12_align_check.md`** · **`w12_power.csv`** ·
+**`w12_capture_summary.csv`** · **`w12_flip_sample.md`** (5 flip traces, or all if fewer, by
+the fixed rule *first five in `w12_flips.csv` order*, trajectory drawn as a text plot beside
+the generated text).
+
+**Audit subsample, frozen: every 20th row of each arm's W12 row index** (`(trace_i, gen_pos)`
+in trace order then position order) — **5 %**, ≈ 6,476 rows, `runs/w12_acts/w12_sub_*.safetensors`,
+gitignored like `runs/w5_subsample`. It is what the load-bearing recount runs on.
+
+### 8 · The load-bearing recount
+
+`src/w12_recount.py`, a **fresh** script: imports `json`/`sys`/`numpy`/`safetensors` and
+**nothing** from `analyze_w12.py`, `capture_w12.py`, `direction_w5.py` or `w12_power.py`. It
+re-implements the p̂ recipe, the offset binning, the arm-centring, the split and the logistic
+probe (**plain gradient descent, no sklearn**) from this entry's description, runs on the **5 %
+audit subsample alone**, and prints the alignment-(b) onset bin at the best layer.
+**Agreement within one bin is required.**
+
+### 9 · Laptop smoke, before any pod exists (standing rule)
+
+`python3 src/capture_w12.py --dry-run` (index, V1–V4, counts — the table in item 1) and
+`python3 src/analyze_w12.py --smoke`, which runs the **entire** probe/onset/trajectory/flip/
+cut-point path on synthetic activations carrying a **planted** belief signal that switches on
+**100 tokens before the cause token**, plus a **planted arm signal 2.5× larger**. Both must
+pass before provisioning; their output is pasted in the report.
+

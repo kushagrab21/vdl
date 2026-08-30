@@ -1,0 +1,88 @@
+{
+ "best_layer": 21,
+ "layer_means_alignment_a": {
+  "21": 0.63331,
+  "23": 0.63331,
+  "25": 0.63331,
+  "27": 0.63331,
+  "29": 0.63331,
+  "31": 0.63331,
+  "33": 0.63331,
+  "35": 0.63331
+ },
+ "onset": {
+  "primary": {
+   "bin": 6,
+   "bin_label": "[-100,-75)",
+   "sig": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "above_good": {
+   "bin": 6,
+   "bin_label": "[-100,-75)",
+   "sig": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false
+   ]
+  },
+  "control_arm": {
+   "bin": null,
+   "bin_label": "",
+   "sig": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  }
+ },
+ "onset_rule": {
+  "k_consecutive": 4,
+  "percentile": 0.995
+ },
+ "n_traces_labelled": 238,
+ "n_with_cause_token": 167,
+ "n_flips_ordered_rule": 0,
+ "n_flips_strict_rule": 0,
+ "false_flip_empirical_ordered": 0.0,
+ "false_flip_empirical_strict": 0.0,
+ "n_valid_cutpoints": 146,
+ "n_w13_pairs_possible": 768,
+ "n_w13_pairs_disjoint": 12,
+ "post_flip": {
+  "toward": 0,
+  "away": 0,
+  "tied": 0,
+  "no_post_est": 0
+ }
+}

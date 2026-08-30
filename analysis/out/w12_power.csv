@@ -1,0 +1,144 @@
+sim,rho_layer,rho_bin,criterion,value
+onset_fwer,0.0,0.0,2 consec @ p95,0.2016
+onset_fwer,0.0,0.4,2 consec @ p95,0.5067
+onset_fwer,0.0,0.7,2 consec @ p95,0.6491
+onset_fwer,0.0,0.9,2 consec @ p95,0.6225
+onset_fwer,0.5,0.0,2 consec @ p95,0.1858
+onset_fwer,0.5,0.4,2 consec @ p95,0.4526
+onset_fwer,0.5,0.7,2 consec @ p95,0.5662
+onset_fwer,0.5,0.9,2 consec @ p95,0.5187
+onset_fwer,0.8,0.0,2 consec @ p95,0.1521
+onset_fwer,0.8,0.4,2 consec @ p95,0.3429
+onset_fwer,0.8,0.7,2 consec @ p95,0.4203
+onset_fwer,0.8,0.9,2 consec @ p95,0.3767
+onset_fwer_worst,,,2 consec @ p95,0.6491
+onset_fwer,0.0,0.0,3 consec @ p95,0.0101
+onset_fwer,0.0,0.4,3 consec @ p95,0.1196
+onset_fwer,0.0,0.7,3 consec @ p95,0.3392
+onset_fwer,0.0,0.9,3 consec @ p95,0.4591
+onset_fwer,0.5,0.0,3 consec @ p95,0.0093
+onset_fwer,0.5,0.4,3 consec @ p95,0.1118
+onset_fwer,0.5,0.7,3 consec @ p95,0.2945
+onset_fwer,0.5,0.9,3 consec @ p95,0.3834
+onset_fwer,0.8,0.0,3 consec @ p95,0.0091
+onset_fwer,0.8,0.4,3 consec @ p95,0.0848
+onset_fwer,0.8,0.7,3 consec @ p95,0.2147
+onset_fwer,0.8,0.9,3 consec @ p95,0.2695
+onset_fwer_worst,,,3 consec @ p95,0.4591
+onset_fwer,0.0,0.0,2 consec @ p99,0.0124
+onset_fwer,0.0,0.4,2 consec @ p99,0.0834
+onset_fwer,0.0,0.7,2 consec @ p99,0.1812
+onset_fwer,0.0,0.9,2 consec @ p99,0.2054
+onset_fwer,0.5,0.0,2 consec @ p99,0.0134
+onset_fwer,0.5,0.4,2 consec @ p99,0.0766
+onset_fwer,0.5,0.7,2 consec @ p99,0.1603
+onset_fwer,0.5,0.9,2 consec @ p99,0.1734
+onset_fwer,0.8,0.0,2 consec @ p99,0.0112
+onset_fwer,0.8,0.4,2 consec @ p99,0.0618
+onset_fwer,0.8,0.7,2 consec @ p99,0.1162
+onset_fwer,0.8,0.9,2 consec @ p99,0.122
+onset_fwer_worst,,,2 consec @ p99,0.2054
+onset_fwer,0.0,0.0,3 consec @ p99,0.0002
+onset_fwer,0.0,0.4,3 consec @ p99,0.0075
+onset_fwer,0.0,0.7,3 consec @ p99,0.0548
+onset_fwer,0.0,0.9,3 consec @ p99,0.1144
+onset_fwer,0.5,0.0,3 consec @ p99,0.0002
+onset_fwer,0.5,0.4,3 consec @ p99,0.0069
+onset_fwer,0.5,0.7,3 consec @ p99,0.0505
+onset_fwer,0.5,0.9,3 consec @ p99,0.0985
+onset_fwer,0.8,0.0,3 consec @ p99,0.0003
+onset_fwer,0.8,0.4,3 consec @ p99,0.0063
+onset_fwer,0.8,0.7,3 consec @ p99,0.0378
+onset_fwer,0.8,0.9,3 consec @ p99,0.0718
+onset_fwer_worst,,,3 consec @ p99,0.1144
+onset_fwer,0.0,0.0,4 consec @ p99,0.0
+onset_fwer,0.0,0.4,4 consec @ p99,0.0004
+onset_fwer,0.0,0.7,4 consec @ p99,0.0162
+onset_fwer,0.0,0.9,4 consec @ p99,0.0661
+onset_fwer,0.5,0.0,4 consec @ p99,0.0
+onset_fwer,0.5,0.4,4 consec @ p99,0.0004
+onset_fwer,0.5,0.7,4 consec @ p99,0.0152
+onset_fwer,0.5,0.9,4 consec @ p99,0.0582
+onset_fwer,0.8,0.0,4 consec @ p99,0.0
+onset_fwer,0.8,0.4,4 consec @ p99,0.0006
+onset_fwer,0.8,0.7,4 consec @ p99,0.0111
+onset_fwer,0.8,0.9,4 consec @ p99,0.042
+onset_fwer_worst,,,4 consec @ p99,0.0661
+onset_fwer,0.0,0.0,3 consec @ p99.5,0.0
+onset_fwer,0.0,0.4,3 consec @ p99.5,0.0019
+onset_fwer,0.0,0.7,3 consec @ p99.5,0.0193
+onset_fwer,0.0,0.9,3 consec @ p99.5,0.0513
+onset_fwer,0.5,0.0,3 consec @ p99.5,0.0
+onset_fwer,0.5,0.4,3 consec @ p99.5,0.0018
+onset_fwer,0.5,0.7,3 consec @ p99.5,0.0196
+onset_fwer,0.5,0.9,3 consec @ p99.5,0.0481
+onset_fwer,0.8,0.0,3 consec @ p99.5,0.0001
+onset_fwer,0.8,0.4,3 consec @ p99.5,0.0019
+onset_fwer,0.8,0.7,3 consec @ p99.5,0.0159
+onset_fwer,0.8,0.9,3 consec @ p99.5,0.0374
+onset_fwer_worst,,,3 consec @ p99.5,0.0513
+onset_fwer,0.0,0.0,4 consec @ p99.5,0.0
+onset_fwer,0.0,0.4,4 consec @ p99.5,0.0001
+onset_fwer,0.0,0.7,4 consec @ p99.5,0.0047
+onset_fwer,0.0,0.9,4 consec @ p99.5,0.0279
+onset_fwer,0.5,0.0,4 consec @ p99.5,0.0
+onset_fwer,0.5,0.4,4 consec @ p99.5,0.0001
+onset_fwer,0.5,0.7,4 consec @ p99.5,0.005
+onset_fwer,0.5,0.9,4 consec @ p99.5,0.0255
+onset_fwer,0.8,0.0,4 consec @ p99.5,0.0
+onset_fwer,0.8,0.4,4 consec @ p99.5,0.0001
+onset_fwer,0.8,0.7,4 consec @ p99.5,0.0046
+onset_fwer,0.8,0.9,4 consec @ p99.5,0.021
+onset_fwer_worst,,,4 consec @ p99.5,0.0279
+false_flip,0.9,0.1,MA25 side50 margin0.10,0.0138
+false_flip,0.9,0.2,MA25 side50 margin0.10,0.4465
+false_flip,0.9,0.3,MA25 side50 margin0.10,0.725
+false_flip,0.95,0.1,MA25 side50 margin0.10,0.0485
+false_flip,0.95,0.2,MA25 side50 margin0.10,0.5547
+false_flip,0.95,0.3,MA25 side50 margin0.10,0.7895
+false_flip,0.98,0.1,MA25 side50 margin0.10,0.0312
+false_flip,0.98,0.2,MA25 side50 margin0.10,0.4427
+false_flip,0.98,0.3,MA25 side50 margin0.10,0.6875
+false_flip,0.99,0.1,MA25 side50 margin0.10,0.0057
+false_flip,0.99,0.2,MA25 side50 margin0.10,0.2515
+false_flip,0.99,0.3,MA25 side50 margin0.10,0.498
+false_flip,0.9,0.1,MA25 side50 margin0.15,0.0
+false_flip,0.9,0.2,MA25 side50 margin0.15,0.1055
+false_flip,0.9,0.3,MA25 side50 margin0.15,0.3975
+false_flip,0.95,0.1,MA25 side50 margin0.15,0.0008
+false_flip,0.95,0.2,MA25 side50 margin0.15,0.215
+false_flip,0.95,0.3,MA25 side50 margin0.15,0.541
+false_flip,0.98,0.1,MA25 side50 margin0.15,0.0005
+false_flip,0.98,0.2,MA25 side50 margin0.15,0.1475
+false_flip,0.98,0.3,MA25 side50 margin0.15,0.441
+false_flip,0.99,0.1,MA25 side50 margin0.15,0.0
+false_flip,0.99,0.2,MA25 side50 margin0.15,0.0495
+false_flip,0.99,0.3,MA25 side50 margin0.15,0.251
+false_flip,0.9,0.1,MA25 side100 margin0.10,0.0003
+false_flip,0.9,0.2,MA25 side100 margin0.10,0.12
+false_flip,0.9,0.3,MA25 side100 margin0.10,0.3205
+false_flip,0.95,0.1,MA25 side100 margin0.10,0.0085
+false_flip,0.95,0.2,MA25 side100 margin0.10,0.2487
+false_flip,0.95,0.3,MA25 side100 margin0.10,0.4525
+false_flip,0.98,0.1,MA25 side100 margin0.10,0.0227
+false_flip,0.98,0.2,MA25 side100 margin0.10,0.2878
+false_flip,0.98,0.3,MA25 side100 margin0.10,0.461
+false_flip,0.99,0.1,MA25 side100 margin0.10,0.0145
+false_flip,0.99,0.2,MA25 side100 margin0.10,0.2047
+false_flip,0.99,0.3,MA25 side100 margin0.10,0.361
+false_flip,0.9,0.1,MA25 side100 margin0.15,0.0
+false_flip,0.9,0.2,MA25 side100 margin0.15,0.0105
+false_flip,0.9,0.3,MA25 side100 margin0.15,0.0897
+false_flip,0.95,0.1,MA25 side100 margin0.15,0.0
+false_flip,0.95,0.2,MA25 side100 margin0.15,0.0592
+false_flip,0.95,0.3,MA25 side100 margin0.15,0.2235
+false_flip,0.98,0.1,MA25 side100 margin0.15,0.0
+false_flip,0.98,0.2,MA25 side100 margin0.15,0.0998
+false_flip,0.98,0.3,MA25 side100 margin0.15,0.2818
+false_flip,0.99,0.1,MA25 side100 margin0.15,0.0
+false_flip,0.99,0.2,MA25 side100 margin0.15,0.0638
+false_flip,0.99,0.3,MA25 side100 margin0.15,0.2037
+false_flip_worst,,,MA25 side100 margin0.10,0.461
+false_flip_worst,,,MA25 side100 margin0.15,0.2818
+false_flip_worst,,,MA25 side50 margin0.10,0.7895
+false_flip_worst,,,MA25 side50 margin0.15,0.541

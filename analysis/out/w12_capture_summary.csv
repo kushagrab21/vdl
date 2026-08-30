@@ -1,0 +1,3 @@
+arm,n_traces,n_replayed,n_quarantined,n_rows,n_shards,bytes,n_labelled,n_phat_pos,n_phat_neg,n_with_belief,wall_secs
+above_good,150,150,0,64363,0,0,113,82,31,76,0.2
+below_good,150,150,0,65152,0,0,125,4,121,93,0.2
