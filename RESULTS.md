@@ -3986,3 +3986,27 @@ in reach at this packet's size.
 `runs/w7b_steer/*.json` (12 arm files + the generation log), `analysis/out/w7b_arms.csv`
 (12 rows), `analysis/out/w7b_primary.csv`, `analysis/out/w7b_extractions.json`,
 `analysis/out/w7b_api_usage.json`, `analysis/out/w7b_samples/*.md` (4 files × 5 traces).
+
+---
+
+## D-030 · Correction to PR-006 item 2: the reused sham's seed range · 2026-08-30
+
+**Filed before any W7b generation exists**, by the standing append-only rule (a wrong entry is
+corrected by a later entry that names it, never by editing it).
+
+PR-006 item 2 states that the REUSED W7 sham arm `runs/w7_steer/B_above_sham.json` carries
+seeds **8064–8113**. **It does not.** The sham is the 13th entry of PR-005 item 3's arm table,
+so its `seed_offset` is 8000 + 50×12 = **8600** and its seeds are **8664–8713**. 8064–8113 is
+the seed range of `B_above_L27_ap1`. The runner transcribed the wrong row of the W7 table.
+
+**Nothing else in PR-006 changes.** The arm reused is the same file, identified by name and by
+its recorded `alpha = 0.0 / layer = 27 / condition = above_good / n = 50 / vphat_sha256`; only
+the seed range quoted for it was wrong. W7b's own seed block (9214–9813) is unaffected and
+remains disjoint from every prior packet's.
+
+**How it was caught, and this is the point of the rule.** `src/steer_w7b.py --smoke` clause
+**B6** re-reads the sham file and asserts every field PR-006 declares about it. It **FAILED**
+on the first run — `seeds 8664–8713` against the asserted `8064–8113` — on a laptop, at
+$0.00/hr, before a pod existed. V-011's laptop-smoke-before-provisioning rule has now caught a
+resolver bug (W7) and a pre-registration transcription error (W7b). The smoke was corrected to
+assert the true range and re-run to 13/13.
