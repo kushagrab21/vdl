@@ -100,12 +100,106 @@ W13 Wave 2: the D-042 resolution — E-007 vs the length confound (done; transpl
 W14 Wave 2 (R-016): bidirectional comprehension dose-response — degraded wording pushes
     comprehension DOWN against the same frozen mixture formula; + the blinded hand-label
     packet that calibrates the direction judge (this packet)
-W15 Wave 2 (R-016): the belief transplant, re-sized with fresh pairs (R-015(3)'s
-    cancellation was a sizing outcome; generation is cheap)
+W15 Wave 2 (R-016/R-017): the belief transplant, re-sized with fresh pairs (done; T3, a
+    measured null bounded by a post-freeze diagnostic) — THE LAST EXPERIMENT
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W14 — the mixture is a dose-response law, and the instrument that measures it broke)
+## Where things stand (end of W15 — the transplant is a null, and the design that measured it is the finding)
+
+**W15 was the project's LAST EXPERIMENT (R-017). Assembly follows regardless of outcome.**
+W14 is ACCEPTED with a split verdict (V-025) and R-017 authorised W15 past the $45 line with a
+$10 packet ceiling. **W15 is complete and its headline is a MEASURED NULL with a qualification
+larger than the result — the W14 pattern, again.**
+
+**W15 asked whether swapping the belief component between same-prompt traces that formed
+opposite beliefs changes behaviour.** 1,000 fresh natural-wording form-B `above_good` rollouts
+were regex-screened (free), 158 candidates judge-confirmed (paid), and **40 disjoint pairs** were
+formed in each of two directions — against W13's **six**, because PR-011 dropped W12's
+`settle_pos` constraint, which W12's own null had shown to be derived from a non-resolving probe.
+Each pair's A-trace was teacher-forced to its cut point with a hook that replaces the
+`v_p̂^B(L27)` component with the opposite class's mean profile, and the continuation regenerated.
+Four arms — SWAP / SHAM / SELF / RAND — 320 generations.
+
+**The result: PR-011 item 6 row T3 fires in both directions (P-014).** Rule C fires on neither
+landing nor verbalization and `CI(Δ_rand)` includes zero. **Δ_swap = +0.0000 [+0.0000, +0.0000]**
+in both directions on the corrected-regex basis, identical on the judge basis, and the
+20-line independent recount reproduces it exactly. **The belief state is not transplantable by
+this operation at this power; with W7's and W7b's nulls, v_p̂ stands as correlational.**
+
+**Three qualifications travel with it, and the first two are the packet.**
+- **The frozen cut left the operation almost no surface.** The regenerated continuation has a
+  median of **33 tokens**; only **6 of 40** reconstructions carry their final estimate inside it.
+  **34 of 40 landings were fixed in the prefix before any arm ran.**
+- **D-055 — the pre-freeze simulation measured its locked fraction on the wrong object.** `λ` was
+  measured as "does A's *own* final literal precede the cut" (**0.2632**, correct for that
+  quantity) when the statistic is computed on the **regenerated** continuation (**0.85**). Power
+  against the ordered alternative is **0.00–0.87**, not the **0.97–1.00** the D-048 declaration
+  stated at n=40. **A simulation is exactly as good as the object it is calibrated on**, and this
+  is the first entry in the D-032/D-043/D-048 family about a nuisance parameter rather than a
+  threshold.
+- **The bound holds anyway.** A **declared post-freeze diagnostic (JC-4)** re-ran the same pairs,
+  arms, seeds and edit at a **40 %-of-`n_gen`** cut: **40/40** movable, **35/40** continuations
+  differ from SHAM, **26/40** change their final value — and **Δ_swap = −0.0250
+  [−0.1750, +0.1500]**, beating RAND by **−0.0250**, at **0.954–0.995** power against +0.4456.
+  **The null survives its own bound.**
+
+**Two instrument findings.** **D-056**: the JC-1 substitute decoded-belief probe (the frozen W5
+*direction* as a 1-D decoder, because W5 never persisted probe coefficients) is
+**non-discriminative** — class means 12.7327 vs 12.5905 against a within-class sd of **3.1345**,
+separation/sd **0.1720** — and it decodes −1 for every continuation in every arm. The same three
+numbers say what the transplant *is*: **the edit moves the residual 0.89 σ but the belief
+coordinate only 0.17 σ, so SWAP and SELF are near-identical interventions.** **D-053**: the regex
+screen is only V-025's calibrated instrument if it uses the **corrected** extractor
+(`final_corrected`, 0.9467) and not the raw one (`final_estimate`, **0.6316**) — caught by a W3
+dry run on the laptop **before the pod existed**.
+
+**PR-011's own pre-freeze sims changed the decision rule before any token.** The order's literal
+primary — `CI(Δ_swap)` excludes 0 — **false-fires 8.9–84.2 %** in a null world calibrated from
+W7b's measured perturbation response, and **T4's condition fires 7–84 % by construction**.
+**RULE C** (both signed contrasts, vs RAND and vs SELF) was frozen instead: false-fire ≤ 0.057,
+power 0.969–0.997 at n=40. That is the fifth packet running in which the R-013 rule changed a
+design before data.
+
+**Infrastructure. D-054 is the expensive one.** The frozen stack (vllm 0.28.0, torch
+2.13.0+cu130) built in 6 minutes and **could not run**: the pod's driver is **570.172.08 /
+CUDA 12.8** and vLLM 0.28.0 carries a CUDA 13 runtime. **The script and image were identical to
+W14's; the machine was not.** The packet ran on the container's own torch **2.8.0+cu128** through
+HF `generate` (D-044's precedent). **81 idle minutes — 58 % of the GPU bill, ≈ $2.15 — were lost
+because nothing in this project watches a long unattended GPU job.** Pod `pu0m8r6jtng3ks`
+created 03:05:20, **terminated 05:24:46** (HTTP 204, `/pods` empty, 404 on the id,
+`currentSpendPerHr` $0.00, balance move $3.6641 vs $3.695 billed).
+
+**The blinded hand-label packet is now 70 rows.** R-017's extension added **20 W14 degraded
+traces** (8/6/6 on the stored verdict classes, seeds 15050/15051) as rows **R51–R70**, appended
+**in place** to `w14_handlabel_sheet.csv` with the R01–R50 block asserted **byte-identical**; the
+addendum key `w15_handlabel_key_addendum.csv` is sealed and **no verdict row has been read**, from
+either key file.
+
+**⚠ SPEND: $19.30 GPU + $30.87 API = $50.17 of $60; balance $9.83. W15 cost $8.07** against
+R-017's **$10** packet ceiling — under it (S-016). The **$45 line is crossed, as R-017 authorised.**
+Runner wall time W15 **≈ 3 h 05 m** (T-018). **Owner minutes were not supplied again** — two
+packets under R-016's rule, two empty fields.
+
+**Next: ASSEMBLY ONLY. R-017 is the project's last scope decision — no further experiments,
+regardless of outcome.** The researcher reads `analysis/out/w15_samples/*.md` (SWAP and SHAM at
+the frozen indices 0–4), rules on P-014 and on how much §3's resolving-power qualification costs
+it, rules on whether the JC-4 diagnostic may be cited as a bound, and issues the assembly-closure
+order (write-up integration of W14/W15 + hand-label scores when the sheet returns, final build,
+final read, submission). **Deadline: Fri Sept 4 11:59pm PT.**
+
+Tooling added by W15: **`w15_handlabel_ext.py`** (the degraded extension; appends in place,
+six blindness checks) · **`w15_power.py`** (the R-013 sims; `--grid`, `--mde`, `--lam-measured`,
+`--dgens`) · **`gen_w15.py`** (1,000-rollout harvest; `--hf` is D-054's fallback; 10-clause
+selftest) · **`harvest_w15.py`** (`--screen` regex + cut points + nomination, `--pair` confirm +
+disjoint pairing) · **`judge_w15.py`** (two phases, own ceiling, `--deep`) ·
+**`transplant_w15.py`** (the prefix-edit hook, `--profile`, `--transplant`, `--cut-frac` for JC-4,
+7-clause smoke) · **`analyze_w15.py`** (arms, rule C, the frozen T-row) · **`w15_deep.py`** (the
+post-freeze bound) · **`samples_w15.py`** · **`w15_recount.py`** (20 body lines, stdlib only).
+
+---
+
+## Archived status (end of W14 — the mixture is a dose-response law, and the instrument that measures it broke)
 
 **W10 ships. W13 is ACCEPTED and P-012 promoted (V-023 → E-012, to be written by the
 researcher). R-016 (owner-directed) extended Wave 2 with W14 (this packet) and W15 (the powered
