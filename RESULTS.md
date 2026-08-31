@@ -7536,3 +7536,273 @@ against zero; two points do not establish a curvature.
 (d) **The hand-label agreement, κ and label-noise bound** — the sheet has not been returned, so
 `w14_handlabel_score.py` has never been run on data.
 (e) **P-013 is provisional; `E-013` is reserved and not written (D-047).**
+
+## V-025 · W14 audit — transcribed verbatim from the courier · 2026-08-31
+
+*Transcribed verbatim; the courier's block carried the heading `## V- · W14 audit ·
+2026-08-31` and the number **V-025** is allocated here per the ledger's per-kind numbering.*
+
+```
+## V- · W14 audit · 2026-08-31
+W14 ACCEPTED with a split verdict, both halves of record. (1) The landing-gap collapse under
+degraded wording is [measured]: judge-independent landing rates, recount-confirmed on every
+basis, monotone with W3 and W11 — the three-point dose-response stands as a qualitative
+bidirectional law. (2) The degraded point's comprehension coordinate (0.2905) is measured by
+an instrument this packet itself proved fails on nested negation (D-051): the quantitative
+"predicted-vs-observed" claim on the degraded side is DEMOTED to [suggested] pending the
+owner's hand-labels. D-051 is promoted to a standalone finding about LLM-judge validity —
+the judge fails exactly where the model fails, and the cost anomaly (D-052, 522 tokens/call)
+was its early warning; that pairing goes in the register. The truth-table verification, the
+declared closure-step qualification, JC-2's harder alternative, and the disclosed
+pre-freeze provisioning overlap are all RATIFIED. The regex direction instrument's
+calibration (0.90–0.96 agreement on natural wording, 0.29/0.50 on degraded) makes it the
+screening instrument of record for natural-wording belief labels in W15.
+```
+
+---
+
+## R-017 · W15 authorized (OWNER-APPROVED past the $45 line) · 2026-08-31
+
+*Transcribed verbatim.*
+
+```
+## R-017 · W15 authorized (OWNER-APPROVED past the $45 line) · 2026-08-31
+One final experiment, budget-designed: regex-screened pair harvest, judge spend only on
+candidates, hard ceiling $10 for the packet, cap unchanged at $60. The owner's hand-label
+packet is EXTENDED: 20 W14 degraded traces (stratified by stored verdict, fixed seed, blind,
+appended to the sheet with the same instructions) — the human-measured comprehension rate
+for the degraded point. After W15: assembly only. No further experiments regardless of
+outcome — this ruling is the project's last scope decision.
+```
+
+**Runner's reading of R-017, recorded before acting on it (standing constraint 4).**
+(a) "*hard ceiling $10 for the packet*" is read as **GPU + API, this packet, combined** — the
+tighter of the two possible readings. (b) "*cap unchanged at $60*" leaves the cumulative cap
+where it is; $42.10 + $10 = $52.10, inside it. (c) The **$45 stop-and-surface threshold is
+crossed by this packet's authorization, not by its spend** — S-015 surfaced it and R-017 is the
+owner's approval to cross, which is what standing constraint 6 asks for. (d) "*appended to the
+sheet*" is read as **extending the existing `w14_handlabel_sheet.csv` in place** (rows R51–R70)
+rather than shipping a second sheet, so the owner fills one file; the W3 rows R01–R50 are
+untouched byte-for-byte and the existing key file is extended by a **separate addendum file**
+so that `w14_handlabel_key.csv` — which has never been opened — is not rewritten.
+
+---
+
+## PR-011 · W15 pre-registration — the powered belief transplant · 2026-08-31
+
+**Frozen before any W15 rollout exists.** `runs/w15_harvest/` does not exist as this is
+written. Binds the W15 order (R-016 / R-017). The R-013-as-amended simulations required for
+every threshold in it are in **item 5**, pasted, and **they changed the decision rule before
+any token existed** — for the fifth packet running.
+
+### 1. The pair harvest
+
+**Population.** ~**1,000** fresh form-B `above_good` rollouts, **natural wording** — W3's
+`prompts_w3.build_prompt_w3("B", "above_good", 4_500_000_000)`, byte-identical to W3's and to
+W7's, carrying neither W11's clarification nor W14's degradation. PR-001 sampling (temperature
+1.0, top_p 1.0, max_tokens 32768), vLLM, seed = `BASE_SEED + offset + i`.
+
+**Seed block.** `SEED_OFFSET_0 = 10650`, so seeds **10714–11713**, contiguous with and disjoint
+from W14's 10414–10713 and every earlier block. Verified by selftest before the pod exists.
+
+**Why `above_good` only.** It is the one cell where both p̂ classes are well populated
+(E-007/W5: 82 `+1` and 68 `−1` in W3's 150), and it is the cell every activation result in this
+project is computed on. `below_good` yields 4 minority traces in 150 and cannot be paired.
+
+**Belief label, screening instrument (free).** `src/w14_dircheck.py`'s `believed()` regex,
+promoted to screening instrument of record for natural wording by **V-025**, which cites its
+**0.90–0.96** agreement with the judge on W3. p̂ = **+1** iff the trace's implied mapping is
+`gt_good` (exceeding τ earns the good cause ⇒ **above** is the favoured side), **−1** iff
+`gt_bad`, **None** otherwise. **The regex reads the trace's own final estimate**, so it is
+partly a function of landing; that is acceptable *as a screen* and is why the label of record is
+the judge's.
+
+**Belief label of record (paid).** The frozen direction judge (`direction_judge.py`, PR-003
+item 5 prompt, model pinned as in D-040), run **only on regex-nominated candidates**, on the
+natural-wording basis — the basis V-025 rules valid. A candidate is **confirmed** iff the
+judge's verdict maps to the same p̂ (`correct`↔`+1`, `incorrect`↔`−1` in this arm;
+`unclear` ⇒ dropped).
+
+**Cut point.** `cut = belief_gen_pos − 25`, where `belief_gen_pos` is the generated-token
+position of the last token of the **first** occurrence of `good cause`/`bad cause`
+(`replay_w4.belief_span`, unchanged). Valid iff `cut ≥ 0`.
+
+**THE DELIBERATE LOOSENING, decided now, before data.** W12's rule was
+`cut = min(belief_gen_pos − 25, settle_pos − 1)`, and W12's own sizing showed `settle_pos` — not
+the cause word — was the binding constraint: **98 valid cut points of 167 traces with a cause
+token**. `settle_pos` is derived from the W12 trajectory probe, and **P-011/D-043 is the finding
+that that probe resolves nothing**: the onset criterion did not fire at any layer in any family,
+and the ordered criterion it was read against false-fires 65 % on correlated noise. **A
+constraint derived from an instrument the same packet measured as non-resolving is not a
+constraint.** It is dropped. The effect is stated in the report as pairs-with vs pairs-without.
+
+**Pairing.** Within the confirmed, valid-cut candidate pool: the `+1` list and the `−1` list are
+each shuffled with `random.Random(15060)`, zipped, and truncated — **disjoint by construction**,
+each rollout in at most one pair. **N_PAIRS = min(available, 40).**
+
+**The stop rule (from the order).** If the harvest yields **< 25** disjoint pairs, **stop and
+report before transplanting**.
+
+### 2. The transplant
+
+For a pair, **A** is the trace whose prefix is teacher-forced and **B** is the opposite-belief
+partner. **Primary direction: A is the p̂ = +1 member.** **Mirrored direction: A is the
+p̂ = −1 member**, run **only if N_PAIRS ≥ 40** (item 5 prices both).
+
+**The edit.** Let `u = v_p̂^B(L27)/‖v_p̂^B(L27)‖` from the sha-pinned W5 tensor
+(`w5_vectors/w5_vphat_B.safetensors`, sha256 `cbdbbb4a…be64`, the same object PR-005 froze). Let
+`m_c(r)` be the mean of `h_L27 · u` over class-`c` candidate traces at relative prefix position
+`r = g/cut ∈ [0,1]`, resampled onto a 101-point grid by linear interpolation and averaged within
+class. At generated-token position `g` of A's prefix, with `r = g/cut_A`:
+
+```
+h ← h + ( m_target(r) − (h · u) ) · u
+```
+
+a **1-D edit along u only**, applied **only at generated-token positions of the prefix**
+(the templated prompt's positions and every decode position of the continuation are untouched).
+
+| arm | `m_target` | direction |
+|---|---|---|
+| **SWAP** | `m_{class(B)}` | `u` |
+| **SHAM** | — (hook installed, returns the tensor unmodified) | — |
+| **SELF** | `m_{class(A)}` | `u` |
+| **RAND** | `m_{class(B)}` | `u_rand`, replacing `(h·u_rand)` |
+
+**RAND** uses the **same magnitudes** along a random unit direction, from **4 fixed directions**
+`np.random.default_rng(15070+j)`, `j = pair_index mod 4`, cycled across pairs.
+
+**Generation.** HF `generate` (vLLM cannot carry the hook), bf16, `max_new_tokens 2048`,
+temperature 1.0, top_p 1.0, `torch.manual_seed(BASE_SEED + 15100 + pair_index)` re-seeded
+immediately before **every** arm, so the four arms of a pair draw the **same** RNG stream and
+diverge only through the edit. Batch 1 (each pair has its own prefix).
+
+**n** = N_PAIRS × 4 arms, doubled if the mirrored direction runs.
+
+### 3. Outcomes
+
+| outcome | instrument | note |
+|---|---|---|
+| **landing** | `P(final > τ_B)` of the **reconstructed trace** = A's prefix (tokens `0…cut−1`) **+** the generated continuation, through **both** frozen extractors: `extract_regex` corrected/raw (free) and the frozen number judge (API) | the reconstruction is what keeps the number comparable to W3/W7/W11/W14, whose `final` is the last estimate of a whole trace |
+| **verbalized mapping** | the frozen direction judge, natural wording, on the reconstructed trace | the basis V-025 rules valid |
+| **decoded belief** | the **frozen W5 direction** as a 1-D decoder: `sign(h_L27·u − θ)`, `θ` = midpoint of the two class-mean projections measured on the candidate pool, evaluated at the continuation's `est` points, **laptop/pod-side, no API** | **JC-1, declared here:** W5 persisted the *vectors*, not the probe's trained coefficients (`w5_vectors/` + `w5_probes.csv` summary only), so "the frozen W5 probe" is implemented as the frozen W5 *direction* used as a 1-D probe. This is a weaker instrument than W5's and is labelled so wherever it is reported. |
+| **coherence** | `steer_w7.is_degenerate` / `ngram_ratio`, plus truncation counts | **with the D-029 caveat attached: coherence is blind to epistemic distortion** and read 1.000 in all 12 W7b arms while W7b was measuring nothing. |
+
+### 4. The primary statistic (frozen)
+
+For arm `a`, `p_a = P(the reconstructed trace lands on B's side)`, where **B's side** is `below`
+when `p̂_B = −1` and `above` when `p̂_B = +1`.
+
+```
+Δ_a  =  p_a − p_SHAM ,      Δ_swap is the primary
+```
+
+95 % **percentile bootstrap over PAIRS**, **10,000** resamples, one resample index shared by
+every statistic in a replicate (the arms are paired within a pair). Reported always:
+`Δ_swap`, `Δ_self`, `Δ_rand`, `Δ_swap − Δ_rand`, `Δ_swap − Δ_self`, each with CI.
+**Secondary:** the same three Δ's for the **verbalized-mapping** flip rate and the
+**decoded-belief** flip rate.
+
+### 5. The pre-freeze simulations (R-013-as-amended) — PASTED, and they changed the rule
+
+`src/w15_power.py`, 1,000 replicates per cell, 1,000 bootstrap resamples per replicate, all
+constants from committed files:
+
+* `q0` — `P(lands on B's side | SHAM)` from W3's own cells (`w11_w3_cells.csv`): primary
+  `1 − 0.792683 = 0.2073`, mirror `0.279412`.
+* `λ = 20/76 = 0.2632` — the **locked fraction**, measured: W3 form-B `above_good` traces whose
+  `final` literal is **already emitted before the cut point**, where nothing downstream of the
+  cut can move the landing. A locked pair returns one shared outcome to all four arms.
+* `δ_gen = 0.4750 − 0.6800 = −0.2050` — the **generic perturbation response**, calibrated from
+  W7b exactly as the order directs: its 12 perturbed arms pooled `P(>τ) = 0.4750` against the
+  reused α=0 sham's `0.6800`. Sensitivity at `−0.10` and `0.0`.
+* `σ_arm = √(0.0862² − 0.0706²) = 0.0495` — W7b's across-arm sd net of binomial.
+* Alternative world: SWAP additionally moves toward B's side by `δ_true`, headline
+  `+0.4456` (E-005 form-B belief-conditional gap); `0.5133` (the two-cell difference
+  0.7927 − 0.2794) reported alongside.
+
+**Null-world firing rates at n = 40 (this is the finding).**
+
+| rule | primary, δ_gen −0.205 / −0.10 / 0 | mirror, δ_gen −0.205 / −0.10 / 0 |
+|---|---|---|
+| `Δ_swap` CI excludes 0 — **the order's literal primary** | **0.586 / 0.235 / 0.089** | **0.842 / 0.302 / 0.083** |
+| `Δ_rand` CI excludes 0 — **T4's condition** | 0.582 / 0.235 / 0.089 | 0.842 / 0.302 / 0.083 |
+| all three CIs exclude 0 | 0.016 / 0.011 / 0.026 | 0.007 / 0.037 / 0.012 |
+| **RULE C** — both signed contrasts positive and clear of 0 | **0.016 / 0.014 / 0.021** | **0.034 / 0.030 / 0.016** |
+
+**`Δ_swap` alone false-fires up to 84 % in a world where the transplant does nothing
+belief-specific**, because a generic perturbation that pushes estimates down *is* a push toward
+B's side in the primary direction. **The primary statistic as ordered is not a test.** The same
+arithmetic makes **T4's condition fire 7–84 % of the time by construction.**
+
+**FROZEN, therefore:** `Δ_swap` and its CI are **reported** as the order's primary descriptive
+statistic; **the decision is RULE C** — `CI(Δ_swap − Δ_rand)` and `CI(Δ_swap − Δ_self)` both
+**strictly above zero**. Rule C's false-fire is **≤ 0.057** in all 18 null cells (2 directions ×
+3 δ_gen × 3 n) and ≤ 0.037 at n = 40.
+
+**Power against the ordered alternative `δ_true = +0.4456`.**
+
+| n pairs | primary (δ_gen −0.205 / −0.10 / 0) | mirror (−0.205 / −0.10 / 0) |
+|---|---|---|
+| 25 | 0.979 / 0.922 / 0.895 | 0.953 / 0.894 / 0.897 |
+| **40** | **0.997 / 0.987 / 0.969** | **0.982 / 0.978 / 0.985** |
+| 60 | 0.999 / 1.000 / 0.992 | 0.998 / 0.993 / 0.998 |
+
+**Minimum detectable flip-rate difference at n = 40** (rule C, W7b-calibrated δ_gen, 1,000 reps):
+**80 % power at δ_true ≈ 0.31 (primary) and ≈ 0.25 (mirror)**; 70 % power at ≈ 0.27 and ≈ 0.21;
+power is **0.12 / 0.27** at δ_true = 0.10. `analysis/out/w15_power.csv`,
+`analysis/out/w15_power_mde.csv`.
+
+**THE D-048 DECLARATION, made here, before any rollout.** The power at the achieved harvest will
+be stated **before the first transplanted token**. Power exceeds 0.89 in every calibration at the
+order's stop-floor of 25 pairs and 0.96 at 40, so no under-powered run is expected; **if the
+achieved configuration nonetheless falls below 0.7, the packet will say so before transplanting
+and will report the achievable bound rather than the verdict** — the owner has pre-accepted
+running at the achievable power provided it is stated, and **this sentence is that statement.**
+
+### 6. Interpretation rows (frozen; evaluated in this order)
+
+| row | condition | reading |
+|---|---|---|
+| **T1** | **Rule C fires on landing** | **belief-upstream at the activation level [measured]** — the project's central question answered positively. Sub-row **T1-partial**, declared now: if landing fires but **neither** the verbalized-mapping nor the decoded-belief contrast moves with it, T1 is reported **with that discrepancy named in the same sentence**, never alone. |
+| **T2** | Rule C does **not** fire on landing but **does** on the verbalized-mapping flip rate | **annotation channel [measured]** — the edit moves what the trace *says* about the mapping without moving what it *does*. |
+| **T3** | Rule C fires on neither, and `CI(Δ_rand)` **includes** 0 | **the belief state is not transplantable by this operation at this power [measured null]**; combined with W7/W7b's null, **v_p̂ remains correlational**. |
+| **T4** | Rule C fires on neither, and `CI(Δ_rand)` **excludes** 0 | **the operation itself is disruptive — bounding only.** Item 5 shows this condition fires 7–84 % under a world doing nothing belief-specific, so **T4 is a qualifier, never a verdict**, and RAND's movement is reported under whichever row fires. |
+
+Whichever row fires is the **final entry of the causal section**. Rows are evaluated top-down and
+exactly one fires.
+
+### 7. Reading
+
+**5 SWAP and 5 SHAM** continuations at **fixed blind indices 0–4** of the pair list,
+`analysis/out/w15_samples/*.md`, written before the researcher reads and **not** chosen after
+seeing outcomes.
+
+### 8. Smoke, spend and outputs
+
+**Smoke suite** (`src/transplant_w15.py --smoke`, laptop, tiny model, CPU, extending W7's
+S1–S6), asserting at minimum:
+* **S-A** the edit changes the residual **only along the unit direction**: the component of
+  `h' − h` orthogonal to `u` is 0 to float precision, and `h'·u == m_target(r)`.
+* **S-B** the edit applies **only at prefix generated-token positions**: prompt positions and
+  every decode position are bitwise unchanged.
+* **S-C** **SHAM is bitwise identity** — the generated token ids equal those of the same
+  generation with **no hook at all**.
+* **S-D** SWAP, SELF and RAND each change the token ids (the hook is not inert), and RAND's
+  edit is orthogonal to `u` in expectation.
+* **S-E** the sha256 of the W5 tensor matches PR-005's.
+* **S-F** the 1,000 harvest seeds are distinct and the block is disjoint from every earlier one.
+
+**Spend.** Hard ceiling **$10 for the packet, GPU + API combined** (R-017). An API projection is
+computed and printed **before** the first judged call; **if the projection exceeds the ceiling's
+API share the judged set is shrunk and the shrink is reported.** D-040's constants (3.15
+chars/token, 56 output tokens for the direction judge; 2.84 and 20.0 for the number judge) apply
+— **D-052's 522 tokens/call was degraded-wording-specific and W15 is natural wording**, which is
+the assumption and is checked against the invoice.
+
+**Outputs.** `analysis/out/w15_pairs.csv`, `w15_arms.csv`, `w15_primary.csv`,
+`analysis/out/w15_samples/`. **Load-bearing recount:** `src/w15_recount.py`, ≤ 20 body lines,
+stdlib only, recomputing `Δ_swap` from the raw continuation files with a fresh regex-only
+extractor, pasted into the report.
+
+---
