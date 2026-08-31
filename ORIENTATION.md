@@ -96,11 +96,79 @@ W9  intervention III: mirrored macrostate patch; single- vs all-points (H1/H2/H3
 W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 W11 Wave 2: comprehension intervention (clarified wording) — the mixture model's causal test
 W12 Wave 2: belief-formation timing (done)
-W13 Wave 2: paired belief transplant
+W13 Wave 2: the D-042 resolution — E-007 vs the length confound (done; transplant CANCELLED by R-015(3))
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W12 — Wave 2's second experiment; a measured null and a confound)
+## Where things stand (end of W13 — the project attacked its own best finding, and it held)
+
+**W10 ships. W11 is promoted (E-010). W12 is ACCEPTED in full (V-020) and W10's audit is CLOSED
+(V-021). R-015 cancelled the belief transplant as infeasible (6 disjoint pairs) and gave the W13
+slot to the D-042 resolution. That resolution is complete and its outcome is SURVIVES.**
+
+**W13 asked whether E-007 — the believed side is linearly decodable at 0.743 — is a trace-length
+probe in disguise.** D-042 had shown that incorrect-belief traces run 123 tokens longer and that
+`n_gen` alone decodes p̂ at 0.6421, and had declined to test how far that reaches into W5.
+
+**The pre-freeze simulations were the packet's first result, and they rejected the ordered
+criterion.** `src/w13_power.py`, four rounds, 200 replicates per world, on the **real**
+activations with **synthetic** labels: the work order's rule — n_gen terciles, activation
+accuracy vs its within-stratum null p95 — **false-fires 9.5 % of the time in a pure-length
+world**, an error in E-007's *favour*. A four-rung ladder was priced and **no rung meets both
+gates** (false-fire ≤ 0.05 *and* power ≥ 0.80) at n = 109 with 30 minority traces:
+`tercile` 0.095/0.950 · `tercile_resid` **0.030/0.710** · `resid_full` 0.020/0.700 ·
+`matched` 0.120/0.970. **PR-009 item 4b therefore froze the rung whose errors run AGAINST
+E-007** (`tercile_resid` @ q95), reported the ordered rung alongside, and pre-declared in writing
+that a non-firing primary rung could never on its own be read as E-007 failing. **MDE: 80 % power
+against a belief signal worth a full-cell 0.774; power against the observed 0.743 is 0.710.**
+
+**The result: the frozen SURVIVES row fires.** The reproduction is exact (**0.7431** at ℓ\*=22,
+**0.7604** at L27, against `w5_probes.csv`'s 0.743056 / 0.760417). The length-controlled probe
+reads **0.6683** at L27 — above its within-tercile null p95 **0.5889** and above the length-only
+probe on the **identical folds**, **0.6392** — and fires at **both** decision layers and at
+**15 of 48** layers (a contiguous band, 20–33 and 36). The ordered rung agrees at both layers,
+so no PARTIAL condition triggers. **E-007 stands, with a new entry recording that it survived a
+targeted attack (P-012).**
+
+**Two qualifications travel with it and are in §5.3 of the write-up.**
+- **A probe with three scalars and no activations at all — output length, est-point count, mean
+  est-point position — reads 0.6767 on E-007's own cell** (null p95 0.5912, p = 0.0010). That is
+  *larger* than D-042's 0.6421 and leaves E-007 a margin of **0.0664**.
+- **The incremental validity is not uniform across length.** At L27: shortest tercile
+  **0.7750 activations vs 0.5042 scalars**; middle tercile **0.4958** (at chance, but on **6**
+  minority traces); longest tercile **0.7341 vs 0.8216 — length still wins there.**
+
+**The un-stratified residualized probe (secondary, not decisive) beats its null (0.6549,
+p = 0.0010) but does NOT beat the full-cell length baseline of 0.6767.**
+
+**Findings.** **D-046** two files call different quantities `n_gen` and differ by exactly 1.
+**D-047** PR-009's own consequence table said "a new `E-` entry" — the standing rule reserves
+`E-` for post-audit promotion, so the result is **P-012** and **E-012 is reserved**.
+**D-048** the register entry extending D-032/D-043: when *no* setting satisfies both gates, a
+pre-registration must declare which error it prefers and what reading a non-result may then bear.
+**D-049** the RunPod balance moved **$0.0171** with no pod in the packet; unattributed, recorded.
+
+**The recount is the packet's quiet lesson.** `src/w13_recount.py` — fresh, no scikit-learn,
+Newton–IRLS by hand — reproduces **all six** headline numbers to **4 decimal places in 8
+seconds**, against the analysis path's **2 h 52 m**.
+
+**Spend: $15.12 GPU + $20.65 API = $35.77 of $60; balance $24.23. W13 cost $0.00** — no pod, no
+model call (S-014). Runner wall time W13 **≈ 5 h 05 m** (T-016). The **$45** threshold is not
+approached.
+
+**Next: the researcher reads `writeup/final.md` end to end, rules on P-012 (and on whether §5.3's
+new paragraph should be cut back to the one sentence PR-009 promised — JC-5), closes the audit,
+and the owner assembles and submits the Google Doc.** The Wave-2 addendum is W11 (C1), W12
+(timing null, zero flips, D-042) and W13 (the attack, survived narrowly). Do not start new work.
+
+Tooling added by W13: **`w13_lengthcheck.py`** (the four-rung ladder, all 48 layers; `--smoke`
+runs two synthetic worlds and writes only `smoke_`-prefixed files) · **`w13_power.py`** (the
+R-015(1) sims; `--variants`, `--mde-only`, `--force-rung`) · **`w13_recount.py`** (fresh; probe
+by hand; 8 s).
+
+---
+
+## Archived status (end of W12 — Wave 2's second experiment; a measured null and a confound)
 
 **W10 ships and is unchanged. W11 is ACCEPTED and promoted (V-018 → E-010, with two permanent
 qualifications). W12 is complete and its headline is a NULL plus a flaw in the ordered
