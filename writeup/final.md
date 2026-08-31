@@ -16,7 +16,9 @@ Draft of 2026-09-05 · built from the ledger by `python3 writeup/build.py`
 
 This project asked where a mid-size language model represents *which side of a threshold a bet has
 made favourable*, and whether editing that representation changes what it estimates. It found the
-representation, failed to make it causal, and the failure is the result.
+representation, failed to make it causal at the activation level in three independent attempts,
+and then showed — by intervening on the text instead — that the belief really is driving the
+behaviour. **The gap between those two answers is the result.**
 
 **The behaviour is overt, not covert [measured].** In `Qwen/Qwen2.5-14B-Instruct`, 596 of
 600 incentive traces (99.3 %) name the bet, the threshold or the cause
@@ -58,16 +60,55 @@ Large doses do move behaviour hard — at α = +4 the median estimate falls from
 0.04 — but that effect survives deleting the bet, does not mirror, and is matched by
 random directions of equal norm.
 
-**The central causal question is unresolved [not tested at resolving power].** The direction
-stands as correlational. Two of the three pre-registrations that fixed a knob — a layer, a dose, a
-threshold — fixed it outside the range their own design could resolve, and the third fixed a layer
-at the edge of the informative band. No pre-registration in this project simulated its frozen
-statistic under its own null before setting the line. That is the methodological finding, and it
-is reported at the volume the empirical ones get.
+**But the belief does drive the behaviour — through the text [measured].** Wave 2 attacked the
+same question from the side an activation edit cannot reach. Rewriting the bet note so the model
+understands it *better* raised comprehension to 0.8333 and moved the landing gap to
++0.2867 [+0.180, +0.393] — inside the +0.3600 [+0.241,
++0.476] that §4.4's frozen cells predict in advance, which is row C1 at a distinguishing
+power of 0.851. Rewriting it as a **length-identical** nested negation so the model
+understands it *worse* dropped comprehension to 0.2905 and collapsed the gap to −0.0067
+[−0.113, +0.107], again inside prediction. **The three points —
++0.2867 clarified, +0.1200 natural, −0.0067 degraded — are a
+dose-response law [measured]**, with two qualifications that travel with them: the mixture
+over-predicts the size of the move in both directions (−0.0734 and +0.1151),
+and the degraded point's *comprehension* coordinate is **[suggested]**, because the judge that
+measures comprehension fails on exactly the wording that breaks the model and **human calibration
+of the direction judge on degraded wording was pending at submission**.
 
-**Scale.** 2,800 generations, 6,668 captured residual-stream positions
-over 700 replayed traces, 1,750 of them steered.
-$13.42 GPU + $16.06 API against a $60 cap.
+**The last experiment carried the belief back to the activations, and it did not survive the trip
+[measured null].** Swapping the belief component between traces of the same prompt that formed
+opposite beliefs moved landing by **Δ_swap = +0.0000 [+0.0000, +0.0000]**
+in both directions, at 40 disjoint pairs each. **Its own qualification is larger than
+the result**: the pre-registered cut left only 6 of 40 landings
+still movable, so achieved power was 0.00–0.87 against the
+0.97–1.00 declared — and a post-hoc diagnostic at full
+surface, where 26 of 40 pairs genuinely change their final number,
+still shows nothing **[suggested]**. **The model's belief about the favoured side drives its
+estimate through the text channel, demonstrably; no one-dimensional activation-space handle on
+that belief was found at any operation or power this project could reach.**
+
+**The activation-level question is unresolved [not tested at resolving power].** The direction
+stands as correlational. **Four pre-registrations in this project fixed a knob outside the range
+their own design could resolve** — a probe layer chosen as the argmax of a curve never required to
+beat its own null, an injection dose grid that may sit entirely where generic distortion
+dominates, a distortion threshold set below its own statistic's floor, and a transplant whose
+declared power rested on a locked-fraction parameter measured on the wrong object. The first three
+share one cause: **no pre-registration before Wave 2 simulated its frozen statistic under its own
+null before setting the line.** The fourth is the more interesting one, because by then the rule
+existed and was being followed: the simulation was methodologically correct at every step and
+calibrated on the traces the experiment started from rather than the continuations its statistic
+would be computed on, and it over-stated power from 0.997 to 0.000
+at the worst cell. **Freezing a rule before the data is necessary and is not sufficient, and
+simulating the statistic is not sufficient either: the simulation has to run on the object the
+statistic will actually be computed from.** That is the methodological finding, and it is reported
+at the volume the empirical ones get.
+
+**Scale.** 5,180 generations — 2,380 of them in Wave 2 —
+6,668 captured residual-stream positions over 700 replayed traces, and
+2,110 generations carrying an activation intervention (1,750 steered
+along the direction, 360 with the belief component replaced).
+$19.30 GPU + $30.87 API = $50.17 against a
+$60 cap, across 16 work orders.
 
 ---
 
@@ -102,7 +143,7 @@ throughout — because aggregate behaviour on one surface form is near zero whil
 behaviour is large and opposite in the two belief groups. Computing the direction *within* one
 prompt condition also removes the confound that the prompt states the answer, which is a stronger
 control than the mirrored design gives. The original hypotheses are mapped onto their replacements
-in §7 rather than dropped.
+in §8 rather than dropped.
 
 ---
 
@@ -158,7 +199,7 @@ was not amended** — it was frozen before its data, its failure mode is charact
 it after reading its errors is exactly the post-hoc adjustment pre-registration exists to prevent.
 **And the eligibility screen was measured on the one condition where its own defect cannot
 appear**: no-bet prompts contain no threshold for a threshold-echoing rule to bite on. Under the
-incentive prompt the same rule's disagreement rises to 28.0 % and 44.0 %. §8
+incentive prompt the same rule's disagreement rises to 28.0 % and 44.0 %. §9
 treats this at length.
 
 ### 3.3 Gate G0, and why the project continued past a failed gate
@@ -206,7 +247,7 @@ effect sits near half in every arm by construction.
 The direction judge — condition-agnostic, so it must work out the favoured side itself — finds the
 bet, threshold or cause mentioned in 596 of 600 incentive traces,
 **99.3 %**, across two surface forms and both mirror directions;
-0 verdicts were unparseable after the transport fix of §8. The predecessor panel's
+0 verdicts were unparseable after the transport fix of §9. The predecessor panel's
 headline was that models move estimates *without saying so*, at around 0.2 %
 spontaneous disclosure. At this scale the same manipulation produces the opposite surface
 behaviour: the model states the threshold, states which side it wants, and often shows the
@@ -639,31 +680,308 @@ effect below this design's resolving power, are not separated by anything in thi
 
 ---
 
-## 7. Verdicts on the hypotheses
+## 7. Wave 2 — the text channel is causal, the activation channel is not
+
+Sections §3–6 are the project as first scoped: build the direction, steer along it, report the
+null. **Wave 2 is five packets the owner authorised after that null**, and it exists to attack
+the question the null left open — *is the null the world, or the instrument?* — from the side the
+first six sections could not reach. Two packets intervene on the **text** that carries the belief.
+Two attack the **decodability** result that everything upstream rests on. The last returns to
+activations one final time with a different operation and a pre-registered power calculation.
+**The verdict is split and both halves are of record.** Negative results below are reported at the
+same length as positive ones, because in this project they are the same size.
+
+### 7.1 The belief-mixture is causally load-bearing at the text level — upward [measured]
+
+§4.4 decomposes the landing gap into a comprehension-weighted mixture of two large opposite
+belief-conditional effects. A decomposition that fits four cells is a description, not a
+mechanism. **W11 tested it causally**: one clarifying sentence was added to the bet note on form
+B — nothing else changed, and the prompt grows from 197 to 254 tokens
+— and the **frozen W3 cells were then asked to predict the new landing gap in advance** from the
+new comprehension rates alone.
+
+Comprehension rose as intended, from 0.5467 to **0.8333** on the `above_good` arm and
+from 0.8067 to **1.0000** on `below_good`. Landing followed: 0.6067 against
+0.3200, an aggregate gap of **+0.2867** [+0.180, +0.393] at
+n = 150 per arm, against the frozen formula's prediction of +0.3600
+[+0.241, +0.476]. **The observed gap lands inside the predicted interval and row
+C1 fires at a distinguishing power of 0.851** — the mixture, not a rival flat model, is
+what the manipulation moved.
+
+**The form-A arm is reported and is not a test.** Its gap is +0.1867 against a prediction of
++0.2323 — descriptively inside — but its distinguishing power is **0.486**, which
+the pre-registration itself had ruled below the line at which the arm may be read as evidence. It
+is printed because it was run, not because it decides anything. **Nor did the belief-conditional
+cells move the way a naive reading would want**: the `corr` conditional gap is +0.3739
+here against +0.4456 on the same W3 cells, every cell drifted slightly down, and **no
+single cell's move is resolved at this n**. The claim is about the mixture's aggregate
+prediction, and it is that claim alone that fired.
+
+### 7.2 Belief formation has no readable onset, and the curve that looked like one was length [measured null]
+
+**W12 asked when in the trace the believed side becomes decodable.** It replayed the frozen
+dataset with hooks and swept a probe across three alignments: offset from the first cause token,
+absolute token index, and trace fraction. 238 traces carry a usable belief label
+and 167 of them contain a cause token to anchor on.
+
+**The frozen onset criterion — 4 consecutive bins above the null's
+0.995 percentile — does not fire, at any layer, in any family.** The layer sweep is
+equally flat: the frozen best layer is L29 and the eight swept layers span
+0.5537–0.5570, a range far too narrow for the argmax to mean anything —
+**the same failure mode §5.1's ℓ\* has, found a second time by a rule that had to name it in
+advance.** Belief *flips* were the other pre-registered outcome and there are **0 of
+238** under the ordered rule and **0** under the strict one,
+with a label-shuffled empirical false-flip rate of 0.0000: the statistic is not
+insensitive, there is simply nothing in the data for it to catch.
+
+**One alignment did rise, and it is a length artefact [measured].** The trace-fraction curve
+climbs monotonically and clears its null — and a probe with **one feature, the trace's output
+length, and no activations at all**, reads 0.6421 on the same traces, folds and null.
+Decile boundaries scale with generated length, and generated length is associated with the
+believed side: traces that get the mapping wrong run **123 tokens longer** on
+average (526.2 against 402.9). **The trace-fraction result is
+therefore not a timing result**, and the two length-invariant alignments, which are the ones that
+can be read, are both flat. This is **D-042**, promoted to a standing instrument finding: *any
+statistic binned on trace fraction in this dataset is confounded with the outcome it is
+predicting.*
+
+**The packet's other product was a census that re-sized a later experiment.** Of the traces with
+a cause token, 98 carry a valid cut point; 270 opposite-belief
+same-condition pairs exist but only **6** of them are disjoint. That number
+is why the belief transplant was cancelled once (§7.5) before being re-sized and run.
+
+### 7.3 The decodability result survives a targeted length attack [measured]
+
+D-042 raises an obvious question about §5.2: if length predicts the believed side, is the probe
+in §5.2 a length probe wearing activations? **W13 attacked E-007 with its own confound** and the
+result is integrated where it belongs, in **§5.4** — the frozen within-tercile rung, the
+length-only baseline on identical folds, the shortest- and longest-tercile split, and the
+simulation showing a pure-length world produces that outcome 0.030 of the time.
+**The finding survives and is narrower than the number it defends**: the believed side is not
+reducible to trace length, and it is also not uniform across length. Nothing in Wave 2 changes
+that reading; it is restated here only so the addendum's inventory is complete.
+
+### 7.4 The mixture tracks downward too — and the instrument that measures it breaks on the same words [measured, with a suggested coordinate]
+
+One point is a fit. **W14 pushed comprehension the other way**: the bet note's two mapping
+sentences were replaced with a semantically identical **nested-negation paraphrase**, proved
+equivalent by an explicit truth table over all four branches. The degraded prompt is
+197 tokens — **exactly W3's 197** — so unlike W11 the manipulation adds
+no length at all, which is the control D-042 makes mandatory.
+
+Comprehension fell as intended, 0.5467 → **0.2905** and 0.8067 →
+**0.5772**, and the aggregate landing gap fell with it. Landing is 0.6067 on
+`above_good` against 0.6133 on `below_good` at n = 150 per arm — a gap of
+**−0.0067** [−0.113, +0.107] against the same frozen formula's −0.1217
+[−0.244, +0.001]. **Row D1 fires**, and both pre-registered alternatives are resolved — power
+0.985 against "the gap stays where W11 left it" and 0.974 against the harder
+"the gap stays at W3's level". **The three-point curve is +0.2867 (clarified) →
++0.1200 (natural) → −0.0067 (degraded)**, monotone in comprehension, and it falls
+on every extraction basis.
+
+**The mixture over-predicts the size of the move in both directions.** W11 came in
+−0.0734 against its prediction and W14 +0.1151 against its — opposite signs,
+same message. **The true response to comprehension is flatter than the frozen W3 cells say**, and
+W11 alone could not see that: it read its own residual as "the lower half of the interval". Two
+points make it a property of the model rather than of one arm. *The dose-response law is*
+**[measured]**; *the flatness correction is* **[suggested]** *— two residuals are not a curve.*
+
+**D-051 — the degraded wording breaks the direction judge, not only the model.** The frozen judge
+is handed the prompt and must solve the same nested negation the model does, and it fails the same
+way: **67 of the 86** `below_good` traces it called `correct`
+landed on that arm's unfavoured side, and one concludes verbatim that clearing τ means the
+donation will *not* go to the bad cause and will therefore go to the good one — the opposite of
+its own prompt. An independent regex instrument that never reads the mapping sentence agrees with
+the judge 0.9032/0.9605 on natural wording and
+**0.2895/0.5000** on degraded. On the calibrated basis the
+belief-conditional cells **do not move at all** (0.5364 against W3's
+0.4520), where the frozen basis says they collapsed and crossed (−0.0814
+against +0.4456); on W3 the two instruments reproduce each other to
+0.4520 versus 0.4456, which is what earns the diagnostic the right to
+be believed about the *direction* of the discrepancy. **Read alone, the frozen interaction table
+says the opposite of the truth.**
+
+**Both halves are the claim of record, and they carry different tiers.** The landing collapse is
+**[measured]** — landing rates are judge-independent and recount-confirmed on every basis. **The
+degraded point's comprehension coordinate is [suggested]**, because the only instrument that
+produced it is the one D-051 shows failing on exactly these words, and **because human
+calibration of the direction judge on degraded wording was pending at submission**: a blinded
+70-row hand-label sheet was built, sealed and sent, and 0 rows had been
+returned when this document was frozen. The judge's own failure is promoted in its own right —
+**an LLM-judge validity result**: the judge fails exactly where the model fails, so a judge and a
+subject that share a weakness cannot be used to measure that weakness. Its early warning was on
+the invoice, not in the analysis: the same traces made the judge emit an order of magnitude more
+output tokens than any prior packet's constant predicted. §4.4's decomposition and §7.1's upward
+test are **not** disturbed — both read natural or clarified wording, where the judge is calibrated.
+
+### 7.5 The belief transplant: a measured null, and a design that could not have found anything [measured null]
+
+**W15 was the project's last experiment**, and it asked the cleanest activation-level question
+available: take two traces of the *same prompt* that formed *opposite* beliefs, and swap the
+belief component of one into the other. Unlike §6's additive steering, this operation adds no
+norm-scale perturbation of its own — it replaces one class's mean profile with the other's — so
+the direction-independent effects that swamped §6.4 do not apply.
+
+**The harvest.** 1,000 fresh rollouts of the natural-wording prompt — the same
+197 tokens as §4's frozen dataset — were screened by the regex instrument for free, 435 carried a usable belief label, and only the
+60 majority-class and 98 minority-class candidates were sent to the paid
+judge — which is what kept the packet inside its ceiling. Judge and regex agree
+0.8411 on that deliberately class-balanced pool, below §4.6's natural-mix figure and
+the honest number for the set the pairs came from. **40 disjoint pairs** were formed
+in each direction, against the 6 that §7.2's census made available a packet
+earlier; the difference is one dropped constraint, and it is the whole reason the experiment
+could run at all. Each pair's A-trace was teacher-forced to a cut point (median
+355 tokens) under a hook that replaces the belief component, and the
+continuation was regenerated under four arms — SWAP, SHAM, SELF, RAND.
+
+**Nothing moves.** On the corrected-regex basis the four primary arms read 0.1500 /
+**0.1500** / 0.1750 / 0.1750, and the mirror direction reads
+0.0500 / **0.0500**. **Δ_swap = +0.0000 [+0.0000,
++0.0000]** in the primary direction and +0.0000 in the mirror, identical on the
+judge basis. The two controls move as much as the treatment or more — Δ_self +0.0250,
+Δ_rand +0.0250 — so Δ_swap − Δ_rand is −0.0250 [−0.0750, +0.0000], i.e.
+**the value-carrying edit does slightly worse than a random direction of four times its norm.** The decision rule the
+pre-freeze simulations forced — both signed contrasts, against RAND and against SELF — **fires on
+neither landing nor verbalization, in either direction**. Coherence is 1.000 in every arm
+and 0 generations truncated, **with §9's caveat attached: coherence is blind to
+epistemic distortion.**
+
+**The reason it does not move is measured, and it is larger than the null.** Three facts, in
+ascending order of how much they cost:
+
+| | value |
+|---|---|
+| continuation the frozen cut leaves, median | **33.5** tokens |
+| reconstructions whose final estimate is *inside* that continuation | **6 of 40** — the rest were fixed in the prefix before any arm ran |
+| SWAP continuations differing in text from SHAM | 12 of 40 |
+| SWAP continuations differing in **final value** | **1 of 40** |
+
+**And the pre-freeze simulation that declared the design powered had measured its own nuisance
+parameter on the wrong object.** The locked fraction λ was measured as *"does the trace's own
+final literal precede the cut"* — 0.2632, a correct measurement of that quantity —
+when the statistic is computed on the **regenerated** continuation, where the locked fraction is
+**0.85** (34 of 40). Re-running the frozen
+simulator at the measured value takes the worst cell's power from 0.997 to
+**0.000**. **The achieved power against the ordered alternative is
+0.00–0.87, not the 0.97–1.00 the
+pre-registration declared** — and that admission is attached to this null wherever it is cited.
+
+**The edit is real and the contrast is not.** The perturbation norms are 2.7957 for
+SWAP and 2.7582 for SELF, so **the two arms whose difference *is* the experiment
+differ from each other by about 0.04 — the defining contrast is
+5.8× smaller than the noise it sits in.** RAND moves 13.0453,
+4.7× SWAP's, which by the frozen definition makes it a **conservative** control
+that errs against the finding. Underneath all of it is the ceiling: at the frozen layer, over
+prefix positions, the two belief classes' mean projections onto the direction are
+12.7327 and 12.5905 — a separation of 0.1422 in the aggregate and
+0.5391 as a mean per-grid-point magnitude — against a within-class spread of
+3.1345. **Separation over sd is 0.1720.** The substitute decoded-belief probe built on that
+coordinate is non-discriminative and is reported as an instrument failure, not as evidence.
+
+**The bound, and it is a post-hoc one [suggested].** A null measured on no surface cannot
+distinguish *"the belief is not transplantable"* from *"the operation had nothing to act on"*, so
+the same pairs, arms, seeds and edit were re-run at a deeper cut. **This diagnostic was designed
+after the frozen result was read** — its cut was chosen for legibility, not on its outcome — it
+writes to its own directory, it never enters the frozen statistic, and it must be read as a
+clearly-labelled post-hoc bound.
+
+| | frozen cut | deep cut |
+|---|---|---|
+| median continuation | 33.5 tokens | **234.0** tokens |
+| final estimate inside the continuation | 6 / 40 | **40 / 40** |
+| SWAP text differs from SHAM | 12 / 40 | **35 / 40** |
+| SWAP **final value** differs from SHAM | 1 / 40 | **26 / 40** |
+| Δ_swap | +0.0000 [+0.0000, +0.0000] | **−0.0250 [−0.1750, +0.1500]** |
+| Δ_swap − Δ_rand | −0.0250 | **−0.0250 [−0.2250, +0.1500]** |
+| power against the ordered alternative | 0.00–0.87 | **0.954–0.995** (false-fire 0.013) |
+
+**At full surface, with 26 of 40 pairs genuinely changing their final
+number, the transplant still moves landing by −0.0250 and still fails to beat its
+control.** The diagnostic reaches four-fifths power at δ ≈ 0.32, so an effect of the
+size §4.4's belief-conditional cells show would have been seen. **The null survives its own
+bound.** One of twenty diagnostic intervals excludes zero — SELF lowers verbalization by
+−0.1750 [−0.3250, −0.0500] — which is the
+expected count at this interval level, is the arm that installs a trace's *own* class mean, and
+is reported as such rather than as a result.
+
+**What is not claimed.** Not that the direction carries no belief information — §5.2 stands and
+§5.4 defended it. Not that the operation was potent — its own anatomy measures it at
+0.1720 of a within-class σ in the belief coordinate. And no decoded-belief result at
+all, because that instrument failed.
+
+### 7.6 What Wave 2 settles, and the one explanation it leaves standing
+
+**At the text level the belief-mixture is causally load-bearing [measured].** It was confirmed
+upward at a distinguishing power of 0.851 and downward by a landing collapse that does
+not depend on the judge; the degraded point's *quantitative* coordinate is **[suggested]** for the
+reason §7.4 gives. **At the activation level, three independent interventions — additive steering
+at six doses, a low-dose ladder with matched nulls, and the belief transplant — produced no
+direction-specific effect**, and the belief representation, real and defended against the length
+confound, **remains correlational.**
+
+**The project's answer to its own central question, stated once and plainly: the model's belief
+about the favoured side drives its estimate through the text channel, demonstrably; no
+one-dimensional activation-space handle on that belief was found, at any operation or power this
+project could afford.**
+
+**One candidate explanation survives, and it is [suggested].** The direction every intervention
+here used is a **mean-difference direction in one dimension**, and §7.5 measures what that buys:
+0.1720 of within-class σ of per-point separation between the two belief classes.
+**Every intervention this project ran therefore operated through a channel with a low ceiling** —
+which would produce exactly this pattern of results whether or not the belief is causal, and which
+no experiment here can separate from a genuine absence. A distributed or nonlinear transplant is
+the first item of the deferred programme in §10 for that reason.
+
+---
+
+## 8. Verdicts on the hypotheses
 
 The hypotheses were restated when the interp target moved from the prompt-stated favoured side to
-the trace-level believed side. The originals are mapped, not dropped.
+the trace-level believed side. The originals are mapped, not dropped. **These verdicts are the
+amended ones: Wave 2 closed the causal section, and where it changed a verdict the change is
+stated here rather than appended.**
 
-**H1′ — the believed favoured side shifts the estimate computation. Correlationally supported,
-causally unresolved.** The support is representational and real (§5.2–5.3): the believed side is
+**H1′ — the believed favoured side shifts the estimate computation. CAUSALLY SUPPORTED AT THE
+TEXT LEVEL [measured]; UNRESOLVED AT THE ACTIVATION LEVEL [not tested at resolving power].** The
+representational support is real and survives its own best attack (§5.2–5.4): the believed side is
 linearly decodable at estimate positions on form B, at 42 of 48 layers,
-and 96 % of the carrying points precede the first mention of a cause. The
-causal test then failed to distinguish the value direction from random directions of equal norm at
-any of six doses. **A representation that is decodable and an intervention that is null are both
-facts, and this project cannot say whether the null is the world or the instrument.**
+96 % of the carrying points precede the first mention of a cause, and a
+targeted length attack does not reduce it to trace length. **The causal support is text-level and
+it is the strongest positive result in this document**: moving comprehension up and down against a
+formula frozen on the original four cells moves the landing gap both times, inside prediction both
+times, at distinguishing powers of 0.851 and 0.974 (§7.1, §7.4). **The
+activation-level causal test failed three times** — six doses, a low-dose ladder with matched
+nulls, and a belief transplant — and none of the three could distinguish the value direction from
+its controls. **A representation that is decodable, a text intervention that works, and an
+activation intervention that is null are all three facts**, and what this project cannot say is
+whether the third is the world or the instrument. §7.5 measures one candidate for "the
+instrument": the coordinate every intervention used separates the belief classes by
+0.1720 of their own within-class spread.
 
-**H2′ — the believed side gates the verbalization rather than the estimate. Untested.** The
-design's route was the belief-flip statistic, and it did not clear its nulls: the interval
-includes zero, the entire contrast is one arm moving, the mirrored condition shows nothing, and a
-screen-selected random direction moved the statistic further than the value direction did. **No
-intervention here moved verbalization above its nulls, so the hypothesis was never put to a test
-that could have failed informatively.** Recorded as untested rather than rejected, because
-rejection would claim power the design did not have.
+**H2′ — the believed side gates the verbalization rather than the estimate. Untested, and now
+untested at two operations rather than one.** The design's route was the belief-flip statistic,
+and it did not clear its nulls: the interval includes zero, the entire contrast is one arm moving,
+the mirrored condition shows nothing, and a screen-selected random direction moved the statistic
+further than the value direction did. **The belief transplant re-asked the same question with a
+different operation and the verbalized-mapping contrast is null there too**, in both directions
+and at both cut depths (§7.5). **No intervention in this project moved verbalization above its
+nulls, so the hypothesis has still never been put to a test that could have failed
+informatively.** Recorded as untested rather than rejected, because rejection would claim power
+no design here had.
 
-**H3′ — the belief accumulates across the trace. [not tested].** The frozen dataset carries about
-three in-window estimate points per trace, which cannot support an accumulation test, and the
-intervention adds no per-point resolution. Declared before the intervention ran, not after it
-disappointed.
+**H3′ — the belief accumulates across the trace. AMENDED: tested, and null at the frozen
+criterion [measured null].** The original verdict was **[not tested]** — the frozen dataset
+carries about three in-window estimate points per trace, which cannot support an accumulation test
+built on estimate positions, and it was declared before the intervention ran rather than after it
+disappointed. **Wave 2 built the instrument the original design lacked**, replaying
+238 labelled traces and sweeping a probe over every generated position on three
+alignments. **The pre-registered onset criterion — 4 consecutive bins above the
+null's 0.995 percentile — does not fire at any layer in any family, and there are
+0 belief flips of 238** against a label-shuffled false-flip rate of
+0.0000. **The one alignment that did rise is a length artefact** and is retracted in
+§7.2, not defended. So: no readable onset and no flips at this resolving power, on a dataset where
+the belief is decodable — which is a real constraint on any accumulation story, and is not the
+same as showing the belief arrives all at once.
 
 **The original hypotheses, over the prompt-stated favoured side.** Superseded by the two pivots,
 with the mapping documented in the ledger. Their shared premise — that this model class shows a
@@ -676,11 +994,12 @@ belief-conditional target was the right move even though it did not resolve the 
 
 ---
 
-## 8. What would have fooled us
+## 9. What would have fooled us
 
 Each of these was, at some point, the natural thing to write. Each was killed by a control that
-existed before the result did — or, in the last three cases, by a check that should have existed
-and did not.
+existed before the result did — or, in the later cases, by a check that should have existed and
+did not. **Wave 2 added five entries to this register and only one of them is about the
+phenomenon; the rest are about instruments, and one is about a machine nobody was watching.**
 
 **Hook misalignment.** The interp programme rests on the captured positions being the positions
 the parser named, and nothing downstream would reveal a one-token offset: a probe on misaligned
@@ -739,21 +1058,96 @@ of magnitude below it — fires on **9 of 50** generations at
 text is well-formed" and nothing more**, and that correction is attached to the word wherever it
 appears here.
 
-**Pre-registered knobs frozen without a noise-floor check — three times.** This is the
-methodological finding of the project, and it recurs in a different currency each time.
+**A judge that fails exactly where the model fails.** The direction judge is handed the prompt
+and must work out the bet's mapping itself — a deliberate choice, so one prompt serves both
+mirrored arms without a per-arm hint. Under §7.4's nested-negation wording it has to solve the same
+puzzle the model does, and it fails the same way: **67 of the
+86** traces it labelled `correct` on the `below_good` arm had landed on that
+arm's *unfavoured* side. An independent regex instrument that never reads the mapping sentence
+agrees with it 0.9032/0.9605 on natural wording and
+0.2895/0.5000 on degraded. **The frozen interaction table for that
+packet, read alone, says the belief-conditional cells collapsed and crossed (−0.0814);
+the calibrated instrument says they did not move (0.5364 against
+0.4520 on the same quantity in W3).** What would have been written is "degrading
+comprehension destroys the belief-conditional structure", and it would have been an artefact of
+the measuring device. **The general form: a judge and a subject that share a weakness cannot be
+used to measure that weakness** — and the first warning came from the invoice, where those traces
+made the judge emit an order of magnitude more output tokens than any prior packet's constant
+predicted, days before the analysis noticed anything. The independent instrument is post-hoc and
+resolves only 80 of 300 degraded traces; its calibration on natural
+wording is what earns it the right to be believed about the *direction* of the discrepancy and
+nothing more.
+
+**An extractor choice that silently destroys a screen.** §7.5's harvest screens a thousand
+rollouts with a regex so that the paid judge only ever sees candidates. Two frozen extractors were
+available and the work order named neither: on the frozen dataset the corrected one agrees with
+the judge 0.9467 and the raw one 0.6316. **Picking the wrong one would have
+screened at chance and poisoned every pair the packet went on to build**, invisibly, because a
+screen that mislabels produces pairs that look exactly like good pairs. It was caught by a dry run
+of the screen on frozen data **on the laptop, before the pod existed** — ten minutes, zero
+dollars. **The rule this yields: run every screen against a dataset whose answers you already
+know, before renting the machine.**
+
+**An unattended GPU job that nobody was watching.** The last packet's frozen stack could not run
+on the machine the pod happened to land on — same script, same image, different driver. The
+fallback worked and the packet's results are unaffected. **The finding is not the driver
+mismatch; it is that 81 minutes passed before anyone noticed, which is
+58 % of that packet's GPU bill and about $2.15 of real money,
+and that compute occupied only 26.2 % of the billed window.** Nothing in this
+project ever watched a long unattended job: no heartbeat, no timeout, no alert. That is a
+one-afternoon fix that was never made, and it is recorded here rather than quietly absorbed
+because the cost is the most legible number in the ledger.
+
+**A pre-registration rule that can be unsatisfiable, and a packet that had to choose which error
+to prefer.** By §5.4's packet the standing rule required a null simulation *and* a calibrated
+alternative *and* a stated minimum detectable effect. **No rung of that packet's ladder satisfied
+both gates**: the rung as ordered held power at 0.950 but false-fired
+0.095 of the time in a pure-length world — an error in the finding's own
+favour — while the rung that controls the confound to 0.030 could only reach
+0.710. **The packet froze the conservative rung, whose errors run against the result it
+was testing, published the other alongside, and pre-declared in writing that a non-firing primary
+could never be read as the result failing at that power.** Both rungs then fired, which made the
+asymmetry moot — but the rule was written when that could not have been known. **A design that
+cannot resolve its question is fixed or not run; a design that can only half-resolve it must
+declare in advance which half.**
+
+**A test suite that writes where the results live.** One packet's smoke mode wrote its synthetic
+outputs to the same five paths in `analysis/out/` that a real run uses, and a post-run re-smoke
+on the laptop **silently overwrote the pulled copies of all five**. They were re-pulled from a pod
+that happened to still be alive, and every number in that packet comes from the re-pulled files.
+**Had the pod been terminated first — as every other packet in this project terminates it
+immediately — the results would have been destroyed by their own test suite.** No number here is
+affected and the near-miss is recorded rather than patched, because patching a smoke path
+mid-packet is exactly the kind of in-flight instrument change §9's last entry forbids. **The
+general rule: the only copy of a result must never live where a test can write.**
+
+**Pre-registered knobs frozen outside the range their own design could resolve — four times.**
+This is the methodological finding of the project, and it recurs in a different currency each
+time.
 
 | what was frozen | the knob | how it failed |
 |---|---|---|
 | the probe layer | ℓ\* = argmax of a curve never required to beat its own null | the argmax of a noise curve; the informative band is layers 21–36 |
 | the injection dose | α in units of ‖Δμ‖, without asking what fraction of the residual stream that is | the whole grid may sit where generic distortion dominates: 22.8 % and 45.6 % of the residual norm |
 | the distortion threshold | D̄ > 0.06 | below the statistic's own floor: E[D̄] = 0.0782 under a design doing nothing |
+| the transplant's declared power | λ, the fraction of pairs no downstream edit can move | measured on the wrong object — 0.2632 on the traces the pairs came from, 0.85 on the continuations the statistic is computed from; power at the worst cell 0.997 → 0.000 |
 
-**The fix is cheap and is named**: simulate the pre-registered statistic under its own null
-*before* freezing the threshold, and set the line above the resulting floor. For the distortion
-gate that is a few minutes of laptop arithmetic on a closed-form binomial convolution. **No
-pre-registration in this project ever did this.** Freezing a rule before the data is necessary and
-is not sufficient: a pre-registration must also freeze evidence that the chosen setting and
-threshold lie inside the range the design can resolve.
+**The fix for the first three is cheap and is named**: simulate the pre-registered statistic under
+its own null *before* freezing the threshold, and set the line above the resulting floor. For the
+distortion gate that is a few minutes of laptop arithmetic on a closed-form binomial convolution.
+**No pre-registration before Wave 2 ever did this**; every pre-registration from Wave 2 on did,
+and it changed the decision rule before the data in five consecutive packets.
+
+**The fourth row is the one that matters most, because the rule was in force when it happened.**
+That simulation was correct at every step — it measured a real quantity on committed files before
+any token existed — and it measured it on the *original* traces when the statistic would be
+computed on *regenerated* continuations, where the same quantity is 0.85 rather
+than 0.2632. **A simulation is exactly as good as the object it is calibrated on**,
+and for any design whose outcome is regenerated rather than observed, that object does not exist
+until the experiment has partly run. **The named fix is a pilot**: a handful of pairs, taken all
+the way through the pipeline, would have measured the true locked fraction for about
+$0.05. **Freezing a rule before the data is necessary and is not sufficient;
+simulating the statistic is necessary and is not sufficient either.**
 
 **Estimator discipline: never patch an instrument after seeing its errors mid-flight.** Four
 occasions invited it and none took it. The last-literal extractor failed on answer-first models and
@@ -768,34 +1162,63 @@ before/after comparison possible at all.
 
 ---
 
-## 9. Open questions, and the deferred programme
+## 10. Open questions, and the deferred programme
 
-The causal question is open and the shape of the experiment that would close it is now clear,
-which is the most useful thing a null result produces. **A properly powered low-dose ladder** is
-the first move: the doses that matter are below the ones run here, the statistic that would read
-them is a landing rate at n far above 50 per arm, and every frozen gate's
-threshold must be simulated under its own null before it is frozen — the failure that cost this
-project its two cleanest verdict rows. **Activation patching at belief points** is the second and
-the better instrument for this question: patching one trace's residual stream into another at the
-positions where the belief is decodable tests whether *that* state carries the estimate, without
-adding a norm-scale perturbation whose direction-independent effects swamped everything here.
-**Small-model belief-tracking deserves study in its own right**, because the comprehension
-asymmetry found here — one mirror of the same bet understood most of the time, the other barely
-better than chance — is large, cheap to measure, and is what makes the aggregate landing gap in
-this model class a mixture rather than an effect. **And the covert–overt scale question is the one
-this project can only gesture at**: a model of this size announces the bet in nearly every trace
-while the larger panel almost never does, and nothing here can say whether that is scale, family,
-tuning, or prompt surface, because the comparison spans two studies with two model families and no
-sweep.
+The activation-level causal question is open, and after Wave 2 the shape of the experiment that
+would close it is much clearer, which is the most useful thing a null result produces.
+
+**A distributed or nonlinear transplant is the first move, and it is first because §7.5 measured
+why.** Every intervention in this project — six doses of additive steering, a low-dose ladder, and
+a belief transplant — operated through **one direction in one dimension**, and the two belief
+classes are separated along that coordinate by only 0.1720 of their own within-class
+spread. **A channel that narrow would produce exactly this pattern of nulls whether or not the
+belief is causal**, so the next experiment must not use it: the belief subspace should be
+estimated with a method that can hold more than one dimension, and the transplant should move the
+whole subspace rather than a single projection. That the frozen probe's *trained coefficients*
+were never persisted — only the direction — is a reproducibility lesson of its own and the reason
+this project could not fall back on the multivariate object it had already fitted.
+
+**Whatever the operation, it must be piloted end to end before it is pre-registered.** §9's fourth
+knob row is the cheapest lesson in this document: the parameter that governs a regenerative
+design's power cannot be measured on the traces the design starts from, only on the continuations
+it produces, so a handful of pairs taken all the way through the pipeline — about
+$0.05 of compute — has to happen before the freeze, not after it.
+
+**A properly powered low-dose ladder remains worth running**: the doses that matter are below the
+ones run here, and the statistic that would read them is a landing rate at n far above
+50 per arm.
+
+**Small-model belief-tracking deserves study in its own right**, and Wave 2 raised rather than
+lowered that claim. The comprehension asymmetry found here — one mirror of the same bet understood
+most of the time, the other barely better than chance — is large, cheap to measure, moves
+predictably in both directions under one rewritten sentence, and is what makes the aggregate
+landing gap in this model class a mixture rather than an effect.
+
+**LLM judges need validity evidence on the exact surface form they will be run on.** §9's judge
+entry is a general result, not a local annoyance: the judge and the model failed the same
+reasoning step, so agreement measured on one wording (0.9032–0.9605)
+did not transfer to another (0.2895/0.5000). Human calibration of
+this project's judge was commissioned as a blinded 70-row packet and had not returned
+by submission, so the bound it would give is **[not tested]** here and is the single cheapest open
+item on this list.
+
+**And the covert–overt scale question is the one this project can only gesture at**: a model of
+this size announces the bet in nearly every trace while the larger panel almost never does, and
+nothing here can say whether that is scale, family, tuning, or prompt surface, because the
+comparison spans two studies with two model families and no sweep.
 
 ---
 
-## 10. Methods register
+## 11. Methods register
 
 **Models and stack.** `Qwen/Qwen2.5-14B-Instruct` at snapshot `cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8`, bf16, on one
 A100-SXM4-80GB. The frozen dataset was generated with vLLM 0.28.0; activation replay and
 every steered run used `transformers` 4.57.6 on torch 2.8.0+cu128, because the
-intervention needs a hook that persists across decode steps and vLLM cannot carry one. The
+intervention needs a hook that persists across decode steps and vLLM cannot carry one. **Wave 2's
+last packet ran on the container's own torch through the same `transformers` path, because the
+frozen vLLM build could not run on the driver the rented machine happened to carry** (§9); its
+marginal generation rates are therefore not comparable to the frozen dataset's and no comparison
+between them is made anywhere in this document. The
 extractor of record is `claude-sonnet-5`, pinned; the direction judge's prompt is frozen at
 sha256 `0e6f763f3bd6c65380c84deceb01eb48fe914f65b9bbdc358f4c791a3edc8148` and was verified unchanged after a transport-level fix. The
 injected direction is `analysis/out/w5_vectors/w5_vphat_B.safetensors`, sha256
@@ -814,10 +1237,13 @@ apart. Verified at build time: 1,750 steered generations across
 8,064–9,813, all distinct and contiguous, 0 collisions with each
 other or with any earlier block.
 
-**Spend, final: $13.42 GPU + $16.06 API = $29.48** of a
-$60 cap; balance $30.52. The $45 surfacing
-threshold was never approached. The API line overtook the GPU line at the intervention packet and
-stayed there.
+**Spend, final: $19.30 GPU + $30.87 API = $50.17** of a
+$60 cap; balance $9.83. The API line overtook the GPU line at the
+intervention packet and stayed there. **The $45 stop-and-surface threshold was
+reached, surfaced at the end of the packet before it would have been crossed, and crossed only
+with the owner's explicit written approval** — recorded in the ledger as a ruling that also
+imposed a $10 ceiling on the packet that crossed it, which came in under at
+$3.70 + $4.37.
 
 | packet | GPU | API |
 |---|---|---|
@@ -829,37 +1255,70 @@ stayed there.
 | the value direction | $0.84 | $0.00 |
 | the intervention | $0.73 | $7.7812 |
 | the low-dose follow-up | $0.51 | $1.9334 |
+| skepticism pass and build | $0.00 | $0.00 |
+| comprehension intervention, upward | $0.38 | $4.59 |
+| belief-formation timing | $1.32 | $0.00003 |
+| the length attack | $0.00 | $0.00 |
+| comprehension intervention, downward | $0.48 | $5.85 |
+| the belief transplant | $3.70 | $4.37 |
 | this document | $0.00 | $0.00 |
 
-**Time.** Runner wall time per packet: 7 min, 2 h 05 m, 2 h 05 m, 5 h 10 m,
-1 h 20 m, 1 h 05 m, 51 m, 1 h 00 m, 45 m, and 1 h 35 m for this
-one. Billed GPU wall time: 1 h 17 m, 1 h 15 m, 4 h 52 m, 13 m 37 s,
-33 m 02 s, 36 m 27 s, 31 m 29 s, 19 m 25 s. Compute occupied
-72.7 % of the intervention packet's billed pod time and 60.1 % of the
-follow-up's; the generation runs were 1373.1 s and 656.5 s, and all
-700 activation-replay forward passes took 94.8 s.
+**Time.** Runner wall time per packet, in order: 7 min, 2 h 05 m, 2 h 05 m,
+5 h 10 m, 1 h 20 m, 1 h 05 m, 51 m, 1 h 00 m, 45 m,
+1 h 35 m, 1 h 05 m, 2 h 05 m, 5 h 05 m, 1 h 15 m, 3 h 05 m, and
+1 h 15 m for this one. Billed GPU wall time: 1 h 17 m, 1 h 15 m, 4 h 52 m,
+13 m 37 s, 33 m 02 s, 36 m 27 s, 31 m 29 s, 19 m 25 s, 0.273 h,
+0.950 h, 0.000 h, 0.342 h, 2.324 h. Compute occupied
+72.7 % of the intervention packet's billed pod time, 60.1 % of the follow-up's
+and 26.2 % of the transplant's; the generation runs were 1373.1 s and
+656.5 s, and all 700 activation-replay forward passes took 94.8 s.
+**The single largest avoidable line in the whole project is 81 idle GPU minutes
+in the last packet — 58 % of that packet's bill, about $2.15**
+— and it is itemised in §9 rather than buried here.
 
-**The owner clock was never supplied.** It was asked for with every packet through the fifth
-request and no figure was ever given, so the 16-hour owner budget in the project's
-orientation document is **unauditable**, and all time accounting here rests on runner wall time and
-billed pod time alone — both independently checkable against the provider's pod records. Stated
-plainly rather than estimated.
+**The owner clock was never supplied: 0 figures across
+16 work orders.**
+It was asked for repeatedly, and from Wave 2 onward a standing ruling required the courier to
+supply it with every order; **9 requests produced 0
+figures.** The 16-hour owner budget in the project's orientation document is
+therefore **unauditable**, and all time accounting here rests on runner wall time and billed pod
+time alone — both independently checkable against the provider's pod records. The empty fields
+were recorded as empty in every packet rather than estimated, which is why this paragraph can be
+this specific.
 
 **Pre-registration precedence, from the commit graph rather than from memory.** The intervention's
 pre-registration is commit `de12985` at 2026-08-30 05:45:19 UTC, and the first steered token
 followed 13 m 11 s later. The follow-up's is `32667d7` at 06:44:14 UTC,
 11 m 51 s before its first steered token. Neither run directory existed when its
-pre-registration was written.
+pre-registration was written, and the same check was run and recorded for every Wave 2 packet:
+each pre-registration's commit timestamp, the pod's creation time and the first token's timestamp
+are all in the ledger, taken from `git log` and the provider's records rather than from
+recollection. **From Wave 2 onward every pre-registration also carried its own null simulations,
+pasted into the document that froze the rule, and in five consecutive packets those simulations
+changed the decision rule before any data existed.** §9 records the one case where doing that was
+still not enough.
 
 **The workflow, disclosed plainly.** This project was executed by an LLM-agent structure with
 three roles and no overlap. A **researcher** designed the experiments, audited each packet's
 report, and promoted provisional results to established ones; it executed no code. A **runner** —
 a Claude Code CLI agent on the owner's laptop, driving rented GPU pods over SSH — executed one
 self-contained work order at a time and reported back; each order was self-contained because the
-runner's context did not survive between packets. A human **owner** relayed messages and approved
-every dollar of spend. Every number here comes from an append-only ledger written by the runner
-and audited by the researcher, in which entries are never edited: a wrong entry is corrected by a
-later entry that names it, and three such corrections were filed while assembling this document.
+runner's context did not survive between packets, which is why the orientation document and the
+ledger's tail had to be sufficient to restart the project from cold, and they were,
+16 times.
+A human **owner** relayed messages between the two and approved every dollar of spend; the one
+budget decision that mattered — crossing the $45 line — was surfaced by the
+runner, ruled on by the owner in writing, and bounded by a ceiling in the same ruling.
+
+**This paragraph is checkable rather than decorative.** The 16 work orders are on
+disk as written, one file each. Every number in this document comes from an **append-only** ledger
+written by the runner and audited by the researcher, in which entries are never edited: a wrong
+entry is corrected by a later entry that names it. Corrections were filed that way throughout,
+including three while assembling this document's first version and, in Wave 2, a ruling-level
+correction that amended the project's final verdicts after the last experiment reported. **The
+provisional-to-established promotion path is visible in the ledger too** — every result in this
+document was first written as provisional by the runner, then promoted by a researcher entry that
+names what it recounted, and the write-up is built only from the promoted set.
 
 **Regenerability.** Every number here is substituted at build time from a file in
 `analysis/out/`, and a build-time check refuses to emit a digit that is neither substituted nor
@@ -867,4 +1326,8 @@ matched by a structural whitelist. The document rebuilds byte-identically with
 `python3 writeup/build.py`. The commands behind the generated files are
 `python3 src/w10_skeptic.py`, `python3 src/w10_derived.py` and
 `python3 src/w10_ledger_facts.py`, each reading only committed rollout files, committed CSVs, and
-the ledger itself.
+the ledger itself. **Wave 2's numbers enter the same way**: its analysis scripts write the CSVs
+and JSONs in `analysis/out/` that the manifest names, and the figures that exist only as ledger
+prose — spend, wall time, the achieved-power admission, the judge-calibration rates — are
+extracted from `RESULTS.md` by a named regex per fact, so a fact whose wording moves breaks the
+build loudly instead of silently going stale.

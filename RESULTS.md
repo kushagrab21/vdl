@@ -8271,3 +8271,200 @@ verbalization half**.
 (e) **P-014 is provisional; `E-014` is reserved and not written (D-047).**
 
 ---
+
+## V-027 · W15 audit — transcribed verbatim from the courier · 2026-08-31
+
+*Transcribed verbatim; the courier's block carried the heading `## V- · W15 audit ·
+2026-08-31` and the number **V-027** is allocated here per the ledger's per-kind numbering.*
+
+```
+## V- · W15 audit · 2026-08-31
+W15 ACCEPTED. The researcher read the SWAP/SHAM samples and confirms D-055's anatomy in
+text: the frozen cut rule lands after the trace's arithmetic (the cause-token arrives in
+the closing sentence), so the frozen-cut continuations could only restate locked
+conclusions — the achieved-power admission (0.00–0.87 against the declared ≥0.7) is
+accepted exactly as reported. Rulings: (1) P-014 PROMOTED with tiers: T3 at the frozen
+design is [measured null, with the D-055 power qualification stated wherever cited];
+the JC-4 deep-cut diagnostic IS citable, always as a clearly-labeled post-hoc bound
+[suggested] — its cut was chosen for legibility after the frozen result proved unreadable,
+not on its outcome, and with 26/40 finals genuinely changing it still shows nothing.
+(2) The candidate explanation is recorded at [suggested]: the 1-D mean-difference direction
+carries only ~0.17 within-class σ of per-point separation, so every intervention this
+project ran operated through a channel with a low ceiling; a distributed/nonlinear
+transplant is the deferred programme's first item. (3) D-053 (the dry-run extractor catch),
+D-054 (nothing watches an unattended GPU job — the 81 idle minutes, not the CUDA version,
+is the lesson), and D-055 (measure a sim's nuisance parameters in the regime the statistic
+is computed in; a 5-pair pilot costs $0.05) all enter the register. All JCs ratified,
+including JC-2/3's pre-verdict nomination raise and the disclosed cut -c1-60 over-read.
+```
+
+---
+
+## R-018 · FINAL VERDICTS AMENDED (Wave 2 closes R-012's causal section) · 2026-08-31
+
+*Transcribed verbatim.*
+
+```
+## R-018 · FINAL VERDICTS AMENDED (Wave 2 closes R-012's causal section) · 2026-08-31
+Text level: the belief-mixture is causally load-bearing [measured] — confirmed upward (W11
+C1 at 0.851 power) and qualitatively downward (W14 landing collapse, judge-independent);
+the degraded point's quantitative coordinate is [suggested] pending the owner's hand-labels
+(D-051). Activation level: three independent interventions — additive steering at six doses
+(W7), low-dose with matched nulls (W7b), and the belief transplant (W15, tiers above) —
+produced no direction-specific effect; the belief representation (real net of length,
+E-012) remains correlational at the activation level. The project's answer to its central
+question: the model's belief about the favoured side drives its estimate THROUGH THE TEXT
+CHANNEL, demonstrably; no 1-D activation-space handle on that belief was found at any
+tested operation or power. Instrument findings promoted: D-016 (τ-echo), D-042 (length),
+D-051 (the judge fails exactly where the model fails — an LLM-judge validity result in its
+own right). HAND-LABEL FALLBACK, pre-decided: if the owner's 70-row sheet is not returned
+by Sept 2 evening owner time, the document ships with the degraded point at [suggested] and
+one sentence stating human calibration was pending; scoring it later amends the ledger, not
+the submission.
+```
+
+**Runner's reading of R-018, recorded before acting on it (standing constraint 4).**
+(a) **"E-012"** is cited by R-018 as an established entry. **No `E-011`, `E-012`, `E-013` or
+`E-014` heading exists in this ledger** — V-023 promoted P-012 and said the `E-` entry would be
+written by the researcher, and D-047 forbids the runner from writing one. The write-up therefore
+cites the **promoting rulings and audits** (V-023/R-016 for W13, V-018 for W11, V-020 for W12,
+V-025 for W14, V-027/R-018 for W15) beside the provisional entries they promote, rather than
+citing `E-` numbers that do not yet exist. **Flagged for the researcher's final read: four `E-`
+entries are owed and the addendum's citations must be re-pointed at them when they are written.**
+(b) **The hand-label fallback is applied.** See **D-058**.
+(c) "*the achieved-power admission (0.00–0.87 against the declared ≥0.7)*" is read as ratifying
+P-014 §3(b) exactly as written; the `≥0.7` is the researcher's summary of the D-048 declaration,
+which P-014 states as **0.97–1.00**. Both figures are the declaration's; no number is changed.
+
+---
+
+## D-058 · The hand-label fallback is applied; the sheet is unreturned at hand-off · 2026-08-31
+
+**R-018's pre-decided fallback fires.** `analysis/out/w14_handlabel_sheet.csv` is checked at
+assembly time by a **sheet-only** stdlib count that never opens a key file
+(`src/w16_handlabel_status.py`): **70 rows, 0 of 70 filled in `direction`, 0 of 70 in
+`mentions_bet`.** No hand-labels exist, so `w14_handlabel_score.py` was **not run at all** — it
+loads the sealed key at import time, so the *status* check had to be a separate script to keep
+the key unopened — and no agreement, κ or label-noise bound is reported anywhere in the
+write-up.
+
+**The sentence that ships**, verbatim in the addendum and in the executive summary's Wave-2
+paragraph: *the degraded point's comprehension coordinate is [suggested], because human
+calibration of the direction judge on degraded wording was pending at submission.*
+
+**A judgment call, flagged.** R-018 dates the fallback to "*not returned by Sept 2 evening owner
+time*", and this packet closes on **2026-08-31** — **two days before that deadline**. The runner
+applies the fallback anyway, because the W16 order's own rule is the tighter one ("*if the sheet
+arrives before hand-off, run it; otherwise apply the R-018 fallback verbatim*") and hand-off is
+now. **The two rules do not conflict in effect**: R-018 states that scoring the sheet later
+"*amends the ledger, not the submission*", so a sheet returned on Sept 1 or 2 changes nothing in
+this document either way. **What the researcher may still choose** is to re-run the scorer before
+the Sept 4 submission and re-tier the degraded point upward; the runner has left that door open
+and has not closed the packet against it.
+
+**Blindness is intact at close.** `w14_handlabel_key.csv` has still never been opened;
+`w15_handlabel_key_addendum.csv` retains only the V-026 §3 disclosure (the header line and, via an
+over-wide `cut -c1-60`, row R51's non-verdict arm/index fields). **No `judge_direction` value has
+been read, from either key file, at any point in the project.**
+
+---
+
+## S-017 · Spend, W16 (assembly closure) · 2026-08-31
+
+| item | value |
+|---|---|
+| GPU | **$0.00** — no pod created this packet, `GET /pods` **200, empty**, `currentSpendPerHr` **$0.00** |
+| API | **$0.00** — **zero** model calls. Every number in the rebuilt document comes from a committed file in `analysis/out/` or from `RESULTS.md` itself; the R-014 Anthropic probe was **deliberately not run**, on S-014's precedent — R-014's trigger is "before the first spend" and this packet has no first spend, so probing would have created the only charge in it |
+| hardware | the runner's laptop, 10 cores |
+
+**Total project spend unchanged: $19.30 GPU + $30.87 API = $50.17 of the $60 cap;
+balance $9.83.** The **$45** threshold was crossed by W15 under R-017's authorization (S-016)
+and this packet moves nothing. **Final project spend is therefore S-016's, and it is what the
+write-up's methods register reports.**
+
+---
+
+## T-019 · Time, W16 (assembly closure) · 2026-08-31
+
+**Owner-clock minutes: NOT SUPPLIED for this packet.** R-016's standing requirement covered W14,
+W15 and W16; **none of the three orders carried a figure.** Recorded empty, not estimated.
+
+**The project-level total, stated once for the write-up's methods register.** Across all **16**
+work orders the runner **asked for it 9 times** — the six numbered asks escalating through T-001
+to T-008, then the three packets R-016 made it mandatory for — and **owner-clock figures
+supplied: 0.** The 16-hour owner budget in `ORIENTATION.md` is therefore unauditable and is
+reported as such rather than estimated.
+
+Runner wall time, W16: **≈ 1 h 15 m** (2026-08-31 05:35 → 06:50 UTC). GPU wall **0.000 h**.
+
+| phase | wall | note |
+|---|---|---|
+| re-orientation from `ORIENTATION.md` + the ledger tail | ~10 m | |
+| transcription of V-027 / R-018, and the R-018 reading | ~10 m | the `E-` numbering gap is the substantive item — see R-018 note (a) |
+| the hand-label status check and D-058 | ~5 m | sheet-only; **no key file opened** |
+| extending `w10_ledger_facts.py` (**64** new facts) and `w10_derived.py` (Wave-2 totals) | ~20 m | the prose-only Wave-2 numbers — spend, wall time, achieved power, judge calibration — had no CSV to come from |
+| extending `writeup/manifest.csv` (**+172** placeholders) | ~10 m | |
+| writing §7, revising §1, §8, §9, §10, §11 | ~35 m | the addendum is the largest single section added since W10 |
+| rebuild, digits check, `--verify`, skeptic suite, commit | ~15 m | |
+
+**The most expensive thing in this packet was that Wave 2's most quotable numbers live in ledger
+prose rather than in a CSV.** Spend, wall time, D-055's achieved power, D-051's calibration rates
+and D-056's separation ratio are all analysis outputs that were reported in `RESULTS.md` and never
+written to a machine-readable file, so integrating them meant writing a named regex per fact
+against append-only prose. **It works and it is auditable — a fact whose wording moves breaks the
+build loudly — but the cheaper design is for every analysis script to emit its own summary JSON,
+and this project never did that for the packets after W10.**
+
+**Nothing in this packet spent money and nothing in it touched a GPU.** The write-up is built
+entirely from committed files.
+
+---
+
+## V-028 · W16 runner verification: build, blindness, scope, and what is NOT verified · 2026-08-31
+
+**A runner verification note, not a researcher audit.** The researcher's audit of this packet is
+the end-to-end read of `writeup/final.md`, which has not happened.
+
+**(1) The document rebuilds byte-identically and no digit in it is hand-typed.**
+`python3 writeup/build.py` → **PASS**, **0 UNTRACEABLE** digit characters in either document.
+`final.md`: **875** placeholder sites, **3,382** digit characters, **3,070** traceable to a
+placeholder and **312** covered by a named structural whitelist rule. `compact.html`: **271**
+placeholder sites, **2,320** digit characters, **945** placeholder / **1,375** whitelist.
+`python3 writeup/build.py --verify` → **IDENTICAL** for both. **2** manifest tokens are unused
+(`w13_repro_lstar`, `w13_strat_lstar`), both pre-existing.
+
+**(2) The skeptic suite still passes unchanged.** `python3 src/w10_skeptic.py` → **10/10 PASS**.
+It was **not** extended to Wave 2 — see §(6)(a).
+
+**(3) Three whitelist rules were added to `build.py` and they are named, not blanket.**
+`packet_id` was widened from `W0b|W10|W1-9` to include **W11–W16** (the old pattern could not
+match Wave 2's own packet ids); `wave_id` matches the literal string `Wave 2`; `prereg_row_id`
+matches pre-registration row labels of the form `row C1` / `T3` / `D1`. **No rule was added that
+could absorb a result number**: every one is anchored to a fixed alphabetic prefix.
+
+**(4) Blindness is intact and no key file was opened.** `src/w16_handlabel_status.py` reads the
+**sheet only** and never imports or opens a key; `w14_handlabel_score.py` was **not run** because
+it loads the sealed key at import time. See **D-058**.
+
+**(5) `upstream/` is untouched** — `git -C upstream status --porcelain` prints nothing.
+
+**(6) What is NOT verified here.**
+(a) **The skeptic suite does not cover Wave 2.** Its ten checks were written at W10 and interrogate
+W2/W3/W7/W7b only. Nothing in it recounts W11–W15, and the addendum's numbers rest on those
+packets' own recount scripts (`w11_recount.py`, `w12_recount.py`, `w13_recount.py`,
+`w14_recount.py`, `w15_recount.py`), each of which was run and reported in its own packet and
+**none of which was re-run here.**
+(b) **`compact.html.tmpl` was extended beyond the order's literal scope** — see the judgment call
+in this packet's report. The order named `final.md.tmpl` only; the compact page's synthesis node
+and one of its open leaves had been made **false** by Wave 2, so they were amended rather than
+shipped wrong. **The diagram itself was not redrawn**; Wave 2 enters the compact page as four
+prose nodes in the page's existing node style.
+(c) **The `E-` numbering gap is not closed** and cannot be by the runner (D-047). R-018 cites
+`E-012`; no `E-011`/`E-012`/`E-013`/`E-014` heading exists. The write-up cites the promoting
+audits and rulings instead. **Four `E-` entries are owed.**
+(d) **The hand-label agreement, κ and label-noise bound do not exist** — the sheet is unfilled
+(D-058).
+(e) **Nothing in this packet was audited by the researcher**, including the addendum's tiering,
+which is the single thing most worth a second reader.
+
+---

@@ -212,9 +212,22 @@ def totals(w3):
     n = {"w1_neutral": 4 * 50, "w2_screen": 2 * 2 * 50,
          "w3_fresh": 650, "w3_reused_neutral": 50,
          "w7_steered": 1150, "w7b_steered": 600}
+    # ---- Wave 2 generation counts, read from the packets' own committed arm tables ----
+    n["w11_gens"] = sum(int(r["n"]) for r in rows("w11_arms.csv"))
+    n["w14_gens"] = sum(int(r["n"]) for r in rows("w14_arms.csv"))
+    n["w15_harvest"] = int(json.load(open(os.path.join(OUT, "w15_nominated.json")))["n_rollouts"])
+    w15_arms = rows("w15_arms.csv")
+    n["w15_transplant"] = sum(int(r["n"]) for r in w15_arms)
+    n["w15_deep"] = 4 * sum(int(r["n_pairs"]) for r in rows("w15_surface.csv") if r["run"] == "deep")
+    n["w15_gens"] = n["w15_harvest"] + n["w15_transplant"] + n["w15_deep"]
+    # hook-edited generations: every transplant arm except SHAM carries an activation edit
+    n["w15_edited"] = (sum(int(r["n"]) for r in w15_arms if r["arm"] != "SHAM")
+                       + 3 * (n["w15_deep"] // 4))
+    n["wave2_gens"] = n["w11_gens"] + n["w14_gens"] + n["w15_gens"]
     n["all_generations"] = (n["w1_neutral"] + n["w2_screen"] + n["w3_fresh"]
-                            + n["w7_steered"] + n["w7b_steered"])
+                            + n["w7_steered"] + n["w7b_steered"] + n["wave2_gens"])
     n["all_steered"] = n["w7_steered"] + n["w7b_steered"]
+    n["all_intervened"] = n["all_steered"] + n["w15_edited"]
     rp = rows("w4_replay_summary.csv")
     n["w4_traces_replayed"] = sum(int(r["n_replayed"]) for r in rp)
     n["w4_points"] = sum(int(r["n_points"]) for r in rp)

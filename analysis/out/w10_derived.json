@@ -116,8 +116,16 @@
   "null_lo": 0.36
  },
  "totals": {
-  "all_generations": 2800,
+  "all_generations": 5180,
+  "all_intervened": 2110,
   "all_steered": 1750,
+  "w11_gens": 600,
+  "w14_gens": 300,
+  "w15_deep": 160,
+  "w15_edited": 360,
+  "w15_gens": 1480,
+  "w15_harvest": 1000,
+  "w15_transplant": 320,
   "w1_neutral": 200,
   "w2_screen": 200,
   "w3_fresh": 650,
@@ -127,7 +135,8 @@
   "w4_quarantined": 0,
   "w4_traces_replayed": 700,
   "w7_steered": 1150,
-  "w7b_steered": 600
+  "w7b_steered": 600,
+  "wave2_gens": 2380
  },
  "w2_leaf": {
   "qwen25_14b_instruct": {

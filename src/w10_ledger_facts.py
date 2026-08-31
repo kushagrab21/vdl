@@ -88,11 +88,12 @@ FACTS = [
     ("spend_api_w5", "S-008", 0, r"\*\*API this packet: \$([\d.]+)\*\*"),
     ("spend_api_w7", "S-009", 0, r"\*\*API this packet: \$([\d.]+)\*\*"),
     ("spend_api_w7b", "S-010", 0, r"\*\*API this packet: \$([\d.]+)\*\*"),
-    ("spend_gpu_cumulative", "S-010", 0, r"Cumulative GPU: \$([\d.]+) of"),
-    ("spend_api_cumulative", "S-010", 0, r"Cumulative API: \$([\d.]+)\."),
-    ("spend_total", "S-010", 0, r"Total project spend: \$([\d.]+) of the"),
-    ("spend_cap", "S-010", 0, r"of the\s*\n?\$(\d+) cap; balance"),
-    ("spend_balance", "S-010", 0, r"cap; balance \$([\d.]+)\.\*\*"),
+    # cumulative spend is read from the LAST packet that spent (S-016), not from S-010
+    ("spend_gpu_cumulative", "S-016", 0, r"\*\*Cumulative: \$([\d.]+) GPU"),
+    ("spend_api_cumulative", "S-016", 0, r"\*\*Cumulative: \$[\d.]+ GPU \+ \$([\d.]+) API"),
+    ("spend_total", "S-016", 0, r"API = \$([\d.]+) of the \$\d+ cap; balance"),
+    ("spend_cap", "S-016", 0, r"of the \$(\d+) cap; balance"),
+    ("spend_balance", "S-016", 0, r"cap; balance \$([\d.]+)\.\*\*"),
     ("spend_surfacing_threshold", "S-010", 0, r"The \*\*\$(\d+)\*\* surfacing threshold"),
 
     # ---- runner wall time, per packet -------------------------------------------------
@@ -155,6 +156,104 @@ FACTS = [
     ("w7b_generation_secs", "P-009", 0, r"pod `u3g0qm180kvqnd`, ([\d.]+) s"),
     ("w4_forward_pass_secs", "P-006", 0, r"all 700 forward passes in ([\d.]+) s"),
     ("w5_analysis_secs", "P-007", 0, r"pod `io6c1fhnarzoj9`, (\d+) s"),
+
+    # ================= WAVE 2 (W11-W15) and the assembly packet (W16) =================
+
+    # ---- spend, per Wave-2 packet -----------------------------------------------------
+    ("spend_gpu_w11", "S-012", 0, r"\*\*GPU spend this packet: \$([\d.]+)\."),
+    ("spend_api_w11", "S-012", 0, r"\*\*API this packet: \$([\d.]+)\*\*"),
+    ("spend_gpu_w12", "S-013", 0, r"\*\*GPU this packet: \$([\d.]+)\."),
+    ("spend_api_w12", "S-013", 0, r"\*\*API this packet: \$([\d.]+)\*\*"),
+    ("spend_gpu_w13", "S-014", 0, r"\| GPU \| \*\*\$([\d.]+)\*\*"),
+    ("spend_api_w13", "S-014", 0, r"\| API \| \*\*\$([\d.]+)\*\*"),
+    ("spend_gpu_w14", "S-015", 0, r"\*\*GPU \$([\d.]+) \+ API \$[\d.]+ = "),
+    ("spend_api_w14", "S-015", 0, r"\*\*GPU \$[\d.]+ \+ API \$([\d.]+) = "),
+    ("spend_gpu_w15", "S-016", 0, r"\*\*GPU \$([\d.]+) \+ API \$[\d.]+ = "),
+    ("spend_api_w15", "S-016", 0, r"\*\*GPU \$[\d.]+ \+ API \$([\d.]+) = "),
+    ("spend_gpu_w16", "S-017", 0, r"\| GPU \| \*\*\$([\d.]+)\*\*"),
+    ("spend_api_w16", "S-017", 0, r"\| API \| \*\*\$([\d.]+)\*\*"),
+    ("spend_ceiling_w15", "S-016", 0, r"against R-017's \$(\d+) hard ceiling"),
+
+    # ---- runner wall time and billed GPU wall, per Wave-2 packet -----------------------
+    ("time_runner_w11", "T-014", 0, r"Runner wall time, W11: \*\*≈ (\d h \d\d m)\*\*"),
+    ("time_runner_w12", "T-015", 0, r"Runner wall time, W12: \*\*≈ (\d h \d\d m)\*\*"),
+    ("time_runner_w13", "T-016", 0, r"Runner wall time, W13: \*\*≈ (\d h \d\d m)\*\*"),
+    ("time_runner_w14", "T-017", 0, r"Runner wall time, W14: \*\*≈ (\d h \d\d m)\*\*"),
+    ("time_runner_w15", "T-018", 0, r"Runner wall time, W15: \*\*≈ (\d h \d\d m)\*\*"),
+    ("time_runner_w16", "T-019", 0, r"Runner wall time, W16: \*\*≈ (\d h \d\d m)\*\*"),
+    ("gpu_wall_w11", "T-014", 0, r"GPU wall time: \*\*([\d.]+ h)\*\*"),
+    ("gpu_wall_w12", "T-015", 0, r"GPU wall \*\*([\d.]+ h)\*\*"),
+    ("gpu_wall_w13", "T-016", 0, r"GPU wall \*\*([\d.]+ h)\*\*"),
+    ("gpu_wall_w14", "T-017", 0, r"GPU wall \*\*([\d.]+ h)\*\*"),
+    ("gpu_wall_w15", "T-018", 0, r"GPU wall \*\*([\d.]+ h)\*\*"),
+    ("owner_minutes_supplied", "T-019", 0, r"owner-clock figures\s*\n?supplied: (\d+)\."),
+    ("n_packets", "T-019", 0, r"Across all \*\*(\d+)\*\*\s*\n?work orders"),
+    ("owner_requests", "T-019", 0, r"\*\*asked for it (\d+) times\*\*"),
+
+    # ---- W12: the length confound (D-042), prose-only in P-011 s3 ----------------------
+    ("w12_len_delta_tokens", "P-011", 0, r"p̂=−1 traces are \*\*(\d+) tokens longer\*\*"),
+    ("w12_len_ncorr_tokens", "P-011", 0, r"tokens longer\*\* on\s*\n?average \((\d+\.\d)"),
+    ("w12_len_corr_tokens", "P-011", 0, r"average \(\d+\.\d vs (\d+\.\d)"),
+    ("w12_lenonly_acc", "P-011", 0, r"— reads \*\*(0\.\d+)\*\* on the same traces"),
+
+    # ---- W14 / D-051: the judge fails where the model fails ----------------------------
+    ("d051_judge_wrong_k", "D-051", 0, r"\*\*(\d+) of the \d+ `below_good` traces"),
+    ("d051_judge_wrong_n", "D-051", 0, r"\*\*\d+ of the (\d+) `below_good` traces"),
+    ("d051_agree_w3_below", "D-051", 0, r"\| \*\*W3 natural\*\* \| below_good \| \d+ \| \*\*(0\.\d+)\*\*"),
+    ("d051_agree_w3_above", "D-051", 0, r"\| \*\*W3 natural\*\* \| above_good \| \d+ \| \*\*(0\.\d+)\*\*"),
+    ("d051_agree_w14_below", "D-051", 0, r"\| \*\*W14 degraded\*\* \| below_good \| \d+ \| \*\*(0\.\d+)\*\*"),
+    ("d051_agree_w14_above", "D-051", 0, r"\| \*\*W14 degraded\*\* \| above_good \| \d+ \| \*\*(0\.\d+)\*\*"),
+    ("d051_regex_gap_w3", "D-051", 0, r"reproduces the frozen `corr` conditional gap to 0\.0064\s*\n?\(\+(0\.\d+) vs"),
+    ("d051_judge_gap_w3", "D-051", 0, r"\(\+0\.\d+ vs \+(0\.\d+)\)"),
+    ("d051_judge_gap_w14", "D-051", 0, r"\*\*collapsed and crossed to −(0\.\d+)\*\*"),
+    ("d051_regex_gap_w14", "D-051", 0, r"independent basis says it is \*\*\+(0\.\d+)\*\*"),
+    ("d051_resolved_k", "D-051", 0, r"resolves only \*\*(\d+) of \d+\*\* degraded traces"),
+    ("d051_resolved_n", "D-051", 0, r"resolves only \*\*\d+ of (\d+)\*\* degraded traces"),
+
+    # ---- W15 / D-053: the extractor the screen depends on -------------------------------
+    ("d053_corrected_agree", "D-053", 0, r"`final_corrected`[^\n]*?(0\.9467)"),
+    ("d053_raw_agree", "D-053", 0, r"`final_estimate`[^\n]*?\*\*(0\.6316)\*\*"),
+
+    # ---- W15 / D-054: the idle GPU ------------------------------------------------------
+    ("d054_idle_minutes", "S-016", 0, r"\*\*(\d+) minutes —"),
+    ("d054_idle_pct", "S-016", 0, r"\*\*\d+ minutes —\s*\n?(\d+) % of the bill"),
+    ("d054_idle_cost", "S-016", 0, r"% of the bill, ≈ \$([\d.]+)"),
+    ("d054_compute_pct_w15", "S-016", 0, r"\*\*Compute was ([\d.]+) % of billed time\*\*"),
+
+    # ---- W15 / D-055: the nuisance parameter measured on the wrong object ---------------
+    ("d055_lam_declared", "D-055", 0, r"`20/76 = (0\.\d+)`"),
+    ("d055_lam_measured", "D-055", 0, r"is\s*\n?\*\*34/40 = (0\.\d+)\*\*"),
+    ("d055_locked_k", "D-055", 0, r"\*\*(\d+)/40 = 0\.85\*\*"),
+    ("d055_power_declared_worst", "D-055", 0, r"δ_true \+0\.4456 \| \*\*(0\.\d+)\*\* \| \*\*0\.000\*\*"),
+    ("d055_power_measured_worst", "D-055", 0, r"δ_true \+0\.4456 \| \*\*0\.\d+\*\* \| \*\*(0\.\d+)\*\*"),
+    ("d055_pilot_cost", "D-055", 0, r"A pilot of 5 pairs would have measured λ = 0\.85 for \*\*\$([\d.]+)\*\*"),
+    ("p014_power_achieved_lo", "P-014", 0, r"ordered alternative is (0\.\d\d)–0\.87"),
+    ("p014_power_achieved_hi", "P-014", 0, r"ordered alternative is 0\.\d\d–(0\.\d\d)"),
+    ("p014_power_declared_lo", "P-014", 0, r"not the (0\.\d\d)–1\.00 pre-registered"),
+    ("p014_power_declared_hi", "P-014", 0, r"not the 0\.\d\d–(1\.00) pre-registered"),
+    ("jc4_power_lo", "P-014", 0, r"\*\*(0\.\d+) – 0\.\d+\*\* \(false-fire"),
+    ("jc4_power_hi", "P-014", 0, r"\*\*0\.\d+ – (0\.\d+)\*\* \(false-fire"),
+    ("jc4_falsefire", "P-014", 0, r"\(false-fire (0\.\d+);"),
+    ("jc4_mde", "P-014", 0, r"80 % power at δ ≈ (0\.\d+)\)"),
+    ("w15_cut_median", "P-014", 0, r"\| cut point \| median \*\*(\d+)\*\*"),
+    ("w15_n_labelled", "P-014", 0, r"regex-labelled \(`p̂ ∈ ±1`\) \| \*\*(\d+)\*\*"),
+    ("w15_judge_regex_agree", "P-014", 0, r"agreement \| \*\*(0\.\d+)\*\* \(\d+/\d+\)"),
+    ("w15_swap_self_delta", "P-014", 0, r"differ from each other\s*\n?by ~(0\.\d+) on average"),
+    ("w15_contrast_ratio", "P-014", 0, r"is ([\d.]+)× smaller than the noise"),
+    ("w15_rand_ratio", "P-014", 0, r"— \*\*4\.7× SWAP's\*\*|(4\.7)× SWAP's"),
+
+    # ---- W15 / D-056: the belief coordinate's ceiling -----------------------------------
+    ("d056_within_sd", "D-056", 0, r"\*\*within-class sd\*\* \| \*\*([\d.]+)\*\*"),
+    ("d056_sep_over_sd", "D-056", 0, r"\*\*separation / sd\*\* \| \*\*([\d.]+)\*\*"),
+    ("d056_sep_aggregate", "D-056", 0, r"separation \(aggregate / mean per-grid-point\) \| \*\*([\d.]+)"),
+
+    ("w14_prompt_tokens", "F-019", 0, r"form B degraded \*\*(\d+)\*\* — \*\*exactly W3 form B's"),
+    ("w3_prompt_tokens", "F-017", 0, r"form A \*\*\d+\*\* \(W3: (\d+)\)"),
+    ("w11_prompt_tokens", "F-017", 0, r"form A \*\*\d+\*\* \(W3: \d+\), form B \*\*(\d+)\*\*"),
+    ("w15_prompt_tokens", "F-020", 0, r"\| prompt tokens \| \*\*(\d+)\*\* — exactly W3's and W14's"),
+    # ---- W16 / D-058: the hand-label fallback -------------------------------------------
+    ("handlabel_rows", "D-058", 0, r"\*\*(\d+) rows, 0 of \d+ filled"),
+    ("handlabel_filled", "D-058", 0, r"rows, (0) of \d+ filled in `direction`"),
 ]
 
 

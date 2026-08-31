@@ -1,21 +1,25 @@
 no-hand-typed-digits check
 built by: python3 writeup/build.py
 
-placeholders in manifest           : 482
-tokens never used in any template  : 3 -> w13_ordered_falsefire, w13_repro_lstar, w13_strat_lstar
+placeholders in manifest           : 659
+tokens never used in any template  : 2 -> w13_repro_lstar, w13_strat_lstar
 
 --- writeup/final.md  (from final.md.tmpl)
-placeholder sites substituted      : 590
+placeholder sites substituted      : 877
 tokens in template not in manifest : 0
-digit characters                   : 2177
-  traceable to a placeholder       : 2013
-  covered by a whitelist rule      : 164
+digit characters                   : 3386
+  traceable to a placeholder       : 3074
+  covered by a whitelist rule      : 312
   UNTRACEABLE (violations)         : 0
 whitelist rules that fired:
+  ledger_entry_id           6 matches carrying digits
+  packet_id                18 matches carrying digits
+  wave_id                  20 matches carrying digits
+  prereg_row_id             3 matches carrying digits
   gate_id                   7 matches carrying digits
   hypothesis_id             3 matches carrying digits
-  section_ref               6 matches carrying digits
-  md_heading_number        30 matches carrying digits
+  section_ref              43 matches carrying digits
+  md_heading_number        37 matches carrying digits
   model_name               13 matches carrying digits
   dtype_or_norm             4 matches carrying digits
   sub_or_superscript        3 matches carrying digits
@@ -25,13 +29,14 @@ whitelist rules that fired:
   file_or_cmd               6 matches carrying digits
 
 --- writeup/compact.html  (from compact.html.tmpl)
-placeholder sites substituted      : 193
+placeholder sites substituted      : 271
 tokens in template not in manifest : 0
-digit characters                   : 2007
-  traceable to a placeholder       : 635
-  covered by a whitelist rule      : 1372
+digit characters                   : 2320
+  traceable to a placeholder       : 945
+  covered by a whitelist rule      : 1375
   UNTRACEABLE (violations)         : 0
 whitelist rules that fired:
+  wave_id                   1 matches carrying digits
   model_name                2 matches carrying digits
   dose_notation             6 matches carrying digits
   code_element              1 matches carrying digits

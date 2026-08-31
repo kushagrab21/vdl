@@ -139,7 +139,8 @@ a model shifts a factual estimate toward the side of a threshold that a donation
 favourable, and closed with one question its methods could not reach: is that favoured side
 represented anywhere inside the model, and does editing the representation change the behaviour?
 This document follows that single question from the screening that chose a model, through the
-probe that found the representation, to the intervention that failed to make it causal. Each node
+probe that found the representation, through the activation intervention that failed to make it
+causal, to the text-level interventions that succeeded. Each node
 states what was ambiguous before it, what was varied, what was held fixed, what each competing
 explanation predicted, what came back, and which explanation that killed.</p>
 
@@ -582,6 +583,98 @@ generations at the largest dose against {{sk_fab_sham}} at the sham</td></tr>
 <td>A frozen dataset at three times the sample with the seed block as the only difference</td></tr>
 </table>
 
+<h2 class="uhead">Wave 2 — the same belief, through the text channel</h2>
+<p class="lede">Five packets, authorised after the activation null, that ask whether the null is
+the world or the instrument. Two intervene on the wording that carries the belief; two attack the
+decodability result itself; the last returns to activations with a different operation.</p>
+
+<div class="node">
+<div class="nh"><span class="nt">Move comprehension, and the landing gap moves with it — both ways</span></div>
+<div class="row"><b>What was varied:</b> one clarifying sentence added to the bet note
+({{lf_prompt_w3}} → {{lf_prompt_w11}} prompt tokens), and separately the two mapping sentences
+replaced by a semantically identical nested negation at <i>exactly</i> {{lf_prompt_w14}} tokens,
+so the second manipulation adds no length at all. Nothing else changed.</div>
+<div class="row"><b>What was held fixed:</b> the prediction. The four belief-conditional cells
+frozen on the original dataset were asked, in advance, what landing gap each new comprehension
+rate implies.</div>
+<div class="res"><span class="rl">RESULT</span> Comprehension {{w14_pa_w3}} →
+<b>{{w11_pa}}</b> raised the gap to <b>{{w11_gap}}</b> [{{w11_gap_lo}}, {{w11_gap_hi}}] against a
+prediction of {{w11_pred}} [{{w11_pred_lo}}, {{w11_pred_hi}}]; comprehension {{w14_pa_w3}} →
+<b>{{w14_pa}}</b> collapsed it to <b>{{w14_gap}}</b> [{{w14_gap_lo}}, {{w14_gap_hi}}] against
+{{w14_pred}} [{{w14_pred_lo}}, {{w14_pred_hi}}]. Both land inside prediction, at distinguishing
+powers of {{w11_power}} and {{w14_pow_w3}}. The mixture over-predicts the <i>size</i> of the move
+in both directions ({{w14_resid_w11}} and {{w14_resid_w14}}).</div>
+<div class="verdict"><span class="chip ok">CAUSAL AT THE TEXT LEVEL [measured]</span>
+<span class="claim">The belief-mixture is not a description of four cells; it is a dose-response
+law — {{w14_dose_w11}} clarified, {{w14_dose_w3}} natural, {{w14_dose_w14}} degraded.
+<span class="why">The degraded point's <i>comprehension</i> coordinate is [suggested], not
+[measured]: the judge that produced it fails on exactly the wording that breaks the model, and
+human calibration of it was pending at submission.</span></span></div>
+</div>
+
+<div class="node neu">
+<div class="nh"><span class="nt">A judge that fails exactly where the model fails</span></div>
+<div class="row"><b>The design choice that caused it:</b> the direction judge is handed the prompt
+and must work the bet's mapping out itself, so that one prompt serves both mirrored arms. Under
+nested-negation wording it has to solve the same puzzle the model does.</div>
+<div class="res"><span class="rl">RESULT</span> <b>{{lf_d051_wrong_k}} of {{lf_d051_wrong_n}}</b>
+traces it labelled <code>correct</code> on one arm had landed on that arm's unfavoured side. An
+independent regex instrument that never reads the mapping sentence agrees with it
+{{lf_d051_w3_below}}/{{lf_d051_w3_above}} on natural wording and
+<b>{{lf_d051_w14_below}}/{{lf_d051_w14_above}}</b> on degraded. On the frozen basis the
+belief-conditional cells appear to collapse and cross ({{w14_corr_gap}}); on the calibrated basis
+they do not move ({{lf_d051_regex_w14}} against {{lf_d051_regex_w3}} on the same quantity in the
+original dataset).</div>
+<div class="verdict"><span class="chip no">READ ALONE, THE FROZEN TABLE SAYS THE OPPOSITE OF THE TRUTH</span>
+<span class="claim">A judge and a subject that share a weakness cannot be used to measure that
+weakness.
+<span class="why">The first warning was on the invoice: those traces made the judge emit an order
+of magnitude more output tokens than any prior packet's constant predicted, days before the
+analysis noticed anything.</span></span></div>
+</div>
+
+<div class="node">
+<div class="nh"><span class="nt">Belief formation has no readable onset, and the curve that looked like one was length</span></div>
+<div class="res"><span class="rl">RESULT</span> Sweeping a probe over every generated position of
+{{w12_n_labelled}} labelled traces, the frozen onset criterion — {{w12_onset_k}} consecutive bins
+above the null's {{w12_onset_pct}} percentile — <b>fires at no layer in any family</b>, and there
+are <b>{{w12_flips}}</b> belief flips against a label-shuffled false-flip rate of
+{{w12_falseflip}}. The one alignment that did rise is confounded: a probe with <i>one feature, the
+trace's output length, and no activations at all</i>, reads {{lf_w12_lenonly}} on the same traces,
+because traces that get the mapping wrong run {{lf_w12_len_delta}} tokens longer.</div>
+<div class="verdict"><span class="chip op">MEASURED NULL, PLUS ONE RETRACTION</span>
+<span class="claim">No readable onset and no flips at this resolving power — and any statistic
+binned on trace fraction in this dataset is confounded with the outcome it predicts.
+<span class="why">A targeted attack on the decodability result using that same confound was then
+run and the result survived it, narrower than its own headline number.</span></span></div>
+</div>
+
+<div class="node">
+<div class="nh"><span class="nt">The belief transplant, and a design that could not have found anything</span></div>
+<div class="row"><b>What was varied:</b> take two traces of the <i>same prompt</i> that formed
+<i>opposite</i> beliefs and swap the belief component of one into the other — an operation that,
+unlike injection, adds no norm-scale perturbation of its own. {{w15_n_pairs}} disjoint pairs per
+direction, four arms, from {{n_w15_harvest}} fresh rollouts.</div>
+<div class="res"><span class="rl">RESULT</span> <b>Δ_swap = {{w15_dswap}} [{{w15_dswap_lo}},
+{{w15_dswap_hi}}]</b>, with the controls moving as much or more (Δ_self {{w15_dself}}, Δ_rand
+{{w15_drand}}). <b>The qualification is larger than the result:</b> the pre-registered cut left
+only {{w15_fin_frozen}} of {{w15_n_pairs}} landings still movable, because the locked-fraction
+parameter that declared the design powered was measured on the original traces
+({{lf_d055_lam_decl}}) rather than the regenerated continuations ({{lf_d055_lam_meas}}) — achieved
+power {{lf_w15_pow_lo}}–{{lf_w15_pow_hi}} against the {{lf_w15_pow_decl_lo}}–{{lf_w15_pow_decl_hi}}
+declared. A post-hoc diagnostic at full surface, where {{w15_val_deep}} of {{w15_n_pairs}} pairs
+genuinely change their final number, reads Δ_swap {{w15_deep_swap}} [{{w15_deep_swap_lo}},
+{{w15_deep_swap_hi}}] at power {{lf_jc4_pow_lo}}–{{lf_jc4_pow_hi}}.</div>
+<div class="verdict"><span class="chip op">MEASURED NULL, BOUNDED BY A POST-HOC DIAGNOSTIC [suggested]</span>
+<span class="claim">The belief state is not transplantable by this operation, and the null survives
+its own bound.
+<span class="why">The operation's own anatomy says why it may never have had a chance: at the
+frozen layer the two belief classes are separated along this direction by
+{{lf_d056_sep_sd}} of their own within-class spread, and the two arms whose difference
+<i>is</i> the experiment differ from each other by about {{lf_w15_swapself}} —
+{{lf_w15_ratio}}× smaller than the noise they sit in.</span></span></div>
+</div>
+
 <h2 class="uhead">Synthesis</h2>
 
 <div class="node neu">
@@ -594,17 +687,25 @@ linearly decodable from the residual stream at the model's own estimate position
 {{d_a025_pct}} % to {{d_a4_pct}} % of the residual-stream norm and against
 {{n_null_directions}} matched random directions, produced no landing effect distinguishable from
 what a random direction of the same size produces.</div>
-<div class="row"><b>Unresolved [not tested at resolving power].</b> Two possibilities remain open
-and this design does not separate them: there is no direction-specific causal effect, or there is
-one below the resolving power of an intervention whose smallest pre-registered dose already
-behaves symmetrically in α.</div>
-<div class="verdict"><span class="chip op">OPEN</span>
-<span class="claim">The project found the representation it went looking for and could not show it
-is used.
-<span class="why">That is a real answer to the leaf the predecessor study left, and it is a
-narrower one than either "the belief drives the estimate" or "the belief is decoration". What it
-rules out is only that the effect is large enough for this instrument at these
-doses.</span></span></div>
+<div class="row"><b>Causal at the text level [measured].</b> Rewriting the bet note to move
+comprehension up and then down moved the landing gap both times, inside a prediction frozen on the
+original cells both times, at distinguishing powers of {{w11_power}} and {{w14_pow_w3}}. Two
+further activation-level operations — a low-dose ladder with matched nulls and a belief transplant
+at {{w15_n_pairs}} pairs per direction — were null like the first.</div>
+<div class="row"><b>Unresolved at the activation level [not tested at resolving power].</b> Two
+possibilities remain open and no design here separates them: there is no direction-specific causal
+effect, or there is one below the resolving power of every operation tried. One candidate
+explanation is measured and is [suggested]: the direction all three interventions used separates
+the two belief classes by {{lf_d056_sep_sd}} of their own within-class spread, so every one of
+them ran through a channel with a low ceiling.</div>
+<div class="verdict"><span class="chip op">ANSWERED IN ONE CHANNEL, OPEN IN THE OTHER</span>
+<span class="claim">The model's belief about the favoured side drives its estimate through the text
+channel, demonstrably; no one-dimensional activation-space handle on that belief was found, at any
+operation or power this project could reach.
+<span class="why">That is a real answer to the leaf the predecessor study left, and a sharper one
+than the activation work alone could give: the belief is not decoration — it is load-bearing and
+it was moved on purpose, twice, in opposite directions. What remains unshown is that the
+<i>direction</i> found in the residual stream is the thing carrying it.</span></span></div>
 </div>
 
 <h2 class="uhead">Open leaves</h2>
@@ -619,11 +720,23 @@ it needs a ladder below these doses at a sample far above {{conv_n_per_arm}} per
 frozen threshold simulated under its own null before it is frozen.
 <span class="from">→ from the intervention and its follow-up</span></div>
 
-<div class="leaf"><b>Would patching, rather than injecting, answer the same question better?</b>
-Injection adds a norm-scale perturbation whose direction-independent effects swamped everything
-here. Patching the residual stream of one trace into another, at the positions where the belief is
-decodable, tests whether that state carries the estimate without adding magnitude.
-<span class="from">→ from the dose anatomy</span></div>
+<div class="leaf"><b>Would a distributed or nonlinear transplant reach what a single direction
+could not?</b> Patching rather than injecting was the leaf the dose anatomy raised, and it was
+run: swapping the belief component between same-prompt traces that believed opposite things is
+null, at {{w15_n_pairs}} pairs per direction and with a post-hoc bound at full surface. What that
+leaves is the <i>dimensionality</i>: the coordinate all three operations used separates the belief
+classes by only {{lf_d056_sep_sd}} of their within-class spread, so the next experiment has to
+estimate the belief subspace with a method that can hold more than one dimension and move the
+whole subspace, not one projection.
+<span class="from">→ from the dose anatomy, and from the transplant that closed its first form</span></div>
+
+<div class="leaf"><b>How wrong is the judge on the wording it was actually run on?</b> The
+direction judge and the model fail the same reasoning step, so agreement measured on one wording
+({{lf_d051_w3_below}}–{{lf_d051_w3_above}}) did not transfer to another
+({{lf_d051_w14_below}}/{{lf_d051_w14_above}}). A blinded {{lf_hl_rows}}-row human-label packet was
+built, sealed and sent to close this and had not returned by submission — the cheapest open item
+on this list.
+<span class="from">→ from the degraded-wording arm; the degraded point is [suggested] until it returns</span></div>
 
 <div class="leaf"><b>Why is one mirror of the same bet so much harder to understand?</b>
 "Do not exceed the threshold and a good cause benefits" is understood

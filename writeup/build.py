@@ -178,7 +178,9 @@ def substitute(tmpl, values):
 WHITELIST = [
     ("ledger_entry_id", r"\b(?:F|PR|E|P|V|D|R|G|T|S)-\d{3}(?:R)?\b"),
     ("check_or_jc_id", r"\b(?:SK|JC)-\d{1,2}\b"),
-    ("packet_id", r"\bW(?:0b|10|[1-9]b?)\b"),
+    ("packet_id", r"\bW(?:0b|1[0-6]|[1-9]b?)\b"),
+    ("wave_id", r"\bWave 2\b"),
+    ("prereg_row_id", r"\b(?:rows?|rule)\s(?:[A-Z]\d|[A-Z])\b|\b(?:T[1-4]|D[12]|C1)\b"),
     ("gate_id", r"\bG[01]\b"),
     ("hypothesis_id", r"\bH[123][′']?\b"),
     ("iso_date", r"\b20\d\d-\d\d-\d\d\b"),

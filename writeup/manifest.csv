@@ -481,3 +481,190 @@ w13_t2_base,w13_lengthcheck.csv,layer=27;scope=tercile_resid_group;stratum=2::ba
 w13_falsefire,w13_sims.csv,round=2;kind=world;variant=tercile_resid;world=pure_length::fire_rate_q950,f3,W13 frozen rung false-fire rate in the pure-length world
 w13_power,w13_sims.csv,round=2;kind=world;variant=tercile_resid;world=genuine_belief::fire_rate_q950,f3,W13 frozen rung power in the genuine-belief world
 w13_ordered_falsefire,w13_sims.csv,round=1;kind=world;variant=tercile;world=pure_length::fire_rate_q950,f3,W13 ordered rung false-fire rate
+#,,,,--- W16 assembly: Wave-2 ledger facts (spend and time, per packet) ---
+lf_gpu_w11,w10_ledger_facts.json,facts.spend_gpu_w11.value,raw,ledger fact spend_gpu_w11
+lf_api_w11,w10_ledger_facts.json,facts.spend_api_w11.value,raw,ledger fact spend_api_w11
+lf_gpu_w12,w10_ledger_facts.json,facts.spend_gpu_w12.value,raw,ledger fact spend_gpu_w12
+lf_api_w12,w10_ledger_facts.json,facts.spend_api_w12.value,raw,ledger fact spend_api_w12
+lf_gpu_w13,w10_ledger_facts.json,facts.spend_gpu_w13.value,raw,ledger fact spend_gpu_w13
+lf_api_w13,w10_ledger_facts.json,facts.spend_api_w13.value,raw,ledger fact spend_api_w13
+lf_gpu_w14,w10_ledger_facts.json,facts.spend_gpu_w14.value,raw,ledger fact spend_gpu_w14
+lf_api_w14,w10_ledger_facts.json,facts.spend_api_w14.value,raw,ledger fact spend_api_w14
+lf_gpu_w15,w10_ledger_facts.json,facts.spend_gpu_w15.value,raw,ledger fact spend_gpu_w15
+lf_api_w15,w10_ledger_facts.json,facts.spend_api_w15.value,raw,ledger fact spend_api_w15
+lf_gpu_w16,w10_ledger_facts.json,facts.spend_gpu_w16.value,raw,ledger fact spend_gpu_w16
+lf_api_w16,w10_ledger_facts.json,facts.spend_api_w16.value,raw,ledger fact spend_api_w16
+lf_w15_ceiling,w10_ledger_facts.json,facts.spend_ceiling_w15.value,raw,R-017 packet ceiling for W15
+lf_t_w11,w10_ledger_facts.json,facts.time_runner_w11.value,raw,ledger fact time_runner_w11
+lf_t_w12,w10_ledger_facts.json,facts.time_runner_w12.value,raw,ledger fact time_runner_w12
+lf_t_w13,w10_ledger_facts.json,facts.time_runner_w13.value,raw,ledger fact time_runner_w13
+lf_t_w14,w10_ledger_facts.json,facts.time_runner_w14.value,raw,ledger fact time_runner_w14
+lf_t_w15,w10_ledger_facts.json,facts.time_runner_w15.value,raw,ledger fact time_runner_w15
+lf_t_w16,w10_ledger_facts.json,facts.time_runner_w16.value,raw,ledger fact time_runner_w16
+lf_gpuw_w11,w10_ledger_facts.json,facts.gpu_wall_w11.value,raw,ledger fact gpu_wall_w11
+lf_gpuw_w12,w10_ledger_facts.json,facts.gpu_wall_w12.value,raw,ledger fact gpu_wall_w12
+lf_gpuw_w13,w10_ledger_facts.json,facts.gpu_wall_w13.value,raw,ledger fact gpu_wall_w13
+lf_gpuw_w14,w10_ledger_facts.json,facts.gpu_wall_w14.value,raw,ledger fact gpu_wall_w14
+lf_gpuw_w15,w10_ledger_facts.json,facts.gpu_wall_w15.value,raw,ledger fact gpu_wall_w15
+lf_owner_minutes,w10_ledger_facts.json,facts.owner_minutes_supplied.value,raw,owner-clock figures ever supplied
+#,,,,--- W16: prompt lengths (the length-neutrality control on W14) ---
+lf_prompt_w3,w10_ledger_facts.json,facts.w3_prompt_tokens.value,raw,W3 form-B prompt tokens
+lf_prompt_w11,w10_ledger_facts.json,facts.w11_prompt_tokens.value,raw,W11 clarified form-B prompt tokens
+lf_prompt_w14,w10_ledger_facts.json,facts.w14_prompt_tokens.value,raw,W14 degraded form-B prompt tokens
+lf_prompt_w15,w10_ledger_facts.json,facts.w15_prompt_tokens.value,raw,W15 harvest prompt tokens
+#,,,,--- W16: W12 length confound (D-042) ---
+lf_w12_len_delta,w10_ledger_facts.json,facts.w12_len_delta_tokens.value,raw,D-042 length gap in tokens
+lf_w12_len_ncorr,w10_ledger_facts.json,facts.w12_len_ncorr_tokens.value,raw,D-042 mean n_gen phat=-1
+lf_w12_len_corr,w10_ledger_facts.json,facts.w12_len_corr_tokens.value,raw,D-042 mean n_gen phat=+1
+lf_w12_lenonly,w10_ledger_facts.json,facts.w12_lenonly_acc.value,raw,D-042 length-only decoder bacc
+#,,,,--- W16: D-051 the direction judge fails where the model fails ---
+lf_d051_wrong_k,w10_ledger_facts.json,facts.d051_judge_wrong_k.value,raw,D-051 judge-correct traces landing unfavoured
+lf_d051_wrong_n,w10_ledger_facts.json,facts.d051_judge_wrong_n.value,raw,D-051 denominator
+lf_d051_w3_below,w10_ledger_facts.json,facts.d051_agree_w3_below.value,raw,D-051 judge-regex agreement W3 below_good
+lf_d051_w3_above,w10_ledger_facts.json,facts.d051_agree_w3_above.value,raw,D-051 judge-regex agreement W3 above_good
+lf_d051_w14_below,w10_ledger_facts.json,facts.d051_agree_w14_below.value,raw,D-051 judge-regex agreement W14 below_good
+lf_d051_w14_above,w10_ledger_facts.json,facts.d051_agree_w14_above.value,raw,D-051 judge-regex agreement W14 above_good
+lf_d051_judge_w3,w10_ledger_facts.json,facts.d051_judge_gap_w3.value,raw,D-051 corr conditional gap W3 judge basis
+lf_d051_regex_w3,w10_ledger_facts.json,facts.d051_regex_gap_w3.value,raw,D-051 corr conditional gap W3 regex basis
+lf_d051_regex_w14,w10_ledger_facts.json,facts.d051_regex_gap_w14.value,raw,D-051 corr conditional gap W14 regex basis
+lf_d051_res_k,w10_ledger_facts.json,facts.d051_resolved_k.value,raw,D-051 degraded traces the regex instrument resolves
+lf_d051_res_n,w10_ledger_facts.json,facts.d051_resolved_n.value,raw,D-051 degraded traces total
+#,,,,--- W16: D-053 / D-054 / D-055 / D-056 ---
+lf_d053_corr,w10_ledger_facts.json,facts.d053_corrected_agree.value,raw,D-053 corrected extractor agreement
+lf_d053_raw,w10_ledger_facts.json,facts.d053_raw_agree.value,raw,D-053 raw extractor agreement
+lf_d054_idle_min,w10_ledger_facts.json,facts.d054_idle_minutes.value,raw,D-054 idle GPU minutes
+lf_d054_idle_pct,w10_ledger_facts.json,facts.d054_idle_pct.value,raw,D-054 idle share of the W15 GPU bill
+lf_d054_idle_cost,w10_ledger_facts.json,facts.d054_idle_cost.value,raw,D-054 idle cost in dollars
+lf_d054_compute_pct,w10_ledger_facts.json,facts.d054_compute_pct_w15.value,raw,W15 compute share of billed pod time
+lf_d055_lam_decl,w10_ledger_facts.json,facts.d055_lam_declared.value,raw,D-055 declared locked fraction
+lf_d055_lam_meas,w10_ledger_facts.json,facts.d055_lam_measured.value,raw,D-055 measured locked fraction
+lf_d055_locked_k,w10_ledger_facts.json,facts.d055_locked_k.value,raw,D-055 locked pairs of 40
+lf_d055_pow_decl,w10_ledger_facts.json,facts.d055_power_declared_worst.value,raw,D-055 declared power at the worst cell
+lf_d055_pow_meas,w10_ledger_facts.json,facts.d055_power_measured_worst.value,raw,D-055 measured power at the worst cell
+lf_d055_pilot,w10_ledger_facts.json,facts.d055_pilot_cost.value,raw,D-055 cost of the pilot that would have caught it
+lf_d056_sd,w10_ledger_facts.json,facts.d056_within_sd.value,raw,D-056 within-class sd of the belief coordinate
+lf_d056_sep_sd,w10_ledger_facts.json,facts.d056_sep_over_sd.value,raw,D-056 separation over sd
+lf_d056_sep_agg,w10_ledger_facts.json,facts.d056_sep_aggregate.value,raw,D-056 aggregate separation
+#,,,,--- W16: W15 power and harvest facts (prose-only in P-014) ---
+lf_w15_pow_lo,w10_ledger_facts.json,facts.p014_power_achieved_lo.value,raw,P-014 achieved power lower bound
+lf_w15_pow_hi,w10_ledger_facts.json,facts.p014_power_achieved_hi.value,raw,P-014 achieved power upper bound
+lf_w15_pow_decl_lo,w10_ledger_facts.json,facts.p014_power_declared_lo.value,raw,D-048 declared power lower bound
+lf_w15_pow_decl_hi,w10_ledger_facts.json,facts.p014_power_declared_hi.value,raw,D-048 declared power upper bound
+lf_jc4_pow_lo,w10_ledger_facts.json,facts.jc4_power_lo.value,raw,JC-4 diagnostic power lower bound
+lf_jc4_pow_hi,w10_ledger_facts.json,facts.jc4_power_hi.value,raw,JC-4 diagnostic power upper bound
+lf_jc4_ff,w10_ledger_facts.json,facts.jc4_falsefire.value,raw,JC-4 diagnostic false-fire rate
+lf_jc4_mde,w10_ledger_facts.json,facts.jc4_mde.value,raw,JC-4 diagnostic 80-percent-power effect size
+lf_w15_cut_median,w10_ledger_facts.json,facts.w15_cut_median.value,raw,W15 median cut point
+lf_w15_labelled,w10_ledger_facts.json,facts.w15_n_labelled.value,raw,W15 regex-labelled rollouts
+lf_w15_agree,w10_ledger_facts.json,facts.w15_judge_regex_agree.value,raw,W15 judge-regex agreement on the nominated set
+lf_w15_swapself,w10_ledger_facts.json,facts.w15_swap_self_delta.value,raw,W15 mean SWAP-SELF edit difference
+lf_w15_ratio,w10_ledger_facts.json,facts.w15_contrast_ratio.value,raw,W15 contrast-to-noise ratio
+lf_w15_randratio,w10_ledger_facts.json,facts.w15_rand_ratio.value,raw,W15 RAND-to-SWAP perturbation ratio
+lf_hl_rows,w10_ledger_facts.json,facts.handlabel_rows.value,raw,hand-label sheet rows
+lf_hl_filled,w10_ledger_facts.json,facts.handlabel_filled.value,raw,hand-label sheet rows filled
+#,,,,--- W16: W11 the comprehension intervention (form B primary) ---
+w11_pa,w11_arms.csv,form=B;arm=above_good::direction_correct_rate,f4,W11 comprehension above_good
+w11_pb,w11_arms.csv,form=B;arm=below_good::direction_correct_rate,f4,W11 comprehension below_good
+w11_land_above,w11_arms.csv,form=B;arm=above_good::landing_judge,f4,W11 landing above_good judge basis
+w11_land_below,w11_arms.csv,form=B;arm=below_good::landing_judge,f4,W11 landing below_good judge basis
+w11_n_side,w11_arms.csv,form=B;arm=above_good::n,int,W11 rollouts per arm
+w11_gap,w11_prediction.csv,form=B::gap_observed,s4,W11 observed landing gap form B
+w11_gap_lo,w11_prediction.csv,form=B::gap_ci_lo,s3,W11 gap CI low
+w11_gap_hi,w11_prediction.csv,form=B::gap_ci_hi,s3,W11 gap CI high
+w11_pred,w11_prediction.csv,form=B::gap_pred,s4,W11 mixture prediction
+w11_pred_lo,w11_prediction.csv,form=B::pred_lo,s3,W11 prediction interval low
+w11_pred_hi,w11_prediction.csv,form=B::pred_hi,s3,W11 prediction interval high
+w11_power,w11_prediction.csv,form=B::distinguishing_power,f3,W11 C1 distinguishing power
+w11_A_gap,w11_prediction.csv,form=A::gap_observed,s4,W11 observed gap form A
+w11_A_pred,w11_prediction.csv,form=A::gap_pred,s4,W11 predicted gap form A
+w11_A_power,w11_prediction.csv,form=A::distinguishing_power,f3,W11 form A distinguishing power
+w11_corr_gap,w11_interaction.csv,form=B;group=corr;kind=conditional_gap::rate_w11,s4,W11 corr conditional gap
+w11_corr_gap_w3,w11_interaction.csv,form=B;group=corr;kind=conditional_gap::rate_w3,s4,W3 corr conditional gap same cells
+#,,,,--- W16: W12 belief-formation timing ---
+w12_best_layer,w12_headline.json,best_layer,int,W12 frozen best layer
+w12_align_hi,w12_headline.json,layer_means_alignment_a.29,f4,W12 best-layer mean alignment-a bacc
+w12_align_lo,w12_headline.json,layer_means_alignment_a.35,f4,W12 weakest-layer mean alignment-a bacc
+w12_n_labelled,w12_headline.json,n_traces_labelled,int,W12 labelled traces
+w12_n_cause,w12_headline.json,n_with_cause_token,int,W12 traces carrying a cause token
+w12_flips,w12_headline.json,n_flips_ordered_rule,int,W12 belief flips under the ordered rule
+w12_flips_strict,w12_headline.json,n_flips_strict_rule,int,W12 belief flips under the strict rule
+w12_falseflip,w12_headline.json,false_flip_empirical_ordered,f4,W12 label-shuffled false-flip rate
+w12_cutpoints,w12_headline.json,n_valid_cutpoints,int,W12 valid cut points
+w12_pairs_possible,w12_headline.json,n_w13_pairs_possible,int,W12 opposite-belief pairs possible
+w12_pairs_disjoint,w12_headline.json,n_w13_pairs_disjoint,int,W12 disjoint pairs under the settle_pos rule
+w12_onset_k,w12_headline.json,onset_rule.k_consecutive,int,W12 frozen onset rule consecutive bins
+w12_onset_pct,w12_headline.json,onset_rule.percentile,f3,W12 frozen onset rule percentile
+#,,,,--- W16: W14 the degraded-wording arm and the dose-response ---
+w14_pa,w14_arms.csv,arm=above_good::direction_correct_rate,f4,W14 comprehension above_good
+w14_pb,w14_arms.csv,arm=below_good::direction_correct_rate,f4,W14 comprehension below_good
+w14_land_above,w14_arms.csv,arm=above_good::landing_judge,f4,W14 landing above_good judge basis
+w14_land_below,w14_arms.csv,arm=below_good::landing_judge,f4,W14 landing below_good judge basis
+w14_n_side,w14_arms.csv,arm=above_good::n,int,W14 rollouts per arm
+w14_gap,w14_prediction.csv,form=B::gap_observed,s4,W14 observed landing gap
+w14_gap_lo,w14_prediction.csv,form=B::gap_ci_lo,s3,W14 gap CI low
+w14_gap_hi,w14_prediction.csv,form=B::gap_ci_hi,s3,W14 gap CI high
+w14_pred,w14_prediction.csv,form=B::gap_pred,s4,W14 mixture prediction
+w14_pred_lo,w14_prediction.csv,form=B::pred_lo,s3,W14 prediction interval low
+w14_pred_hi,w14_prediction.csv,form=B::pred_hi,s3,W14 prediction interval high
+w14_pow_w11,w14_prediction.csv,form=B::power_vs_w11_level_alt,f3,W14 power against the W11-level alternative
+w14_pow_w3,w14_prediction.csv,form=B::power_vs_w3_level_alt,f3,W14 power against the W3-level alternative
+w14_dose_w3,w14_dose_response.csv,packet=W3 natural::gap_observed,s4,dose-response natural wording
+w14_dose_w11,w14_dose_response.csv,packet=W11 clarified::gap_observed,s4,dose-response clarified wording
+w14_dose_w14,w14_dose_response.csv,packet=W14 degraded::gap_observed,s4,dose-response degraded wording
+w14_pa_w3,w14_dose_response.csv,packet=W3 natural::p_a,f4,dose-response comprehension natural above
+w14_resid_w11,w14_dose_response.csv,packet=W11 clarified::residual_obs_minus_pred,s4,W11 residual observed minus predicted
+w14_resid_w14,w14_dose_response.csv,packet=W14 degraded::residual_obs_minus_pred,s4,W14 residual observed minus predicted
+w14_corr_gap,w14_interaction.csv,group=corr;kind=conditional_gap::rate_w14,s4,W14 corr conditional gap judge basis
+w14_corr_gap_w3,w14_interaction.csv,group=corr;kind=conditional_gap::rate_w3,s4,W3 corr conditional gap same cells
+#,,,,--- W16: W15 the belief transplant ---
+w15_n_pairs,w15_primary.csv,direction=primary;outcome=landing_regex_corr;statistic=swap::n_pairs,int,W15 disjoint pairs per direction
+w15_p_sham,w15_arms.csv,direction=primary;arm=SHAM::P_toward_B_regex_corr,f4,W15 primary SHAM landing
+w15_p_swap,w15_arms.csv,direction=primary;arm=SWAP::P_toward_B_regex_corr,f4,W15 primary SWAP landing
+w15_p_self,w15_arms.csv,direction=primary;arm=SELF::P_toward_B_regex_corr,f4,W15 primary SELF landing
+w15_p_rand,w15_arms.csv,direction=primary;arm=RAND::P_toward_B_regex_corr,f4,W15 primary RAND landing
+w15_m_sham,w15_arms.csv,direction=mirror;arm=SHAM::P_toward_B_regex_corr,f4,W15 mirror SHAM landing
+w15_m_swap,w15_arms.csv,direction=mirror;arm=SWAP::P_toward_B_regex_corr,f4,W15 mirror SWAP landing
+w15_edit_swap,w15_arms.csv,direction=primary;arm=SWAP::edit_norm_mean,f4,W15 SWAP edit norm
+w15_edit_self,w15_arms.csv,direction=primary;arm=SELF::edit_norm_mean,f4,W15 SELF edit norm
+w15_edit_rand,w15_arms.csv,direction=primary;arm=RAND::edit_norm_mean,f4,W15 RAND edit norm
+w15_coh,w15_arms.csv,direction=primary;arm=SWAP::coherence,f3,W15 SWAP arm coherence
+w15_trunc,w15_arms.csv,direction=primary;arm=SWAP::n_truncated,int,W15 SWAP arm truncations
+w15_dswap,w15_primary.csv,direction=primary;outcome=landing_regex_corr;statistic=swap::value,s4,W15 primary delta swap
+w15_dswap_lo,w15_primary.csv,direction=primary;outcome=landing_regex_corr;statistic=swap::ci_lo,s4,W15 primary delta swap CI low
+w15_dswap_hi,w15_primary.csv,direction=primary;outcome=landing_regex_corr;statistic=swap::ci_hi,s4,W15 primary delta swap CI high
+w15_dsr,w15_primary.csv,direction=primary;outcome=landing_regex_corr;statistic=swap_minus_rand::value,s4,W15 primary swap minus rand
+w15_dsr_lo,w15_primary.csv,direction=primary;outcome=landing_regex_corr;statistic=swap_minus_rand::ci_lo,s4,W15 primary swap minus rand CI low
+w15_dsr_hi,w15_primary.csv,direction=primary;outcome=landing_regex_corr;statistic=swap_minus_rand::ci_hi,s4,W15 primary swap minus rand CI high
+w15_m_dswap,w15_primary.csv,direction=mirror;outcome=landing_regex_corr;statistic=swap::value,s4,W15 mirror delta swap
+w15_drand,w15_primary.csv,direction=primary;outcome=landing_regex_corr;statistic=rand::value,s4,W15 primary delta rand
+w15_dself,w15_primary.csv,direction=primary;outcome=landing_regex_corr;statistic=self::value,s4,W15 primary delta self
+w15_nom_maj,w15_nominated.json,nominate_per_class.1,int,W15 majority class nominated
+w15_nom_min,w15_nominated.json,nominate_per_class.-1,int,W15 minority class nominated
+w15_mean_pos,w15_verdict.json,class_mean_proj.1,f4,W15 class mean projection phat=+1
+w15_mean_neg,w15_verdict.json,class_mean_proj.-1,f4,W15 class mean projection phat=-1
+w15_sep_grid,w15_profiles.json,class_separation_mean_abs,f4,W15 mean per-grid-point class separation
+w15_fin_frozen,w15_surface.csv,run=frozen_primary::final_in_continuation,int,W15 frozen cut finals inside the continuation
+w15_fin_deep,w15_surface.csv,run=deep::final_in_continuation,int,W15 deep cut finals inside the continuation
+w15_txt_frozen,w15_surface.csv,run=frozen_primary::swap_text_differs,int,W15 frozen cut SWAP text differs from SHAM
+w15_txt_deep,w15_surface.csv,run=deep::swap_text_differs,int,W15 deep cut SWAP text differs from SHAM
+w15_val_frozen,w15_surface.csv,run=frozen_primary::swap_final_value_differs,int,W15 frozen cut SWAP final value differs
+w15_val_deep,w15_surface.csv,run=deep::swap_final_value_differs,int,W15 deep cut SWAP final value differs
+w15_tok_frozen,w15_surface.csv,run=frozen_primary::median_continuation_tokens,f1,W15 frozen cut median continuation tokens
+w15_tok_deep,w15_surface.csv,run=deep::median_continuation_tokens,f1,W15 deep cut median continuation tokens
+w15_deep_swap,w15_deep.csv,run=deep;outcome=landing_regex_corr;statistic=swap::value,s4,W15 deep cut delta swap
+w15_deep_swap_lo,w15_deep.csv,run=deep;outcome=landing_regex_corr;statistic=swap::ci_lo,s4,W15 deep cut delta swap CI low
+w15_deep_swap_hi,w15_deep.csv,run=deep;outcome=landing_regex_corr;statistic=swap::ci_hi,s4,W15 deep cut delta swap CI high
+w15_deep_sr,w15_deep.csv,run=deep;outcome=landing_regex_corr;statistic=swap_minus_rand::value,s4,W15 deep cut swap minus rand
+w15_deep_sr_lo,w15_deep.csv,run=deep;outcome=landing_regex_corr;statistic=swap_minus_rand::ci_lo,s4,W15 deep cut swap minus rand CI low
+w15_deep_sr_hi,w15_deep.csv,run=deep;outcome=landing_regex_corr;statistic=swap_minus_rand::ci_hi,s4,W15 deep cut swap minus rand CI high
+w15_deep_self_verb,w15_deep.csv,run=deep;outcome=verbalized;statistic=self::value,s4,W15 deep cut SELF verbalization delta
+w15_deep_self_verb_lo,w15_deep.csv,run=deep;outcome=verbalized;statistic=self::ci_lo,s4,W15 deep cut SELF verbalization CI low
+w15_deep_self_verb_hi,w15_deep.csv,run=deep;outcome=verbalized;statistic=self::ci_hi,s4,W15 deep cut SELF verbalization CI high
+w14_pb_w3,w14_dose_response.csv,packet=W3 natural::p_b,f4,dose-response comprehension natural below
+n_wave2_gens,w10_derived.json,totals.wave2_gens,comma,Wave-2 generations across W11/W14/W15
+n_all_intervened,w10_derived.json,totals.all_intervened,comma,generations carrying an activation intervention
+n_w15_edited,w10_derived.json,totals.w15_edited,comma,W15 hook-edited generations
+n_w15_harvest,w10_derived.json,totals.w15_harvest,comma,W15 harvest rollouts
+w13_ordered_power,w13_sims.csv,round=1;kind=world;variant=tercile;world=genuine_belief::fire_rate_q950,f3,W13 ordered rung power in the genuine-belief world
+lf_n_packets,w10_ledger_facts.json,facts.n_packets.value,raw,work orders in the project
+lf_owner_requests,w10_ledger_facts.json,facts.owner_requests.value,raw,times the owner clock was requested
