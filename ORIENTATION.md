@@ -97,10 +97,99 @@ W10 skepticism pass, build script, write-up assembly from E-/V- entries only
 W11 Wave 2: comprehension intervention (clarified wording) — the mixture model's causal test
 W12 Wave 2: belief-formation timing (done)
 W13 Wave 2: the D-042 resolution — E-007 vs the length confound (done; transplant CANCELLED by R-015(3))
+W14 Wave 2 (R-016): bidirectional comprehension dose-response — degraded wording pushes
+    comprehension DOWN against the same frozen mixture formula; + the blinded hand-label
+    packet that calibrates the direction judge (this packet)
+W15 Wave 2 (R-016): the belief transplant, re-sized with fresh pairs (R-015(3)'s
+    cancellation was a sizing outcome; generation is cheap)
 ```
 Delivered by the W0b order; topology by ruling **R-004**.
 
-## Where things stand (end of W13 — the project attacked its own best finding, and it held)
+## Where things stand (end of W14 — the mixture is a dose-response law, and the instrument that measures it broke)
+
+**W10 ships. W13 is ACCEPTED and P-012 promoted (V-023 → E-012, to be written by the
+researcher). R-016 (owner-directed) extended Wave 2 with W14 (this packet) and W15 (the powered
+belief transplant), with owner minutes now tracked per packet. Assembly closes Sept 3 owner
+time; submission Fri Sept 4 11:59pm PT.**
+
+**W14 asked whether the belief-mixture model tracks comprehension DOWNWARD as well as upward.**
+W11 pushed comprehension up with one clarifying sentence and the gap moved to +0.2867, inside
+the interval W3's four cells predict (E-010). One point is a fit, not a law. W14 replaced the
+bet note's two mapping sentences with a **semantically identical nested-negation paraphrase**
+— proved equivalent by an explicit truth table (4/4 branches) and a one-line string diff, with
+the prompt **197 tokens, exactly W3's**, so the manipulation adds no length.
+
+**The result: PR-010 item 6 row D1 fires (P-013).** Measured comprehension fell
+**0.5467 → 0.2905** (`above_good`) and **0.8067 → 0.5772** (`below_good`), and the aggregate
+landing gap fell **+0.120 → −0.0067 [−0.113, +0.107]**, inside the **[−0.2436, +0.0012]** the
+**same frozen formula and the same W3 cells** predict. Both pre-registered alternatives are
+resolved: **0.985** against "the gap stays at W11's level" and **0.974** against the harder
+"the gap stays at W3's level". **The three-point curve is +0.2867 (clarified) → +0.1200
+(natural) → −0.0067 (degraded)**, and the fall shows on **every** basis — corrected regex
++0.200 → +0.127 → −0.020, raw regex +0.167 → +0.067 → −0.033.
+
+**Two qualifications travel with D1, and the second is larger than the result.**
+- **The mixture over-predicts the size of the move in BOTH directions.** W11 came in **0.073
+  below** its prediction, W14 **0.115 above** its. Both residuals point back toward W3: the true
+  response to comprehension is **flatter** than the frozen cells say. W11 saw one side of this
+  and called it "the lower half of the interval"; W14 supplies the mirror image.
+- **D-051 — the degraded wording breaks the DIRECTION JUDGE too.** The judge is handed the
+  prompt and must solve the same nested negation the model does, and it fails the same way:
+  **67 of the 86 `below_good` traces it called `correct` landed on that arm's unfavoured side**,
+  and one concludes verbatim that exceeding τ means "not the bad cause and will, therefore, go
+  to the good cause" — the opposite of its prompt. An independent regex instrument
+  (`w14_dircheck.py`, never reads the mapping sentence) agrees with the judge **0.90–0.96** on
+  W3 and **0.29 / 0.50** on W14. On that calibrated basis **the belief-conditional cells do not
+  move at all** (`corr` gap **+0.5364** vs W3's **+0.4520**), where the frozen basis says they
+  collapsed and crossed (**−0.0814** vs **+0.4456**). **`w14_interaction.csv` read alone says
+  the opposite of the truth.** `p_a`/`p_b` are the only judge-derived inputs to the frozen
+  prediction, so **D1 fires on its own terms with contaminated inputs.** Both halves are the
+  claim of record. E-010 is **not** disturbed — W11's judge read clarified wording, which the
+  W3 control shows it handles fine.
+
+**The blinded hand-label packet is built and waiting** (PR-010 item 8): 50 W3 traces,
+stratified 20/15/15 on the judge's stored classes, fixed-seed, shuffled, **no verdicts, no class
+counts, row ids that encode nothing**, four structural blindness checks passing.
+`analysis/out/w14_handlabel_packet.md` + `w14_handlabel_sheet.csv`; the key
+(`w14_handlabel_key.csv`) is committed and **has not been opened** — only its header line was
+read. `src/w14_handlabel_score.py` (30 lines) computes per-class agreement, Cohen's κ and the
+label-noise bound, and **refuses to run on an unfilled sheet**. **It samples W3 only, so it will
+bound the judge on natural wording — the wording E-005 and E-010 rest on — and says nothing
+about the degraded case (D-051 §3).**
+
+**Other findings.** **D-050** the generation launch lost `$PATH` and vLLM died on a missing
+`ninja`; naming the interpreter is not enough, `bootstrap.sh` must be sourced in the same shell,
+and its own banner names the interpreter that has torch rather than the one that has vLLM.
+**D-052** the API projection under-shot by **61 %** — the direction judge emitted **522** output
+tokens per call against D-040's 56 and needed **421 calls for 300 traces**; that overrun was
+D-051 showing up on the invoice before it showed up in the analysis.
+
+**⚠ SPEND: $15.60 GPU + $26.50 API = $42.10 of $60; balance $17.90. W14 cost $6.33** — more
+than W11, W12, W13, W7b and W10 combined (S-015). **The $45 stop-and-surface threshold is
+$2.90 away and is SURFACED per standing constraint 6. W15 will cross it if it costs what W14
+cost, and its direction-judge bill is unpriceable from any existing constant (D-052). The
+runner is not authorised to start W15 without the owner raising the cap or approving the
+crossing.** Runner wall time W14 **≈ 1 h 15 m** (T-017). **Owner minutes were not supplied with
+the W14 order** despite R-016 — recorded empty, not estimated.
+
+**Next: the researcher reads `analysis/out/w14_samples/*.md` (2 arms × 5 traces at the frozen
+blind indices 0–4), rules on P-013 and on how much D-051 costs it, and rules on whether the
+hand-label packet should be extended to degraded wording.** The owner returns the filled sheet
+whenever convenient; `w14_handlabel_score.py` runs then. **W15 needs a spend decision first.**
+Do not start W15.
+
+Tooling added by W14: **`prompts_w14.py`** (degraded forms by substring swap; `--truth-table`,
+`--diff`, 17/17 selftest) · **`gen_w14.py`** (30-clause laptop+pod selftest) ·
+**`w14_power.py`** (the R-013 pre-freeze sims: 3 p_b rules × 2 alternative worlds × 5
+comprehension levels × 2 n, plus MDE) · **`judge_w14.py`** (D-040 constants, W14 caches, reuses
+D-038's transport) · **`analyze_w14.py`** (arms, prediction, the three-point dose-response
+table, interaction) · **`w14_dircheck.py`** (D-051's independent instrument; `--w3` control) ·
+**`samples_w14.py`** · **`w14_recount.py`** (18 body lines) · **`w14_handlabel.py`** (the blind
+packet builder) · **`w14_handlabel_score.py`** (30 lines, run when the sheet returns).
+
+---
+
+## Archived status (end of W13 — the project attacked its own best finding, and it held)
 
 **W10 ships. W11 is promoted (E-010). W12 is ACCEPTED in full (V-020) and W10's audit is CLOSED
 (V-021). R-015 cancelled the belief transplant as infeasible (6 disjoint pairs) and gave the W13

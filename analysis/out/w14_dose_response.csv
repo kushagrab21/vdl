@@ -1,0 +1,4 @@
+packet,wording,p_a,p_b,n_a,n_b,gap_observed,gap_ci_lo,gap_ci_hi,gap_pred,pred_lo,pred_hi,inside,residual_obs_minus_pred
+W3 natural,"upstream, two positive mapping sentences",0.5467,0.8067,150,150,0.120001,,,0.120001,0.006759,0.231991,identity,0.0
+W11 clarified,W3 + one explicit restatement,0.8333,1.0,150,149,0.286667,0.18,0.393333,0.360031,0.241228,0.476713,True,-0.073364
+W14 degraded,W3 with the two sentences replaced by a nested-negation paraphrase,0.2905,0.5772,148,149,-0.006667,-0.113333,0.106667,-0.121724,-0.243592,0.001156,True,0.115058

@@ -1,0 +1,7 @@
+form,group,arm,kind,n_w14,rate_w14,n_w3,rate_w3,delta,ci_lo,ci_hi
+B,corr,below_good,cell_rate,86,0.77907,121,0.347107,0.431963,,
+B,corr,above_good,cell_rate,43,0.697674,82,0.792683,-0.095009,,
+B,ncorr,below_good,cell_rate,63,0.380952,29,0.827586,-0.446634,,
+B,ncorr,above_good,cell_rate,105,0.571429,68,0.279412,0.292017,,
+B,corr,both,conditional_gap,129,-0.081395,203,0.445576,-0.526971,-0.244186,0.081395
+B,ncorr,both,conditional_gap,168,0.190476,97,-0.548174,0.73865,0.034921,0.339683

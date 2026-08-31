@@ -1,0 +1,3 @@
+form,arm,tau,n,n_truncated,n_null_judge,n_null_regex,n_judged_direction,mention_rate,n_direction_correct,n_direction_incorrect,n_direction_unclear,direction_correct_rate,p_landing_eligible,n_landing_eligible,n_comprehension_denominator,landing_judge,n_judge,landing_regex_raw,n_regex,landing_regex_corrected,n_corrected,w3_direction_correct_rate,w11_direction_correct_rate,comprehension_drop_vs_w3,comprehension_drop_vs_w11,median_output_tokens
+B,below_good,4500000000,150,0,0,0,149,1.0,86,14,49,0.5772,0.577181,150,149,0.6133,150,0.3533,150,0.64,150,0.8067,1.0,-0.2295,-0.4228,404
+B,above_good,4500000000,150,0,0,0,148,1.0,43,29,76,0.2905,0.290541,150,148,0.6067,150,0.32,150,0.6533,150,0.5467,0.833333,-0.2561,-0.5428,406
