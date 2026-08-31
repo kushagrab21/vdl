@@ -1,14 +1,14 @@
 no-hand-typed-digits check
 built by: python3 writeup/build.py
 
-placeholders in manifest           : 468
-tokens never used in any template  : 0
+placeholders in manifest           : 482
+tokens never used in any template  : 3 -> w13_ordered_falsefire, w13_repro_lstar, w13_strat_lstar
 
 --- writeup/final.md  (from final.md.tmpl)
-placeholder sites substituted      : 577
+placeholder sites substituted      : 590
 tokens in template not in manifest : 0
-digit characters                   : 2117
-  traceable to a placeholder       : 1953
+digit characters                   : 2177
+  traceable to a placeholder       : 2013
   covered by a whitelist rule      : 164
   UNTRACEABLE (violations)         : 0
 whitelist rules that fired:

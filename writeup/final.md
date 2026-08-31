@@ -400,6 +400,23 @@ estimates, 96 % of the time before it says which cause the bet favours.** That
 is the correlational preview of belief-upstream the intervention was built to test, and it exists
 on form B only.
 
+**It survives a targeted attack on its most obvious confound [measured].** Incorrect-belief traces
+run longer than correct-belief ones, and the number and positions of the scored points are
+functions of that length — so a probe could reach 0.7431 by decoding *how long the
+trace is*. On this same cell a probe given only three scalars — output length, how many estimate
+points the trace has, and where they sit — and **no activations at all** reaches
+**0.6767** against a null 95th percentile of 0.5912. Splitting
+the traces into length terciles, removing the length and position components from every activation
+coordinate on the training points, and training *and* scoring the probe inside a tercile still
+leaves **0.6683** — above both its within-tercile null (0.5889) and the
+same three scalars on the identical folds (0.6392). A pre-registered simulation
+calibrated to this cell says a world where length explains everything produces that outcome
+0.030 of the time. **The believed side is not reducible to trace length — but it is
+not uniform across length either**: in the shortest tercile the activation probe beats the scalars
+0.7750 to 0.5042, and in the longest the scalars still win, 0.8217 to
+0.7342. *The test's power against an effect of the observed size is 0.710, so this
+is a survived attack, not an exoneration.*
+
 ### 5.4 Invariance: marginal at the frozen layer, and the band is exploratory
 
 | cross-form quantity | at ℓ\* = 22 | verdict |

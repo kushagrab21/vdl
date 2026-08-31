@@ -467,3 +467,17 @@ plot_a5,w10_derived.json,plot.ladder[5].alpha,raw,dose label
 plot_x6,w10_derived.json,plot.ladder[6].x,int,figure geometry
 plot_y6,w10_derived.json,plot.ladder[6].y,f1,figure geometry
 plot_a6,w10_derived.json,plot.ladder[6].alpha,raw,dose label
+w13_lenonly,w13_lengthcheck.csv,layer=-1;scope=length_only::accuracy,f4,W13 length-only baseline on E-007's cell
+w13_lenonly_null,w13_lengthcheck.csv,layer=-1;scope=length_only::null_p95,f4,W13 length-only baseline null p95
+w13_repro_lstar,w13_lengthcheck.csv,layer=22;scope=full::accuracy,f4,W13 reproduction of E-007 at l*
+w13_strat_lstar,w13_lengthcheck.csv,layer=22;scope=tercile_resid::accuracy,f4,W13 frozen primary rung at l*
+w13_strat_l27,w13_lengthcheck.csv,layer=27;scope=tercile_resid::accuracy,f4,W13 frozen primary rung at L27
+w13_strat_null_l27,w13_lengthcheck.csv,layer=27;scope=tercile_resid::null_p95,f4,W13 primary rung within-tercile null p95 at L27
+w13_strat_base,w13_lengthcheck.csv,layer=27;scope=tercile_resid::baseline_acc,f4,W13 length-only baseline on the identical within-tercile folds
+w13_t0_act,w13_lengthcheck.csv,layer=27;scope=tercile_resid_group;stratum=0::accuracy,f4,W13 shortest-tercile activation probe at L27
+w13_t0_base,w13_lengthcheck.csv,layer=27;scope=tercile_resid_group;stratum=0::baseline_acc,f4,W13 shortest-tercile length baseline at L27
+w13_t2_act,w13_lengthcheck.csv,layer=27;scope=tercile_resid_group;stratum=2::accuracy,f4,W13 longest-tercile activation probe at L27
+w13_t2_base,w13_lengthcheck.csv,layer=27;scope=tercile_resid_group;stratum=2::baseline_acc,f4,W13 longest-tercile length baseline at L27
+w13_falsefire,w13_sims.csv,round=2;kind=world;variant=tercile_resid;world=pure_length::fire_rate_q950,f3,W13 frozen rung false-fire rate in the pure-length world
+w13_power,w13_sims.csv,round=2;kind=world;variant=tercile_resid;world=genuine_belief::fire_rate_q950,f3,W13 frozen rung power in the genuine-belief world
+w13_ordered_falsefire,w13_sims.csv,round=1;kind=world;variant=tercile;world=pure_length::fire_rate_q950,f3,W13 ordered rung false-fire rate

@@ -6453,3 +6453,274 @@ It does not re-judge a single trace (V-009's 20–30 % label-noise carve-out is 
 unchanged); it does not touch form A, `below_good`, or W5's cosine/transfer results; it does
 not re-open W7; and it does not decide E-007's fate on any layer other than L27 and L22.
 It buys **no GPU**. Expected spend **$0.00**.
+
+---
+
+## P-012 · W13: E-007 survives a targeted length attack — but the survival is narrower than E-007's own number · 2026-08-31
+
+Provisional. Governed by **PR-009**, frozen at commit `15959cc` **before any statistic below
+was computed on a real p̂ label**. Laptop only; **$0.00**.
+
+### 1 · Headline — the frozen consequence table's **SURVIVES** row fires
+
+| quantity, form B `above_good` est points, n = 109 traces (79 p̂=+1 / 30 p̂=−1), 203 points | L22 (ℓ\*) | L27 (primary) |
+|---|---|---|
+| **reproduction** — E-007's own probe on the analysis cell | **0.7431** | **0.7604** |
+| its 1000-perm null p95 / p | 0.5892 / 0.0010 | 0.5859 / 0.0010 |
+| **frozen primary rung `tercile_resid`** | **0.6531** | **0.6683** |
+| its **within-tercile** null p95 / p | 0.5871 / **0.0050** | 0.5889 / **0.0020** |
+| **length-only baseline on the IDENTICAL folds** | **0.6392** | **0.6392** |
+| **verdict** | **fires** (+0.0139 over baseline) | **fires** (+0.0291 over baseline) |
+| ordered rung `tercile` (reported as ordered) | 0.6862 | 0.6939 | 
+| its null p95 / baseline | 0.5929 / 0.6392 | 0.5883 / 0.6392 |
+| ordered-rung verdict | **fires** | **fires** |
+| `matched` (30 nearest-`n_gen` pairs, 60 traces) | 0.6778 vs null 0.6001, base 0.5806 | 0.6806 vs 0.5974, base 0.5806 |
+| **secondary, residualized full cell** (not decisive) | 0.6392 vs null 0.5902 (p 0.0040) | 0.6549 vs null 0.5918 (p 0.0010) |
+| — its baseline, the full-cell length probe | **0.6767 — the residualized probe does NOT beat it** | **0.6767 — does NOT beat it** |
+
+> **PR-009 §5, row SURVIVES: the frozen primary rung fires at BOTH L27 and L22. E-007 stands.**
+> A pure-length world produces this outcome **3 %** of the time (PR-009 item 4).
+> The ordered rung agrees at both layers, so no PARTIAL condition is triggered.
+
+command: `python3 src/w13_lengthcheck.py --procs 9` → `analysis/out/w13_lengthcheck.csv`
+(259 rows: every layer × every rung, plus per-tercile detail). Runner wall **10,330 s**.
+
+### 2 · The length-only baseline is much larger than D-042 suggested
+
+**A probe with three scalars and no activations at all — `n_gen`, `n_est_points`, mean
+`est`-point token position — reads 0.6767** on E-007's own cell (null p95 0.5912,
+**p = 0.0010**, same 20 folds). D-042 reported **0.6421** for `n_gen` alone on W12's
+`above_good` cell. **The channel D-042 found is real here, and it is bigger than D-042
+measured**: 0.6767 against E-007's 0.7431 at ℓ\*. E-007's margin over a probe that knows only
+how long the trace is and where its numbers sit is **0.0664**.
+
+### 3 · Where the incremental validity actually lives — the finding that qualifies §1
+
+The tercile average conceals a three-way split. At **L27**, frozen primary rung:
+
+| tercile | n | `n_gen` range | +1 / −1 | activation probe | length-only, same folds |
+|---|---|---|---|---|---|
+| **0** shortest | 37 | 281–369 | 29 / 8 | **0.7750** | **0.5041** |
+| **1** middle | 36 | 371–435 | 30 / 6 | **0.4958** | 0.5916 |
+| **2** longest | 36 | 444–1074 | 20 / 16 | 0.7341 | **0.8216** |
+
+- **In the shortest tercile the activation probe beats length by 0.27** — clean incremental
+  validity, and it is what carries the result.
+- **In the middle tercile the activation probe is at chance** (0.4958). That stratum has only
+  **6** minority traces; PR-009's fallback kept it at exactly the ≥6 line.
+- **In the longest tercile length still beats activations** (0.8216 vs 0.7341) — the tercile
+  spans 444 to 1074 tokens, so it is not a length-controlled stratum in any strong sense.
+
+**The honest one-line reading: E-007's signal is not reducible to length, but it is not
+uniform across length either, and the packet's strongest single number (0.6767 from three
+scalars) is a caution the write-up must carry.**
+
+### 4 · The layer sweep
+
+The frozen primary rung beats its own null at **27 of 48** layers and **also** beats the length
+baseline at **15 of 48** — layers **20–33 and 36**, a contiguous band containing both decision
+layers and W5's exploratory 24–36 band. Its own best layer is **L26 (0.6711)**. The
+reproduction beats its null at **42 of 48**, matching W5's published count exactly.
+
+### 5 · Which hypothesis, per standing constraint 7
+
+**(1) A bug in new code.** Checked twice. The reproduction returns **0.7431 / 0.7604** against
+`w5_probes.csv`'s **0.743056 / 0.760417** — agreement to every printed digit, on a path that
+shares no code with `direction_w5.py` beyond the frozen hyper-parameters. Both smoke worlds
+pass (PR-009 item 7): the pipeline refuses pure-length labels and keeps a planted orthogonal
+belief signal. **(2) A flaw in the instruction** — yes, and it is item 4's: the ordered
+criterion false-fires at **9.5 %**, and **no rung of the ladder meets both pre-freeze gates**
+(**D-048**). **(3) A discovery** — the incremental validity is real but concentrated in the
+short-trace stratum, and the un-stratified residualized probe does **not** clear the full-cell
+length baseline.
+
+### 6 · What is NOT established
+
+(a) That E-007's number is *unconfounded* — only that it is **not fully explained** by length
+at the frozen resolving power. (b) Anything about form A, `below_good`, W5's cosine/transfer
+results or W7. (c) The middle tercile's chance reading is **uninterpretable at 6 minority
+traces**, not evidence of absence. (d) p̂ labels inherit V-009's 20–30 % label-noise carve-out.
+
+### 7 · The load-bearing recount
+
+`python3 src/w13_recount.py` — fresh script, `json`/`sys`/`numpy`/`safetensors` only, **no
+scikit-learn**, probe by hand (Newton–IRLS on the same convex objective):
+
+```
+recount | 203 est points, 109 traces (+1 79 / -1 30) | terciles kept [0, 1, 2]
+   tercile 0  n=37  n_gen [281,369]  +1 29  -1 8
+   tercile 1  n=36  n_gen [371,435]  +1 30  -1 6
+   tercile 2  n=36  n_gen [444,1074]  +1 20  -1 16
+L22  RECOUNT full 0.7431
+      RECOUNT tercile        0.6862   (terciles 0.7722 0.5514 0.7350)
+      RECOUNT tercile_resid  0.6531   (terciles 0.7750 0.4917 0.6925)
+L27  RECOUNT full 0.7604
+      RECOUNT tercile        0.6939   (terciles 0.7750 0.5292 0.7775)
+      RECOUNT tercile_resid  0.6683   (terciles 0.7750 0.4958 0.7342)
+```
+
+**Every headline agrees to 4 decimal places** — reproduction 0.7431 / 0.7604, primary rung
+0.6531 / 0.6683, ordered rung 0.6862 / 0.6939. PR-009 item 6 required 0.02 / 0.05 / same sign;
+the achieved agreement is **0.0000**, in 8 seconds, from a hand-written optimiser.
+
+---
+
+## D-046 · Two files in this ledger call different quantities `n_gen`, and they differ by exactly 1 · 2026-08-31
+
+`runs/w3_frozen/form_B/above_good.json` gives `n_output_tokens`; `analysis/out/w12_cutpoints.csv`
+gives `n_gen`. **For all 113 traces the two files share, `n_output_tokens` = `n_gen` + 1**, with
+no exceptions — W12's column excludes the terminating token. W13 uses `n_output_tokens` and says
+so in `src/w13_lengthcheck.py`'s docstring. **Nothing is affected**: the offset is constant, so
+rank-based terciles, matched pairs and any logistic fit in `n_gen` are all invariant to it.
+Recorded because two ledger-facing quantities sharing a name and not a definition is exactly the
+class D-037 was about.
+
+---
+
+## D-047 · PR-009's consequence table says "a new `E-` entry"; the standing rule says the runner may not write one · 2026-08-31
+
+**PR-009 §5's SURVIVES row, written by the runner, reads "E-007 stands. A new `E-` entry
+records that it survived a targeted length attack."** The standing ledger rule
+(`ORIENTATION.md`; V-016 §2) is that `P-` is promoted to `E-` **by a `V-`**, and the runner does
+not self-promote. **The standing rule wins.** W13's result is written as **P-012**; **E-012 is
+allocated and reserved** for the researcher's promotion. The runner flags that its own
+pre-registration contained a wording it was not entitled to execute — caught only because
+executing it would have broken a rule older than the packet.
+
+---
+
+## D-048 · No rung of the W13 ladder meets both gates; R-013-as-amended can be unsatisfiable, and a packet needs a rule for that · 2026-08-31
+
+**R-015(1) amended R-013 to require a null simulation AND a calibrated alternative AND a stated
+minimum detectable effect.** W13 is the first packet to run it. **The rule turned out to be
+unsatisfiable at this n.** Four rungs, 200 replicates per world, gates (false-fire ≤ 0.05,
+power ≥ 0.80):
+
+| rung | false-fire | power |
+|---|---|---|
+| `tercile` (as ordered) @ q95 | **0.095** | 0.950 |
+| `tercile` @ q99 | 0.055 | 0.820 |
+| `tercile_resid` @ q95 | **0.030** | **0.710** |
+| `resid_full` @ q95 | 0.020 | 0.700 |
+| `matched` @ q95 | 0.120 | 0.970 |
+| `matched` @ q99 | 0.060 | 0.860 |
+
+**At 109 traces with 30 minority, holding the length confound at 5 % and detecting the observed
+effect at 80 % are not simultaneously available.** The frontier is real, not a coding artefact:
+every rung that tightens the confound control does it by throwing away training data or
+subspace, and both cost power.
+
+**What W13 did about it, before the data (PR-009 item 4b):** it did **not** pick the rung that
+made survival likeliest. It froze **`tercile_resid` @ q95** — the rung whose errors run
+**against** E-007 — reported the ordered rung alongside, and pre-declared in writing that **a
+non-firing primary rung alone could never be read as E-007 failing, because its power is 0.710**.
+The result made that asymmetry moot (both rungs fired), but the rule was written when it could
+not have been known.
+
+**Register, extending D-032 and D-043.** D-032: freeze evidence that the threshold is inside the
+range the design can resolve. D-043: a null simulation controls false positives and says nothing
+about power. **W13 adds the third case — when no setting satisfies both, the pre-registration
+must say which error it prefers and why, and must state the reading that a non-result is then
+allowed to bear.** A design that cannot resolve its question is fixed or not run; a design that
+can only *half* resolve it must declare which half.
+
+---
+
+## D-049 · The RunPod balance moved $0.0171 with no pod in the packet · 2026-08-31
+
+**R-014's close-of-packet probe, run with nothing to bill:** `clientBalance` **$21.0235** against
+S-013's post-W12 reading of **$21.0406** — **$0.0171 lower**, with `currentSpendPerHr` **$0.00**
+and `GET /pods` returning **200, empty**. **W13 provisioned nothing and generated nothing**, so
+the drift is not this packet's compute. It is not attributed here (network egress and end-of-day
+settlement are both candidates and neither is checkable from the API surface this project uses).
+**Recorded because R-014's whole value is that the balance is a second, independent set of books,
+and a second set of books is only worth keeping if disagreements get written down.** The project
+ledger continues to bill GPU from the pod window per R-006(3); cumulative GPU stays **$15.12**.
+
+---
+
+## S-014 · Spend, W13 · 2026-08-31
+
+| item | value |
+|---|---|
+| GPU | **$0.00** — no pod created, `GET /pods` **200, empty**, `currentSpendPerHr` **$0.00** |
+| API | **$0.00** — **zero** model calls. Every label came from the frozen `w3_direction_cache.json`; the R-014 Anthropic probe was **deliberately not run**, because R-014's trigger is "before the first spend" and this packet has no first spend — probing would have *created* the only charge in the packet |
+| hardware | the runner's laptop, 10 cores |
+
+**Total project spend unchanged: $15.12 GPU + $20.65 API = $35.77 of the $60 cap;
+balance $24.23.** The **$45** surfacing threshold is not approached. See **D-049** for the
+$0.0171 the RunPod balance moved anyway.
+
+---
+
+## T-016 · Time, W13 · 2026-08-31
+
+Owner-clock minutes: **not supplied — D-025 / D-026 / R-010(5).**
+Runner wall time, W13: **≈ 5 h 05 m**. GPU wall **0.000 h**.
+
+| phase | wall | note |
+|---|---|---|
+| re-orientation, transcription of V-020 / V-021 / R-015 | ~20 m | |
+| harness + both smoke worlds + the recount script | ~35 m | the reproduction was confirmed in a scratch prototype first (**JC-6**) |
+| **the R-015(1) pre-freeze simulations — four rounds** | **~1 h 05 m** | round 1 rejected the ordered criterion; rounds 2–4 priced three more rungs and the MDE |
+| write and commit PR-009 | ~20 m | |
+| **the analysis run, 48 layers × 4 rungs × 1000 permutations** | **2 h 52 m** | 10,330 s of laptop compute; ~4.1 M logistic fits |
+| recount, ledger, write-up update, rebuild | ~50 m | the recount itself took **8 s** |
+
+**The most valuable hour in this packet was the simulation hour, and for the second packet
+running it changed the answer before the data existed** — W12's sims turned an onset into a
+null; W13's turned the ordered decision rule into one that errs against the finding it tests.
+**The most avoidable cost was the analysis run**: 2 h 52 m of laptop time to compute
+1000-permutation nulls at 48 layers with `sklearn`'s `lbfgs`, when the hand-written Newton probe
+in `w13_recount.py` reproduces the same numbers to 4 decimals **in 8 seconds**. A W14 that needed
+this again would use the recount's optimiser and finish in minutes.
+
+---
+
+## V-022 · W13 runner verification: precedence, reproduction, recount, rebuild · 2026-08-31
+
+**A runner verification note, not a researcher audit.** The researcher's audit is the reading of
+`writeup/final.md` end to end and the ruling on P-012.
+
+**(1) PR-009 preceded every real-label statistic — from `git log`, not from memory.**
+
+```
+15959cc  W13: transcribe V-020 ...; pre-register PR-009 - the D-042 resolution ...
+a8c4f5d  W12: orientation status - the onset criterion does not fire ...
+```
+
+`analysis/out/w13_lengthcheck.csv` did not exist when `15959cc` was written; it is written only
+by `src/w13_lengthcheck.py`, which `15959cc` also carries. The four simulation rounds all
+predate `15959cc` and are pasted into PR-009 item 4. **What did precede the freeze**, and is
+declared as **JC-6**: a scratch prototype computed the *reproduction* of E-007's already-published
+0.743056 / 0.760417, to confirm the analysis cell could support the check at all. **No stratified
+statistic, no length-only statistic and no null was computed on a real label before the freeze.**
+
+**(2) The reproduction is exact.** `0.7431` / `0.7604` against `w5_probes.csv`'s
+`0.743056` / `0.760417`. PR-009 item 2 made a mismatch a packet-stopping `D-`; there is none.
+
+**(3) The apparatus is validated in both directions.** `w13_lengthcheck.py --smoke` refuses
+pure-length labels (stratified 0.4700, baseline 0.9050 → does not fire) and keeps a planted
+orthogonal belief signal (0.9983 → fires). Per **R-015(2)** it writes only to
+`analysis/out/smoke_w13_lengthcheck.csv`; **no shipped filename was touched by a test in this
+packet**, which is the D-045 near-miss closed.
+
+**(4) The load-bearing recount agrees to 4 decimal places on all six headline numbers**, from a
+fresh script with no scikit-learn and a hand-written optimiser. PR-009 item 6 allowed 0.02 / 0.05;
+the achieved disagreement is 0.0000.
+
+**(5) The build is regenerated and verified.** `python3 writeup/build.py` → **0 untraceable
+digits** in both documents; `--verify` → **IDENTICAL** for `final.md` (54,618 bytes) and
+`compact.html` (41,818 bytes). The 14 new tokens all resolve from `w13_lengthcheck.csv` and
+`w13_sims.csv`; **not one digit of the new paragraph is typed.**
+
+**(6) `upstream/` is untouched** — `git -C upstream status --porcelain` prints nothing.
+
+**(7) Nothing was bought.** No pod, no model call. `GET /pods` **200, empty**;
+`currentSpendPerHr` **$0.00**. See **D-049**.
+
+**(8) What is NOT verified here.** (a) That E-007 is unconfounded — see P-012 §6. (b) The
+middle tercile's 0.4958, which rests on **6** minority traces. (c) The simulations' faithfulness:
+they use the real activation geometry but a **logistic** length→label model and a **rank-one**
+planted belief signal, and a real belief representation need not be rank one. (d) **P-012 is
+provisional; E-012 is reserved and not written (D-047).**

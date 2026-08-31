@@ -400,6 +400,23 @@ estimates, {{w5_pre_verbal_pct}} % of the time before it says which cause the be
 is the correlational preview of belief-upstream the intervention was built to test, and it exists
 on form B only.
 
+**It survives a targeted attack on its most obvious confound [measured].** Incorrect-belief traces
+run longer than correct-belief ones, and the number and positions of the scored points are
+functions of that length — so a probe could reach {{w5_B_balacc_lstar}} by decoding *how long the
+trace is*. On this same cell a probe given only three scalars — output length, how many estimate
+points the trace has, and where they sit — and **no activations at all** reaches
+**{{w13_lenonly}}** against a null {{lf_ci_pct}}th percentile of {{w13_lenonly_null}}. Splitting
+the traces into length terciles, removing the length and position components from every activation
+coordinate on the training points, and training *and* scoring the probe inside a tercile still
+leaves **{{w13_strat_l27}}** — above both its within-tercile null ({{w13_strat_null_l27}}) and the
+same three scalars on the identical folds ({{w13_strat_base}}). A pre-registered simulation
+calibrated to this cell says a world where length explains everything produces that outcome
+{{w13_falsefire}} of the time. **The believed side is not reducible to trace length — but it is
+not uniform across length either**: in the shortest tercile the activation probe beats the scalars
+{{w13_t0_act}} to {{w13_t0_base}}, and in the longest the scalars still win, {{w13_t2_base}} to
+{{w13_t2_act}}. *The test's power against an effect of the observed size is {{w13_power}}, so this
+is a survived attack, not an exoneration.*
+
 ### 5.4 Invariance: marginal at the frozen layer, and the band is exploratory
 
 | cross-form quantity | at ℓ\* = {{w5_lstar}} | verdict |
