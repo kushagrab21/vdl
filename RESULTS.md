@@ -8490,3 +8490,28 @@ by a named command over committed files should not have been written down in the
 **The two figures above can be, and the ones in the commit message were not.**
 
 ---
+
+## D-060 · V-028(1)'s three `final.md` counts are one build stale · 2026-08-31
+
+**V-028 §(1) was written from the second-to-last build.** After it was drafted, two hand-typed
+word-counts in the write-up ("across sixteen work orders", "and they were, sixteen times") were
+replaced with the `{{lf_n_packets}}` placeholder, which is what the project's own discipline
+requires and which changes the tallies V-028 quotes. From the committed
+`analysis/out/w10_digits_check.txt`:
+
+| `final.md` | V-028 says | committed build says |
+|---|---|---|
+| placeholder sites substituted | 875 | **877** |
+| digit characters | 3,382 | **3,386** |
+| traceable to a placeholder | 3,070 | **3,074** |
+
+**Everything V-028 §(1) actually asserts is unchanged**: **0 UNTRACEABLE** in both documents,
+whitelist coverage **312**, `--verify` **IDENTICAL** for both, **2** unused tokens, and the
+`compact.html` figures (271 / 2,320 / 945 / 1,375) are all correct as written. Regenerate with
+`python3 writeup/build.py`; the report it writes to `analysis/out/w10_digits_check.txt` is
+committed and is the number of record.
+
+**Recorded rather than fixed in place, per the ledger's append-only rule.** The lesson is the
+small one: a verification note must be written *after* the last build, not before it.
+
+---
