@@ -6724,3 +6724,50 @@ middle tercile's 0.4958, which rests on **6** minority traces. (c) The simulatio
 they use the real activation geometry but a **logistic** length→label model and a **rank-one**
 planted belief signal, and a real belief representation need not be rank one. (d) **P-012 is
 provisional; E-012 is reserved and not written (D-047).**
+
+---
+
+## V-023 · W13 audit — transcribed verbatim from the courier · 2026-08-31
+
+**Transcribed verbatim. The courier's header read `V- · W13 audit · 2026-08-31`; the number
+V-023 is allocated here by the runner, continuing from V-022.**
+
+```
+## V- · W13 audit · 2026-08-31
+W13 ACCEPTED; P-012 PROMOTED (E-012): E-007 survived a targeted length attack under a
+pre-registered rung whose errors ran against it (stratified+residualized 0.6683 > null
+0.5889 > scalar baseline 0.6392 on identical folds; pure-length worlds produce this 3% of
+the time; power 0.710 — a survived attack, not an exoneration, and that phrasing is the
+claim of record). JC-5 RATIFIED: the §5.3 paragraph stays; dropping either qualification
+would be the over-claiming this project refuses. JC-1..4, JC-6 ratified; D-047's
+self-catch (a pre-registration may not instruct the runner to write E- entries) and D-048
+(a pre-registration facing an impossible error tradeoff must declare which error it
+prefers) are adopted into the register. D-049's $0.017 unattributed drift stands recorded.
+```
+
+**Runner note on the consequence.** D-047 reserved `E-012` and declined to write it; this audit
+promotes P-012 and **names** the entry. The `E-012` entry itself is written by the researcher's
+promotion, not by the runner (the standing rule, restated in D-047). This packet writes nothing
+under `E-`.
+
+---
+
+## R-016 · Wave 2 extended (OWNER-DIRECTED, time now tracked) · 2026-08-31
+
+**Transcribed verbatim.**
+
+```
+## R-016 · Wave 2 extended (OWNER-DIRECTED, time now tracked) · 2026-08-31
+The owner directs two further experiments before assembly: W14 (bidirectional comprehension
+dose-response) and W15 (the belief transplant, properly powered with fresh pairs — its W13
+cancellation was a sizing outcome, and generation is cheap). Owner minutes are now tracked
+per packet in T- entries (the courier supplies them with each report; the methods register
+will state the owner's best-faith total including the untracked early packets, disclosed as
+an estimate). The submission remains protected: assembly closes by Sept 3 owner time.
+```
+
+**Consequence for the packet map.** W14 and W15 are appended to the map in `ORIENTATION.md`.
+R-015(3)'s cancellation of the transplant is superseded **as to sizing only** — R-016 does not
+dispute the W12 finding of six disjoint pairs; it directs that fresh pairs be generated. The
+Sept 3 assembly close is now a hard boundary in front of the Sept 4 11:59pm PT submission
+deadline; **if W14 or W15 slips, assembly wins.**
