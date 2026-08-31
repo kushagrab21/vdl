@@ -1,0 +1,9 @@
+direction,arm,n,P_toward_B_regex_corr,P_toward_B_regex_raw,P_toward_B_judge,n_unparsed_corr,verbalized_toward_B,verbalized_completecase,n_verdict_unclear_or_missing,decoded_toward_B,n_decoded_estimable,coherence,n_truncated,median_continuation_tokens,median_ngram4,edit_norm_mean,edit_norm_max
+mirror,SHAM,40,0.05,0.025,0.05,0,0.2,0.3077,14,0.0,17,1.0,0,34,0.9852,,
+mirror,SWAP,40,0.05,0.025,0.05,0,0.2,0.32,15,0.0,17,1.0,0,34,0.9857,2.8015,32.1934
+mirror,SELF,40,0.05,0.025,0.05,0,0.175,0.2593,13,0.0,17,1.0,0,34,0.9857,2.7827,31.7705
+mirror,RAND,40,0.05,0.025,0.05,0,0.175,0.25,12,0.0,16,1.0,0,34,0.9874,13.1959,22.2173
+primary,SHAM,40,0.15,0.725,0.15,0,0.05,0.0541,3,1.0,12,1.0,0,33,0.9846,,
+primary,SWAP,40,0.15,0.725,0.15,0,0.0,0.0,4,1.0,12,1.0,0,35,0.9848,2.7957,22.7009
+primary,SELF,40,0.175,0.75,0.15,0,0.025,0.0278,4,1.0,11,1.0,0,34,0.9848,2.7582,22.2414
+primary,RAND,40,0.175,0.775,0.15,0,0.075,0.0882,6,1.0,13,1.0,0,37,0.9839,13.0453,21.6123

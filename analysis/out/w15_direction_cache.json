@@ -1,0 +1,4468 @@
+{
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|50": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|50",
+    "i": 50,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|78": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|78",
+    "i": 78,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|44": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|44",
+    "i": 44,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|56": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|56",
+    "i": 56,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|42": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|42",
+    "i": 42,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|41": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|41",
+    "i": 41,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|58": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|58",
+    "i": 58,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|86": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|86",
+    "i": 86,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|89": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|89",
+    "i": 89,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|94": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|94",
+    "i": 94,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|83": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|83",
+    "i": 83,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|85": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|85",
+    "i": 85,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|110": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|110",
+    "i": 110,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|92": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|92",
+    "i": 92,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|106": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|106",
+    "i": 106,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|153": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|153",
+    "i": 153,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|129": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|129",
+    "i": 129,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|98": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|98",
+    "i": 98,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|162": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|162",
+    "i": 162,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|169": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|169",
+    "i": 169,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|160": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|160",
+    "i": 160,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|183": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|183",
+    "i": 183,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|197": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|197",
+    "i": 197,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|203": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|203",
+    "i": 203,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|122": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|122",
+    "i": 122,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|127": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|127",
+    "i": 127,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|225": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|225",
+    "i": 225,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|170": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|170",
+    "i": 170,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|161": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|161",
+    "i": 161,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|234": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|234",
+    "i": 234,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|244": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|244",
+    "i": 244,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|261": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|261",
+    "i": 261,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|229": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|229",
+    "i": 229,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|193": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|193",
+    "i": 193,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|220": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|220",
+    "i": 220,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|269": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|269",
+    "i": 269,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|211": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|211",
+    "i": 211,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|241": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|241",
+    "i": 241,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|291": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|291",
+    "i": 291,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|300": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|300",
+    "i": 300,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|323": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|323",
+    "i": 323,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|324": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|324",
+    "i": 324,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|308": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|308",
+    "i": 308,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|331": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|331",
+    "i": 331,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|287": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|287",
+    "i": 287,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|341": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|341",
+    "i": 341,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|348": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|348",
+    "i": 348,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|319": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|319",
+    "i": 319,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|231": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|231",
+    "i": 231,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|371": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|371",
+    "i": 371,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|279": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|279",
+    "i": 279,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|347": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|347",
+    "i": 347,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|358": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|358",
+    "i": 358,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|329": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|329",
+    "i": 329,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|372": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|372",
+    "i": 372,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|395": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|395",
+    "i": 395,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|378": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|378",
+    "i": 378,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|391": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|391",
+    "i": 391,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|373": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|373",
+    "i": 373,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|397": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|397",
+    "i": 397,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|442": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|442",
+    "i": 442,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|429": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|429",
+    "i": 429,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|430": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|430",
+    "i": 430,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|419": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|419",
+    "i": 419,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|405": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|405",
+    "i": 405,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|352": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|352",
+    "i": 352,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|407": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|407",
+    "i": 407,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|447": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|447",
+    "i": 447,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|449": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|449",
+    "i": 449,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|427": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|427",
+    "i": 427,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|433": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|433",
+    "i": 433,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|455": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|455",
+    "i": 455,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|460": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|460",
+    "i": 460,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|466": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|466",
+    "i": 466,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|458": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|458",
+    "i": 458,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|492": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|492",
+    "i": 492,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|520": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|520",
+    "i": 520,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|468": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|468",
+    "i": 468,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|533": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|533",
+    "i": 533,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|487": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|487",
+    "i": 487,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|536": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|536",
+    "i": 536,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|486": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|486",
+    "i": 486,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|354": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|354",
+    "i": 354,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|559": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|559",
+    "i": 559,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|539": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|539",
+    "i": 539,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|550": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|550",
+    "i": 550,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|555": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|555",
+    "i": 555,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|577": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|577",
+    "i": 577,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|591": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|591",
+    "i": 591,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|602": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|602",
+    "i": 602,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|535": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|535",
+    "i": 535,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|601": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|601",
+    "i": 601,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|479": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|479",
+    "i": 479,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|589": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|589",
+    "i": 589,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|614": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|614",
+    "i": 614,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|612": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|612",
+    "i": 612,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|620": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|620",
+    "i": 620,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|607": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|607",
+    "i": 607,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|659": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|659",
+    "i": 659,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|664": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|664",
+    "i": 664,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|652": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|652",
+    "i": 652,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|686": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|686",
+    "i": 686,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|643": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|643",
+    "i": 643,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|688": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|688",
+    "i": 688,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|653": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|653",
+    "i": 653,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|695": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|695",
+    "i": 695,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|651": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|651",
+    "i": 651,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|713": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|713",
+    "i": 713,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|706": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|706",
+    "i": 706,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|705": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|705",
+    "i": 705,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|680": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|680",
+    "i": 680,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|749": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|749",
+    "i": 749,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|782": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|782",
+    "i": 782,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|751": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|751",
+    "i": 751,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|753": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|753",
+    "i": 753,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|720": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|720",
+    "i": 720,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|716": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|716",
+    "i": 716,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|785": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|785",
+    "i": 785,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|830": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|830",
+    "i": 830,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|757": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|757",
+    "i": 757,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|805": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|805",
+    "i": 805,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|846": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|846",
+    "i": 846,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|837": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|837",
+    "i": 837,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|849": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|849",
+    "i": 849,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|758": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|758",
+    "i": 758,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|833": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|833",
+    "i": 833,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|864": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|864",
+    "i": 864,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|856": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|856",
+    "i": 856,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|879": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|879",
+    "i": 879,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|857": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|857",
+    "i": 857,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|863": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|863",
+    "i": 863,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|843": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|843",
+    "i": 843,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|892": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|892",
+    "i": 892,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|881": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|881",
+    "i": 881,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|895": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|895",
+    "i": 895,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|902": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|902",
+    "i": 902,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|905": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|905",
+    "i": 905,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|924": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|924",
+    "i": 924,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|926": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|926",
+    "i": 926,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|931": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|931",
+    "i": 931,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|932": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|932",
+    "i": 932,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|928": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|928",
+    "i": 928,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|942": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|942",
+    "i": 942,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|975": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|975",
+    "i": 975,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|996": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|996",
+    "i": 996,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|984": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|984",
+    "i": 984,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|889": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|889",
+    "i": 889,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|991": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|991",
+    "i": 991,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|986": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|986",
+    "i": 986,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|970": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|970",
+    "i": 970,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|825": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|825",
+    "i": 825,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|997": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|997",
+    "i": 997,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|above_good|965": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|above_good|965",
+    "i": 965,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SELF|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SWAP|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_SHAM|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|mirror_RAND|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SWAP|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SELF|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_SHAM|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|primary_RAND|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|0": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|0",
+    "i": 0,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|3": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|3",
+    "i": 3,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|2": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|2",
+    "i": 2,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|6": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|6",
+    "i": 6,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|4": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|4",
+    "i": 4,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|1": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|1",
+    "i": 1,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|5": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|5",
+    "i": 5,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|8": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|8",
+    "i": 8,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|7": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|7",
+    "i": 7,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|11": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|11",
+    "i": 11,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|9": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|9",
+    "i": 9,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|10": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|10",
+    "i": 10,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|12": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|12",
+    "i": 12,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|13": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|13",
+    "i": 13,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|15": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|15",
+    "i": 15,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|17": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|17",
+    "i": 17,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|16": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|16",
+    "i": 16,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|19": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|19",
+    "i": 19,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|14": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|14",
+    "i": 14,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|20": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|20",
+    "i": 20,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|18": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|18",
+    "i": 18,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|23": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|23",
+    "i": 23,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|21": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|21",
+    "i": 21,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|22": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|22",
+    "i": 22,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|26": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|26",
+    "i": 26,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|27": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|27",
+    "i": 27,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|25": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|25",
+    "i": 25,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|29": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|29",
+    "i": 29,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|30": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|30",
+    "i": 30,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|31": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|31",
+    "i": 31,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|24": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|24",
+    "i": 24,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|33": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|33",
+    "i": 33,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|34": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|34",
+    "i": 34,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|28": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|28",
+    "i": 28,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|32": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|32",
+    "i": 32,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|37": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|37",
+    "i": 37,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|36": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|36",
+    "i": 36,
+    "mentions_bet": true,
+    "direction": "incorrect",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>incorrect</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|39": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|39",
+    "i": 39,
+    "mentions_bet": true,
+    "direction": "correct",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>correct</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SHAM|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SWAP|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|38": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_SELF|38",
+    "i": 38,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  },
+  "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|35": {
+    "key": "Qwen/Qwen2.5-14B-Instruct|B|deep_primary_RAND|35",
+    "i": 35,
+    "mentions_bet": true,
+    "direction": "unclear",
+    "raw": "<mentions_bet>yes</mentions_bet>\n<direction>unclear</direction>"
+  }
+}

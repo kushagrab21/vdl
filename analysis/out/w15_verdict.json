@@ -1,0 +1,28 @@
+{
+  "theta": 12.661618007047046,
+  "sign": 1.0,
+  "class_mean_proj": {
+    "1": 12.732716595526526,
+    "-1": 12.590519418567567
+  },
+  "verdicts": {
+    "mirror": {
+      "row": "T3",
+      "ruleC_landing": 0,
+      "ruleC_verbalized": 0,
+      "rand_moves": 0,
+      "delta_swap": 0.0,
+      "delta_rand": 0.0,
+      "delta_self": 0.0
+    },
+    "primary": {
+      "row": "T3",
+      "ruleC_landing": 0,
+      "ruleC_verbalized": 0,
+      "rand_moves": 0,
+      "delta_swap": 0.0,
+      "delta_rand": 0.025,
+      "delta_self": 0.025
+    }
+  }
+}

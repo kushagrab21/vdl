@@ -1,0 +1,81 @@
+{
+  "harvest": {
+    "estimate": {
+      "n_calls_direction": 158,
+      "constants": "D-040",
+      "direction_judge_est_usd": 0.7018,
+      "number_judge_est_usd": 0.0,
+      "total_est_usd": 0.7018,
+      "api_ceiling_usd": 6.0,
+      "under_ceiling": true
+    },
+    "procs": 12,
+    "number_judge": {
+      "in": 0,
+      "out": 0,
+      "calls": 0,
+      "usd": 0.0
+    },
+    "direction_judge": {
+      "in": 199359,
+      "out": 18296,
+      "calls": 159,
+      "usd": 0.8725
+    },
+    "actual_usd": 0.8725,
+    "projection_error_pct": -19.6
+  },
+  "cumulative_actual_usd": 4.3721,
+  "cont": {
+    "estimate": {
+      "n_calls_direction": 320,
+      "constants": "D-040",
+      "direction_judge_est_usd": 1.4266,
+      "number_judge_est_usd": 0.5417,
+      "total_est_usd": 1.9684,
+      "api_ceiling_usd": 6.0,
+      "under_ceiling": true
+    },
+    "procs": 12,
+    "number_judge": {
+      "in": 164390,
+      "out": 3362,
+      "calls": 170,
+      "usd": 0.5436
+    },
+    "direction_judge": {
+      "in": 404192,
+      "out": 25594,
+      "calls": 320,
+      "usd": 1.5965
+    },
+    "actual_usd": 2.1401,
+    "projection_error_pct": -8.0
+  },
+  "cont_deep": {
+    "estimate": {
+      "n_calls_direction": 160,
+      "constants": "D-040",
+      "direction_judge_est_usd": 0.7276,
+      "number_judge_est_usd": 0.465,
+      "total_est_usd": 1.1926,
+      "api_ceiling_usd": 6.0,
+      "under_ceiling": true
+    },
+    "procs": 12,
+    "number_judge": {
+      "in": 141370,
+      "out": 2826,
+      "calls": 142,
+      "usd": 0.4665
+    },
+    "direction_judge": {
+      "in": 209628,
+      "out": 17611,
+      "calls": 162,
+      "usd": 0.893
+    },
+    "actual_usd": 1.3595,
+    "projection_error_pct": -12.3
+  }
+}

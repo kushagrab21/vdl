@@ -1,0 +1,3 @@
+run,n_pairs,final_in_continuation,swap_text_differs,swap_final_value_differs,median_continuation_tokens
+frozen_primary,40,6,12,1,33.5
+deep,40,40,35,26,234.0

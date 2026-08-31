@@ -7806,3 +7806,468 @@ stdlib only, recomputing `Δ_swap` from the raw continuation files with a fresh 
 extractor, pasted into the report.
 
 ---
+
+## F-020 · W15 freeze record: pod, stack, prompts, seeds, pairs · 2026-08-31
+
+| item | value |
+|---|---|
+| pod | `pu0m8r6jtng3ks`, name `vdl-w15`, machine `7wzxujf3x9ek` |
+| GPU | **NVIDIA A100-SXM4-80GB**, driver **570.172.08 (CUDA 12.8)**, `costPerHr` **$1.59** against a **$1.39** rate card — **D-031 recurs**; W14's pod billed $1.39 |
+| image | `runpod/pytorch:1.2.0-rc.162-cu1281-torch280-ubuntu2204`, volume 60 GB, container 60 GB, fresh |
+| venv stack (built) | vllm **0.28.0**, torch **2.13.0+cu130**, transformers **5.16.1** — **byte-identical to W3's, W11's and W14's**, built in **6 min** (W14 needed 21) |
+| stack ACTUALLY USED | **the container's own** torch **2.8.0+cu128**, transformers **5.16.1**, `accelerate`, **no vLLM** — see **D-054**: the pod's driver is older than the frozen stack's CUDA 13 runtime and vLLM's engine cannot initialise on it |
+| interpreter | `/usr/local/bin/python` (**not** `/workspace/venv/bin/python`) — the reverse of W14's D-050, and for the same reason: `bootstrap.sh`'s banner names one interpreter and the packet needs the other |
+| model | `Qwen/Qwen2.5-14B-Instruct`, unchanged |
+| prompts | `src/prompts_w3.build_prompt_w3("B","above_good",4_500_000_000)` — **W3's natural wording, unmodified**. `gen_w15.py --selftest` **H1–H10 PASS** on the laptop before the pod existed and again **on the pod** before the first token; clauses H5–H8 assert the prompt carries **neither** W11's clarification **nor** W14's degradation |
+| prompt tokens | **197** — exactly W3's and W14's |
+| harvest | **1,000** rollouts, `runs/w15_harvest/form_B/above_good.json`, **0 truncated**, median **407** output tokens (W3's 394), 592 s of generation |
+| seeds | **10714–11713**, contiguous, disjoint from W14's 10414–10713 and every earlier block; verified before the pod existed |
+| sampling | temperature 1.0, top_p 1.0 — **PR-001, unchanged**. `max_new_tokens` **2048** and `torch.manual_seed(BASE_SEED+10650+batch_start)`, batch 100 — **the D-054 deviation**; W3's per-request vLLM seeding is not reproducible through HF `generate` |
+| direction | `w5_vectors/w5_vphat_B.safetensors`, sha256 **`cbdbbb4a…be64`** — the object PR-005 froze, re-verified at load; ‖v_p̂^B(L27)‖ **12.726012**, matching `w5_layers.csv` |
+| edit | layer **27** output, 1-D along `u`, prefix generated-token positions only. Laptop smoke **S-A…S-G, 7/7 PASS**, re-run **on the pod** before the first transplanted token, **7/7** |
+| pairs | **40 disjoint**, both directions (`primary`: A is p̂=+1; `mirror`: A is p̂=−1), `analysis/out/w15_pairs.csv` |
+| transplant | 40 × 4 arms × 2 directions = **320** generations, `runs/w15_transplant/{primary,mirror}.json`, 405 s |
+| diagnostic (JC-4, post-freeze) | 40 × 4 = **160** generations at a 40 %-of-`n_gen` cut, `runs/w15_transplant_deep/primary.json`, 1,188 s |
+
+---
+
+## P-014 · W15: the belief transplant is a MEASURED NULL — and the packet's larger result is that the pre-registered design could not have found anything · 2026-08-31
+
+**PR-011 item 6 row T3 fires in both directions.** Rule C — the decision rule the pre-freeze
+simulations forced — does not fire on landing or on verbalization, in either direction, and
+`CI(Δ_rand)` includes zero. **The belief state is not transplantable by this operation at this
+power; combined with W7's and W7b's nulls, v_p̂ remains correlational.**
+
+### 1. The harvest and the pairs
+
+| step | value |
+|---|---|
+| rollouts | **1,000**, 0 truncated |
+| regex-labelled (`p̂ ∈ ±1`) | **435** — **337** p̂=+1, **98** p̂=−1 |
+| with a cause token / valid cut point (`cut = belief_gen_pos − 25 ≥ 0`) | **435 / 435** |
+| cut point | median **355**, min **132**, max **586** |
+| nominated for the judge | **158** (60 of 337 majority, **98 of 98** minority — **JC-3**) |
+| judged, non-`unclear` | **151**; **7** `unclear` |
+| judge-vs-regex p̂ agreement | **0.8411** (127/151) |
+| confirmed | **57** p̂=+1, **70** p̂=−1 |
+| **disjoint pairs** | **40** (the `min(·,·,40)` cap binds) — **the mirror runs** |
+
+**The loosening's effect.** PR-011 dropped W12's `settle_pos` constraint. On W12's own data the
+constraint cut valid cut points from **167 to 98** and disjoint pairs from a possible 270 to
+**6**; here **every one of the 435 regex-labelled traces has a valid cut point**, and the
+binding constraint is the minority class (98), not the cut rule. **The cancellation at W13 was a
+sizing outcome of the dropped constraint, exactly as R-015(3) suspected.**
+
+### 2. The primary statistic: nothing moves
+
+`P(the reconstructed trace lands on B's side)`, corrected-regex basis, n = 40 pairs per
+direction (`w15_arms.csv`, `w15_primary.csv`):
+
+| direction | SHAM | SWAP | SELF | RAND |
+|---|---|---|---|---|
+| **primary** (A is p̂=+1) | 0.1500 | **0.1500** | 0.1750 | 0.1750 |
+| **mirror** (A is p̂=−1) | 0.0500 | **0.0500** | 0.0500 | 0.0500 |
+
+| direction | Δ_swap | Δ_self | Δ_rand | Δ_swap − Δ_rand | Δ_swap − Δ_self |
+|---|---|---|---|---|---|
+| primary | **+0.0000 [+0.0000, +0.0000]** | +0.0250 | +0.0250 | −0.0250 [−0.0750, +0.0000] | −0.0250 [−0.0750, +0.0000] |
+| mirror | **+0.0000 [+0.0000, +0.0000]** | +0.0000 | +0.0000 | +0.0000 [+0.0000, +0.0000] | +0.0000 [+0.0000, +0.0000] |
+
+The **judge** landing basis reads the same (0.1500 in all four primary arms, 0.0500 in all four
+mirror arms). **Verbalized mapping** does not move either: primary 0.0500 / **0.0000** / 0.0250 /
+0.0750, mirror 0.2000 / **0.2000** / 0.1750 / 0.1750. Coherence is **1.000 in all eight arms**
+and truncation **0 in 320** — with **D-029's caveat attached: coherence is blind to epistemic
+distortion and read 1.000 across all twelve W7b arms while W7b was measuring nothing.**
+
+### 3. **The reason it does not move is measured, and it is bigger than the null**
+
+**(a) The frozen cut leaves almost no surface.** The continuation regenerated from
+`belief_gen_pos − 25` has a median of **33 tokens** (min 4, max 103). Only **6 of 40**
+reconstructions carry their final estimate *inside* the continuation; **only 7 of 40**
+continuations contain an estimate-shaped number at all. **34 of 40 landings were already fixed
+in the teacher-forced prefix before any arm ran.** The SWAP continuation differs in text from
+SHAM in **12 of 40** pairs and differs in **final value in 1**.
+
+**(b) The pre-freeze simulation's locked fraction was measured on the wrong object, and it
+over-stated power by an order of magnitude (D-055).** PR-011 item 5 measured `λ` as "does A's
+*own* final literal precede the cut" — **20/76 = 0.2632** on W3. What governs the statistic is
+"does the *regenerated* continuation carry a final literal at all", which is **34/40 = 0.85**.
+Re-running the frozen simulator at the measured λ:
+
+| direction | δ_gen | power vs δ_true = +0.4456, **λ = 0.2632 (declared)** | **λ = 0.85 (measured)** |
+|---|---|---|---|
+| primary | −0.205 | **0.997** | **0.000** |
+| primary | 0.000 | 0.969 | **0.477** |
+| mirror | −0.205 | 0.982 | **0.870** |
+| mirror | 0.000 | 0.985 | **0.347** |
+
+**The D-048 declaration was made in good faith at n = 40 and was wrong**, because the quantity it
+checked could only be measured after the continuations existed. **The achieved power against the
+ordered alternative is 0.00–0.87, not the 0.97–1.00 pre-registered.**
+
+**(c) The edit moves the residual, but barely moves the belief coordinate.** At L27 over prefix
+positions, the two p̂ classes' mean projections onto `u` are **12.7327** and **12.5905** — a
+separation of **0.1422** in the aggregate and **0.5391** as a mean per-grid-point magnitude —
+against a **within-class sd of 3.1345**. **Separation / sd = 0.1720.** The edit itself is real:
+‖δ‖ mean **2.80** (0.89 σ) for SWAP and **2.76** for SELF. **SWAP and SELF differ from each other
+by ~0.04 on average, so the contrast that defines the experiment is 5.8× smaller than the noise
+it sits in.** RAND, by PR-011's frozen definition, replaces a near-zero random-direction
+projection with the class mean and so moves ‖δ‖ **13.05 (4.2 σ) — 4.7× SWAP's**, which makes it
+a **conservative** control: it errs against T1.
+
+### 4. **The bound: a properly powered null at full surface (JC-4, POST-FREEZE)**
+
+Because a null measured on no surface cannot distinguish "the belief is not transplantable" from
+"the operation had nothing to act on", the same 40 pairs, arms, seeds and edit were re-run at a
+cut placed at **40 % of A's generated length**. **This is a declared post-freeze diagnostic, is
+written to its own directory, and never enters the frozen statistic.**
+
+| | frozen cut | **deep cut (0.40)** |
+|---|---|---|
+| median continuation | 33 tokens | **234** tokens |
+| final literal inside the continuation | **6/40** | **40/40** |
+| SWAP continuation text differs from SHAM | 12/40 | **35/40** |
+| SWAP **final value** differs from SHAM | 1/40 | **26/40** |
+| P(toward B): SHAM / SWAP / SELF / RAND | .150/.150/.175/.175 | **.400/.375/.350/.400** |
+| Δ_swap | +0.0000 [0, 0] | **−0.0250 [−0.1750, +0.1500]** |
+| Δ_swap − Δ_rand | −0.0250 | **−0.0250 [−0.2250, +0.1500]** |
+| **rule-C power vs δ_true=+0.4456** (λ=0 measured, q0=0.400 observed) | 0.00–0.87 | **0.954 – 0.995** (false-fire 0.013; 80 % power at δ ≈ 0.32) |
+
+**At full surface, with 26 of 40 pairs actually changing their final number, the transplant still
+moves landing by −0.025 and beats RAND by −0.025.** **The null survives its own bound.**
+
+One of the 20 diagnostic statistics excludes zero — **SELF lowers verbalization by −0.1750
+[−0.3250, −0.0500]**, and `Δ_swap − Δ_self` is +0.2000 [+0.0750, +0.3250]. **`Δ_swap − Δ_rand` is
++0.0500 [−0.1250, +0.2250] and does not**, so rule C does not fire. One of twenty 95 % intervals
+excluding zero is the expected count, the sign is not a belief-direction effect (SELF installs
+A's *own* class mean), and it is reported as such.
+
+### 5. What is NOT claimed
+
+**(a)** That v_p̂ carries no belief information — **E-007 stands** and W13 defended it; what is
+measured here is that **replacing its L27 component with the opposite class's mean profile does
+not move behaviour.** **(b)** That the operation was potent: §3(c) measures it at 0.17 σ in the
+belief coordinate. **(c)** Any decoded-belief result: **the instrument failed (D-056).**
+**(d)** Any comparison of W15's marginal rates to W3's: the generation backend changed (D-054).
+
+metric: PR-011 items 3–4; rule C; percentile bootstrap over pairs, 10,000 resamples, one shared
+resample index. filter: 40 disjoint judge-confirmed pairs per direction, 0 truncated, 0 degenerate.
+source: `runs/w15_harvest/`, `runs/w15_transplant/`, `runs/w15_transplant_deep/`,
+`analysis/out/w15_{screen,pairs,arms,primary,rows,deep,surface,profiles,verdict,power,power_mde}.*`.
+command: `python3 src/gen_w15.py --n 1000 --hf` · `python3 src/harvest_w15.py --screen
+--nominate 60 --nominate-minor 98` · `python3 src/judge_w15.py --phase harvest --run` ·
+`python3 src/harvest_w15.py --pair` · `python3 src/transplant_w15.py --profile` ·
+`python3 src/transplant_w15.py --transplant --directions primary mirror` ·
+`python3 src/judge_w15.py --phase cont --run` · `python3 src/analyze_w15.py` ·
+`python3 src/w15_deep.py` · `python3 src/w15_recount.py`
+
+**P-014 is provisional. `E-014` is reserved and not written (D-047).**
+
+---
+
+## D-053 · The regex screen was ambiguous between two frozen extractors, and one of them destroys it · 2026-08-31
+
+PR-011 item 1 said the screening instrument reads "the trace's own final estimate". **This
+project has two frozen regex extractors and they are not interchangeable here:** `final_estimate`
+(PR-001 item 8, the last numeric literal in the visible answer) and `final_corrected`
+(PR-003 item 7 / D-016, the last literal that is **not** exactly τ).
+
+**Caught by a dry run on W3, on the laptop, before the pod existed**, by running the screen on
+`runs/w3_frozen/form_B/*` where the judge's answer is already known:
+
+| extractor for the screen | judge-vs-regex p̂ agreement, W3 form-B `above_good` |
+|---|---|
+| `final_estimate` (raw) | **0.6316** |
+| **`final_corrected`** | **0.9467** (`below_good` 0.8804) |
+| the number judge (paid), i.e. V-025's own basis | 0.9605 |
+
+The raw extractor's estimate is on the **wrong side of τ in 25 of 76 traces**, because the last
+literal in a visible answer is very often **τ itself**, echoed back in the concluding sentence.
+`final_corrected` disagrees with the paid number judge about the side of τ in **1 of 76**.
+**`final_corrected` is the screening instrument of record and the code says why.**
+
+The general lesson, for the register: **V-025 calibrated "the regex direction instrument" at
+0.90–0.96 using `w14_dircheck.py`, which reads the estimate from the paid number-judge cache.**
+A "free regex screen" is only that calibrated instrument if the free part reproduces the paid
+part — which had to be *measured*, not assumed. It does, but only for one of the two extractors.
+
+---
+
+## D-054 · The frozen GPU stack could not run on the machine the pod landed on, and the packet lost 81 minutes to it · 2026-08-31
+
+`provision_pod.sh` built **the same stack W3, W11 and W14 used** — vllm 0.28.0, torch
+**2.13.0+cu130**, transformers 5.16.1 — in 6 minutes. It then could not start:
+
+```
+RuntimeError: The NVIDIA driver on your system is too old (found version 12080).
+```
+
+**The pod's driver is 570.172.08 / CUDA 12.8. W14's was 595.71.05.** vLLM 0.28.0's wheels carry a
+**CUDA 13** runtime (`nvidia-cuda-runtime-13.0.96`, `nvidia-nccl-cu13`), which needs a ≥ 580
+driver. **The script, the image and the pinned versions were identical to W14's; the machine was
+not.** Nothing in this project's provisioning checks a driver version, and nothing in F-017 /
+F-019 records one as load-bearing.
+
+**Recovery.** The container's own `/usr/local/bin/python` carries torch **2.8.0+cu128**, which
+matches the driver. `transformers==5.16.1`, `safetensors`, `accelerate`, `anthropic` and
+`python-dotenv` were installed into it and **the whole packet ran on HF `generate`** — the path
+W7, W7b and W12 already use and the path the transplant needs anyway. **D-044's precedent
+applies: the stack is not W3's, and what makes that safe is that every W15 statistic is a
+contrast between arms generated by the same stack in the same process.**
+
+**Two declared deviations from PR-011 item 1 follow, both from the backend and neither optional:**
+1. **Seeding granularity.** vLLM takes a per-request seed; HF `generate` does not. The harvest
+   uses `torch.manual_seed(BASE_SEED + 10650 + batch_start)`, batch 100 — **W7's rule**. The
+   seed *block* (10714–11713) is unchanged and still disjoint.
+2. **`max_new_tokens` 2048** instead of PR-001 item 5's 32768, as PR-005 item 3 already declared
+   for W7. **0 of 1,000 truncated** against a W3 form-B maximum of 1,074 tokens, so the cap does
+   not bind.
+
+**Cost.** The launch failed at **03:13:50** and was not noticed until **04:32**: the pod idled
+**81 minutes ≈ $2.15**, which is **58 % of this packet's GPU bill** and the single most expensive
+mistake in the project. The failure itself cost 2.5 minutes. **The lesson is not about CUDA:
+a long-running unattended GPU job needs a liveness check, and this project has never had one.**
+
+---
+
+## D-055 · The pre-freeze simulation measured its nuisance parameter on the wrong object and over-stated power by up to ∞ · 2026-08-31
+
+**Register entry, extending D-032, D-043 and D-048.** PR-011 item 5's structural parameter `λ`
+— the fraction of pairs whose landing no downstream edit can move — was measured as **"does A's
+own final literal precede the cut point"**: `20/76 = 0.2632` on W3 form-B `above_good`, from
+committed position files, before any W15 token existed. It is a correct measurement of that
+quantity.
+
+**It is the wrong quantity.** The statistic is computed on the **reconstruction** — A's prefix
+plus a **regenerated** continuation — and what locks a pair is whether that *new* continuation
+contains a final literal at all. Restarted mid-sentence at the cut, the model wraps up in a
+median of **33 tokens** and usually without restating a number, so the measured locked fraction
+is **34/40 = 0.85**, not 0.2632.
+
+| | declared λ = 0.2632 | measured λ = 0.85 |
+|---|---|---|
+| rule-C power, primary, δ_gen −0.205, δ_true +0.4456 | **0.997** | **0.000** |
+| rule-C power, primary, δ_gen 0 | 0.969 | 0.477 |
+| rule-C power, mirror, δ_gen −0.205 | 0.982 | 0.870 |
+
+**Every earlier register entry in this family is about a threshold or a statistic. This one is
+about a nuisance parameter, and it is the more dangerous kind**, because the simulation was
+methodologically correct at every step and the D-048 declaration it produced was made honestly at
+the achieved n. **The rule R-013 needs is not "simulate the statistic under its own null" but
+"simulate it on the object the statistic will actually be computed from"** — which, for any
+design whose outcome is *regenerated* rather than *observed*, cannot be done from the original
+traces alone. A pilot of 5 pairs would have measured λ = 0.85 for **$0.05** and is what the
+design needed.
+
+---
+
+## D-056 · The substitute decoded-belief instrument is non-discriminative, and its failure is measured · 2026-08-31
+
+PR-011's **JC-1** declared, before data, that W5 persisted its *vectors* and not its probe's
+trained coefficients, so "the frozen W5 probe" would be implemented as the frozen W5 **direction**
+used as a 1-D decoder. **It does not work.** At L27 over prefix positions:
+
+| quantity | value |
+|---|---|
+| class-mean projection onto `u`, p̂=+1 | **12.7327** |
+| class-mean projection onto `u`, p̂=−1 | **12.5905** |
+| separation (aggregate / mean per-grid-point) | **0.1422 / 0.5391** |
+| **within-class sd** | **3.1345** |
+| **separation / sd** | **0.1720** |
+| θ (the midpoint) as a percentile of continuation projections | **86th** |
+
+It therefore decodes **p̂ = −1 for every continuation in every arm**, reading 1.0000 in all four
+primary arms and 0.0000 in all four mirror arms. **It is reported as an instrument failure, not
+as evidence**, and no W15 claim rests on it.
+
+**This is not only an instrument note.** The same three numbers say what the transplant *is*: the
+belief classes are separated along `v_p̂` at L27, over prefix positions, by **0.17 of their own
+within-class spread**. E-007's 0.760 balanced accuracy at L27 is a **multivariate** probe over
+**est points**; the 1-D projection over all prefix positions is a much weaker object, and **the
+edit PR-011 specifies is defined in exactly that weaker coordinate.**
+
+---
+
+## D-057 · Smaller findings, recorded · 2026-08-31
+
+**(1) The RunPod balance drifted again with no pod running.** W14 closed at `clientBalance`
+**$20.5621**; W15's R-014 probe, before provisioning, read **$20.5408** — a move of **$0.0213**.
+**D-049** recorded $0.0171 of the same thing. Unattributed, recorded, twice now.
+
+**(2) `costPerHr` was $1.59 against a $1.39 rate card — D-031 recurs.** W14's pod billed $1.39.
+The rate is a machine attribute, like the driver (D-054), and this packet was surprised by both.
+
+**(3) D-040's direction-judge output constant is ~2× low on natural wording.** Measured this
+packet: **115** output tokens/call (harvest), **80** (frozen continuations), **109** (deep
+continuations), against D-040's **56** and D-052's degraded-wording **522**. Every W15 projection
+**under-shot**, by **19.6 % / 8.0 % / 12.3 %** — the right sign and a tenth of D-052's magnitude,
+which supports D-052's reading that the 522 was degraded-wording-specific.
+
+**(4) The judge-vs-regex agreement on the nominated set is 0.8411, below W3's 0.9467.** The
+nominated set is **class-balanced by construction** (98 of 98 minority, 60 of 337 majority) and
+the minority class is where the two instruments disagree. **A calibration measured on a natural
+class mix does not transfer to an enriched one**, and the 0.8411 is the honest figure for the
+pool the pairs were drawn from.
+
+**(5) The raw regex landing basis is uninformative on reconstructions.** It reads **0.725–0.775**
+across the primary arms where the corrected basis reads **0.150–0.175**, because the last literal
+of a reconstruction is usually τ. Both bases are reported; **the corrected basis is the one of
+record**, as it has been since D-016.
+
+**(6) RAND is a strictly larger perturbation than SWAP, by PR-011's own definition.** ‖δ‖ **13.05
+(4.2 σ)** against SWAP's **2.80 (0.89 σ)**. This was not noticed at freeze time. It makes RAND a
+**conservative** control — it errs against T1 — which is the direction D-048 says to prefer, so
+the frozen definition is kept and the asymmetry is reported rather than corrected.
+
+---
+
+## S-016 · Spend, W15 · 2026-08-31
+
+**R-014's balance probes ran before provisioning** (RunPod `clientBalance` **$20.5408013258**,
+`currentSpendPerHr` **$0.00**; Anthropic 1-token probe **HTTP 200**).
+
+| pod | GPU | $/hr | window (UTC) | hours | cost |
+|---|---|---|---|---|---|
+| **`pu0m8r6jtng3ks`** | A100-SXM4-80GB | **1.59** (rate card 1.39 — **D-031**) | 03:05:20 → **05:24:46 TERMINATED** | **2.324** | **$3.70** |
+
+**Compute was 26.2 % of billed time** (2,193 s of generation in 8,366 s billed). **81 minutes —
+58 % of the bill, ≈ $2.15 — was the pod idling after D-054's failed launch went unnoticed.**
+The 6-minute venv build was the cheapest in the project and was wasted.
+
+| phase | calls | tokens in / out | cost |
+|---|---|---|---|
+| direction judge, harvest confirmation (**the only paid screen**) | 159 | 199,359 / 18,296 | **$0.8725** |
+| direction judge, frozen continuations | 320 | 404,192 / 25,594 | **$1.5965** |
+| number judge, frozen continuations | 170 | — | **$0.5436** |
+| direction judge, JC-4 diagnostic | 162 | 209,628 / 17,611 | **$0.8930** |
+| number judge, JC-4 diagnostic | 142 | — | **$0.4665** |
+
+**API this packet: $4.3721** against projections of $0.70 / $1.97 / $1.19 (**−19.6 % / −8.0 % /
+−12.3 %**, D-057(3)).
+
+> **GPU $3.70 + API $4.37 = $8.07 this packet, against R-017's $10 hard ceiling. UNDER.**
+> **Cumulative: $19.30 GPU + $30.87 API = $50.17 of the $60 cap; balance $9.83.**
+>
+> **The $45 line is crossed, as R-017 authorised it to be.** Every paid call this packet was
+> either a nominated harvest candidate or a generated continuation; **the 842 rollouts the regex
+> screen did not nominate were never sent to a judge**, which is what "judge spend only on
+> candidates" bought — at D-040's measured rate, judging all 1,000 would have cost **$5.5** on
+> the screen alone.
+
+**Account state at close, verified:** `DELETE /pods/pu0m8r6jtng3ks` → **HTTP 204**;
+`GET /pods` → **HTTP 200, empty**; `GET /pods/pu0m8r6jtng3ks` → **HTTP 404 "pod not found"**;
+`myself.currentSpendPerHr` **$0.00**. RunPod `clientBalance` **$20.5408 → $16.8767**, a move of
+**$3.6641** against the **$3.695** the pod window bills — agreement to **3.1 ¢**. No volume
+survives.
+
+---
+
+## T-018 · Time, W15 · 2026-08-31
+
+**Owner-clock minutes: NOT SUPPLIED for this packet.** R-016 directs that owner minutes be
+tracked per packet and supplied by the courier with each order; **none accompanied the W15
+order**, as none accompanied W14's (T-017). Recorded empty, not estimated. **Two packets under
+the new rule, two empty fields.**
+
+Runner wall time, W15: **≈ 3 h 05 m** (2026-08-31 02:20 → 05:25 UTC), against the order's
+2–3 h target. GPU wall **2.324 h**.
+
+| phase | wall | note |
+|---|---|---|
+| re-orientation, transcription of V-025 / R-017 | ~15 m | |
+| the blinded hand-label **extension** + blindness verification | ~10 m | built and verified blind; the addendum key was written and not read |
+| **the R-013 pre-freeze simulations** | **~25 m** | and they changed the decision rule — see PR-011 item 5 |
+| write and commit PR-011 | ~12 m | frozen at `593b51a`, before `runs/w15_harvest/` existed |
+| harvest/transplant/judge/analysis code + laptop smoke | ~30 m | including **D-053's dry run on W3, which caught a screen-destroying bug before the pod** |
+| pod create → terminate | **2 h 19 m** | of which **81 m idle on D-054** and 37 m of actual generation |
+| judging | ~12 m | 641 direction + 312 number calls, 12 workers |
+| the JC-4 diagnostic (design, run, analysis) | ~35 m | overlapped the frozen judging |
+| analysis, ledger, samples, recount | ~30 m | |
+
+**The pre-freeze simulation hour paid for itself for the fifth packet running, and then failed
+in a new way.** It caught the packet's decision rule (rule C, and the 8.9–84.2 % false-fire of
+the ordered primary) and it missed the packet's actual limitation (D-055's λ). **Both facts are
+the same fact: a simulation is exactly as good as the object it is calibrated on.**
+
+**The most avoidable cost was D-054's 81 idle minutes.** The most valuable unplanned work was
+**D-053's dry run** — ten minutes on the laptop, before any spend, which is the difference
+between this packet screening at 0.95 and screening at 0.63 — and the **JC-4 diagnostic**, which
+is what turns an uninterpretable null into a bounded one.
+
+---
+
+## V-026 · W15 runner verification: precedence, smoke, blindness, recount, termination · 2026-08-31
+
+**A runner verification note, not a researcher audit.** The researcher's audit is the reading of
+`analysis/out/w15_samples/*.md` and the ruling on P-014.
+
+**(1) PR-011 preceded every W15 token — from `git log` and the clock, not from memory.**
+
+```
+593b51a  W15: transcribe V-025 ... pre-register PR-011 - the powered belief transplant ...
+```
+
+`593b51a` was committed at **02:58:18 UTC** (`git log -1 --format=%cI`). The pod was created at
+**03:05:20** and the first harvest token at **03:13:31** (the vLLM attempt that died) /
+**04:37:39** (the run that survives) — margins of **15 m 13 s** and **1 h 39 m 21 s**. `runs/w15_harvest/` did not exist when `593b51a` was written.
+The item 5 simulations that **changed the decision rule** predate it and are pasted into PR-011
+verbatim. **JC-3 (the minority nomination raised from 60 to 98) was decided after the screen's
+pool sizes were read and before any judge verdict existed**, is recorded in the code at the line
+that implements it, and cannot bias the primary because pair membership is a random draw from the
+confirmed pool either way.
+
+**(2) The smoke suite is the load-bearing check on the edit, and it passes on both machines.**
+`transplant_w15.py --smoke`, **7/7**, on the laptop **before the pod existed** and again **on the
+pod before the first transplanted token**: **S-A** the edit's orthogonal-to-`u` residual is
+**1.3e-07** and `|h'·u − target|` is **2.4e-07**; **S-B** prompt positions and **all 9** decode
+steps are **bitwise unchanged** while **11/11** prefix positions are edited; **S-C** SHAM is
+**bitwise identical to no hook at all**; **S-D** SWAP/SELF/RAND all change the generated ids;
+**S-E** the W5 tensor's sha256 matches PR-005's and ‖v_p̂^B(L27)‖ reproduces `w5_layers.csv` to
+**1e-6**; **S-F/S-G** seeds and interpolation. In the real run the hook reports **534 edited
+positions** on pair 0 and **1 prefill pass** on every one of the 480 generations.
+
+**(3) The hand-label extension was built blind and its key has not been opened.**
+`w15_handlabel_ext_packet.md` (56,346 bytes, 20 entries), `w14_handlabel_sheet.csv` extended
+**in place to 70 rows**, `w15_handlabel_key_addendum.csv` (20 rows). Six structural checks pass:
+**1** distinct label block across all 20 entries, **no** key field name in the packet, both sheet
+answer columns empty in all 20 new rows, **0** traces able to break their code fence, and — the
+two new ones — **R01–R50 present and unclaimed by the extension**, and the R01–R50 byte range of
+the rewritten sheet **asserted byte-identical to the original**. `w14_handlabel_key.csv` was
+**not rewritten and not read**. **Disclosed:** the runner read the *addendum's* header line and,
+through an over-wide `cut -c1-60`, the **non-verdict** fields of row R51 (its arm and index).
+**No `judge_direction` value has been read**, from either key file.
+
+**(4) The load-bearing recount is independent and reproduces the claim exactly.**
+`src/w15_recount.py` (**20 body lines**, `json`+`re`+`pathlib` only, no import from `src/`, its
+own number regex) reads, from the raw continuation files:
+
+```
+mirror   n=40  P(toward B) SHAM/SWAP/SELF/RAND 0.0500 0.0500 0.0500 0.0500 | D_swap +0.0000 D_self +0.0000 D_rand +0.0000 swap-rand +0.0000
+primary  n=40  P(toward B) SHAM/SWAP/SELF/RAND 0.1500 0.1500 0.1500 0.1500 | D_swap +0.0000 D_self +0.0000 D_rand +0.0000 swap-rand +0.0000
+```
+
+**The analysis path's Δ_swap is +0.0000 in both directions and the recount agrees exactly.** The
+recount reads Δ_self and Δ_rand as +0.0000 where the analysis path reads +0.0250 in the primary:
+**one pair**, on which the two extractors disagree — the recount's fresh regex requires
+`v ≥ 1000` and `final_corrected` does not. **It does not touch the claim of record.**
+
+**(5) The pod is terminated and the books agree** — see S-016 §"Account state at close".
+
+**(6) `upstream/` is untouched** — `git -C upstream status --porcelain` prints nothing.
+
+**(7) The write-up was NOT rebuilt.** `python3 writeup/build.py --verify` → **IDENTICAL** for
+both documents. **P-014 is provisional and the write-up is built only from `E-`/`V-` entries.**
+
+**(8) What is NOT verified here.**
+(a) **That the frozen null means what T3 says it means** — §3 of P-014 argues it could not have,
+and §4's diagnostic is what carries the bound. **Both halves are the claim of record**, as in W14.
+(b) **The JC-4 diagnostic itself is post-freeze.** Its cut fraction (0.40) was chosen by the
+runner after seeing the frozen result. It has a pasted power calculation and a stated false-fire
+rate, but it is **not** pre-registered and must not be read as if it were.
+(c) **The decoded-belief outcome** — the instrument failed (D-056) and PR-011 item 6's T1
+"verbalization/decoded-belief flip with it" clause is therefore **testable only on the
+verbalization half**.
+(d) **The hand-label agreement, κ and label-noise bound** — neither sheet has been returned.
+(e) **P-014 is provisional; `E-014` is reserved and not written (D-047).**
+
+---
