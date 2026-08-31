@@ -8468,3 +8468,25 @@ audits and rulings instead. **Four `E-` entries are owed.**
 which is the single thing most worth a second reader.
 
 ---
+
+## D-059 · Two counts in W16's commit message are wrong; the ledger's are right · 2026-08-31
+
+Commit `491b353`'s message says `w10_ledger_facts.py` was "extended by 64 facts" and
+`manifest.csv` by "+166 placeholders". **Both are understatements, counted from the drafting
+notes rather than from the files.** Counted from the committed files:
+
+| quantity | before W16 | after W16 | delta |
+|---|---|---|---|
+| ledger facts extracted from `RESULTS.md` | **104** | **182** | **+78** |
+| manifest placeholders | **482** | **659** | **+177** |
+
+Regenerate with `python3 src/w10_ledger_facts.py` (prints `N/N facts extracted`) and
+`python3 -c "import csv;print(sum(1 for r in csv.DictReader(open('writeup/manifest.csv')) if r['token'] and not r['token'].startswith('#')))"`.
+
+**No number in the write-up, in T-019 or in V-028 is affected** — none of them quotes either
+count. Recorded because a commit message is part of this project's audit trail even though it is
+not part of the ledger, and because the standing rule is that a number that cannot be regenerated
+by a named command over committed files should not have been written down in the first place.
+**The two figures above can be, and the ones in the commit message were not.**
+
+---
